@@ -1,0 +1,84 @@
+
+> musou-slice@1.0.0 build
+> tsc --noEmit && vite build && node scripts/precache.mjs
+
+vite v7.3.7 building client environment for production...
+transforming...
+✓ 517 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                                            3.31 kB │ gzip:   1.10 kB
+dist/assets/index-Bv0jZs2W.css                             1.41 kB │ gzip:   0.67 kB
+dist/assets/abstractAudioBus-t9NhSZi4.js                   0.12 kB │ gzip:   0.13 kB
+dist/assets/pass.fragment-9NgWYLhH.js                      0.32 kB │ gzip:   0.25 kB
+dist/assets/precisionDate-DtwZRrPJ.js                      0.39 kB │ gzip:   0.24 kB
+dist/assets/rgbdDecode.fragment-BYLX4UDF.js                0.42 kB │ gzip:   0.31 kB
+dist/assets/pass.fragment-COuJW92X.js                      0.46 kB │ gzip:   0.30 kB
+dist/assets/shaderStore-D7CeNWBX.js                        0.46 kB │ gzip:   0.17 kB
+dist/assets/postprocess.vertex-OxK_33qh.js                 0.47 kB │ gzip:   0.31 kB
+dist/assets/rgbdDecode.fragment-Djqifyo0.js                0.56 kB │ gzip:   0.36 kB
+dist/assets/textureTools-CDBquHE3.js                       0.56 kB │ gzip:   0.39 kB
+dist/assets/postprocess.vertex-D09nW_-F.js                 0.59 kB │ gzip:   0.36 kB
+dist/assets/math.scalar.functions-Dlr_NkBK.js              0.66 kB │ gzip:   0.37 kB
+dist/assets/color.fragment-BAqq7FBA.js                     0.75 kB │ gzip:   0.37 kB
+dist/assets/decalFragment-DwN2yedk.js                      0.76 kB │ gzip:   0.40 kB
+dist/assets/passCube.fragment-DULLJ3s8.js                  0.83 kB │ gzip:   0.35 kB
+dist/assets/color.fragment-DqaZSJwl.js                     0.85 kB │ gzip:   0.41 kB
+dist/assets/typeStore-BtB2332w.js                          0.93 kB │ gzip:   0.46 kB
+dist/assets/mesh.vertexData.functions-ayNlGC5K.js          0.96 kB │ gzip:   0.49 kB
+dist/assets/webAudioMainBus-RkEIkX9f.js                    1.05 kB │ gzip:   0.48 kB
+dist/assets/passCube.fragment-Dkdw6k_i.js                  1.14 kB │ gzip:   0.40 kB
+dist/assets/color.vertex-BUanaIrg.js                       1.19 kB │ gzip:   0.54 kB
+dist/assets/color.vertex-DQRaHogZ.js                       1.22 kB │ gzip:   0.53 kB
+dist/assets/abstractSoundSource-CvEE3w61.js                1.52 kB │ gzip:   0.48 kB
+dist/assets/spatialWebAudioUpdaterComponent-C7aapD00.js    1.61 kB │ gzip:   0.62 kB
+dist/assets/decorators-B3RLRYxr.js                         1.69 kB │ gzip:   0.77 kB
+dist/assets/ddsTextureLoader-CoYSNlRP.js                   1.84 kB │ gzip:   0.88 kB
+dist/assets/logDepthDeclaration-BE37aAP4.js                1.85 kB │ gzip:   0.61 kB
+dist/assets/logger-Cc8vWCAl.js                             1.89 kB │ gzip:   0.83 kB
+dist/assets/logDepthDeclaration-CXgnlTFB.js                1.96 kB │ gzip:   0.75 kB
+dist/assets/webAudioSoundSource-CJsbgAGw.js                2.07 kB │ gzip:   0.84 kB
+dist/assets/fogFragment-aNmdbqXk.js                        2.09 kB │ gzip:   0.64 kB
+dist/assets/fogFragment-CoiMnYMS.js                        2.32 kB │ gzip:   0.69 kB
+dist/assets/hdrTextureLoader-C8H86zqL.js                   2.53 kB │ gzip:   1.22 kB
+dist/assets/cubemapToSphericalPolynomial-BKqiJfU-.js       2.61 kB │ gzip:   1.21 kB
+dist/assets/abstractSoundInstance-Dm2lHyaI.js              2.62 kB │ gzip:   0.81 kB
+dist/assets/webAudioBus-vGnB_Ujs.js                        2.67 kB │ gzip:   0.92 kB
+dist/assets/iesTextureLoader-CeTIjr1r.js                   2.72 kB │ gzip:   1.17 kB
+dist/assets/webRequest-aCVAjCZG.js                         2.97 kB │ gzip:   1.08 kB
+dist/assets/observable-D8MtMElu.js                         3.29 kB │ gzip:   1.12 kB
+dist/assets/tgaTextureLoader-CdJS5NxO.js                   3.53 kB │ gzip:   1.38 kB
+dist/assets/dumpTools-BY8j0EGK.js                          3.95 kB │ gzip:   1.80 kB
+dist/assets/abstractAudioNode-C7dlDeGo.js                  4.08 kB │ gzip:   1.71 kB
+dist/assets/instancesVertex-CORP6tUc.js                    5.61 kB │ gzip:   1.15 kB
+dist/assets/vertexColorMixing-Cq01VV9q.js                  5.75 kB │ gzip:   1.17 kB
+dist/assets/helperFunctions-DBz3YPF6.js                    6.23 kB │ gzip:   2.08 kB
+dist/assets/sceneUboDeclaration-CMidZd3s.js                6.39 kB │ gzip:   2.16 kB
+dist/assets/webAudioBaseSubGraph-phloh2YM.js               7.56 kB │ gzip:   2.03 kB
+dist/assets/envTextureLoader-B--TwjFp.js                   8.32 kB │ gzip:   3.37 kB
+dist/assets/basisTextureLoader-DpiUEkZG.js                 8.52 kB │ gzip:   3.40 kB
+dist/assets/webAudioStreamingSound-CjQRvFbv.js             8.68 kB │ gzip:   2.58 kB
+dist/assets/webAudioStaticSound-1Fms1ipf.js                9.17 kB │ gzip:   2.63 kB
+dist/assets/dds-D5SNw4vW.js                                9.80 kB │ gzip:   3.75 kB
+dist/assets/vertexColorMixing-Y7MCpk_e.js                  9.97 kB │ gzip:   1.92 kB
+dist/assets/spatialWebAudio-CD_PsSAj.js                   11.94 kB │ gzip:   2.78 kB
+dist/assets/exrTextureLoader-D3PzfZpT.js                  15.78 kB │ gzip:   5.93 kB
+dist/assets/ktxTextureLoader-CQpd3plQ.js                  15.98 kB │ gzip:   4.71 kB
+dist/assets/effectRenderer-C7zSRDaR.js                    16.14 kB │ gzip:   5.03 kB
+dist/assets/default.vertex-DGsAynDV.js                    18.89 kB │ gzip:   4.00 kB
+dist/assets/default.vertex-_jSeHsqk.js                    20.92 kB │ gzip:   4.09 kB
+dist/assets/texture-DcZXcwBy.js                           47.36 kB │ gzip:  11.90 kB
+dist/assets/math.vector-CkmS0IQ7.js                       65.18 kB │ gzip:  15.75 kB
+dist/assets/default.fragment-DJzZSohr.js                  99.77 kB │ gzip:  19.30 kB
+dist/assets/default.fragment-cwllhHa-.js                 105.54 kB │ gzip:  19.25 kB
+dist/assets/tools-CAkr2VrB.js                            109.54 kB │ gzip:  29.60 kB
+dist/assets/scene-xSI4J-ec.js                            140.72 kB │ gzip:  30.71 kB
+dist/assets/passPostProcess-tVZyDedW.js                  222.40 kB │ gzip:  53.76 kB
+dist/assets/index-B12vBX-Z.js                            782.20 kB │ gzip: 194.75 kB
+
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 3.33s
+Precached 72 local assets

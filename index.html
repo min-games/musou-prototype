@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#12232d" />
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <title>IRON FIELD · Musou</title>
+  </head>
+  <body>
+    <canvas id="game" aria-label="Third person combat arena"></canvas>
+    <main id="hud">
+      <header>
+        <span>FIELD NOTES / 01</span>
+        <h1>IRON FIELD</h1>
+        <p>Hold the line. Break the swarm.</p>
+      </header>
+      <section id="status" aria-live="polite"></section>
+      <footer>
+        WASD move · mouse drag / arrows camera · J / Space strike · R recover<br />Gamepad:
+        left stick move · right stick camera · A strike · Y respawn
+      </footer>
+      <aside>
+        <button id="bench">Run benchmarks</button
+        ><button id="export">Export JSON</button
+        ><label
+          >Backend
+          <select id="backend">
+            <option value="auto">Auto</option>
+            <option value="webgl">WebGL2</option>
+            <option value="webgpu">WebGPU</option>
+          </select></label
+        >
+        <p id="notice">20 opponents · three strikes · one survivor</p>
+      </aside>
+    </main>
+    <script type="module" src="./src/main.ts"></script>
+  </body>
+</html>
