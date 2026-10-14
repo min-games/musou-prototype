@@ -1,0 +1,1 @@
+These measurements belong to the first playable prototype, commit `395f950`. It used a single enemy type and no Solar Break. Current results use the `mixed-crowd-solar-v2` scenario with three enemy types and a scripted special-effects burst, so these are historical references rather than an identical-workload regression comparison.

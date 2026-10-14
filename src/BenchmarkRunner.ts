@@ -48,12 +48,14 @@ export class BenchmarkRunner {
         const start = performance.now();
         // Keep the scripted player alive so the timed crowd does not become idle.
         sim.player.hp = 100;
+        if (frame === 90) sim.player.charge = 100;
         sim.step({
           x: Math.sin(frame * 0.025),
           z: Math.cos(frame * 0.025),
           attack: frame % 24 === 0,
           respawn: false,
           yaw: 0,
+          special: frame === 90,
         });
         if (frame >= 60) simulation.push(performance.now() - start);
         renderer.render(sim, (frame / 60) * 0.15, 0.8, true);
@@ -74,6 +76,15 @@ export class BenchmarkRunner {
           hardwareConcurrency: navigator.hardwareConcurrency,
           utc: new Date().toISOString(),
           warmupFrames: 60,
+          scenario: "mixed-crowd-solar-v2",
+          enemyTypes: {
+            grunt: sim.enemies.enemies.filter((e) => e.kind === "grunt").length,
+            flanker: sim.enemies.enemies.filter((e) => e.kind === "flanker")
+              .length,
+            armored: sim.enemies.enemies.filter((e) => e.kind === "armored")
+              .length,
+          },
+          specialActivations: sim.player.specials,
           liveEnemies: sim.enemies.enemies.filter((e) => e.state !== "dead")
             .length,
           timing: "RAF wall intervals; CPU simulation only; no GPU timer query",
@@ -83,7 +94,8 @@ export class BenchmarkRunner {
             "origin orbit / distance 30 / 0.15 radians per simulation second",
           simulationStepsPerSample: 1,
           playerHealth: "refilled per tick to maintain active crowd workload",
-          input: "sin/cos movement; strike every 24 ticks",
+          input:
+            "sin/cos movement; strike every 24 ticks; Solar Break on tick 90",
         },
       });
     }

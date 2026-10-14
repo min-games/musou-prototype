@@ -16,11 +16,17 @@ for (const backend of ["webgl", "auto"])
       const result = value as {
         count: number;
         drawCalls: number;
-        metadata: { liveEnemies: number };
+        metadata: {
+          liveEnemies: number;
+          specialActivations: number;
+          scenario: string;
+        };
       };
       expect(result.metadata.liveEnemies).toBe(result.count);
       expect(result.drawCalls).toBeGreaterThan(0);
-      expect(result.drawCalls).toBeLessThan(1000);
+      expect(result.drawCalls).toBeLessThan(result.count * 5 + 200);
+      expect(result.metadata.specialActivations).toBe(1);
+      expect(result.metadata.scenario).toBe("mixed-crowd-solar-v2");
     }
     const [download] = await Promise.all([
       page.waitForEvent("download"),

@@ -7,8 +7,27 @@ export class InputManager {
   private reset = false;
   private previousA = false;
   private previousY = false;
+  private special = false;
+  private dodge = false;
+  private previousB = false;
+  private previousX = false;
+  private enabled = true;
+  setEnabled(value: boolean) {
+    this.enabled = value;
+    if (!value) {
+      this.keys.clear();
+      this.queued = false;
+      this.reset = false;
+      this.special = false;
+      this.dodge = false;
+    }
+  }
+  queueSpecial() {
+    this.special = true;
+  }
   constructor(canvas: HTMLCanvasElement) {
     window.addEventListener("keydown", (e) => {
+      if (!this.enabled) return;
       if (
         e.target instanceof HTMLElement &&
         e.target.closest("button,input,select,textarea")
@@ -24,12 +43,18 @@ export class InputManager {
       if (!e.repeat && (e.code === "KeyJ" || e.code === "Space"))
         this.queued = true;
       if (!e.repeat && e.code === "KeyR") this.reset = true;
+      if (!e.repeat && (e.code === "KeyQ" || e.code === "KeyK"))
+        this.special = true;
+      if (!e.repeat && (e.code === "ShiftLeft" || e.code === "ShiftRight"))
+        this.dodge = true;
     });
     window.addEventListener("keyup", (e) => this.keys.delete(e.code));
     window.addEventListener("blur", () => {
       this.keys.clear();
       this.queued = false;
       this.reset = false;
+      this.special = false;
+      this.dodge = false;
     });
     canvas.addEventListener("pointerdown", (e) =>
       canvas.setPointerCapture(e.pointerId),
@@ -82,11 +107,21 @@ export class InputManager {
     const respawn = this.reset || (y && !this.previousY);
     this.previousY = y;
     this.reset = false;
+    const b = pad?.buttons[1]?.pressed ?? false;
+    const xButton = pad?.buttons[2]?.pressed ?? false;
+    const special = this.special || (b && !this.previousB);
+    const dodge = this.dodge || (xButton && !this.previousX);
+    this.previousB = b;
+    this.previousX = xButton;
+    this.special = false;
+    this.dodge = false;
     return {
       x: x * Math.cos(this.yaw) + z * Math.sin(this.yaw),
       z: z * Math.cos(this.yaw) - x * Math.sin(this.yaw),
       attack,
       respawn,
+      special,
+      dodge,
       yaw: this.yaw,
     };
   }

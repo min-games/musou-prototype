@@ -77,6 +77,7 @@ test("launch, movement, real keyboard combat, respawn and visual reference", asy
       z: 1,
       state: "windup",
       timer: 0,
+      attackYaw: Math.PI,
     });
   });
   await expect(page.locator("#notice")).toContainText("You fell");

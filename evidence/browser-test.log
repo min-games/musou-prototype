@@ -2,27 +2,30 @@
 > musou-slice@1.0.0 test:e2e
 > playwright test
 
-[WebServer] (node:773711) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (node:787260) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
 [WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
 [WebServer] 
 [WebServer] (!) Some chunks are larger than 500 kB after minification. Consider:
 [WebServer] - Using dynamic import() to code-split the application
 [WebServer] - Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
 [WebServer] - Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
-[WebServer] (node:773753) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (node:787303) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
 [WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
 
-Running 8 tests using 1 worker
+Running 11 tests using 1 worker
 
-(node:773760) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(node:787310) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
 (Use `node --trace-warnings ...` to show where the warning was created)
-  ✓  1 e2e/benchmark.spec.ts:4:3 › measured crowd benchmark webgl (26.6s)
-  ✓  2 e2e/benchmark.spec.ts:4:3 › measured crowd benchmark auto (27.7s)
-  ✓  3 e2e/gamepad.spec.ts:16:1 › gamepad movement, camera, attack edge and restart edge on a nonzero device slot (3.1s)
-  ✓  4 e2e/gamepad.spec.ts:92:1 › focused HUD controls do not trigger player combat shortcuts (717ms)
-  ✓  5 e2e/smoke.spec.ts:2:1 › launch, movement, real keyboard combat, respawn and visual reference (3.5s)
-  ✓  6 e2e/smoke.spec.ts:126:1 › responsive HUD and installed offline reload (1.8s)
-  ✓  7 e2e/subpath.spec.ts:2:1 › Pages repository prefix loads relative assets and remains playable offline (894ms)
-  ✓  8 e2e/subpath.spec.ts:44:1 › explicit WebGPU preference falls back when WebGPU is unavailable (443ms)
+  ✓   1 e2e/benchmark.spec.ts:4:3 › measured crowd benchmark webgl (40.1s)
+  ✓   2 e2e/benchmark.spec.ts:4:3 › measured crowd benchmark auto (42.7s)
+  ✓   3 e2e/gamepad.spec.ts:16:1 › gamepad movement, camera, attack edge and restart edge on a nonzero device slot (4.0s)
+  ✓   4 e2e/gamepad.spec.ts:92:1 › focused HUD controls do not trigger player combat shortcuts (1.1s)
+  ✓   5 e2e/polish.spec.ts:10:1 › earned Solar Break hits the mixed crowd and displays its shockwave (3.9s)
+  ✓   6 e2e/polish.spec.ts:84:1 › empty special, dodge, pause and reduced motion keep controls consistent (1.6s)
+  ✓   7 e2e/polish.spec.ts:133:1 › gamepad special and dodge are discrete edges (3.0s)
+  ✓   8 e2e/smoke.spec.ts:2:1 › launch, movement, real keyboard combat, respawn and visual reference (5.8s)
+  ✓   9 e2e/smoke.spec.ts:127:1 › responsive HUD and installed offline reload (2.7s)
+  ✓  10 e2e/subpath.spec.ts:2:1 › Pages repository prefix loads relative assets and remains playable offline (1.3s)
+  ✓  11 e2e/subpath.spec.ts:44:1 › explicit WebGPU preference falls back when WebGPU is unavailable (599ms)
 
-  8 passed (1.2m)
+  11 passed (1.9m)

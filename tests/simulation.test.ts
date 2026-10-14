@@ -59,7 +59,7 @@ describe("combat", () => {
     sim.step({ ...idleInput, respawn: true });
     expect(sim.player.hp).toBe(100);
     expect(sim.player.kills).toBe(0);
-    expect(sim.enemies.enemies.every((e) => e.hp === 60)).toBe(true);
+    expect(sim.enemies.enemies.every((e) => e.hp === e.maxHp)).toBe(true);
   });
 });
 describe("spatial grid", () => {

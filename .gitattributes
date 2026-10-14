@@ -1,0 +1,2 @@
+# Validation logs retain the exact whitespace written by the test and build tools.
+evidence/*.log -whitespace

@@ -5,4 +5,5 @@ export interface Renderer {
   drawCalls(): number;
   metadata(): Record<string, unknown>;
   dispose(): void;
+  setReducedMotion(value: boolean): void;
 }

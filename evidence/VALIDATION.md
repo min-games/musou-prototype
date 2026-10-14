@@ -1,38 +1,33 @@
-# Candidate validation
+# Gameplay polish validation
 
-Validated in the isolated `ws/run/R-20261014201230-558d9076` worktree. No push, deployment, or publishing was performed.
+Validated in the isolated `R-20261014212323-c90953b6` workspace run before integration.
 
-Commands: `npm ci` succeeded (42 packages, zero audit vulnerabilities); `npm test` passed 14 unit/integration tests; `npm run build` passed strict TypeScript and production asset generation; `npm run test:e2e` passed all 8 browser tests, including both complete crowd benchmark runs and JSON downloads. Combat/controller and visual checks also passed twice consecutively after reset synchronization fixes. Chromium browsers were already available locally.
+- Clean locked dependency installation passed with zero audit vulnerabilities.
+- `npm test`: 24 unit/integration tests passed, including mixed enemy roles, armor and finisher interaction, charge gating, radial hit deduplication, movement lock, dodge protection/cooldown, seeded repeatability and existing combat/spatial checks.
+- `npm run build`: strict TypeScript and production PWA precache generation passed.
+- `npm run test:e2e`: 11 browser checks passed, including keyboard-earned Solar Break, its frozen visual reference, gamepad special/dodge edges, pause/reduced-motion controls, existing combat/death/respawn checks, desktop/mobile references, root and repository-prefix offline reloads, unavailable-WebGPU fallback, benchmark exports and JSON downloads.
 
-Environment: Linux, Node 24.12.0, npm 11.6.2, Playwright 1.64.1 / Chromium 156, Babylon 8.56.2. Viewport 1280 × 720, DPR 1, SwiftShader software rendering. All benchmark sizes retained their full live enemy count.
+## Measured mixed-crowd scenario
 
-## Actual measurements
-
-Each encounter: seed 4242; fixed camera and deterministic sinusoidal input; 60 warmup samples; 180 measured samples; exactly one 1/60-second simulation step per sample. The timing includes foreground RAF scheduling. CPU timer precision is approximately 0.1 ms, so some samples quantize to zero. Enemy HP is raised and player HP is replenished to preserve active workloads.
+Scenario `mixed-crowd-solar-v2`: seed 4242; 60/20/20 percent grunt/flanker/armored roles; deterministic orbit and movement; strike every 24 ticks; one fully charged Solar Break on tick 90. Each scenario retains all requested living enemies using elevated enemy health and replenished player health. Sixty warmup frames precede 180 measured samples. Each sample advances one 1/60-second simulation tick independently of RAF delay; frame timing is wall interval and simulation timing is CPU duration, not a GPU timer query. Renderer metadata records software adapter, backing resolution, engine/browser and date. No FPS requirement is imposed.
 
 | Selection / actual backend | Enemies | Frame p50 / p95 / p99 (ms) | Simulation p50 / p95 / p99 (ms) | Mean draw calls |
-| -------------------------- | ------: | -------------------------- | ------------------------------- | --------------: |
-| webgl / WebGL2             |       0 | 19.60 / 25.30 / 42.50      | 0.00 / 0.10 / 0.10              |           39.85 |
-| webgl / WebGL2             |      20 | 19.90 / 24.80 / 37.60      | 0.10 / 0.20 / 0.20              |           59.85 |
-| webgl / WebGL2             |     100 | 25.00 / 30.90 / 46.50      | 0.20 / 0.30 / 0.30              |          139.85 |
-| webgl / WebGL2             |     300 | 42.70 / 53.20 / 80.50      | 0.30 / 0.70 / 1.20              |          339.85 |
-| auto / WebGL2              |       0 | 16.70 / 20.00 / 34.60      | 0.00 / 0.10 / 0.20              |           39.85 |
-| auto / WebGL2              |      20 | 21.10 / 26.00 / 41.10      | 0.10 / 0.20 / 0.20              |           59.85 |
-| auto / WebGL2              |     100 | 25.70 / 33.90 / 40.10      | 0.20 / 0.30 / 0.30              |          139.85 |
-| auto / WebGL2              |     300 | 43.80 / 63.60 / 94.60      | 0.40 / 0.50 / 0.60              |          339.85 |
+| --- | ---: | --- | --- | ---: |
+| webgl / WebGL2 | 0 | 26.80 / 36.50 / 55.40 | 0.00 / 0.10 / 0.20 | 43.97 |
+| webgl / WebGL2 | 20 | 32.50 / 39.20 / 48.00 | 0.10 / 0.20 / 0.30 | 64.60 |
+| webgl / WebGL2 | 100 | 41.80 / 73.10 / 120.00 | 0.20 / 0.40 / 0.40 | 145.18 |
+| webgl / WebGL2 | 300 | 61.20 / 83.90 / 143.20 | 0.50 / 0.90 / 1.60 | 345.52 |
+| auto / WebGL2 | 0 | 28.10 / 34.70 / 45.50 | 0.00 / 0.10 / 0.20 | 43.97 |
+| auto / WebGL2 | 20 | 31.50 / 38.30 / 57.00 | 0.10 / 0.30 / 0.40 | 64.60 |
+| auto / WebGL2 | 100 | 38.30 / 57.60 / 94.10 | 0.20 / 0.40 / 0.50 | 145.18 |
+| auto / WebGL2 | 300 | 69.70 / 121.00 / 165.70 | 0.50 / 0.80 / 1.40 | 345.52 |
 
-These are real local software-renderer measurements, not forecasts or desktop GPU claims. The simulation remained inexpensive in these samples; rendering/scheduling dominates this environment. The higher counts do not sustain 60 rendered FPS on SwiftShader. No CI performance gate is inferred from this machine.
+These are local headless Chromium/SwiftShader measurements, not real GPU forecasts. The previous one-role prototype measurements are retained in [baseline-v1](baseline-v1/README.md); its workload differs from this scenario.
 
-## Evidence
+## Evidence and limits
 
-- [Explicit WebGL2 JSON](benchmark-webgl.json) and [auto/fallback JSON](benchmark-auto.json), including adapter, seed, live count, resolution, timing method and UTC metadata.
-- [Unit/integration log](unit-test.log), [production build log](build.log), and [final browser log](browser-test.log).
-- [Desktop arena](arena.png) and [narrow-screen HUD](mobile.png). Inspected visually: readable status and controls, visible hero/enemies, and no clipped interactive buttons.
-- Committed reference images: `e2e/smoke.spec.ts-snapshots/arena-linux.png` and `mobile-linux.png`. The final run compared both references without updating them.
-- Browser checks cover real keyboard hits/kills, player death/reset, simulated standard gamepad movement/camera/attack/reset edges, focused controls, production offline reload, `/musou/` repository-prefix offline play, and WebGPU-unavailable fallback.
+[Unit log](unit-test.log), [build log](build.log), [browser log](browser-test.log), [WebGL JSON](benchmark-webgl.json), [auto JSON](benchmark-auto.json).
 
-## Limits
+[Arena](arena.png), [mobile HUD](mobile.png), [Solar Break](solar-break.png). Desktop/mobile and special-effects reference images are committed under `e2e/`. The Solar Break reference uses a fixed simulation pose after live keyboard charge/cast assertions; normal attack cones and the area attack use built-in materials and procedural geometry. Effects reuse 32 sparks, two rings and one core; reduced motion removes hero spin/lift and camera pulse and keeps eight sparks.
 
-[The unsafe WebGPU experiment crashed Chromium](WEBGPU_LIMIT.md) before producing complete measurements. The cause is unresolved; no WebGPU result or hardware performance claim is supplied. A real supported GPU and physical gamepad remain device-validation work. Standard auto selection and explicit WebGL2 are verified here.
-
-The production build reports a large main chunk warning; all emitted files are precached for offline use. Simulation has bounded catch-up and no render interpolation. AI is kinematic and dense crowds can overlap; decorative geometry does not collide. There is no touch movement, audio, persistence, or cross-engine lockstep guarantee. See the README for architecture and performance guidance.
+The prior unsafe software WebGPU experiment [crashed Chromium](WEBGPU_LIMIT.md); hardware WebGPU remains unverified. Physical controllers and browser audio activation still need device checks. Kinematic enemies can overlap in dense crowds; decorative pillars are not colliders. No animation rigs, authored audio assets, touch movement, weapons or bosses are included in this milestone. The main bundle still exceeds Vite's 500 kB warning threshold; all local chunks are precached. See the README for controls and architecture.

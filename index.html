@@ -8,22 +8,85 @@
     <title>IRON FIELD · Musou</title>
   </head>
   <body>
-    <canvas id="game" aria-label="Third person combat arena"></canvas>
+    <canvas
+      id="game"
+      aria-label="Third-person battlefield. WASD move, J strike, Q special, Shift dodge."
+      tabindex="0"
+    ></canvas>
     <main id="hud">
       <header>
-        <span>FIELD NOTES / 01</span>
+        <span class="eyebrow">FIELD NOTES / 02 · THE SOLAR GUARD</span>
         <h1>IRON FIELD</h1>
-        <p>Hold the line. Break the swarm.</p>
+        <p>A blade. A crowd. One decisive moment.</p>
       </header>
-      <section id="status" aria-live="polite"></section>
+      <section id="status" aria-label="Combat status">
+        <div class="vitality">
+          <span>VITALITY</span><b id="hp">100 / 100</b
+          ><meter
+            id="health"
+            min="0"
+            max="100"
+            value="100"
+            aria-label="Health"
+          ></meter>
+        </div>
+        <div><span>CHAIN</span><b id="chain">—</b></div>
+        <div><span>DEFEATED</span><b id="kills">0</b></div>
+        <div><span>ALIVE</span><b id="alive">20 / 20</b></div>
+        <div class="backend-status">
+          <span>RENDERER</span><b id="renderer-label">Loading…</b>
+        </div>
+      </section>
+      <div class="top-controls">
+        <button id="pause">Pause <kbd>Esc</kbd></button
+        ><button id="sound" aria-pressed="true">Sound on</button
+        ><label class="motion-control"
+          ><input id="reduced-motion" type="checkbox" /> Reduced motion</label
+        >
+      </div>
+      <section id="roster" aria-label="Enemy types">
+        <span><i class="grunt"></i>Grunt <b id="grunt-count">12</b></span
+        ><span><i class="flanker"></i>Flanker <b id="flanker-count">4</b></span
+        ><span><i class="armored"></i>Armored <b id="armored-count">4</b></span
+        ><small>Red cones telegraph attacks. Dodge to the side.</small>
+      </section>
+      <div id="callout" role="status" aria-live="polite"></div>
+      <div id="pause-overlay" hidden>
+        <span>TAKE A BREATH</span>
+        <h2>Battle paused</h2>
+        <p>Press Esc or Resume to return.</p>
+      </div>
       <footer>
-        WASD move · mouse drag / arrows camera · J / Space strike · R recover<br />Gamepad:
-        left stick move · right stick camera · A strike · Y respawn
+        <div>
+          <kbd>WASD</kbd> Move <kbd>J / Space</kbd> Strike
+          <kbd>Shift</kbd> Dodge
+        </div>
+        <div>
+          <kbd>Q / K</kbd> Solar Break <kbd>R</kbd> Restart · Drag / arrows to
+          orbit
+        </div>
+        <small
+          >Gamepad: sticks move / camera · A strike · B special · X dodge · Y
+          restart</small
+        >
       </footer>
+      <div id="special-panel">
+        <button
+          id="special"
+          disabled
+          aria-label="Solar Break: charge by hitting enemies"
+        >
+          <span><kbd>Q</kbd> SOLAR BREAK</span><b id="charge">0%</b>
+          <div class="charge-track"><div id="charge-fill"></div></div></button
+        ><small id="special-hint">Land hits to charge your radial strike.</small
+        ><span id="dodge-hint">Shift / X · dodge ready</span>
+      </div>
       <aside>
-        <button id="bench">Run benchmarks</button
-        ><button id="export">Export JSON</button
-        ><label
+        <div class="benchmark-controls">
+          <button id="bench">Run benchmarks</button
+          ><button id="export">Export JSON</button>
+        </div>
+        <label
           >Backend
           <select id="backend">
             <option value="auto">Auto</option>
@@ -31,7 +94,9 @@
             <option value="webgpu">WebGPU</option>
           </select></label
         >
-        <p id="notice">20 opponents · three strikes · one survivor</p>
+        <p id="notice">
+          20 opponents · three enemy types · enemies return after 5 seconds
+        </p>
       </aside>
     </main>
     <script type="module" src="./src/main.ts"></script>
