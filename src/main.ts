@@ -35,6 +35,7 @@ function setPaused(value: boolean, showOverlay = true) {
   element("pause-overlay").hidden = !value || !showOverlay;
   pauseButton.textContent = value ? "Resume · Esc" : "Pause · Esc";
   loop.accumulator = 0;
+  last = performance.now();
   if (!value) canvas.focus();
 }
 window.addEventListener("keydown", (event) => {

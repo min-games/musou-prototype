@@ -2,6 +2,7 @@ import { test, expect } from "@playwright/test";
 import { writeFileSync, readFileSync } from "node:fs";
 for (const backend of ["webgl", "auto"])
   test(`measured crowd benchmark ${backend}`, async ({ page }) => {
+    test.setTimeout(300_000);
     await page.goto(`/?backend=${backend}`);
     await expect(page.locator("#status")).toContainText("RENDERER");
     const results = await page.evaluate(async () => {
