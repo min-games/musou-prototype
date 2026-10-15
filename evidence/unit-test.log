@@ -3,11 +3,11 @@
 > vitest run
 
 
- RUN  v5.0.4 /home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261015031758-43b9b955/musou-prototype
+ RUN  v5.0.4 /home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261015033410-d823be7a/musou-prototype
 
 
  Test Files  4 passed (4)
-      Tests  36 passed (36)
-   Start at  14:29:02
-   Duration  354ms (transform 47%, tests 35%, import 14%, worker 3%)
+      Tests  37 passed (37)
+   Start at  14:34:19
+   Duration  299ms (transform 63%, tests 23%, import 11%, worker 3%)
 

@@ -312,10 +312,9 @@ export class CombatSystem {
   }
   applyHit(p: Player, e: Enemy, damage: number, special: boolean) {
     if (e.state === "dead") return;
-    e.hp = Math.max(
-      0,
-      e.hp - Math.ceil(damage * p.damageMult * (special ? p.specialMult : 1)),
-    );
+    const scaledDamage = damage * p.damageMult * (special ? p.specialMult : 1);
+    // Decimal stat stacks can drift just above an integer (e.g. 28.000000000004).
+    e.hp = Math.max(0, e.hp - Math.ceil(scaledDamage - 1e-9));
     e.flash = 0.18;
     p.hits++;
     p.impact = 0.1;

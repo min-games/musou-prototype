@@ -3,7 +3,7 @@
 Candidate: workspace run `R-20261015031758-43b9b955`, based on `e0d49306b131`.
 
 - Locked dependency install, strict TypeScript / production PWA build.
-- 36 unit/integration tests, including original melee/crowd/spatial checks plus swept arrows, penetration order and hit deduplication, forward aiming and distinct special targeting, finite wave spawns, bomb spending/range, field pickup caps, one-time relic selection, seeded cadence repeatability, victory/defeat and fresh retry.
+- 37 unit/integration tests, including original melee/crowd/spatial checks plus swept arrows, penetration order and hit deduplication, forward aiming and distinct special targeting, finite wave spawns, bomb spending/range, field pickup caps, one-time relic selection, seeded cadence repeatability, victory/defeat and fresh retry.
 - 16 Playwright checks: original practice combat/gamepad/special/pause/offline/backend regression tests; default hero selection, Ranger arrows and strafe, Arrow Storm and bombs; controlled full five-wave run/relic choices/victory/retry/defeat; gamepad hero/relic navigation; narrow-screen hero selection; three benchmark suites.
 - Visual references deliberately refreshed and inspected for the new HUD and menus. Browser wave completion accelerates defeats through the debug API; separate tests exercise actual input/combat.
 
@@ -18,3 +18,5 @@ These are local headless Chromium / SwiftShader measurements, not real GPU predi
 [Ranger and Arrow Storm](ranger-storm.png), [relic decision](relic-choice.png), [narrow hero selector](hero-choice-mobile.png), [Vanguard special](solar-break.png), [practice arena](arena.png), [narrow HUD](mobile.png). Effects and pickup meshes reuse pools, while simulated arrows use swept segment collision. Menus freeze the run and contain keyboard focus; gamepad navigation is exercised with a simulated standard controller.
 
 Prior milestone logs/measurements are explicitly archived in [pre-roguelike-v2](pre-roguelike-v2/). Current complete browser results are in [browser-results.json](browser-results.json); raw logs are available from the workspace run log and GitHub Actions validation artifacts. The worker executes unit, strict build and the full browser suite before committing the candidate. Known limitations and exact controls/rules are in the README and architecture document.
+
+A follow-up candidate corrects floating-point dust at integer damage thresholds when percent bonuses stack. The new regression checks three power shards yield exactly 28 damage from a 25-damage strike, while a genuine 116.48-damage special still rounds up to 117. All 37 unit tests, strict build and the four focused run browser checks passed again; benchmark workloads are unchanged.

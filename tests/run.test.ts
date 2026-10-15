@@ -223,3 +223,17 @@ describe("five-wave runs", () => {
     expect(a.sim.player).toEqual(b.sim.player);
   });
 });
+
+it("rounds stacked percentage damage without adding a point from floating-point drift", () => {
+  const s = new Simulation(2),
+    p = s.player;
+  p.damageMult += 0.04;
+  p.damageMult += 0.04;
+  p.damageMult += 0.04;
+  s.combat.applyHit(p, s.enemies.enemies[0]!, 25, false);
+  expect(s.enemies.enemies[0]!.hp).toBe(32);
+  p.specialMult = 1.3;
+  s.enemies.enemies[1]!.hp = 120;
+  s.combat.applyHit(p, s.enemies.enemies[1]!, 80, true);
+  expect(s.enemies.enemies[1]!.hp).toBe(3); // 116.48 still rounds up to 117.
+});
