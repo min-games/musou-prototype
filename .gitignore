@@ -1,4 +1,4 @@
 node_modules/
 dist/
 test-results/
-evidence/playwright-report/
+evidence/playwright-report*/

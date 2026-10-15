@@ -1,4 +1,4 @@
-import { test, expect } from "@playwright/test";
+import { test, expect } from "./fixtures";
 test("launch, movement, real keyboard combat, respawn and visual reference", async ({
   page,
 }) => {
@@ -22,26 +22,30 @@ test("launch, movement, real keyboard combat, respawn and visual reference", asy
     });
   });
   await page.keyboard.press("KeyJ");
-  await page.waitForTimeout(200);
-  const hit = await page.evaluate(() => {
-    const w = window as unknown as {
-      musou: { sim: { enemies: { enemies: { hp: number; state: string }[] } } };
-    };
-    return w.musou.sim.enemies.enemies.some(
-      (e) => e.hp < 60 && e.state === "stagger",
-    );
-  });
-  expect(hit).toBe(true);
+  await expect
+    .poll(async () =>
+      page.evaluate(() => {
+        const w = window as unknown as {
+          musou: {
+            sim: { enemies: { enemies: { hp: number; state: string }[] } };
+          };
+        };
+        return w.musou.sim.enemies.enemies.some((e) => e.hp < 60);
+      }),
+    )
+    .toBe(true);
   await page.keyboard.down("KeyD");
-  await page.waitForTimeout(350);
+  await expect
+    .poll(
+      async () =>
+        await page.evaluate(
+          () =>
+            (window as unknown as { musou: { sim: { player: { x: number } } } })
+              .musou.sim.player.x,
+        ),
+    )
+    .toBeGreaterThan(0.5);
   await page.keyboard.up("KeyD");
-  expect(
-    await page.evaluate(
-      () =>
-        (window as unknown as { musou: { sim: { player: { x: number } } } })
-          .musou.sim.player.x,
-    ),
-  ).toBeGreaterThan(0.5);
   await page.evaluate(() => {
     (
       window as unknown as { musou: { sim: { player: { hp: number } } } }

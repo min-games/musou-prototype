@@ -1,4 +1,4 @@
-import { test, expect } from "@playwright/test";
+import { test, expect } from "./fixtures";
 import type { Simulation } from "../src/GameLoop";
 interface TestWindow extends Window {
   musou: { sim: Simulation; pause: (value: boolean) => void };

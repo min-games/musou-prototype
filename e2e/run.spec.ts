@@ -1,4 +1,4 @@
-import { test, expect } from "@playwright/test";
+import { test, expect } from "./fixtures";
 import type { Simulation } from "../src/GameLoop";
 import type { RunDirector } from "../src/RunDirector";
 interface RunWindow extends Window {
@@ -185,11 +185,21 @@ test("gamepad navigates hero and relic menus without a keyboard", async ({
     await page.evaluate((i) => {
       (window as unknown as RunWindow).runPad.buttons[i]!.pressed = true;
     }, index);
-    await page.waitForTimeout(120);
+    await page.evaluate(
+      () =>
+        new Promise<void>((resolve) =>
+          requestAnimationFrame(() => requestAnimationFrame(() => resolve())),
+        ),
+    );
     await page.evaluate((i) => {
       (window as unknown as RunWindow).runPad.buttons[i]!.pressed = false;
     }, index);
-    await page.waitForTimeout(120);
+    await page.evaluate(
+      () =>
+        new Promise<void>((resolve) =>
+          requestAnimationFrame(() => requestAnimationFrame(() => resolve())),
+        ),
+    );
   };
   await press(13);
   await expect(page.locator("#run-choices button").nth(1)).toBeFocused();

@@ -14,10 +14,11 @@ npm run build
 npx playwright install --with-deps chromium
 npm run test:e2e
 npm run benchmark
+MUSOU_CPU_THROTTLE=8 npm run test:e2e -- --grep-invert benchmark
 npm run preview
 ```
 
-Open Vite's printed URL. Browser tests build production assets and serve them on port 5187, including `/musou/` for the Pages subpath check. Keep that port free. They use Chromium at 1280 × 720 with SwiftShader, plus a narrow-screen reference. `npm run benchmark` exports raw measurements for 0/20/100/300 enemies for both kits. Local server/browser execution must be permitted by your environment.
+Open Vite's printed URL. Browser assertions allow slow software rendering; optional CPU throttling exercises state-driven waits and frame-based gamepad pulses. Browser tests build production assets and serve them on port 5187, including `/musou/` for the Pages subpath check. Keep that port free. They use Chromium at 1280 × 720 with SwiftShader, plus a narrow-screen reference. `npm run benchmark` exports raw measurements for 0/20/100/300 enemies for both kits. Local server/browser execution must be permitted by your environment.
 
 ## Play
 
@@ -66,7 +67,7 @@ WebGPU is preferred, with WebGL2 fallback. `?backend=auto|webgl|webgpu` or the s
 
 `npm run build` emits relative assets in `dist/` (`base: './'`), including a content-versioned service worker precaching all local chunks and icons. Serve it over HTTP(S), including a repository subpath; do not use `file://`. After first online load and service-worker activation, reloads work offline. Install from the browser's install menu when supported.
 
-`.github/workflows/pages.yml` runs locked install, tests, strict build, Chromium smoke/visual/offline checks and benchmarks, then uploads the Pages candidate and validation artifacts. Configure repository Pages to use GitHub Actions and manually dispatch the workflow on main to publish. Pushes and pull requests validate without deploying.
+`.github/workflows/pages.yml` runs locked install, tests, strict build, Chromium smoke/visual/offline checks and benchmarks, then uploads the Pages candidate and validation artifacts. Configure repository Pages to use GitHub Actions and manually dispatch the workflow on main to publish. Pushes and pull requests validate without deploying. CI runs the gameplay checks before the expensive benchmarks and keeps separate reports for both.
 
 ## Tests and limitations
 

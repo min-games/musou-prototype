@@ -1,4 +1,4 @@
-import { test, expect } from "@playwright/test";
+import { test, expect } from "./fixtures";
 test("Pages repository prefix loads relative assets and remains playable offline", async ({
   page,
   context,

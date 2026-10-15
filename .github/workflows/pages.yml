@@ -15,7 +15,12 @@ jobs:
       - run: npm test
       - run: npm run build
       - run: npx playwright install --with-deps chromium
-      - run: npm run test:e2e
+      - run: npm run test:e2e -- --grep-invert benchmark
+        env:
+          MUSOU_REPORT_SUFFIX: -gameplay
+      - run: npm run benchmark
+        env:
+          MUSOU_REPORT_SUFFIX: -benchmarks
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist

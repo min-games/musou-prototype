@@ -1,8 +1,8 @@
-import { test, expect } from "@playwright/test";
+import { test, expect } from "./fixtures";
 import { writeFileSync, readFileSync } from "node:fs";
 for (const backend of ["webgl", "auto"])
   test(`measured crowd benchmark ${backend}`, async ({ page }) => {
-    test.setTimeout(300_000);
+    test.setTimeout(600_000);
     await page.goto(`/?practice=1&backend=${backend}`);
     await expect(page.locator("#status")).toContainText("RENDERER");
     const results = await page.evaluate(async () => {
@@ -46,7 +46,7 @@ for (const backend of ["webgl", "auto"])
 test("measured ranger benchmark preserves full crowds and exports its own scenario", async ({
   page,
 }) => {
-  test.setTimeout(300_000);
+  test.setTimeout(600_000);
   await page.goto("/?practice=1&backend=webgl");
   await expect(page.locator("#status")).toContainText("WebGL2");
   const results = await page.evaluate(async () => {
