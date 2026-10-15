@@ -1,0 +1,32 @@
+[WebServer] (node:856407) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] 
+[WebServer] (!) Some chunks are larger than 500 kB after minification. Consider:
+[WebServer] - Using dynamic import() to code-split the application
+[WebServer] - Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+[WebServer] - Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+[WebServer] (node:856453) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 16 tests using 1 worker
+
+(node:856460) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 e2e/gamepad.spec.ts:16:1 › gamepad movement, camera, attack edge and restart edge on a nonzero device slot (4.2s)
+  ✓   2 e2e/gamepad.spec.ts:92:1 › focused HUD controls do not trigger player combat shortcuts (3.7s)
+  ✓   3 e2e/polish.spec.ts:10:1 › earned Solar Break hits the mixed crowd and displays its shockwave (5.5s)
+  ✓   4 e2e/polish.spec.ts:84:1 › empty special, dodge, pause and reduced motion keep controls consistent (4.4s)
+  ✓   5 e2e/polish.spec.ts:133:1 › gamepad special and dodge are discrete edges (4.5s)
+  ✓   6 e2e/run.spec.ts:8:1 › choose the ranger, fire assisted arrows, use its special and spend a bomb (7.2s)
+  ✓   7 e2e/run.spec.ts:110:1 › clear finite waves, pick relics, win and retry with a fresh build (6.9s)
+  ✓   8 e2e/run.spec.ts:166:1 › gamepad navigates hero and relic menus without a keyboard (6.3s)
+  ✓   9 e2e/run.spec.ts:255:1 › character choice fits a narrow viewport (3.4s)
+  ✓  10 e2e/smoke.spec.ts:2:1 › launch, movement, real keyboard combat, respawn and visual reference (5.6s)
+  ✓  11 e2e/smoke.spec.ts:131:1 › responsive HUD and installed offline reload (7.5s)
+  ✓  12 e2e/subpath.spec.ts:2:1 › Pages repository prefix loads relative assets and remains playable offline (6.4s)
+  ✓  13 e2e/subpath.spec.ts:44:1 › explicit WebGPU preference falls back when WebGPU is unavailable (2.9s)
+  ✓  14 e2e/weapons.spec.ts:7:1 › Fan Bow fires at separate targets and seven-arrow upgrades have a readable spread (7.0s)
+  ✓  15 e2e/weapons.spec.ts:72:1 › Spear reaches beyond the saber and its attack arc is shown at the actual reach (5.5s)
+  ✓  16 e2e/weapons.spec.ts:112:1 › weapon selection supports going back and choosing on a narrow viewport (3.8s)
+
+  16 passed (1.5m)

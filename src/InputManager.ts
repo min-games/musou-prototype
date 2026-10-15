@@ -18,6 +18,17 @@ export class InputManager {
     this.bomb = true;
   }
   setEnabled(value: boolean) {
+    if (value && !this.enabled) {
+      // A button held through a menu/pause must not become a fresh gameplay edge.
+      const pad = Array.from(navigator.getGamepads?.() ?? []).find(
+        (p) => p?.connected,
+      );
+      this.previousA = pad?.buttons[0]?.pressed ?? false;
+      this.previousB = pad?.buttons[1]?.pressed ?? false;
+      this.previousX = pad?.buttons[2]?.pressed ?? false;
+      this.previousY = pad?.buttons[3]?.pressed ?? false;
+      this.previousRB = pad?.buttons[5]?.pressed ?? false;
+    }
     this.enabled = value;
     if (!value) {
       this.bomb = false;

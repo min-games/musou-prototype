@@ -1,7 +1,32 @@
 import { Simulation, type InputFrame } from "./GameLoop";
+import { DEFAULT_WEAPON, WEAPONS, type WeaponId } from "./Weapons";
 import type { Hero } from "./CombatSystem";
 export const WAVES = [20, 24, 28, 32, 40] as const;
 export const UPGRADES = [
+  {
+    id: "haste",
+    name: "Quick hands",
+    description: "Attack speed +15% (up to ×2.5)",
+    apply: (s: Simulation) => {
+      s.player.attackSpeedMult = Math.min(2.5, s.player.attackSpeedMult + 0.15);
+    },
+  },
+  {
+    id: "reach",
+    name: "Far reach",
+    description: "Attack reach / arrow travel +15% (up to ×1.75)",
+    apply: (s: Simulation) => {
+      s.player.rangeMult = Math.min(1.75, s.player.rangeMult + 0.15);
+    },
+  },
+  {
+    id: "volley",
+    name: "Forked flight",
+    description: "Fire 2 extra arrows per volley (up to 7); one hit per target",
+    apply: (s: Simulation) => {
+      s.player.extraArrows = Math.min(6, s.player.extraArrows + 2);
+    },
+  },
   {
     id: "edge",
     name: "Keen edge",
@@ -63,7 +88,14 @@ export const UPGRADES = [
   },
 ];
 export class RunDirector {
-  state: "select" | "fighting" | "upgrade" | "victory" | "defeat" = "select";
+  state:
+    | "select"
+    | "loadout"
+    | "rearm"
+    | "fighting"
+    | "upgrade"
+    | "victory"
+    | "defeat" = "select";
   wave = 0;
   choices: typeof UPGRADES = [];
   build: string[] = [];
@@ -76,11 +108,13 @@ export class RunDirector {
     readonly sim: Simulation,
     public seed = 4242,
   ) {}
-  start(hero: Hero) {
+  start(hero: Hero, weapon: WeaponId = DEFAULT_WEAPON[hero]) {
     this.sim.reset(0);
     this.sim.respawning = false;
     this.sim.pickups = [];
     this.sim.player.hero = hero;
+    this.sim.player.weapon =
+      WEAPONS[weapon].hero === hero ? weapon : DEFAULT_WEAPON[hero];
     this.sim.player.bombs = 1;
     this.sim.player.charge = 50;
     if (hero === "ranger") {
@@ -132,6 +166,40 @@ export class RunDirector {
     );
     this.message = upgrade.name + " acquired · +20 health between waves";
     this.nextWave();
+  }
+  equip(weapon: WeaponId) {
+    if (
+      (this.state !== "upgrade" && this.state !== "rearm") ||
+      WEAPONS[weapon].hero !== this.sim.player.hero
+    )
+      return false;
+    this.sim.player.weapon = weapon;
+    this.sim.combat.reset();
+    this.sim.player.swing = 0;
+    this.sim.player.buffer = 0;
+    this.sim.player.comboWindow = 0;
+    this.sim.player.shotCooldown = 0;
+    this.state = "upgrade";
+    this.rollChoices();
+    return true;
+  }
+  private rollChoices() {
+    const p = this.sim.player;
+    const pool = UPGRADES.filter(
+      (u) =>
+        (p.hero === "ranger" || (u.id !== "pierce" && u.id !== "volley")) &&
+        (u.id !== "volley" || WEAPONS[p.weapon].arrows + p.extraArrows < 7) &&
+        (u.id !== "haste" || p.attackSpeedMult < 2.5 - 1e-8) &&
+        (u.id !== "reach" || p.rangeMult < 1.75 - 1e-8),
+    );
+    let rng = (this.seed + this.wave * 7919) >>> 0;
+    const shuffled = [...pool];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      rng = (Math.imul(rng, 1664525) + 1013904223) >>> 0;
+      const j = rng % (i + 1);
+      [shuffled[i], shuffled[j]] = [shuffled[j]!, shuffled[i]!];
+    }
+    this.choices = shuffled.slice(0, 3);
   }
   private collect(kind: Simulation["pickups"][number]["kind"]) {
     const p = this.sim.player;
@@ -197,17 +265,7 @@ export class RunDirector {
         return;
       }
       this.state = "upgrade";
-      const pool = UPGRADES.filter(
-        (u) => p.hero === "ranger" || u.id !== "pierce",
-      );
-      let rng = (this.seed + this.wave * 7919) >>> 0;
-      const shuffled = [...pool];
-      for (let i = shuffled.length - 1; i > 0; i--) {
-        rng = (Math.imul(rng, 1664525) + 1013904223) >>> 0;
-        const j = rng % (i + 1);
-        [shuffled[i], shuffled[j]] = [shuffled[j]!, shuffled[i]!];
-      }
-      this.choices = shuffled.slice(0, 3);
+      this.rollChoices();
     }
   }
 }

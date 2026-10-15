@@ -1,3 +1,4 @@
+import { DEFAULT_WEAPON, WEAPONS, weaponStats, type WeaponId } from "./Weapons";
 import type { Hero } from "./CombatSystem";
 import { Simulation } from "./GameLoop";
 import type { Renderer } from "./Renderer";
@@ -28,19 +29,31 @@ export class BenchmarkRunner {
       void s;
     },
     hero: Hero = "vanguard",
+    weapon: WeaponId = DEFAULT_WEAPON[hero],
+    stressMultishot = false,
   ) {
     this.results = [];
+    const maxBuild = stressMultishot && hero === "ranger";
     for (const count of [0, 20, 100, 300]) {
       onProgress(`Benchmark: ${count} enemies`);
       const sim = new Simulation(count, 4242);
       sim.player.hero = hero;
+      sim.player.weapon =
+        WEAPONS[weapon].hero === hero ? weapon : DEFAULT_WEAPON[hero];
+      if (maxBuild) {
+        sim.player.attackSpeedMult = 2.5;
+        sim.player.rangeMult = 1.75;
+        sim.player.extraArrows = 6;
+        sim.player.pierce = 2;
+      }
       // Keep all actors alive so every sample measures the requested crowd size.
       sim.player.hp = 1_000_000;
       for (const enemy of sim.enemies.enemies) enemy.hp = 1_000_000;
       const times: number[] = [],
         simulation: number[] = [];
       let last = 0,
-        draw = 0;
+        draw = 0,
+        peakArrows = 0;
       for (let frame = 0; frame < frames + 60; frame++) {
         await new Promise<void>((resolve) =>
           requestAnimationFrame(() => resolve()),
@@ -61,6 +74,7 @@ export class BenchmarkRunner {
           yaw: 0,
           special: frame === 90,
         });
+        peakArrows = Math.max(peakArrows, sim.combat.arrows.length);
         if (frame >= 60) simulation.push(performance.now() - start);
         renderer.render(sim, (frame / 60) * 0.15, 0.8, true);
         draw += frame >= 60 ? renderer.drawCalls() : 0;
@@ -80,9 +94,13 @@ export class BenchmarkRunner {
           hardwareConcurrency: navigator.hardwareConcurrency,
           utc: new Date().toISOString(),
           warmupFrames: 60,
-          scenario:
-            hero === "ranger" ? "mixed-crowd-arrow-v1" : "mixed-crowd-solar-v2",
+          scenario: `${maxBuild ? "weapon-crowd-max-v1" : "weapon-crowd-v1"}-${sim.player.weapon}`,
+          stressMultishot: maxBuild,
+          peakArrows,
+          pierce: sim.player.pierce,
           hero,
+          weapon: sim.player.weapon,
+          weaponStats: weaponStats(sim.player),
           enemyTypes: {
             grunt: sim.enemies.enemies.filter((e) => e.kind === "grunt").length,
             flanker: sim.enemies.enemies.filter((e) => e.kind === "flanker")
@@ -101,7 +119,9 @@ export class BenchmarkRunner {
           simulationStepsPerSample: 1,
           playerHealth: "refilled per tick to maintain active crowd workload",
           input:
-            "sin/cos movement; strike every 24 ticks; Solar Break on tick 90",
+            hero === "ranger"
+              ? "sin/cos movement; held bow fire; Arrow Storm on tick 90"
+              : "sin/cos movement; strike every 24 ticks; Solar Break on tick 90",
         },
       });
     }

@@ -30,7 +30,7 @@
             aria-label="Health"
           ></meter>
         </div>
-        <div><span>CHAIN</span><b id="chain">—</b></div>
+        <div><span id="chain-label">CHAIN</span><b id="chain">—</b></div>
         <div><span>DEFEATED</span><b id="kills">0</b></div>
         <div><span>ALIVE</span><b id="alive">20 / 20</b></div>
         <div class="backend-status">
@@ -53,6 +53,10 @@
       </section>
       <section id="run-status" aria-label="Run progress">
         <b id="objective">CHOOSE YOUR FIGHTER</b><span id="build-summary"></span
+        ><span
+          id="weapon-stats"
+          title="Single-target sustained DPS before armor, misses, interruptions and specials. Crowd total needs distinct targets."
+        ></span
         ><small id="loot-message"></small
         ><small class="loot-legend"
           ><span style="color: #7ef0a1">Health</span> ·
@@ -75,8 +79,10 @@
             Run seed <b id="run-seed">4242</b>
             <button id="shuffle-seed">New seed</button>
           </div>
+          <button id="back-to-heroes" hidden>Back to fighters · Esc / B</button>
+          <button id="rearm" hidden>Change weapon · E / Y</button>
           <div id="run-choices"></div>
-          <p class="menu-help">
+          <p id="menu-help" class="menu-help">
             1–3 select · Enter confirm · Gamepad: D-pad / left stick + A · Y:
             new seed / retry
           </p>

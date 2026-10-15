@@ -13,6 +13,7 @@ import { Mesh } from "@babylonjs/core/Meshes/mesh";
 import { VertexData } from "@babylonjs/core/Meshes/mesh.vertexData";
 import { SceneInstrumentation } from "@babylonjs/core/Instrumentation/sceneInstrumentation";
 import { ENEMY_TYPES, type EnemyKind } from "./EnemyStore";
+import { weaponStats } from "./Weapons";
 import { SPECIAL } from "./CombatSystem";
 import type { Renderer } from "./Renderer";
 import type { Simulation } from "./GameLoop";
@@ -31,6 +32,11 @@ export class BabylonRenderer implements Renderer {
   private player: TransformNode;
   private blade: Mesh;
   private bow: Mesh;
+  private shaft: Mesh;
+  private spearTip: Mesh;
+  private guard: Mesh;
+  private fanLimb: Mesh;
+  private slashArc = Math.PI * 0.42;
   private arrows: Mesh[] = [];
   private loot: Mesh[] = [];
   private lootMaterials: Record<string, StandardMaterial> = {};
@@ -342,6 +348,43 @@ export class BabylonRenderer implements Renderer {
     this.bow.parent = this.player;
     this.bow.position.set(0.6, 1, 0.65);
     this.bow.material = this.cyan;
+    this.fanLimb = this.bow.clone("fan bow cross limb", this.bow)!;
+    this.fanLimb.position.set(-0.15, 0, 0.15);
+    this.fanLimb.rotation.z = Math.PI / 2;
+    this.fanLimb.scaling.setAll(0.7);
+    const string = MeshBuilder.CreateBox(
+      "bow string",
+      { width: 0.018, height: 1.5, depth: 0.018 },
+      this.scene,
+    );
+    string.parent = this.bow;
+    string.position.z = -0.2;
+    string.material = this.cyan;
+    this.shaft = MeshBuilder.CreateCylinder(
+      "spear shaft",
+      { diameter: 0.09, height: 3.5, tessellation: 6 },
+      this.scene,
+    );
+    this.shaft.parent = this.blade;
+    this.shaft.rotation.x = Math.PI / 2;
+    this.shaft.material = this.material("shaft wood", "#bca279");
+    this.spearTip = MeshBuilder.CreateCylinder(
+      "spear tip",
+      { diameterTop: 0, diameterBottom: 0.35, height: 0.7, tessellation: 4 },
+      this.scene,
+    );
+    this.spearTip.parent = this.blade;
+    this.spearTip.position.z = 2;
+    this.spearTip.rotation.x = Math.PI / 2;
+    this.spearTip.material = this.cyan;
+    this.guard = MeshBuilder.CreateBox(
+      "blade guard",
+      { width: 0.55, height: 0.12, depth: 0.15 },
+      this.scene,
+    );
+    this.guard.parent = this.blade;
+    this.guard.position.z = -0.75;
+    this.guard.material = this.gold;
     this.bombWave = this.ring("bomb blast", 1, 0.09);
     this.bombWave.material = this.material("bomb amber", "#ff8959", true, 0.8);
     this.bombWave.setEnabled(false);
@@ -459,6 +502,8 @@ export class BabylonRenderer implements Renderer {
   render(sim: Simulation, yaw: number, pitch: number, fixed = false) {
     const p = sim.player,
       time = sim.ticks / 60;
+    const stats = weaponStats(p),
+      weapon = stats.weapon;
     while (this.enemies.length < sim.enemies.enemies.length)
       this.addEnemy(
         sim.enemies.enemies[this.enemies.length]!.kind,
@@ -481,18 +526,51 @@ export class BabylonRenderer implements Renderer {
     this.player.rotation.z = p.hp <= 0 ? 1.2 : p.dashTimer > 0 ? -0.12 : 0;
     this.cape.rotation.x =
       -0.15 - Math.sin(time * 6) * 0.05 - (p.dashTimer > 0 ? 0.6 : 0);
+    this.blade.position.z =
+      0.9 +
+      (weapon.id === "spear" && p.swing > 0
+        ? Math.sin((1 - p.swing / p.swingDuration) * Math.PI) * 0.7
+        : 0);
     this.blade.rotation.y =
-      p.swing > 0
-        ? (1 - p.swing / 0.38) * 4 - 1.5
-        : p.specialTimer > 0
-          ? -1.2
-          : 0;
-    this.blade.scaling.z = p.swing > 0 ? 1.3 : 1;
+      weapon.id === "spear"
+        ? 0
+        : p.swing > 0
+          ? (1 - p.swing / p.swingDuration) * 4 - 1.5
+          : p.specialTimer > 0
+            ? -1.2
+            : 0;
+    this.blade.scaling.set(
+      weapon.id === "greatblade" ? 4 : 1,
+      1,
+      (weapon.id === "greatblade" ? 1.4 : 1) * (p.swing > 0 ? 1.15 : 1),
+    );
+    this.guard.scaling.x = weapon.id === "greatblade" ? 0.45 : 1;
+    this.guard.setEnabled(weapon.id !== "spear");
+    this.shaft.setEnabled(weapon.id === "spear");
+    this.spearTip.setEnabled(weapon.id === "spear");
+    this.bow.scaling.set(
+      weapon.id === "fanbow" ? 1.25 : 1,
+      weapon.id === "longbow" ? 1.5 : weapon.id === "fanbow" ? 0.85 : 1,
+      1,
+    );
+    this.fanLimb.setEnabled(weapon.id === "fanbow");
+    if (p.hero !== "ranger" && this.slashArc !== weapon.halfArc) {
+      this.slash.dispose();
+      this.slash = this.sector("melee arc", 2.8, weapon.halfArc);
+      this.slash.parent = this.player;
+      this.slash.position.y = 0.65;
+      this.slashArc = weapon.halfArc;
+    }
+    this.slash.scaling.set(stats.range / 2.8, 1, stats.range / 2.8);
     this.blade.setEnabled(p.hero !== "ranger");
+    this.blade.isVisible = weapon.id !== "spear";
     this.bow.setEnabled(p.hero === "ranger");
     this.slash.setEnabled(
-      p.hero !== "ranger" && p.swing > 0.1 && p.swing < 0.29,
+      p.hero !== "ranger" &&
+        p.swing / p.swingDuration > 0.1 / 0.38 &&
+        p.swing / p.swingDuration < 0.29 / 0.38,
     );
+    this.bow.position.y = weapon.id === "longbow" ? 1.2 : 1;
     this.bow.rotation.y = p.swing > 0 ? -0.25 : 0;
     while (this.arrows.length < sim.combat.arrows.length) {
       const arrow = MeshBuilder.CreateBox(
@@ -539,7 +617,7 @@ export class BabylonRenderer implements Renderer {
       p.hero === "ranger" && p.charge >= 100 && p.hp > 0 && p.specialTimer <= 0,
     );
     if (p.hero === "ranger") {
-      const target = sim.combat.aim(p, sim.grid);
+      const target = sim.combat.aim(p, sim.grid, 18);
       this.aimRing.position.set(
         Math.max(-23, Math.min(23, target?.x ?? p.x + Math.sin(p.yaw) * 8)),
         0.06,

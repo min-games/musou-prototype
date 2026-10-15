@@ -1,4 +1,5 @@
 import { ENEMY_TYPES, type Enemy } from "./EnemyStore";
+import { getWeapon, weaponStats, roundDamage, type WeaponId } from "./Weapons";
 import { SpatialGrid } from "./SpatialGrid";
 export const SPECIAL = {
   cost: 100,
@@ -10,6 +11,12 @@ export const SPECIAL = {
 export type Hero = "vanguard" | "ranger";
 export interface Player {
   hero: Hero;
+  weapon: WeaponId;
+  attackSpeedMult: number;
+  rangeMult: number;
+  extraArrows: number;
+  swingDuration: number;
+  attacks: number;
   maxHp: number;
   damageMult: number;
   speedMult: number;
@@ -46,6 +53,12 @@ export interface Player {
 }
 export const newPlayer = (): Player => ({
   hero: "vanguard",
+  weapon: "saber",
+  attackSpeedMult: 1,
+  rangeMult: 1,
+  extraArrows: 0,
+  swingDuration: 0.38,
+  attacks: 0,
   maxHp: 100,
   damageMult: 1,
   speedMult: 1,
@@ -88,12 +101,18 @@ export interface Arrow {
   life: number;
   remaining: number;
   hit: Set<number>;
+  volleyHits?: Set<number>;
+  baseDamage?: number;
 }
 export class CombatSystem {
   arrows: Arrow[] = [];
-  aim(p: Player, grid: SpatialGrid) {
+  aim(
+    p: Player,
+    grid: SpatialGrid,
+    range = Math.max(1, weaponStats(p).range - 1.2),
+  ) {
     return grid
-      .query(p.x, p.z, 18)
+      .query(p.x, p.z, range)
       .filter((e) => {
         const d = Math.hypot(e.x - p.x, e.z - p.z);
         return (
@@ -153,7 +172,15 @@ export class CombatSystem {
         .sort((a, b) => a.t - b.t || a.e.id - b.e.id);
       for (const { e } of hits) {
         a.hit.add(e.id);
-        this.applyHit(p, e, 32 * ENEMY_TYPES[e.kind].armor, false);
+        if (!a.volleyHits?.has(e.id)) {
+          this.applyHit(
+            p,
+            e,
+            (a.baseDamage ?? 32) * ENEMY_TYPES[e.kind].armor,
+            false,
+          );
+          a.volleyHits?.add(e.id);
+        }
         if (--a.remaining <= 0) break;
       }
       a.x += dx;
@@ -191,6 +218,7 @@ export class CombatSystem {
     special = false,
   ) {
     p.shotCooldown = Math.max(0, p.shotCooldown - dt);
+    if (p.shotCooldown < 1e-8) p.shotCooldown = 0;
     p.bombTimer = Math.max(0, p.bombTimer - dt);
     p.recovery = Math.max(0, p.recovery - dt);
     p.hitFlash = Math.max(0, p.hitFlash - dt);
@@ -213,7 +241,7 @@ export class CombatSystem {
       p.specialX = p.x;
       p.specialZ = p.z;
       if (p.hero === "ranger") {
-        const target = this.aim(p, grid);
+        const target = this.aim(p, grid, 18);
         p.specialX = Math.max(
           -23,
           Math.min(23, target?.x ?? p.x + Math.sin(p.yaw) * 8),
@@ -260,17 +288,27 @@ export class CombatSystem {
       if (attack && p.shotCooldown <= 0 && p.recovery <= 0) {
         const target = this.aim(p, grid);
         if (target) p.yaw = Math.atan2(target.x - p.x, target.z - p.z);
-        this.arrows.push({
-          x: p.x,
-          z: p.z,
-          vx: Math.sin(p.yaw) * 24,
-          vz: Math.cos(p.yaw) * 24,
-          life: 0.8,
-          remaining: 1 + p.pierce,
-          hit: new Set(),
-        });
-        p.shotCooldown = 0.32;
-        p.swing = 0.18;
+        const stats = weaponStats(p),
+          volleyHits = new Set<number>();
+        for (let i = 0; i < stats.arrows; i++) {
+          const yaw =
+            p.yaw + (i - (stats.arrows - 1) / 2) * stats.weapon.spread;
+          this.arrows.push({
+            x: p.x,
+            z: p.z,
+            vx: Math.sin(yaw) * stats.weapon.arrowSpeed,
+            vz: Math.cos(yaw) * stats.weapon.arrowSpeed,
+            life: stats.range / stats.weapon.arrowSpeed,
+            remaining: 1 + p.pierce,
+            hit: new Set(),
+            volleyHits,
+            baseDamage: stats.weapon.damage,
+          });
+        }
+        p.attacks++;
+        p.shotCooldown = stats.period;
+        p.swingDuration = Math.min(0.18, stats.period);
+        p.swing = p.swingDuration;
         p.stage = 1;
       }
       p.swing = Math.max(0, p.swing - dt);
@@ -280,21 +318,28 @@ export class CombatSystem {
     else p.buffer = Math.max(0, p.buffer - dt);
     if (p.swing <= 0 && p.buffer > 0 && p.recovery <= 0) {
       p.stage = p.comboWindow > 0 ? (p.stage % 3) + 1 : 1;
-      p.swing = 0.38;
+      p.swingDuration = weaponStats(p).period;
+      p.swing = p.swingDuration;
+      p.attacks++;
       p.buffer = 0;
       this.hit.clear();
     }
     if (p.swing > 0) {
       p.swing = Math.max(0, p.swing - dt);
-      if (p.swing <= 0.29 && p.swing >= 0.1) {
-        for (const e of grid.query(p.x, p.z, 2.8)) {
+      if (p.swing < 1e-8) p.swing = 0;
+      if (
+        p.swing / p.swingDuration <= 0.29 / 0.38 &&
+        p.swing / p.swingDuration >= 0.1 / 0.38
+      ) {
+        const stats = weaponStats(p);
+        for (const e of grid.query(p.x, p.z, stats.range)) {
           const dx = e.x - p.x,
             dz = e.z - p.z,
             d = Math.hypot(dx, dz);
           if (
             d < 0.01 ||
             (dx * Math.sin(p.yaw) + dz * Math.cos(p.yaw)) / d >
-              Math.cos(Math.PI * 0.42)
+              Math.cos(stats.weapon.halfArc)
           )
             this.strike(p, e);
         }
@@ -305,8 +350,11 @@ export class CombatSystem {
   strike(p: Player, e: Enemy) {
     if (p.hp <= 0 || this.hit.has(e.id) || e.state === "dead") return false;
     this.hit.add(e.id);
+    const weapon = getWeapon(p);
     const damage =
-      p.stage === 3 ? 40 : Math.ceil(25 * ENEMY_TYPES[e.kind].armor);
+      p.stage === 3
+        ? weapon.finisher
+        : roundDamage(weapon.damage * ENEMY_TYPES[e.kind].armor);
     this.applyHit(p, e, damage, false);
     return true;
   }
@@ -314,7 +362,7 @@ export class CombatSystem {
     if (e.state === "dead") return;
     const scaledDamage = damage * p.damageMult * (special ? p.specialMult : 1);
     // Decimal stat stacks can drift just above an integer (e.g. 28.000000000004).
-    e.hp = Math.max(0, e.hp - Math.ceil(scaledDamage - 1e-9));
+    e.hp = Math.max(0, e.hp - roundDamage(scaledDamage));
     e.flash = 0.18;
     p.hits++;
     p.impact = 0.1;

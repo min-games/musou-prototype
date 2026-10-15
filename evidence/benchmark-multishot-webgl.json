@@ -1,0 +1,346 @@
+[
+  {
+    "count": 0,
+    "seed": 4242,
+    "frames": 120,
+    "frameMs": {
+      "p50": 27.700000047683716,
+      "p95": 37.299999952316284,
+      "p99": 59.90000009536743
+    },
+    "simulationMs": {
+      "p50": 0.09999990463256836,
+      "p95": 0.2999999523162842,
+      "p99": 0.40000009536743164
+    },
+    "drawCalls": 78.73333333333333,
+    "backend": "WebGL2",
+    "metadata": {
+      "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.8078.4 Safari/537.36",
+      "viewport": [
+        1280,
+        720
+      ],
+      "dpr": 1,
+      "hardwareConcurrency": 16,
+      "utc": "2026-10-15T04:50:11.466Z",
+      "warmupFrames": 60,
+      "scenario": "weapon-crowd-max-v1-shortbow",
+      "stressMultishot": true,
+      "peakArrows": 58,
+      "pierce": 2,
+      "hero": "ranger",
+      "weapon": "shortbow",
+      "weaponStats": {
+        "weapon": {
+          "id": "shortbow",
+          "hero": "ranger",
+          "name": "Shortbow",
+          "description": "Rapid arrows; quick charge generation",
+          "damage": 32,
+          "finisher": 32,
+          "period": 0.32,
+          "range": 19.2,
+          "halfArc": 0,
+          "arrowSpeed": 24,
+          "arrows": 1,
+          "spread": 0.14
+        },
+        "period": 0.13333333333333333,
+        "rate": 7.5,
+        "range": 33.6,
+        "arrows": 7,
+        "damage": 32,
+        "finisher": 32,
+        "dps": 240,
+        "targetsPerArrow": 3,
+        "crowdDps": 5040
+      },
+      "enemyTypes": {
+        "grunt": 0,
+        "flanker": 0,
+        "armored": 0
+      },
+      "specialActivations": 1,
+      "liveEnemies": 0,
+      "timing": "RAF wall intervals; CPU simulation only; no GPU timer query",
+      "renderer": {
+        "width": 1280,
+        "height": 720,
+        "engineVersion": "8.56.2",
+        "renderer": {
+          "vendor": "Google Inc. (Google)",
+          "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+          "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)"
+        },
+        "hardwareScaling": 1,
+        "reducedMotion": false,
+        "ringGeometry": "flat-strip-64-segments",
+        "specialSparkPool": 32
+      },
+      "fixedHz": 60,
+      "camera": "origin orbit / distance 30 / 0.15 radians per simulation second",
+      "simulationStepsPerSample": 1,
+      "playerHealth": "refilled per tick to maintain active crowd workload",
+      "input": "sin/cos movement; held bow fire; Arrow Storm on tick 90"
+    }
+  },
+  {
+    "count": 20,
+    "seed": 4242,
+    "frames": 120,
+    "frameMs": {
+      "p50": 29,
+      "p95": 41.5,
+      "p99": 55.200000047683716
+    },
+    "simulationMs": {
+      "p50": 0.10000014305114746,
+      "p95": 0.3000001907348633,
+      "p99": 0.39999985694885254
+    },
+    "drawCalls": 102.55,
+    "backend": "WebGL2",
+    "metadata": {
+      "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.8078.4 Safari/537.36",
+      "viewport": [
+        1280,
+        720
+      ],
+      "dpr": 1,
+      "hardwareConcurrency": 16,
+      "utc": "2026-10-15T04:50:16.697Z",
+      "warmupFrames": 60,
+      "scenario": "weapon-crowd-max-v1-shortbow",
+      "stressMultishot": true,
+      "peakArrows": 61,
+      "pierce": 2,
+      "hero": "ranger",
+      "weapon": "shortbow",
+      "weaponStats": {
+        "weapon": {
+          "id": "shortbow",
+          "hero": "ranger",
+          "name": "Shortbow",
+          "description": "Rapid arrows; quick charge generation",
+          "damage": 32,
+          "finisher": 32,
+          "period": 0.32,
+          "range": 19.2,
+          "halfArc": 0,
+          "arrowSpeed": 24,
+          "arrows": 1,
+          "spread": 0.14
+        },
+        "period": 0.13333333333333333,
+        "rate": 7.5,
+        "range": 33.6,
+        "arrows": 7,
+        "damage": 32,
+        "finisher": 32,
+        "dps": 240,
+        "targetsPerArrow": 3,
+        "crowdDps": 5040
+      },
+      "enemyTypes": {
+        "grunt": 12,
+        "flanker": 4,
+        "armored": 4
+      },
+      "specialActivations": 1,
+      "liveEnemies": 20,
+      "timing": "RAF wall intervals; CPU simulation only; no GPU timer query",
+      "renderer": {
+        "width": 1280,
+        "height": 720,
+        "engineVersion": "8.56.2",
+        "renderer": {
+          "vendor": "Google Inc. (Google)",
+          "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+          "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)"
+        },
+        "hardwareScaling": 1,
+        "reducedMotion": false,
+        "ringGeometry": "flat-strip-64-segments",
+        "specialSparkPool": 32
+      },
+      "fixedHz": 60,
+      "camera": "origin orbit / distance 30 / 0.15 radians per simulation second",
+      "simulationStepsPerSample": 1,
+      "playerHealth": "refilled per tick to maintain active crowd workload",
+      "input": "sin/cos movement; held bow fire; Arrow Storm on tick 90"
+    }
+  },
+  {
+    "count": 100,
+    "seed": 4242,
+    "frames": 120,
+    "frameMs": {
+      "p50": 37.299999952316284,
+      "p95": 50.299999952316284,
+      "p99": 70.89999985694885
+    },
+    "simulationMs": {
+      "p50": 0.2999999523162842,
+      "p95": 0.5,
+      "p99": 0.7000000476837158
+    },
+    "drawCalls": 175.49166666666667,
+    "backend": "WebGL2",
+    "metadata": {
+      "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.8078.4 Safari/537.36",
+      "viewport": [
+        1280,
+        720
+      ],
+      "dpr": 1,
+      "hardwareConcurrency": 16,
+      "utc": "2026-10-15T04:50:23.335Z",
+      "warmupFrames": 60,
+      "scenario": "weapon-crowd-max-v1-shortbow",
+      "stressMultishot": true,
+      "peakArrows": 47,
+      "pierce": 2,
+      "hero": "ranger",
+      "weapon": "shortbow",
+      "weaponStats": {
+        "weapon": {
+          "id": "shortbow",
+          "hero": "ranger",
+          "name": "Shortbow",
+          "description": "Rapid arrows; quick charge generation",
+          "damage": 32,
+          "finisher": 32,
+          "period": 0.32,
+          "range": 19.2,
+          "halfArc": 0,
+          "arrowSpeed": 24,
+          "arrows": 1,
+          "spread": 0.14
+        },
+        "period": 0.13333333333333333,
+        "rate": 7.5,
+        "range": 33.6,
+        "arrows": 7,
+        "damage": 32,
+        "finisher": 32,
+        "dps": 240,
+        "targetsPerArrow": 3,
+        "crowdDps": 5040
+      },
+      "enemyTypes": {
+        "grunt": 60,
+        "flanker": 20,
+        "armored": 20
+      },
+      "specialActivations": 1,
+      "liveEnemies": 100,
+      "timing": "RAF wall intervals; CPU simulation only; no GPU timer query",
+      "renderer": {
+        "width": 1280,
+        "height": 720,
+        "engineVersion": "8.56.2",
+        "renderer": {
+          "vendor": "Google Inc. (Google)",
+          "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+          "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)"
+        },
+        "hardwareScaling": 1,
+        "reducedMotion": false,
+        "ringGeometry": "flat-strip-64-segments",
+        "specialSparkPool": 32
+      },
+      "fixedHz": 60,
+      "camera": "origin orbit / distance 30 / 0.15 radians per simulation second",
+      "simulationStepsPerSample": 1,
+      "playerHealth": "refilled per tick to maintain active crowd workload",
+      "input": "sin/cos movement; held bow fire; Arrow Storm on tick 90"
+    }
+  },
+  {
+    "count": 300,
+    "seed": 4242,
+    "frames": 120,
+    "frameMs": {
+      "p50": 63.90000009536743,
+      "p95": 72.39999985694885,
+      "p99": 134.70000004768372
+    },
+    "simulationMs": {
+      "p50": 0.5,
+      "p95": 0.9000000953674316,
+      "p99": 1.2999999523162842
+    },
+    "drawCalls": 356.9583333333333,
+    "backend": "WebGL2",
+    "metadata": {
+      "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.8078.4 Safari/537.36",
+      "viewport": [
+        1280,
+        720
+      ],
+      "dpr": 1,
+      "hardwareConcurrency": 16,
+      "utc": "2026-10-15T04:50:35.466Z",
+      "warmupFrames": 60,
+      "scenario": "weapon-crowd-max-v1-shortbow",
+      "stressMultishot": true,
+      "peakArrows": 21,
+      "pierce": 2,
+      "hero": "ranger",
+      "weapon": "shortbow",
+      "weaponStats": {
+        "weapon": {
+          "id": "shortbow",
+          "hero": "ranger",
+          "name": "Shortbow",
+          "description": "Rapid arrows; quick charge generation",
+          "damage": 32,
+          "finisher": 32,
+          "period": 0.32,
+          "range": 19.2,
+          "halfArc": 0,
+          "arrowSpeed": 24,
+          "arrows": 1,
+          "spread": 0.14
+        },
+        "period": 0.13333333333333333,
+        "rate": 7.5,
+        "range": 33.6,
+        "arrows": 7,
+        "damage": 32,
+        "finisher": 32,
+        "dps": 240,
+        "targetsPerArrow": 3,
+        "crowdDps": 5040
+      },
+      "enemyTypes": {
+        "grunt": 180,
+        "flanker": 60,
+        "armored": 60
+      },
+      "specialActivations": 1,
+      "liveEnemies": 300,
+      "timing": "RAF wall intervals; CPU simulation only; no GPU timer query",
+      "renderer": {
+        "width": 1280,
+        "height": 720,
+        "engineVersion": "8.56.2",
+        "renderer": {
+          "vendor": "Google Inc. (Google)",
+          "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+          "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)"
+        },
+        "hardwareScaling": 1,
+        "reducedMotion": false,
+        "ringGeometry": "flat-strip-64-segments",
+        "specialSparkPool": 32
+      },
+      "fixedHz": 60,
+      "camera": "origin orbit / distance 30 / 0.15 radians per simulation second",
+      "simulationStepsPerSample": 1,
+      "playerHealth": "refilled per tick to maintain active crowd workload",
+      "input": "sin/cos movement; held bow fire; Arrow Storm on tick 90"
+    }
+  }
+]

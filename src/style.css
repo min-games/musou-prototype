@@ -601,3 +601,63 @@ aside p {
 #seed-tools[hidden] {
   display: none;
 }
+
+#weapon-stats {
+  color: #d5e9da;
+  font-size: 11px;
+  line-height: 1.5;
+}
+#back-to-heroes[hidden] {
+  display: none;
+}
+@media (max-width: 650px) {
+  #weapon-stats {
+    font-size: 10px;
+    max-width: 350px;
+  }
+  #run-status {
+    top: 215px;
+  }
+  .loot-legend {
+    display: none;
+  }
+}
+@media (max-height: 600px) {
+  .run-overlay {
+    align-items: start;
+  }
+  .run-card {
+    margin: 0 auto;
+  }
+}
+.run-overlay {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+.run-card {
+  margin: auto 0;
+  flex-shrink: 0;
+}
+.loadout .run-card {
+  width: min(760px, 100%);
+  padding: 24px;
+}
+.loadout #run-choices {
+  gap: 8px;
+  margin: 12px 0;
+}
+.loadout #run-choices button {
+  padding: 12px;
+}
+.loadout .run-card h2 {
+  margin: 8px 0;
+}
+.loadout .menu-help {
+  margin: 8px 0;
+}
+
+#rearm[hidden] {
+  display: none;
+}

@@ -4,16 +4,16 @@
     "seed": 4242,
     "frames": 180,
     "frameMs": {
-      "p50": 28.100000143051147,
-      "p95": 38,
-      "p99": 59.89999985694885
+      "p50": 26,
+      "p95": 33.700000047683716,
+      "p99": 54.299999952316284
     },
     "simulationMs": {
       "p50": 0,
       "p95": 0.10000014305114746,
-      "p99": 0.20000004768371582
+      "p99": 0.2999999523162842
     },
-    "drawCalls": 43.96666666666667,
+    "drawCalls": 44.96666666666667,
     "backend": "WebGL2",
     "metadata": {
       "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.8078.4 Safari/537.36",
@@ -23,10 +23,39 @@
       ],
       "dpr": 1,
       "hardwareConcurrency": 16,
-      "utc": "2026-10-15T03:29:31.648Z",
+      "utc": "2026-10-15T04:48:10.390Z",
       "warmupFrames": 60,
-      "scenario": "mixed-crowd-solar-v2",
+      "scenario": "weapon-crowd-v1-saber",
+      "stressMultishot": false,
+      "peakArrows": 0,
+      "pierce": 0,
       "hero": "vanguard",
+      "weapon": "saber",
+      "weaponStats": {
+        "weapon": {
+          "id": "saber",
+          "hero": "vanguard",
+          "name": "Saber",
+          "description": "Quick, balanced three-hit sweeps",
+          "damage": 25,
+          "finisher": 40,
+          "period": 0.38,
+          "range": 2.8,
+          "halfArc": 1.319468914507713,
+          "arrowSpeed": 0,
+          "arrows": 1,
+          "spread": 0
+        },
+        "period": 0.38333333333333336,
+        "rate": 2.608695652173913,
+        "range": 2.8,
+        "arrows": 1,
+        "damage": 25,
+        "finisher": 40,
+        "dps": 78.26086956521738,
+        "targetsPerArrow": 1,
+        "crowdDps": 78.26086956521738
+      },
       "enemyTypes": {
         "grunt": 0,
         "flanker": 0,
@@ -61,16 +90,16 @@
     "seed": 4242,
     "frames": 180,
     "frameMs": {
-      "p50": 30.200000047683716,
-      "p95": 35.5,
-      "p99": 57.5
+      "p50": 28.100000143051147,
+      "p95": 33.39999985694885,
+      "p99": 58.09999990463257
     },
     "simulationMs": {
       "p50": 0.09999990463256836,
       "p95": 0.20000004768371582,
-      "p99": 0.2999999523162842
+      "p99": 0.3000001907348633
     },
-    "drawCalls": 64.6,
+    "drawCalls": 65.6,
     "backend": "WebGL2",
     "metadata": {
       "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.8078.4 Safari/537.36",
@@ -80,10 +109,39 @@
       ],
       "dpr": 1,
       "hardwareConcurrency": 16,
-      "utc": "2026-10-15T03:29:38.890Z",
+      "utc": "2026-10-15T04:48:17.209Z",
       "warmupFrames": 60,
-      "scenario": "mixed-crowd-solar-v2",
+      "scenario": "weapon-crowd-v1-saber",
+      "stressMultishot": false,
+      "peakArrows": 0,
+      "pierce": 0,
       "hero": "vanguard",
+      "weapon": "saber",
+      "weaponStats": {
+        "weapon": {
+          "id": "saber",
+          "hero": "vanguard",
+          "name": "Saber",
+          "description": "Quick, balanced three-hit sweeps",
+          "damage": 25,
+          "finisher": 40,
+          "period": 0.38,
+          "range": 2.8,
+          "halfArc": 1.319468914507713,
+          "arrowSpeed": 0,
+          "arrows": 1,
+          "spread": 0
+        },
+        "period": 0.38333333333333336,
+        "rate": 2.608695652173913,
+        "range": 2.8,
+        "arrows": 1,
+        "damage": 25,
+        "finisher": 40,
+        "dps": 78.26086956521738,
+        "targetsPerArrow": 1,
+        "crowdDps": 78.26086956521738
+      },
       "enemyTypes": {
         "grunt": 12,
         "flanker": 4,
@@ -118,16 +176,16 @@
     "seed": 4242,
     "frames": 180,
     "frameMs": {
-      "p50": 39,
-      "p95": 69.09999990463257,
-      "p99": 126
+      "p50": 40.299999952316284,
+      "p95": 50.89999985694885,
+      "p99": 81.20000004768372
     },
     "simulationMs": {
       "p50": 0.20000004768371582,
-      "p95": 0.3000001907348633,
-      "p99": 0.40000009536743164
+      "p95": 0.39999985694885254,
+      "p99": 0.5
     },
-    "drawCalls": 145.18333333333334,
+    "drawCalls": 146.18333333333334,
     "backend": "WebGL2",
     "metadata": {
       "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.8078.4 Safari/537.36",
@@ -137,10 +195,39 @@
       ],
       "dpr": 1,
       "hardwareConcurrency": 16,
-      "utc": "2026-10-15T03:29:48.965Z",
+      "utc": "2026-10-15T04:48:27.706Z",
       "warmupFrames": 60,
-      "scenario": "mixed-crowd-solar-v2",
+      "scenario": "weapon-crowd-v1-saber",
+      "stressMultishot": false,
+      "peakArrows": 0,
+      "pierce": 0,
       "hero": "vanguard",
+      "weapon": "saber",
+      "weaponStats": {
+        "weapon": {
+          "id": "saber",
+          "hero": "vanguard",
+          "name": "Saber",
+          "description": "Quick, balanced three-hit sweeps",
+          "damage": 25,
+          "finisher": 40,
+          "period": 0.38,
+          "range": 2.8,
+          "halfArc": 1.319468914507713,
+          "arrowSpeed": 0,
+          "arrows": 1,
+          "spread": 0
+        },
+        "period": 0.38333333333333336,
+        "rate": 2.608695652173913,
+        "range": 2.8,
+        "arrows": 1,
+        "damage": 25,
+        "finisher": 40,
+        "dps": 78.26086956521738,
+        "targetsPerArrow": 1,
+        "crowdDps": 78.26086956521738
+      },
       "enemyTypes": {
         "grunt": 60,
         "flanker": 20,
@@ -175,16 +262,16 @@
     "seed": 4242,
     "frames": 180,
     "frameMs": {
-      "p50": 64.59999990463257,
-      "p95": 124.60000014305115,
-      "p99": 153.90000009536743
+      "p50": 62.200000047683716,
+      "p95": 110.40000009536743,
+      "p99": 131.59999990463257
     },
     "simulationMs": {
       "p50": 0.40000009536743164,
       "p95": 0.7000000476837158,
-      "p99": 6
+      "p99": 3.4000000953674316
     },
-    "drawCalls": 345.51666666666665,
+    "drawCalls": 346.51666666666665,
     "backend": "WebGL2",
     "metadata": {
       "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.8078.4 Safari/537.36",
@@ -194,10 +281,39 @@
       ],
       "dpr": 1,
       "hardwareConcurrency": 16,
-      "utc": "2026-10-15T03:30:04.615Z",
+      "utc": "2026-10-15T04:48:42.258Z",
       "warmupFrames": 60,
-      "scenario": "mixed-crowd-solar-v2",
+      "scenario": "weapon-crowd-v1-saber",
+      "stressMultishot": false,
+      "peakArrows": 0,
+      "pierce": 0,
       "hero": "vanguard",
+      "weapon": "saber",
+      "weaponStats": {
+        "weapon": {
+          "id": "saber",
+          "hero": "vanguard",
+          "name": "Saber",
+          "description": "Quick, balanced three-hit sweeps",
+          "damage": 25,
+          "finisher": 40,
+          "period": 0.38,
+          "range": 2.8,
+          "halfArc": 1.319468914507713,
+          "arrowSpeed": 0,
+          "arrows": 1,
+          "spread": 0
+        },
+        "period": 0.38333333333333336,
+        "rate": 2.608695652173913,
+        "range": 2.8,
+        "arrows": 1,
+        "damage": 25,
+        "finisher": 40,
+        "dps": 78.26086956521738,
+        "targetsPerArrow": 1,
+        "crowdDps": 78.26086956521738
+      },
       "enemyTypes": {
         "grunt": 180,
         "flanker": 60,

@@ -2,11 +2,11 @@
   "config": {
     "argv": [
       "/home/cmwen/.local/share/fnm/node-versions/v24.12.0/installation/bin/node",
-      "/home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261015031758-43b9b955/musou-prototype/node_modules/.bin/playwright",
+      "/home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261015042952-6bdc1fda/musou-prototype/node_modules/.bin/playwright",
       "test"
     ],
-    "configFile": "/home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261015031758-43b9b955/musou-prototype/playwright.config.ts",
-    "rootDir": "/home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261015031758-43b9b955/musou-prototype/e2e",
+    "configFile": "/home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261015042952-6bdc1fda/musou-prototype/playwright.config.ts",
+    "rootDir": "/home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261015042952-6bdc1fda/musou-prototype/e2e",
     "failOnFlakyTests": false,
     "forbidOnly": false,
     "fullyParallel": false,
@@ -22,7 +22,7 @@
     "preserveOutput": "always",
     "projects": [
       {
-        "outputDir": "/home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261015031758-43b9b955/musou-prototype/test-results",
+        "outputDir": "/home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261015042952-6bdc1fda/musou-prototype/test-results",
         "repeatEach": 1,
         "retries": 0,
         "metadata": {
@@ -30,7 +30,7 @@
         },
         "id": "",
         "name": "",
-        "testDir": "/home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261015031758-43b9b955/musou-prototype/e2e",
+        "testDir": "/home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261015042952-6bdc1fda/musou-prototype/e2e",
         "testIgnore": [],
         "testMatch": [
           "**/*.@(spec|test).?(c|m)[jt]s?(x)"
@@ -42,15 +42,15 @@
       {
         "grep": {},
         "grepInvert": null,
-        "outputDir": "/home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261015031758-43b9b955/musou-prototype/test-results",
+        "outputDir": "/home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261015042952-6bdc1fda/musou-prototype/test-results",
         "repeatEach": 1,
         "retries": 0,
         "metadata": {
           "actualWorkers": 1
         },
         "name": "",
-        "testDir": "/home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261015031758-43b9b955/musou-prototype/e2e",
-        "snapshotDir": "/home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261015031758-43b9b955/musou-prototype/e2e",
+        "testDir": "/home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261015042952-6bdc1fda/musou-prototype/e2e",
+        "snapshotDir": "/home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261015042952-6bdc1fda/musou-prototype/e2e",
         "testIgnore": [],
         "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
         "timeout": 120000,
@@ -122,7 +122,7 @@
           "tags": [],
           "tests": [
             {
-              "timeout": 300000,
+              "timeout": 600000,
               "annotations": [],
               "expectedStatus": "passed",
               "projectId": "",
@@ -132,12 +132,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 39687,
+                  "duration": 37946,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-15T03:29:24.389Z",
+                  "startTime": "2026-10-15T04:48:03.295Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -156,7 +156,7 @@
           "tags": [],
           "tests": [
             {
-              "timeout": 300000,
+              "timeout": 600000,
               "annotations": [],
               "expectedStatus": "passed",
               "projectId": "",
@@ -166,12 +166,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 39363,
+                  "duration": 39169,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-15T03:30:04.885Z",
+                  "startTime": "2026-10-15T04:48:42.546Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -190,7 +190,7 @@
           "tags": [],
           "tests": [
             {
-              "timeout": 300000,
+              "timeout": 600000,
               "annotations": [],
               "expectedStatus": "passed",
               "projectId": "",
@@ -200,12 +200,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 40150,
+                  "duration": 40549,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-15T03:30:44.779Z",
+                  "startTime": "2026-10-15T04:44:56.092Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -215,7 +215,41 @@
           ],
           "id": "fd0f79bca92272c89f59-9ecde2ff01b5303f0441",
           "file": "benchmark.spec.ts",
-          "line": 46,
+          "line": 48,
+          "column": 1
+        },
+        {
+          "title": "measured max multishot benchmark exports seven arrows and complete crowds",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 600000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 29564,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-15T04:50:04.760Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fd0f79bca92272c89f59-bd0a1c837fdbfa620eed",
+          "file": "benchmark.spec.ts",
+          "line": 81,
           "column": 1
         }
       ]
@@ -242,12 +276,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 4230,
+                  "duration": 3998,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-15T03:31:26.872Z",
+                  "startTime": "2026-10-15T04:50:35.512Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -276,12 +310,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1280,
+                  "duration": 1279,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-15T03:31:31.119Z",
+                  "startTime": "2026-10-15T04:50:39.522Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -318,12 +352,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 3694,
+                  "duration": 3712,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-15T03:31:32.430Z",
+                  "startTime": "2026-10-15T04:50:40.832Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -352,12 +386,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 2790,
+                  "duration": 1531,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-15T03:31:36.145Z",
+                  "startTime": "2026-10-15T04:50:44.563Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -386,12 +420,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 2269,
+                  "duration": 2953,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-15T03:31:38.962Z",
+                  "startTime": "2026-10-15T04:50:46.110Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -428,12 +462,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 3643,
+                  "duration": 4203,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-15T03:31:41.273Z",
+                  "startTime": "2026-10-15T04:50:49.089Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -462,12 +496,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 3215,
+                  "duration": 3657,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-15T03:31:44.930Z",
+                  "startTime": "2026-10-15T04:50:53.302Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -477,7 +511,7 @@
           ],
           "id": "868afcc30dccb7beb079-729a2b2b623d69b238ac",
           "file": "run.spec.ts",
-          "line": 108,
+          "line": 110,
           "column": 1
         },
         {
@@ -496,12 +530,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 3476,
+                  "duration": 3532,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-15T03:31:48.820Z",
+                  "startTime": "2026-10-15T04:50:57.950Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -511,7 +545,7 @@
           ],
           "id": "868afcc30dccb7beb079-a55381b0135a1d8bba14",
           "file": "run.spec.ts",
-          "line": 162,
+          "line": 166,
           "column": 1
         },
         {
@@ -530,12 +564,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1458,
+                  "duration": 1890,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-15T03:31:52.311Z",
+                  "startTime": "2026-10-15T04:51:01.496Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -545,7 +579,7 @@
           ],
           "id": "868afcc30dccb7beb079-3bda32bd8dc3587f0c91",
           "file": "run.spec.ts",
-          "line": 212,
+          "line": 255,
           "column": 1
         }
       ]
@@ -572,12 +606,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 4583,
+                  "duration": 4900,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-15T03:31:53.788Z",
+                  "startTime": "2026-10-15T04:51:03.412Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -606,12 +640,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 2715,
+                  "duration": 2693,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-15T03:31:58.383Z",
+                  "startTime": "2026-10-15T04:51:08.328Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -621,7 +655,7 @@
           ],
           "id": "4219922fea2e2bd3c691-650cc94168915d229d43",
           "file": "smoke.spec.ts",
-          "line": 127,
+          "line": 131,
           "column": 1
         }
       ]
@@ -648,12 +682,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 1255,
+                  "duration": 1300,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-15T03:32:01.113Z",
+                  "startTime": "2026-10-15T04:51:11.038Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -682,12 +716,12 @@
                   "workerIndex": 0,
                   "parallelIndex": 0,
                   "status": "passed",
-                  "duration": 756,
+                  "duration": 624,
                   "errors": [],
                   "stdout": [],
                   "stderr": [],
                   "retry": 0,
-                  "startTime": "2026-10-15T03:32:02.380Z",
+                  "startTime": "2026-10-15T04:51:12.349Z",
                   "annotations": [],
                   "attachments": []
                 }
@@ -701,13 +735,123 @@
           "column": 1
         }
       ]
+    },
+    {
+      "title": "weapons.spec.ts",
+      "file": "weapons.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Fan Bow fires at separate targets and seven-arrow upgrades have a readable spread",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4743,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-15T04:51:12.988Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7f770c34ac232bd2291a-7f2535e0eebb995715a1",
+          "file": "weapons.spec.ts",
+          "line": 7,
+          "column": 1
+        },
+        {
+          "title": "Spear reaches beyond the saber and its attack arc is shown at the actual reach",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3345,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-15T04:51:17.742Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7f770c34ac232bd2291a-a3a06f2f7bfacfc92b34",
+          "file": "weapons.spec.ts",
+          "line": 72,
+          "column": 1
+        },
+        {
+          "title": "weapon selection supports going back and choosing on a narrow viewport",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1345,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-15T04:51:21.103Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7f770c34ac232bd2291a-68baf4d1f34f1c700449",
+          "file": "weapons.spec.ts",
+          "line": 112,
+          "column": 1
+        }
+      ]
     }
   ],
   "errors": [],
   "stats": {
-    "startTime": "2026-10-15T03:29:16.884Z",
-    "duration": 162824.50100000002,
-    "expected": 16,
+    "startTime": "2026-10-15T04:47:54.809Z",
+    "duration": 202140.851,
+    "expected": 20,
     "skipped": 0,
     "unexpected": 0,
     "flaky": 0

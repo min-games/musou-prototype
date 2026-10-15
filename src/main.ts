@@ -3,6 +3,13 @@ import { Simulation, GameLoop } from "./GameLoop";
 import { InputManager } from "./InputManager";
 import { BabylonRenderer } from "./BabylonRenderer";
 import { BenchmarkRunner } from "./BenchmarkRunner";
+import {
+  WEAPONS,
+  DEFAULT_WEAPON,
+  getWeapon,
+  weaponStats,
+  type WeaponId,
+} from "./Weapons";
 import { RunDirector } from "./RunDirector";
 import type { Hero } from "./CombatSystem";
 import { AudioFeedback } from "./AudioFeedback";
@@ -82,7 +89,14 @@ specialButton.onclick = () => {
   input.queueSpecial();
   canvas.focus();
 };
-async function runBenchmark(frames = 240, hero: Hero = sim.player.hero) {
+async function runBenchmark(
+  frames = 240,
+  hero: Hero = sim.player.hero,
+  weapon: WeaponId = hero === sim.player.hero
+    ? getWeapon(sim.player).id
+    : DEFAULT_WEAPON[hero],
+  stressMultishot = false,
+) {
   if (benchmarking) return [];
   benchmarking = true;
   input.setEnabled(false);
@@ -95,6 +109,8 @@ async function runBenchmark(frames = 240, hero: Hero = sim.player.hero) {
       frames,
       (text) => (notice.textContent = text),
       hero,
+      weapon,
+      stressMultishot,
     );
   } finally {
     benchmarking = false;
@@ -123,6 +139,8 @@ function updateHud() {
   text("hp", p.hp + " / " + p.maxHp);
   element<HTMLMeterElement>("health").max = p.maxHp;
   element<HTMLMeterElement>("health").value = p.hp;
+  text("weapon-stats", weaponSummary(p));
+  text("chain-label", p.hero === "ranger" ? "SHOT" : "CHAIN");
   text("chain", p.swing > 0 ? "0" + p.stage : "—");
   text("kills", String(p.kills));
   text("alive", alive.length + " / " + sim.enemies.enemies.length);
@@ -149,7 +167,9 @@ function updateHud() {
       "objective",
       run.state === "select"
         ? "CHOOSE YOUR FIGHTER"
-        : `WAVE ${run.wave} / 5 · ${alive.length} REMAINING`,
+        : run.state === "loadout"
+          ? "CHOOSE YOUR WEAPON"
+          : `WAVE ${run.wave} / 5 · ${alive.length} REMAINING`,
     );
     text(
       "build-summary",
@@ -220,7 +240,7 @@ function frame(now: number) {
         const controls = input.poll(1 / 60);
         if (practice) sim.step(controls);
         else if (controls.respawn) {
-          run.start(sim.player.hero);
+          run.start(sim.player.hero, getWeapon(sim.player).id);
         } else run.step(controls);
       });
     renderer.render(sim, input.yaw, input.pitch);
@@ -249,9 +269,21 @@ element<HTMLButtonElement>("change-hero").onclick = () => {
 };
 let menuState = "",
   menuIndex = 0,
-  menuPadHeld = false;
-function startHero(hero: Hero) {
-  run.start(hero);
+  menuPadHeld = false,
+  pendingHero: Hero = "vanguard",
+  previousMenuBack = false;
+function weaponSummary(player: typeof sim.player) {
+  const s = weaponStats(player);
+  return `${s.weapon.name} · ${s.rate.toFixed(2)} ${player.hero === "ranger" ? "volleys" : "swings"}/s · ${s.range.toFixed(1)}m · ${player.hero === "ranger" ? s.arrows + (s.arrows === 1 ? " arrow · " : " arrows · ") + (s.targetsPerArrow > 1 ? s.targetsPerArrow + " targets/arrow · " : "") : ""}~${Math.round(s.dps)} ideal DPS${s.arrows * s.targetsPerArrow > 1 ? " / " + Math.round(s.crowdDps) + " crowd" : ""}`;
+}
+function chooseHero(hero: Hero) {
+  pendingHero = hero;
+  run.state = "loadout";
+  menuState = "";
+  updateRunMenu();
+}
+function startHero(hero: Hero, weapon: WeaponId = DEFAULT_WEAPON[hero]) {
+  run.start(hero, weapon);
   setPaused(false);
   menuState = "";
   updateRunMenu();
@@ -263,10 +295,34 @@ function updateRunMenu() {
   menuState = run.state;
   menuIndex = 0;
   element("seed-tools").hidden = run.state !== "select";
+  element("back-to-heroes").hidden =
+    run.state !== "loadout" && run.state !== "rearm";
+  text(
+    "back-to-heroes",
+    run.state === "rearm"
+      ? "Back to relics · Esc / B"
+      : "Back to fighters · Esc / B",
+  );
+  element("rearm").hidden = run.state !== "upgrade";
+  text(
+    "menu-help",
+    "1–3 select · Enter confirm · D-pad / stick + A · " +
+      (run.state === "upgrade"
+        ? "E / Y: change weapon"
+        : run.state === "loadout" || run.state === "rearm"
+          ? "Esc / B: back"
+          : run.state === "select"
+            ? "Y: new seed"
+            : "Y: retry"),
+  );
   text("run-seed", String(run.seed));
   const overlay = element("run-overlay"),
     choices = element("run-choices");
   overlay.hidden = run.state === "fighting";
+  overlay.classList.toggle(
+    "loadout",
+    run.state === "loadout" || run.state === "rearm",
+  );
   choices.replaceChildren();
   if (overlay.hidden) {
     input.setEnabled(!paused);
@@ -297,13 +353,49 @@ function updateRunMenu() {
     add(
       "1 · Vanguard",
       "100 health · Three-hit blade combo · Solar Break clears a circle around you",
-      () => startHero("vanguard"),
+      () => chooseHero("vanguard"),
     );
     add(
       "2 · Ranger",
       "85 health · Hold attack to fire and strafe; forward aim assist · Arrow Storm strikes a cluster ahead",
-      () => startHero("ranger"),
+      () => chooseHero("ranger"),
     );
+  } else if (run.state === "loadout" || run.state === "rearm") {
+    text(
+      "run-title",
+      `${pendingHero === "ranger" ? "Ranger" : "Vanguard"} · Choose your weapon`,
+    );
+    text(
+      "run-description",
+      "Choose a weapon; change it between waves while keeping relics. Ideal DPS assumes continuous unarmored hits; crowd DPS needs separate targets. Specials stay the same.",
+    );
+    Object.values(WEAPONS)
+      .filter((w) => w.hero === pendingHero)
+      .forEach((w, i) => {
+        const preview = {
+          ...sim.player,
+          hero: pendingHero,
+          weapon: w.id,
+          damageMult: run.state === "rearm" ? sim.player.damageMult : 1,
+          attackSpeedMult:
+            run.state === "rearm" ? sim.player.attackSpeedMult : 1,
+          rangeMult: run.state === "rearm" ? sim.player.rangeMult : 1,
+          extraArrows: run.state === "rearm" ? sim.player.extraArrows : 0,
+          pierce: run.state === "rearm" ? sim.player.pierce : 0,
+        };
+        const s = weaponStats(preview);
+        add(
+          `${i + 1} · ${w.name}`,
+          `${w.description}. ${pendingHero === "ranger" ? s.damage + " damage / arrow" : s.damage + " / " + s.damage + " / " + s.finisher + " combo damage"}. ${weaponSummary(preview).replace(w.name + " · ", "")}${pendingHero === "vanguard" ? " · " + Math.round((w.halfArc * 360) / Math.PI) + "° arc" : ""}`,
+          () => {
+            if (run.state === "rearm") {
+              run.equip(w.id);
+              menuState = "";
+              updateRunMenu();
+            } else startHero(pendingHero, w.id);
+          },
+        );
+      });
   } else if (run.state === "upgrade") {
     text("run-title", `Wave ${run.wave} cleared · choose a relic`);
     text(
@@ -327,7 +419,7 @@ function updateRunMenu() {
       `Wave ${run.wave} / 5 · ${sim.player.kills} defeated · ${run.build.join(" / ") || "No relics"}. Same seed on retry; every run starts fresh.`,
     );
     add("1 · Retry this fighter", "Reset health, items and relics", () =>
-      startHero(sim.player.hero),
+      startHero(sim.player.hero, getWeapon(sim.player).id),
     );
     add("2 · Choose another fighter", "Try a different combat style", () => {
       run.state = "select";
@@ -360,12 +452,25 @@ function activateMenu(index: number) {
 }
 window.addEventListener("keydown", (e) => {
   if (practice || run.state === "fighting" || benchmarking) return;
+  if (e.code === "KeyE" && run.state === "upgrade") {
+    openRearm();
+    return;
+  }
+  if (
+    e.code === "Escape" &&
+    (run.state === "loadout" || run.state === "rearm")
+  ) {
+    run.state = run.state === "rearm" ? "upgrade" : "select";
+    menuState = "";
+    updateRunMenu();
+    return;
+  }
   if (
     e.code === "KeyR" &&
     !e.repeat &&
     (run.state === "defeat" || run.state === "victory")
   ) {
-    startHero(sim.player.hero);
+    startHero(sim.player.hero, getWeapon(sim.player).id);
     return;
   }
   if (["Digit1", "Digit2", "Digit3"].includes(e.code) && !e.repeat) {
@@ -377,6 +482,17 @@ function pollMenuGamepad() {
   const pad = Array.from(navigator.getGamepads?.() ?? []).find(
     (p) => p?.connected,
   );
+  const back = pad?.buttons[1]?.pressed ?? false;
+  if (
+    back &&
+    !previousMenuBack &&
+    (run.state === "loadout" || run.state === "rearm")
+  ) {
+    run.state = run.state === "rearm" ? "upgrade" : "select";
+    menuState = "";
+    updateRunMenu();
+  }
+  previousMenuBack = back;
   const a = pad?.buttons[0]?.pressed ?? false;
   const direction =
     pad?.buttons[13]?.pressed || (pad?.axes[1] ?? 0) > 0.6
@@ -397,6 +513,7 @@ function pollMenuGamepad() {
     const buttons = element("run-choices").querySelectorAll("button");
     if (y && run.state === "select")
       element<HTMLButtonElement>("shuffle-seed").click();
+    else if (y && run.state === "upgrade") openRearm();
     else if (y && (run.state === "defeat" || run.state === "victory"))
       activateMenu(0);
     else if (direction) {
@@ -406,6 +523,18 @@ function pollMenuGamepad() {
   }
   menuPadHeld = held;
 }
+function openRearm() {
+  pendingHero = sim.player.hero;
+  run.state = "rearm";
+  menuState = "";
+  updateRunMenu();
+}
+element<HTMLButtonElement>("rearm").onclick = () => openRearm();
+element<HTMLButtonElement>("back-to-heroes").onclick = () => {
+  run.state = run.state === "rearm" ? "upgrade" : "select";
+  menuState = "";
+  updateRunMenu();
+};
 element<HTMLButtonElement>("shuffle-seed").onclick = () => {
   run.seed = crypto.getRandomValues(new Uint32Array(1))[0]!;
   const url = new URL(location.href);

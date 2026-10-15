@@ -14,6 +14,8 @@ test("choose the ranger, fire assisted arrows, use its special and spend a bomb"
   await expect(page.locator("#run-title")).toHaveText("Choose your fighter");
   await expect(page.locator("#run-overlay")).toBeVisible();
   await page.keyboard.press("Digit2");
+  await expect(page.locator("#run-title")).toContainText("Choose your weapon");
+  await page.keyboard.press("Digit1");
   await expect(page.locator("#run-overlay")).toBeHidden();
   await expect(page.locator("#hp")).toHaveText("85 / 85");
   await expect(page.locator("#objective")).toContainText("WAVE 1 / 5");
@@ -111,6 +113,8 @@ test("clear finite waves, pick relics, win and retry with a fresh build", async 
   await page.goto("/?backend=webgl");
   await expect(page.locator("#run-title")).toHaveText("Choose your fighter");
   await page.keyboard.press("Enter");
+  await expect(page.locator("#run-title")).toContainText("Choose your weapon");
+  await page.keyboard.press("Enter");
   await expect(page.locator("#run-overlay")).toBeHidden();
   for (let wave = 1; wave <= 5; wave++) {
     await expect(page.locator("#objective")).toContainText(`WAVE ${wave} / 5`);
@@ -204,6 +208,12 @@ test("gamepad navigates hero and relic menus without a keyboard", async ({
   await press(13);
   await expect(page.locator("#run-choices button").nth(1)).toBeFocused();
   await press(0);
+  await expect(page.locator("#run-title")).toContainText("Choose your weapon");
+  await press(13);
+  await press(13);
+  await expect(page.locator("#run-choices button").nth(2)).toBeFocused();
+  await press(0);
+  await expect(page.locator("#weapon-stats")).toContainText("Fan Bow");
   await expect(page.locator("#hp")).toHaveText("85 / 85");
   await page.evaluate(() => {
     const m = (window as unknown as RunWindow).musou;
@@ -213,10 +223,33 @@ test("gamepad navigates hero and relic menus without a keyboard", async ({
       m.run.step({ x: 0, z: 0, yaw: 0, attack: false, respawn: false });
   });
   await expect(page.locator("#run-title")).toContainText("Wave 1 cleared");
+  await press(3);
+  await expect(page.locator("#run-title")).toContainText("Choose your weapon");
+  await press(0);
+  await expect(page.locator("#run-title")).toContainText("Wave 1 cleared");
+  await expect(page.locator("#weapon-stats")).toContainText("Shortbow");
   await press(13);
   await expect(page.locator("#run-choices button").nth(1)).toBeFocused();
   await press(0);
   await expect(page.locator("#objective")).toContainText("WAVE 2 / 5");
+  const tick = await page.evaluate(() => {
+    const w = window as unknown as RunWindow;
+    w.musou.pause(true);
+    w.runPad.buttons[3]!.pressed = true;
+    w.musou.pause(false);
+    return w.musou.sim.ticks;
+  });
+  await expect
+    .poll(() =>
+      page.evaluate(() => (window as unknown as RunWindow).musou.sim.ticks),
+    )
+    .toBeGreaterThan(tick + 10);
+  expect(
+    await page.evaluate(() => (window as unknown as RunWindow).musou.run.wave),
+  ).toBe(2);
+  await page.evaluate(() => {
+    (window as unknown as RunWindow).runPad.buttons[3]!.pressed = false;
+  });
 });
 
 test("character choice fits a narrow viewport", async ({ page }) => {
