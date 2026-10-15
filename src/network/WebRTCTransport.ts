@@ -26,10 +26,7 @@ export class ManualSignaling {
   }
 }
 export class WebRTCTransport {
-  readonly pc = new RTCPeerConnection({
-    iceServers: [],
-    iceTransportPolicy: "all",
-  });
+  readonly pc: RTCPeerConnection;
   channels = new Map<Channel, RTCDataChannel>();
   onmessage: (channel: Channel, value: unknown) => void = () => {};
   onopen = () => {};
@@ -47,7 +44,11 @@ export class WebRTCTransport {
       ),
     120_000,
   );
-  constructor(host: boolean) {
+  constructor(host: boolean, automatic = false) {
+    this.pc = new RTCPeerConnection({
+      iceServers: automatic ? [{ urls: "stun:stun.cloudflare.com:3478" }] : [],
+      iceTransportPolicy: "all",
+    });
     this.pc.onconnectionstatechange = () => {
       if (
         ["failed", "disconnected", "closed"].includes(this.pc.connectionState)

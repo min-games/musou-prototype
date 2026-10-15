@@ -17,7 +17,8 @@ export default defineConfig({
     },
   },
   webServer: {
-    command: "npm run build && node scripts/serve.mjs",
+    command:
+      "npx vite build --mode test && MUSOU_DIST=test-dist node scripts/precache.mjs && MUSOU_DIST=test-dist node scripts/serve.mjs",
     port: 5187,
     reuseExistingServer: false,
   },

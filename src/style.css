@@ -715,3 +715,33 @@ aside p {
     top: 12px;
   }
 }
+#lan-menu input {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 8px;
+  background: #07151c;
+  color: #eee6d1;
+  border: 1px solid #6d796a;
+  border-radius: 3px;
+}
+#room-code {
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-size: 16px;
+}
+#room-status {
+  max-width: 38em;
+  line-height: 1.5;
+}
+#lan-advanced {
+  margin-top: 14px;
+  border-top: 1px solid #6d796a;
+  padding-top: 10px;
+}
+#lan-menu button {
+  min-height: 36px;
+}
+#lan-menu {
+  box-sizing: border-box;
+}

@@ -7,6 +7,9 @@ async function connect(host: Page, guest: Page) {
     if ((await page.locator("#lan-menu").getAttribute("open")) === null)
       await page.locator("#lan-menu summary").first().click();
   }
+  for (const page of [host, guest])
+    if ((await page.locator("#lan-advanced").getAttribute("open")) === null)
+      await page.locator("#lan-advanced > summary").click();
   await host
     .getByRole("button", { name: "Host LAN Game", exact: true })
     .click();

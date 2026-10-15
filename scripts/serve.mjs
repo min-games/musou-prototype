@@ -2,7 +2,7 @@
 import { createServer } from "node:http";
 import { readFileSync, statSync } from "node:fs";
 import { resolve, extname, sep } from "node:path";
-const root = resolve("dist");
+const root = resolve(process.env.MUSOU_DIST || "dist");
 const types = {
   ".html": "text/html",
   ".js": "text/javascript",

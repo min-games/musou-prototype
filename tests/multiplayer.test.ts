@@ -30,6 +30,7 @@ class FakeChannel {
   }
 }
 class FakePeer {
+  constructor(readonly configuration?: RTCConfiguration) {}
   connectionState = "new";
   iceGatheringState = "complete";
   channels: FakeChannel[] = [];
@@ -53,6 +54,26 @@ describe("manual signaling and transport", () => {
     for (const s of ["{}", "null", code.replace("1", "2"), "x".repeat(100001)])
       expect(() => ManualSignaling.decode(s, "offer")).toThrow();
     expect(() => ManualSignaling.decode(code, "answer")).toThrow();
+  });
+  it("uses only Cloudflare STUN in automatic mode and no public ICE in manual mode", () => {
+    setup();
+    const manual = new WebRTCTransport(true),
+      automatic = new WebRTCTransport(true, true);
+    expect(
+      (manual.pc as unknown as FakePeer).configuration?.iceServers,
+    ).toEqual([]);
+    expect(
+      (automatic.pc as unknown as FakePeer).configuration?.iceServers,
+    ).toEqual([{ urls: "stun:stun.cloudflare.com:3478" }]);
+    expect(
+      (automatic.pc as unknown as FakePeer).channels.map((c) => c.options),
+    ).toEqual([
+      { ordered: false, maxRetransmits: 0 },
+      { ordered: false, maxRetransmits: 0 },
+      { ordered: true },
+    ]);
+    manual.close();
+    automatic.close();
   });
   it("creates specified channels, drops large/blocked messages and cleans up", () => {
     setup();

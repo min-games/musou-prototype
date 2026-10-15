@@ -4,12 +4,13 @@ const walk = (dir) =>
   readdirSync(dir, { withFileTypes: true }).flatMap((e) =>
     e.isDirectory() ? walk(`${dir}/${e.name}`) : [`${dir}/${e.name}`],
   );
-const files = walk("dist")
+const root = process.env.MUSOU_DIST || "dist";
+const files = walk(root)
   .filter((f) => !f.endsWith("sw.js"))
   .sort();
 const digest = createHash("sha256");
 for (const f of files) digest.update(readFileSync(f));
-const assets = files.map((f) => "./" + f.slice(5));
+const assets = files.map((f) => "./" + f.slice(root.length + 1));
 const template = readFileSync("public/sw.js", "utf8");
 if (
   !template.includes('"__BUILD_VERSION__"') ||
@@ -18,7 +19,7 @@ if (
   throw new Error("Service worker precache placeholders are missing");
 }
 writeFileSync(
-  "dist/sw.js",
+  `${root}/sw.js`,
   template
     .replace(
       '"__BUILD_VERSION__"',

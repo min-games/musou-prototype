@@ -37,8 +37,10 @@ export abstract class MultiplayerSession {
   constructor(
     readonly sim: Simulation,
     readonly role: "Host" | "Client",
+    automatic = false,
   ) {
-    this.transport = new WebRTCTransport(role === "Host");
+    this.transport = new WebRTCTransport(role === "Host", automatic);
+    if (automatic) this.status = "Waiting for room connection";
     this.transport.onopen = () => {
       this.connected = true;
       this.status = "Connected";
@@ -46,6 +48,7 @@ export abstract class MultiplayerSession {
       this.open();
     };
     this.transport.onclose = (reason) => {
+      this.ondispose();
       this.connected = false;
       this.status = reason;
       this.sim.remotePlayers.clear();
@@ -85,7 +88,9 @@ export abstract class MultiplayerSession {
       this.status = "Peer stopped responding. Repeat manual signaling.";
     }
   }
+  ondispose = () => {};
   close() {
+    this.ondispose();
     this.transport.close();
     this.connected = false;
     this.status = "Disconnected. Repeat manual signaling to reconnect.";
@@ -98,8 +103,8 @@ export class HostSession extends MultiplayerSession {
   private latest = { ...idleInput };
   private inputAt = 0;
   private snapshotTime = 0;
-  constructor(sim: Simulation) {
-    super(sim, "Host");
+  constructor(sim: Simulation, automatic = false) {
+    super(sim, "Host", automatic);
   }
   protected open() {
     const player = {
@@ -184,8 +189,8 @@ export class ClientSession extends MultiplayerSession {
   private seq = 0;
   private sendTime = 0;
   private pending = { ...idleInput };
-  constructor(sim: Simulation) {
-    super(sim, "Client");
+  constructor(sim: Simulation, automatic = false) {
+    super(sim, "Client", automatic);
     this.localId = "p2";
   }
   protected open() {}

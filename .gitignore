@@ -2,3 +2,4 @@ node_modules/
 dist/
 test-results/
 evidence/playwright-report*/
+test-dist/

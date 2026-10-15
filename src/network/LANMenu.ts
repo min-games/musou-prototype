@@ -1,3 +1,12 @@
+import {
+  RoomSignaling,
+  requestRoom,
+  roomCode,
+  invitedRoom,
+  inviteLink,
+  signalingBase,
+  roomError,
+} from "./RoomSignaling";
 import type { Simulation, InputFrame } from "../GameLoop";
 import {
   ClientSession,
@@ -7,6 +16,11 @@ import {
 export class LANMenu {
   session?: MultiplayerSession;
   private generation = 0;
+  private automatic = false;
+  private signaling?: RoomSignaling;
+  private request?: AbortController;
+  private roomStatus = "";
+  private invite = "";
   private panel: HTMLElement;
   private status: HTMLElement;
   private code: HTMLTextAreaElement;
@@ -24,7 +38,7 @@ export class LANMenu {
     this.panel = document.createElement("details");
     this.panel.id = "lan-menu";
     this.panel.addEventListener("keydown", (e) => e.stopPropagation());
-    this.panel.innerHTML = `<summary>LAN Multiplayer</summary><p>Two-player endless arena · same Wi-Fi. Exchange codes privately. Wi-Fi isolation or firewalls may block connections. Reconnect by repeating this exchange.</p><div class="lan-actions"><button id="lan-single">Single Player</button><button id="lan-host">Host LAN Game</button><button id="lan-join">Join LAN Game</button><button id="lan-disconnect">Disconnect</button></div><label>Paste Offer / Answer<textarea id="lan-code" aria-label="Paste Offer / Answer" spellcheck="false"></textarea></label><div class="lan-actions"><button id="lan-offer">Paste Offer · Generate Answer</button><button id="lan-answer">Paste Answer · Connect</button></div><label>Your complete code<textarea id="lan-output" aria-label="Your complete code" readonly></textarea></label><div class="lan-actions"><button id="lan-copy-offer">Copy Offer</button><button id="lan-copy-answer">Copy Answer</button></div><p id="lan-status" role="status"></p><details><summary>Network diagnostics</summary><pre id="lan-diagnostics"></pre></details>`;
+    this.panel.innerHTML = `<summary>Multiplayer</summary><p>Two-player endless arena · direct WebRTC. Create a game, then share its room code or invite link. Some networks block direct connections.</p><div class="lan-actions"><button id="room-create">Create Game</button><button id="lan-single">Single Player</button><button id="lan-disconnect">Disconnect</button></div><label>Room code<input id="room-code" aria-label="Room code" maxlength="8" autocomplete="off" spellcheck="false" placeholder="ABCD2345"></label><div class="lan-actions"><button id="room-join">Join Game</button><button id="room-copy">Copy invite link</button></div><label>Invite link<input id="room-invite" aria-label="Invite link" placeholder="Appears after creating or joining a room" readonly></label><p id="room-status" role="status"></p><details id="lan-advanced"><summary>Advanced · offline manual exchange</summary><p>Same Wi-Fi, no signaling service or public ICE servers. Exchange the complete Offer and Answer privately.</p><div class="lan-actions"><button id="lan-host">Host LAN Game</button><button id="lan-join">Join LAN Game</button></div><label>Paste Offer / Answer<textarea id="lan-code" aria-label="Paste Offer / Answer" spellcheck="false"></textarea></label><div class="lan-actions"><button id="lan-offer">Paste Offer · Generate Answer</button><button id="lan-answer">Paste Answer · Connect</button></div><label>Your complete code<textarea id="lan-output" aria-label="Your complete code" readonly></textarea></label><div class="lan-actions"><button id="lan-copy-offer">Copy Offer</button><button id="lan-copy-answer">Copy Answer</button></div></details><p id="lan-status" role="status"></p><details><summary>Network diagnostics</summary><pre id="lan-diagnostics"></pre></details>`;
     document.body.append(this.panel);
     this.status = this.panel.querySelector("#lan-status")!;
     this.code = this.panel.querySelector("#lan-code")!;
@@ -48,6 +62,81 @@ export class LANMenu {
             report(e);
           }
         });
+    const input = this.panel.querySelector<HTMLInputElement>("#room-code")!;
+    const readInvite = () => {
+      const code = invitedRoom(location.hash);
+      if (!code) return;
+      input.value = code;
+      (this.panel as HTMLDetailsElement).open = true;
+      this.roomStatus = "Invite ready. Select Join Game when you are ready.";
+      this.refresh();
+    };
+    readInvite();
+    window.addEventListener("hashchange", readInvite);
+    const automatic = async (join: boolean) => {
+      const code = join ? roomCode(input.value) : undefined;
+      this.cancelRoom();
+      const previous = this.session;
+      previous?.close();
+      this.session = undefined;
+      if (previous) this.leave();
+      const generation = ++this.generation;
+      const controller = (this.request = new AbortController());
+      this.roomStatus = join ? "Joining room…" : "Creating game…";
+      this.refresh();
+      try {
+        const credentials = await requestRoom(
+          signalingBase(),
+          code,
+          controller.signal,
+        );
+        if (generation !== this.generation) return;
+        this.request = undefined;
+        const session = this.start(
+          credentials.role === "host" ? "host" : "client",
+          true,
+        );
+        input.value = credentials.room;
+        this.invite = inviteLink(credentials.room);
+        this.panel.querySelector<HTMLInputElement>("#room-invite")!.value =
+          this.invite;
+        this.roomStatus = "Authenticating room…";
+        this.signaling = new RoomSignaling(
+          signalingBase(),
+          credentials,
+          session.transport.pc,
+          () => session.connected,
+          (text) => {
+            if (this.session === session) {
+              this.roomStatus = text;
+              this.refresh();
+            }
+          },
+        );
+        session.ondispose = () => this.cancelRoom(false);
+      } catch (e) {
+        if (generation === this.generation) {
+          this.request = undefined;
+          this.roomStatus = roomError(
+            e instanceof Error ? e.message : "network",
+          );
+          this.refresh();
+        }
+      }
+    };
+    bind("room-create", () => automatic(false));
+    bind("room-join", () => automatic(true));
+    bind("room-copy", async () => {
+      if (!this.invite) throw new Error("Create or join a game first.");
+      try {
+        await navigator.clipboard.writeText(this.invite);
+        this.roomStatus = "Invite link copied.";
+      } catch {
+        this.panel.querySelector<HTMLInputElement>("#room-invite")!.select();
+        this.roomStatus = "Select and copy the invite link manually.";
+      }
+      this.refresh();
+    });
     bind("lan-host", async () => {
       const s = this.start("host"),
         generation = this.generation;
@@ -63,7 +152,7 @@ export class LANMenu {
       this.output.value = "";
     });
     bind("lan-offer", async () => {
-      if (!(this.session instanceof ClientSession))
+      if (!(this.session instanceof ClientSession) || this.automatic)
         throw new Error("Select Join LAN Game first");
       const s = this.session,
         generation = this.generation;
@@ -74,7 +163,7 @@ export class LANMenu {
       s.status = "Copy Answer to host. Waiting for host connection…";
     });
     bind("lan-answer", async () => {
-      if (!(this.session instanceof HostSession))
+      if (!(this.session instanceof HostSession) || this.automatic)
         throw new Error("Select Host LAN Game first");
       const session = this.session;
       await session.transport.accept(this.code.value);
@@ -95,12 +184,14 @@ export class LANMenu {
         }
       });
     bind("lan-disconnect", () => {
+      this.cancelRoom();
       this.session?.close();
       this.generation++;
       this.code.value = "";
       this.output.value = "";
     });
     bind("lan-single", () => {
+      this.cancelRoom();
       this.session?.close();
       this.session = undefined;
       this.generation++;
@@ -108,18 +199,40 @@ export class LANMenu {
       this.output.value = "";
       this.leave();
     });
-    window.addEventListener("pagehide", () => this.session?.close());
+    window.addEventListener("pagehide", () => {
+      this.cancelRoom();
+      this.generation++;
+      this.session?.close();
+    });
     this.refresh();
   }
-  private start(role: "host" | "client") {
+  private cancelRoom(clear = true) {
+    this.request?.abort();
+    this.request = undefined;
+    this.signaling?.close();
+    this.signaling = undefined;
+    if (clear) {
+      this.roomStatus = "";
+      this.invite = "";
+      const link = this.panel.querySelector<HTMLInputElement>("#room-invite");
+      if (link) link.value = "";
+    }
+  }
+  private start(role: "host" | "client", automatic = false) {
+    this.cancelRoom();
     this.session?.close();
+    this.code.value = "";
+    this.output.value = "";
     this.generation++;
+    this.automatic = automatic;
     this.metricsAt = performance.now();
     this.previousSnapshots = 0;
     this.snapshotHz = 0;
     this.enter();
     this.session =
-      role === "host" ? new HostSession(this.sim) : new ClientSession(this.sim);
+      role === "host"
+        ? new HostSession(this.sim, automatic)
+        : new ClientSession(this.sim, automatic);
     return this.session;
   }
   step(input: InputFrame, dt: number) {
@@ -127,6 +240,7 @@ export class LANMenu {
   }
   refresh() {
     const s = this.session;
+    this.panel.querySelector("#room-status")!.textContent = this.roomStatus;
     const now = performance.now();
     if (s && now - this.metricsAt >= 1000) {
       this.snapshotHz =
