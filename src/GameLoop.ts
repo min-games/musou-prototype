@@ -22,6 +22,10 @@ export const idleInput: InputFrame = {
 };
 export class Simulation {
   player = newPlayer();
+  remotePlayers = new Map<
+    string,
+    { player: ReturnType<typeof newPlayer>; combat: CombatSystem }
+  >();
   enemies = new EnemyStore();
   grid = new SpatialGrid();
   combat = new CombatSystem();
@@ -41,6 +45,8 @@ export class Simulation {
     this.enemies.spawn(count, seed);
   }
   reset(count = this.enemies.enemies.length) {
+    this.remotePlayers.clear();
+    this.remoteInputs.clear();
     this.player = newPlayer();
     this.enemies.spawn(count, this.seed);
     this.combat.reset();
@@ -54,7 +60,38 @@ export class Simulation {
       this.reset();
       return;
     }
-    const p = this.player;
+    this.enemies.advanceRespawns(
+      dt,
+      this.player.x,
+      this.player.z,
+      this.respawning,
+    );
+    this.grid.rebuild(this.enemies.enemies);
+    this.advancePlayer(this.player, this.combat, input, dt);
+    for (const [id, entry] of this.remotePlayers)
+      this.advancePlayer(
+        entry.player,
+        entry.combat,
+        this.remoteInputs.get(id) ?? idleInput,
+        dt,
+      );
+    this.crowd.step(
+      this.enemies.enemies,
+      this.player,
+      this.combat,
+      this.grid,
+      dt,
+      [...this.remotePlayers.values()].map((e) => e.player),
+    );
+    this.ticks++;
+  }
+  remoteInputs = new Map<string, InputFrame>();
+  advancePlayer(
+    p: ReturnType<typeof newPlayer>,
+    combat: CombatSystem,
+    input: InputFrame,
+    dt: number,
+  ) {
     p.dashCooldown = Math.max(0, p.dashCooldown - dt);
     const length = Math.hypot(input.x, input.z);
     if (input.dodge && p.hp > 0 && p.dashCooldown <= 0 && p.specialTimer <= 0) {
@@ -79,26 +116,22 @@ export class Simulation {
       if (!(p.hero === "ranger" && (input.attack || input.attackHeld)))
         p.yaw = Math.atan2(x, z);
     }
-    this.enemies.advanceRespawns(dt, p.x, p.z, this.respawning);
-    this.grid.rebuild(this.enemies.enemies);
     if (input.bomb && p.bombs > 0 && p.hp > 0 && p.bombTimer <= 0) {
       p.bombs--;
       p.bombTimer = 0.6;
       p.bombX = p.x;
       p.bombZ = p.z;
       for (const e of this.grid.query(p.x, p.z, 8))
-        this.combat.applyHit(p, e, 160, true);
+        combat.applyHit(p, e, 160, true);
     }
-    this.combat.step(
+    combat.step(
       p,
       this.grid,
       input.attack || (p.hero === "ranger" && !!input.attackHeld),
       dt,
       input.special,
     );
-    this.combat.advanceArrows(p, this.grid, dt);
-    this.crowd.step(this.enemies.enemies, p, this.combat, this.grid, dt);
-    this.ticks++;
+    combat.advanceArrows(p, this.grid, dt);
   }
 }
 export class GameLoop {

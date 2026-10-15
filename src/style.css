@@ -661,3 +661,57 @@ aside p {
 #rearm[hidden] {
   display: none;
 }
+
+#lan-menu {
+  position: fixed;
+  right: 16px;
+  top: 124px;
+  z-index: 30;
+  pointer-events: auto;
+  color: #e8e2cf;
+  background: #12232df5;
+  border: 1px solid #6d796a;
+  border-radius: 8px;
+  padding: 8px 12px;
+  max-width: min(460px, calc(100vw - 32px));
+  max-height: 85vh;
+  overflow: auto;
+  font-size: 12px;
+}
+#lan-menu summary {
+  cursor: pointer;
+}
+#lan-menu textarea {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  height: 66px;
+  background: #07151c;
+  color: #eee6d1;
+  border: 1px solid #6d796a;
+}
+#lan-menu label {
+  display: block;
+  margin: 8px 0;
+}
+#lan-menu .lan-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+#lan-menu button {
+  font-size: 11px;
+  padding: 7px;
+}
+#lan-menu pre {
+  white-space: pre-wrap;
+}
+
+#lan-menu[open] {
+  top: 12px;
+}
+@media (max-width: 650px) {
+  #lan-menu {
+    top: 12px;
+  }
+}

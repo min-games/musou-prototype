@@ -29,6 +29,10 @@ export class BabylonRenderer implements Renderer {
   private scene: Scene;
   private instrumentation: SceneInstrumentation;
   private camera: FreeCamera;
+  private remoteRigs = new Map<
+    string,
+    ReturnType<BabylonRenderer["heroRig"]>
+  >();
   private player: TransformNode;
   private blade: Mesh;
   private bow: Mesh;
@@ -499,6 +503,171 @@ export class BabylonRenderer implements Renderer {
     fill.material = this.materials[kind];
     this.enemies.push({ body, warning, health, fill, kind });
   }
+  private remoteEffects = new Map<
+    string,
+    ReturnType<BabylonRenderer["effectsRig"]>
+  >();
+  private effectsRig() {
+    return {
+      bombWave: this.bombWave,
+      waves: this.waves,
+      core: this.core,
+      sparks: this.sparks,
+      waveMaterial: this.waveMaterial,
+      sparkMaterial: this.sparkMaterial,
+    };
+  }
+  private animateEffects(
+    p: Simulation["player"],
+    rig: ReturnType<BabylonRenderer["effectsRig"]>,
+  ) {
+    rig.bombWave.setEnabled(p.bombTimer > 0);
+    rig.bombWave.position.set(p.bombX, 0.18, p.bombZ);
+    rig.bombWave.scaling.setAll(Math.min(8, 0.5 + (0.6 - p.bombTimer) * 24));
+    const elapsed = SPECIAL.duration - p.specialTimer,
+      active = p.specialTimer > 0;
+    const burst = Math.max(0, elapsed - SPECIAL.impactAt),
+      progress = Math.min(1, burst / 0.6);
+    rig.waveMaterial.emissiveColor = Color3.FromHexString(
+      p.hero === "ranger" ? "#74e4f3" : "#ffe3a0",
+    );
+    rig.sparkMaterial.emissiveColor = Color3.FromHexString(
+      p.hero === "ranger" ? "#a0f2ff" : "#fff3c0",
+    );
+    rig.waveMaterial.alpha = 0.85 * (1 - progress);
+    rig.sparkMaterial.alpha = 1 - progress;
+    for (let i = 0; i < rig.waves.length; i++) {
+      const wave = rig.waves[i]!;
+      wave.setEnabled(active);
+      const radius =
+        elapsed < SPECIAL.impactAt
+          ? 0.8 + elapsed * 2
+          : Math.min(
+              SPECIAL.radius,
+              Math.max(0.2, ((burst - i * 0.06) / 0.24) * SPECIAL.radius),
+            );
+      wave.position.set(p.specialX, 0.12 + i * 0.3, p.specialZ);
+      const r = p.hero === "ranger" ? 4.5 : radius;
+      wave.scaling.set(r, 1, r);
+    }
+    rig.core.setEnabled(active && p.hero !== "ranger" && burst < 0.25);
+    rig.core.position.set(p.specialX, 1, p.specialZ);
+    rig.core.scaling.setAll(
+      elapsed < SPECIAL.impactAt ? 0.8 + elapsed * 4 : 2.4 * (1 - burst / 0.25),
+    );
+    for (let i = 0; i < rig.sparks.length; i++) {
+      const spark = rig.sparks[i]!;
+      spark.setEnabled(
+        active && burst > 0 && progress < 1 && (!this.reducedMotion || i < 8),
+      );
+      const a = i * 2.39996,
+        radius =
+          p.hero === "ranger"
+            ? 0.5 + (i % 6) * 0.65
+            : 0.6 + progress * (4 + (i % 5));
+      spark.position.set(
+        p.specialX + Math.sin(a) * radius,
+        p.hero === "ranger"
+          ? 0.2 + ((1 - progress + (i % 4) * 0.12) % 1) * 8
+          : 0.5 + Math.sin(progress * Math.PI) * (1 + (i % 4) * 0.3),
+        p.specialZ + Math.cos(a) * radius,
+      );
+      spark.scaling.set(
+        1 - progress * 0.6,
+        p.hero === "ranger" ? 6 : 1 + (i % 3),
+        1 - progress * 0.6,
+      );
+    }
+    return { burst, progress };
+  }
+  private heroRig() {
+    return {
+      player: this.player,
+      cape: this.cape,
+      blade: this.blade,
+      guard: this.guard,
+      shaft: this.shaft,
+      spearTip: this.spearTip,
+      bow: this.bow,
+      fanLimb: this.fanLimb,
+      slash: this.slash,
+      sigil: this.sigil,
+      slashArc: this.slashArc,
+    };
+  }
+  private animateHero(
+    p: Simulation["player"],
+    time: number,
+    rig: ReturnType<BabylonRenderer["heroRig"]>,
+  ) {
+    const stats = weaponStats(p),
+      weapon = stats.weapon;
+    rig.player.position.set(
+      p.x,
+      p.specialTimer > 0 && !this.reducedMotion
+        ? Math.sin(
+            ((SPECIAL.duration - p.specialTimer) / SPECIAL.duration) * Math.PI,
+          ) * 0.35
+        : 0,
+      p.z,
+    );
+    rig.player.rotation.y =
+      p.yaw +
+      (p.specialTimer > 0 && p.hero !== "ranger" && !this.reducedMotion
+        ? (SPECIAL.duration - p.specialTimer) * 15
+        : 0);
+    rig.player.rotation.z = p.hp <= 0 ? 1.2 : p.dashTimer > 0 ? -0.12 : 0;
+    rig.cape.rotation.x =
+      -0.15 - Math.sin(time * 6) * 0.05 - (p.dashTimer > 0 ? 0.6 : 0);
+    rig.blade.position.z =
+      0.9 +
+      (weapon.id === "spear" && p.swing > 0
+        ? Math.sin((1 - p.swing / p.swingDuration) * Math.PI) * 0.7
+        : 0);
+    rig.blade.rotation.y =
+      weapon.id === "spear"
+        ? 0
+        : p.swing > 0
+          ? (1 - p.swing / p.swingDuration) * 4 - 1.5
+          : p.specialTimer > 0
+            ? -1.2
+            : 0;
+    rig.blade.scaling.set(
+      weapon.id === "greatblade" ? 4 : 1,
+      1,
+      (weapon.id === "greatblade" ? 1.4 : 1) * (p.swing > 0 ? 1.15 : 1),
+    );
+    rig.guard.scaling.x = weapon.id === "greatblade" ? 0.45 : 1;
+    rig.guard.setEnabled(weapon.id !== "spear");
+    rig.shaft.setEnabled(weapon.id === "spear");
+    rig.spearTip.setEnabled(weapon.id === "spear");
+    rig.bow.scaling.set(
+      weapon.id === "fanbow" ? 1.25 : 1,
+      weapon.id === "longbow" ? 1.5 : weapon.id === "fanbow" ? 0.85 : 1,
+      1,
+    );
+    rig.fanLimb.setEnabled(weapon.id === "fanbow");
+    if (p.hero !== "ranger" && rig.slashArc !== weapon.halfArc) {
+      rig.slash.dispose();
+      rig.slash = this.sector("melee arc", 2.8, weapon.halfArc);
+      rig.slash.parent = rig.player;
+      rig.slash.position.y = 0.65;
+      rig.slashArc = weapon.halfArc;
+    }
+    rig.slash.scaling.set(stats.range / 2.8, 1, stats.range / 2.8);
+    rig.blade.setEnabled(p.hero !== "ranger");
+    rig.blade.isVisible = weapon.id !== "spear";
+    rig.bow.setEnabled(p.hero === "ranger");
+    rig.slash.setEnabled(
+      p.hero !== "ranger" &&
+        p.swing / p.swingDuration > 0.1 / 0.38 &&
+        p.swing / p.swingDuration < 0.29 / 0.38,
+    );
+    rig.bow.position.y = weapon.id === "longbow" ? 1.2 : 1;
+    rig.bow.rotation.y = p.swing > 0 ? -0.25 : 0;
+    rig.slash.material = p.stage === 3 ? this.gold : this.cyan;
+    rig.sigil.scaling.setAll(p.charge >= 100 ? 1.08 : 1);
+  }
   render(sim: Simulation, yaw: number, pitch: number, fixed = false) {
     const p = sim.player,
       time = sim.ticks / 60;
@@ -509,70 +678,81 @@ export class BabylonRenderer implements Renderer {
         sim.enemies.enemies[this.enemies.length]!.kind,
         this.enemies.length,
       );
-    this.player.position.set(
-      p.x,
-      p.specialTimer > 0 && !this.reducedMotion
-        ? Math.sin(
-            ((SPECIAL.duration - p.specialTimer) / SPECIAL.duration) * Math.PI,
-          ) * 0.35
-        : 0,
-      p.z,
-    );
-    this.player.rotation.y =
-      p.yaw +
-      (p.specialTimer > 0 && p.hero !== "ranger" && !this.reducedMotion
-        ? (SPECIAL.duration - p.specialTimer) * 15
-        : 0);
-    this.player.rotation.z = p.hp <= 0 ? 1.2 : p.dashTimer > 0 ? -0.12 : 0;
-    this.cape.rotation.x =
-      -0.15 - Math.sin(time * 6) * 0.05 - (p.dashTimer > 0 ? 0.6 : 0);
-    this.blade.position.z =
-      0.9 +
-      (weapon.id === "spear" && p.swing > 0
-        ? Math.sin((1 - p.swing / p.swingDuration) * Math.PI) * 0.7
-        : 0);
-    this.blade.rotation.y =
-      weapon.id === "spear"
-        ? 0
-        : p.swing > 0
-          ? (1 - p.swing / p.swingDuration) * 4 - 1.5
-          : p.specialTimer > 0
-            ? -1.2
-            : 0;
-    this.blade.scaling.set(
-      weapon.id === "greatblade" ? 4 : 1,
-      1,
-      (weapon.id === "greatblade" ? 1.4 : 1) * (p.swing > 0 ? 1.15 : 1),
-    );
-    this.guard.scaling.x = weapon.id === "greatblade" ? 0.45 : 1;
-    this.guard.setEnabled(weapon.id !== "spear");
-    this.shaft.setEnabled(weapon.id === "spear");
-    this.spearTip.setEnabled(weapon.id === "spear");
-    this.bow.scaling.set(
-      weapon.id === "fanbow" ? 1.25 : 1,
-      weapon.id === "longbow" ? 1.5 : weapon.id === "fanbow" ? 0.85 : 1,
-      1,
-    );
-    this.fanLimb.setEnabled(weapon.id === "fanbow");
-    if (p.hero !== "ranger" && this.slashArc !== weapon.halfArc) {
-      this.slash.dispose();
-      this.slash = this.sector("melee arc", 2.8, weapon.halfArc);
-      this.slash.parent = this.player;
-      this.slash.position.y = 0.65;
-      this.slashArc = weapon.halfArc;
+    const localRig = this.heroRig();
+    this.animateHero(p, time, localRig);
+    this.slash = localRig.slash;
+    this.slashArc = localRig.slashArc;
+    for (const [id, rig] of this.remoteRigs)
+      if (!sim.remotePlayers.has(id)) {
+        rig.player.dispose();
+        this.remoteRigs.delete(id);
+        const fx = this.remoteEffects.get(id);
+        if (fx) {
+          [fx.bombWave, fx.core, ...fx.waves, ...fx.sparks].forEach((m) =>
+            m.dispose(),
+          );
+          fx.waveMaterial.dispose();
+          fx.sparkMaterial.dispose();
+          this.remoteEffects.delete(id);
+        }
+      }
+    for (const [id, entry] of sim.remotePlayers) {
+      let rig = this.remoteRigs.get(id);
+      if (!rig) {
+        const source = this.heroRig();
+        const nodes = new Map<TransformNode, TransformNode>();
+        const copy = (
+          node: TransformNode,
+          parent: TransformNode | null,
+        ): TransformNode => {
+          const clone = node.clone(id + ":" + node.name, parent, true)!;
+          nodes.set(node, clone);
+          for (const child of node.getChildTransformNodes(true))
+            copy(child, clone);
+          return clone;
+        };
+        copy(this.player, null);
+        rig = { ...source };
+        rig.player = nodes.get(source.player) as typeof source.player;
+        rig.cape = nodes.get(source.cape) as typeof source.cape;
+        rig.blade = nodes.get(source.blade) as typeof source.blade;
+        rig.guard = nodes.get(source.guard) as typeof source.guard;
+        rig.shaft = nodes.get(source.shaft) as typeof source.shaft;
+        rig.spearTip = nodes.get(source.spearTip) as typeof source.spearTip;
+        rig.bow = nodes.get(source.bow) as typeof source.bow;
+        rig.fanLimb = nodes.get(source.fanLimb) as typeof source.fanLimb;
+        rig.slash = nodes.get(source.slash) as typeof source.slash;
+        rig.sigil = nodes.get(source.sigil) as typeof source.sigil;
+        this.remoteRigs.set(id, rig);
+        const fx = this.effectsRig();
+        const waveMaterial = fx.waveMaterial.clone(id + " wave")!,
+          sparkMaterial = fx.sparkMaterial.clone(id + " spark")!;
+        const waves = fx.waves.map((m) => {
+          const c = m.clone(id + " wave", null)!;
+          c.material = waveMaterial;
+          return c;
+        });
+        const sparks = fx.sparks.map((m) => {
+          const c = m.clone(id + " spark", null)!;
+          c.material = sparkMaterial;
+          return c;
+        });
+        this.remoteEffects.set(id, {
+          bombWave: fx.bombWave.clone(id + " bomb", null)!,
+          core: fx.core.clone(id + " core", null)!,
+          waves,
+          sparks,
+          waveMaterial,
+          sparkMaterial,
+        });
+      }
+      this.animateHero(entry.player, time, rig);
     }
-    this.slash.scaling.set(stats.range / 2.8, 1, stats.range / 2.8);
-    this.blade.setEnabled(p.hero !== "ranger");
-    this.blade.isVisible = weapon.id !== "spear";
-    this.bow.setEnabled(p.hero === "ranger");
-    this.slash.setEnabled(
-      p.hero !== "ranger" &&
-        p.swing / p.swingDuration > 0.1 / 0.38 &&
-        p.swing / p.swingDuration < 0.29 / 0.38,
-    );
-    this.bow.position.y = weapon.id === "longbow" ? 1.2 : 1;
-    this.bow.rotation.y = p.swing > 0 ? -0.25 : 0;
-    while (this.arrows.length < sim.combat.arrows.length) {
+    const visibleArrows = [
+      ...sim.combat.arrows,
+      ...[...sim.remotePlayers.values()].flatMap((e) => e.combat.arrows),
+    ];
+    while (this.arrows.length < visibleArrows.length) {
       const arrow = MeshBuilder.CreateBox(
         "arrow",
         { width: 0.065, height: 0.065, depth: 0.95 },
@@ -582,7 +762,7 @@ export class BabylonRenderer implements Renderer {
       this.arrows.push(arrow);
     }
     this.arrows.forEach((mesh, i) => {
-      const a = sim.combat.arrows[i];
+      const a = visibleArrows[i];
       mesh.setEnabled(!!a);
       if (a) {
         mesh.position.set(a.x, 1.05, a.z);
@@ -610,9 +790,6 @@ export class BabylonRenderer implements Renderer {
         mesh.rotation.z = item.kind === "health" ? Math.PI : 0;
       }
     });
-    this.bombWave.setEnabled(p.bombTimer > 0);
-    this.bombWave.position.set(p.bombX, 0.18, p.bombZ);
-    this.bombWave.scaling.setAll(Math.min(8, 0.5 + (0.6 - p.bombTimer) * 24));
     this.aimRing.setEnabled(
       p.hero === "ranger" && p.charge >= 100 && p.hp > 0 && p.specialTimer <= 0,
     );
@@ -654,59 +831,10 @@ export class BabylonRenderer implements Renderer {
       visual.fill.scaling.x = ratio;
       visual.fill.position.x = (ratio - 1) * 0.45;
     }
-    const elapsed = SPECIAL.duration - p.specialTimer,
-      active = p.specialTimer > 0;
-    const burst = Math.max(0, elapsed - SPECIAL.impactAt),
-      progress = Math.min(1, burst / 0.6);
-    this.waveMaterial.emissiveColor = Color3.FromHexString(
-      p.hero === "ranger" ? "#74e4f3" : "#ffe3a0",
-    );
-    this.sparkMaterial.emissiveColor = Color3.FromHexString(
-      p.hero === "ranger" ? "#a0f2ff" : "#fff3c0",
-    );
-    this.waveMaterial.alpha = 0.85 * (1 - progress);
-    this.sparkMaterial.alpha = 1 - progress;
-    for (let i = 0; i < this.waves.length; i++) {
-      const wave = this.waves[i]!;
-      wave.setEnabled(active);
-      const radius =
-        elapsed < SPECIAL.impactAt
-          ? 0.8 + elapsed * 2
-          : Math.min(
-              SPECIAL.radius,
-              Math.max(0.2, ((burst - i * 0.06) / 0.24) * SPECIAL.radius),
-            );
-      wave.position.set(p.specialX, 0.12 + i * 0.3, p.specialZ);
-      const r = p.hero === "ranger" ? 4.5 : radius;
-      wave.scaling.set(r, 1, r);
-    }
-    this.core.setEnabled(active && p.hero !== "ranger" && burst < 0.25);
-    this.core.position.set(p.specialX, 1, p.specialZ);
-    this.core.scaling.setAll(
-      elapsed < SPECIAL.impactAt ? 0.8 + elapsed * 4 : 2.4 * (1 - burst / 0.25),
-    );
-    for (let i = 0; i < this.sparks.length; i++) {
-      const spark = this.sparks[i]!;
-      spark.setEnabled(
-        active && burst > 0 && progress < 1 && (!this.reducedMotion || i < 8),
-      );
-      const a = i * 2.39996,
-        radius =
-          p.hero === "ranger"
-            ? 0.5 + (i % 6) * 0.65
-            : 0.6 + progress * (4 + (i % 5));
-      spark.position.set(
-        p.specialX + Math.sin(a) * radius,
-        p.hero === "ranger"
-          ? 0.2 + ((1 - progress + (i % 4) * 0.12) % 1) * 8
-          : 0.5 + Math.sin(progress * Math.PI) * (1 + (i % 4) * 0.3),
-        p.specialZ + Math.cos(a) * radius,
-      );
-      spark.scaling.set(
-        1 - progress * 0.6,
-        p.hero === "ranger" ? 6 : 1 + (i % 3),
-        1 - progress * 0.6,
-      );
+    const { burst, progress } = this.animateEffects(p, this.effectsRig());
+    for (const [id, entry] of sim.remotePlayers) {
+      const effects = this.remoteEffects.get(id);
+      if (effects) this.animateEffects(entry.player, effects);
     }
     const target = new Vector3(fixed ? 0 : p.x, 0, fixed ? 0 : p.z);
     if (fixed || this.lastSim !== sim || sim.ticks < this.lastTick)

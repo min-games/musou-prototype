@@ -5,13 +5,22 @@ import { SpatialGrid } from "./SpatialGrid";
 export class CrowdSystem {
   step(
     enemies: Enemy[],
-    p: Player,
+    primary: Player,
     combat: CombatSystem,
     grid: SpatialGrid,
     dt: number,
+    others: Player[] = [],
   ) {
+    const targets = [primary, ...others].filter((p) => p.hp > 0);
     for (const e of enemies) {
       if (e.state === "dead") continue;
+      let p = targets[0] ?? primary;
+      for (const target of targets)
+        if (
+          (target.x - e.x) ** 2 + (target.z - e.z) ** 2 <
+          (p.x - e.x) ** 2 + (p.z - e.z) ** 2
+        )
+          p = target;
       const type = ENEMY_TYPES[e.kind];
       e.timer = Math.max(0, e.timer - dt);
       const dx = p.x - e.x,

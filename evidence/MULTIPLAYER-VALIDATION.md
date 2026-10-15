@@ -1,0 +1,13 @@
+# LAN multiplayer validation
+
+Candidate in isolated worktree `R-20261015073809-c315675a/musou-prototype`; no integration or deployment performed.
+
+- `npm test`: 65 tests passed, including protocol validation, peer ownership, input sequencing/staleness, independent combat hit sets, host AI targeting, client non-authority, snapshot/entity/projectile replication, duplicate events, disconnect cleanup, per-player revival and serialization measurements.
+- `npm run build`: strict TypeScript, Vite production build and local service-worker precache passed. Existing bundle-size warning remains.
+- Full browser regression: all 22 checks passed, covering the existing gameplay, gamepad, visual/offline/subpath, benchmark and native multiplayer cases, including host loss and a fresh manual reconnection. See `browser-results.json` for the machine-readable report. After the final UI placement adjustment and host-close assertion correction, all 18 gameplay/browser checks passed again, recorded separately in `browser-results-lan-final.json` (the four unchanged benchmark cases had passed in the full run).
+- Real native WebRTC was established between two separate Chromium browser contexts using complete Offer/Answer strings exchanged through menu textareas. All three channels opened. Keyboard movement was observed on both sides; a guest melee attack killed an existing enemy on the host and replicated the death and kill credit. Guest disconnect left host simulation running. Returning to Single Player removed remote membership.
+- Restricted sandbox execution could not gather ICE candidates. Native tests passed with local UDP permitted outside the sandbox and the unmodified application `iceServers: []` configuration. No mock transport, public signaling, candidate injection or browser ICE feature override was used in the passing tests.
+- A verification rerun exposed Chromium reporting host close as a DataChannel error instead of a peer-disconnected notification. The test now accepts the documented reconnect error and verifies session closure, cleared membership and frozen client simulation directly.
+- Physical devices, home routers, mobile browser interoperability and cross-device LAN connectivity remain **unverified**. See [device test instructions](../docs/lan-testing.md).
+
+Replication measurements are workload-specific. [Browser overhead JSON](multiplayer-overhead.json) records capture/JSON encode/decode/validation/application/interpolation for two players and the current 20/40-enemy arena sizes, excluding rendering and transport framing. [Architecture documentation](../docs/multiplayer-architecture.md) records separate Node serialization measurements and limitations. No 300-enemy multiplayer claim is made.

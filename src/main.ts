@@ -1,4 +1,5 @@
 import "./style.css";
+import { LANMenu } from "./network/LANMenu";
 import { Simulation, GameLoop } from "./GameLoop";
 import { InputManager } from "./InputManager";
 import { BabylonRenderer } from "./BabylonRenderer";
@@ -61,7 +62,7 @@ window.addEventListener("keydown", (event) => {
     event.code === "Escape" &&
     !event.repeat &&
     !benchmarking &&
-    (practice || run.state === "fighting")
+    (lan.session || practice || run.state === "fighting")
   )
     setPaused(!paused);
 });
@@ -80,7 +81,7 @@ document.addEventListener("visibilitychange", () => {
   if (
     document.hidden &&
     !benchmarking &&
-    (practice || run.state === "fighting")
+    (lan.session || practice || run.state === "fighting")
   )
     setPaused(true);
 });
@@ -97,7 +98,7 @@ async function runBenchmark(
     : DEFAULT_WEAPON[hero],
   stressMultishot = false,
 ) {
-  if (benchmarking) return [];
+  if (benchmarking || lan.session) return [];
   benchmarking = true;
   input.setEnabled(false);
   element<HTMLButtonElement>("bench").disabled = true;
@@ -134,6 +135,8 @@ function text(id: string, value: string) {
   if (node.textContent !== value) node.textContent = value;
 }
 function updateHud() {
+  element<HTMLButtonElement>("change-hero").disabled = !!lan.session;
+  element<HTMLButtonElement>("bench").disabled = !!lan.session;
   const p = sim.player,
     alive = sim.enemies.enemies.filter((enemy) => enemy.state !== "dead");
   text("hp", p.hp + " / " + p.maxHp);
@@ -161,8 +164,10 @@ function updateHud() {
     p.bombs === 0 ||
     p.hp <= 0 ||
     paused ||
-    (!practice && run.state !== "fighting");
-  if (!practice) {
+    (!lan.session && !practice && run.state !== "fighting");
+  if (lan.session) {
+    text("objective", "LAN CO-OP · ENDLESS ARENA");
+  } else if (!practice) {
     text(
       "objective",
       run.state === "select"
@@ -225,6 +230,9 @@ function updateHud() {
   canvas.classList.toggle("hit", p.hitFlash > 0);
   if (p.hp <= 0)
     notice.textContent = "You fell. Press R / gamepad Y to return.";
+  else if (lan.session)
+    notice.textContent =
+      "LAN co-op · R / Y revives a fallen fighter · host pause pauses the world";
   else if (!practice)
     notice.textContent =
       "Five waves · health carries over · choose a relic after each clear";
@@ -232,13 +240,39 @@ function updateHud() {
     notice.textContent =
       "20 opponents · three enemy types · enemies return after 5 seconds";
 }
+const lan = new LANMenu(
+  sim,
+  () => {
+    const { hero, weapon } = sim.player;
+    sim.reset(20);
+    Object.assign(sim.player, {
+      hero,
+      weapon,
+      maxHp: hero === "ranger" ? 85 : 100,
+      hp: hero === "ranger" ? 85 : 100,
+    });
+    sim.player.bombs = 1;
+    sim.player.charge = 50;
+    element("run-overlay").hidden = true;
+    setPaused(false);
+    input.setEnabled(true);
+  },
+  () => {
+    sim.reset(20);
+    run.state = "select";
+    menuState = "";
+    setPaused(false);
+    updateRunMenu();
+  },
+);
 function frame(now: number) {
   if (!benchmarking) {
     pollMenuGamepad();
-    if (!paused && (practice || run.state === "fighting"))
+    if (!paused && (lan.session || practice || run.state === "fighting"))
       loop.advance((now - last) / 1000, () => {
         const controls = input.poll(1 / 60);
-        if (practice) sim.step(controls);
+        if (lan.session) lan.step(controls, 1 / 60);
+        else if (practice) sim.step(controls);
         else if (controls.respawn) {
           run.start(sim.player.hero, getWeapon(sim.player).id);
         } else run.step(controls);
@@ -247,6 +281,7 @@ function frame(now: number) {
     audio.update(sim.player);
     if (now - lastHud >= 50) {
       updateHud();
+      lan.refresh();
       lastHud = now;
     }
   }
@@ -258,6 +293,7 @@ element<HTMLButtonElement>("bomb").onclick = () => {
   canvas.focus();
 };
 element<HTMLButtonElement>("change-hero").onclick = () => {
+  if (lan.session) return;
   if (practice) {
     location.href = "?";
     return;
@@ -290,7 +326,7 @@ function startHero(hero: Hero, weapon: WeaponId = DEFAULT_WEAPON[hero]) {
   canvas.focus();
 }
 function updateRunMenu() {
-  if (practice) return;
+  if (practice || lan?.session) return;
   if (menuState === run.state) return;
   menuState = run.state;
   menuIndex = 0;
@@ -451,7 +487,8 @@ function activateMenu(index: number) {
   )?.click();
 }
 window.addEventListener("keydown", (e) => {
-  if (practice || run.state === "fighting" || benchmarking) return;
+  if (lan.session || practice || run.state === "fighting" || benchmarking)
+    return;
   if (e.code === "KeyE" && run.state === "upgrade") {
     openRearm();
     return;
@@ -503,6 +540,7 @@ function pollMenuGamepad() {
   const y = pad?.buttons[3]?.pressed ?? false;
   const held = a || y || direction !== 0;
   if (
+    !lan.session &&
     !practice &&
     run.state !== "fighting" &&
     !benchmarking &&
@@ -547,6 +585,7 @@ requestAnimationFrame(frame);
 Object.assign(window, {
   musou: {
     sim,
+    lan,
     renderer,
     runBenchmark,
     run,

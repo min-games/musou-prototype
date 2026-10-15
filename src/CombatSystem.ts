@@ -94,6 +94,8 @@ export const newPlayer = (): Player => ({
   dashZ: 1,
 });
 export interface Arrow {
+  id?: number;
+  networkId?: string;
   x: number;
   z: number;
   vx: number;
@@ -105,6 +107,7 @@ export interface Arrow {
   baseDamage?: number;
 }
 export class CombatSystem {
+  private nextArrowId = 0;
   arrows: Arrow[] = [];
   aim(
     p: Player,
@@ -294,6 +297,7 @@ export class CombatSystem {
           const yaw =
             p.yaw + (i - (stats.arrows - 1) / 2) * stats.weapon.spread;
           this.arrows.push({
+            id: this.nextArrowId++,
             x: p.x,
             z: p.z,
             vx: Math.sin(yaw) * stats.weapon.arrowSpeed,
