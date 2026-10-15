@@ -43,7 +43,10 @@ class FakePeer {
     this.connectionState = "closed";
   }
 }
-afterEach(() => vi.unstubAllGlobals());
+afterEach(() => {
+  vi.unstubAllGlobals();
+  vi.useRealTimers();
+});
 function setup() {
   vi.stubGlobal("RTCPeerConnection", FakePeer);
 }
@@ -75,6 +78,69 @@ describe("manual signaling and transport", () => {
     manual.close();
     automatic.close();
   });
+  it.each([false, true])(
+    "uses mode-specific RTC recovery messages (automatic=%s)",
+    (automatic) => {
+      setup();
+      vi.useFakeTimers();
+      for (const failure of [
+        "timeout",
+        "disconnect",
+        "channel-close",
+        "channel-error",
+      ]) {
+        const t = new WebRTCTransport(true, automatic);
+        const pc = t.pc as unknown as FakePeer;
+        const closed = vi.fn();
+        t.onclose = closed;
+        if (failure === "timeout") vi.advanceTimersByTime(120_000);
+        else if (failure === "disconnect") {
+          pc.connectionState = "disconnected";
+          t.pc.onconnectionstatechange?.(new Event("connectionstatechange"));
+        } else if (failure === "channel-close") pc.channels[0]!.onclose?.();
+        else
+          t.channels
+            .get("input")!
+            .onerror?.(new Event("error") as RTCErrorEvent);
+        expect(t.closed).toBe(true);
+        expect(closed).toHaveBeenCalledWith(
+          expect.stringContaining(
+            automatic
+              ? "Create or join a fresh room"
+              : failure === "timeout"
+                ? "repeat manual signaling"
+                : "Repeat manual signaling",
+          ),
+        );
+        if (automatic && failure === "timeout")
+          expect(closed).toHaveBeenCalledWith(
+            expect.stringContaining("STUN without TURN"),
+          );
+        t.close();
+      }
+    },
+  );
+  it.each([false, true])(
+    "uses mode-specific heartbeat and explicit close messages (automatic=%s)",
+    (automatic) => {
+      setup();
+      const session = new HostSession(new Simulation(0), automatic);
+      session.transport.onopen();
+      session.update(13);
+      expect(session.connected).toBe(false);
+      expect(session.status).toBe(
+        automatic
+          ? "Peer stopped responding. Create or join a fresh room to reconnect."
+          : "Peer stopped responding. Repeat manual signaling.",
+      );
+      session.close();
+      expect(session.status).toBe(
+        automatic
+          ? "Disconnected. Create or join a fresh room to reconnect."
+          : "Disconnected. Repeat manual signaling to reconnect.",
+      );
+    },
+  );
   it("creates specified channels, drops large/blocked messages and cleans up", () => {
     setup();
     const t = new WebRTCTransport(true);

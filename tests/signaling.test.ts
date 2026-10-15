@@ -450,6 +450,99 @@ describe("exact signaling protocol and ordering", () => {
     ).toBe(true);
     expect(resumed.sent.find((m) => m.type === "offer").revision).toBe(2);
   });
+  it("renews each authenticated recovery window without extending room expiry", async () => {
+    const { ws, c, ready, status } = setup("host", true);
+    const authenticate = (socket: Socket) => {
+      socket.onopen?.();
+      socket.emit({
+        type: "ready",
+        participantId: "host",
+        role: "host",
+        room: c.room,
+        expiresAt: c.expiresAt,
+        revision: 0,
+        peers: ["guest"],
+      });
+    };
+    ready(["guest"]);
+    await tick();
+    ws.onclose?.({ code: 1006 });
+    await tick(750);
+    // A failed retry increases this outage's backoff before recovery.
+    Socket.instances.at(-1)!.onclose?.({ code: 1006 });
+    await tick(1250);
+    const recovered = Socket.instances.at(-1)!;
+    authenticate(recovered);
+    await tick();
+    expect(status).toHaveBeenLastCalledWith("Signaling restored.");
+    await tick(61_000);
+    recovered.onclose?.({ code: 1006 });
+    await tick(750);
+    expect(Socket.instances).toHaveLength(4); // Backoff restarted at 500ms.
+    const second = Socket.instances.at(-1)!;
+    authenticate(second);
+    await tick();
+    expect(status).toHaveBeenLastCalledWith("Signaling restored.");
+    await tick(c.expiresAt - Date.now() - 1);
+    expect(second.readyState).toBe(1);
+    await tick(1);
+    expect(second.readyState).toBe(3);
+    expect(status).toHaveBeenLastCalledWith(expect.stringContaining("expired"));
+    second.onclose?.({ code: 1006 });
+    await tick(60_000);
+    expect(Socket.instances).toHaveLength(4);
+  });
+  it("retains the lifetime twelve-attempt cap across healthy recoveries", async () => {
+    const { c, ready, status } = setup("host", true);
+    ready(["guest"]);
+    await tick();
+    for (let attempt = 2; attempt <= 12; attempt++) {
+      await tick(61_000);
+      Socket.instances.at(-1)!.onclose?.({ code: 1006 });
+      await tick(750);
+      expect(Socket.instances).toHaveLength(attempt);
+      const socket = Socket.instances.at(-1)!;
+      socket.onopen?.();
+      socket.emit({
+        type: "ready",
+        participantId: "host",
+        role: "host",
+        room: c.room,
+        expiresAt: c.expiresAt,
+        revision: 0,
+        peers: ["guest"],
+      });
+      await tick();
+      expect(status).toHaveBeenLastCalledWith("Signaling restored.");
+    }
+    Socket.instances.at(-1)!.onclose?.({ code: 1006 });
+    await tick(60_000);
+    expect(Socket.instances).toHaveLength(12);
+    expect(
+      Socket.instances.flatMap((s) => s.sent).filter((m) => m.type === "auth"),
+    ).toHaveLength(12);
+    expect(status).toHaveBeenLastCalledWith(
+      expect.stringContaining("fresh game"),
+    );
+  });
+  it("rejects ready with changed expiry instead of renewing recovery", async () => {
+    const { ws, c, status } = setup();
+    ws.emit({
+      type: "ready",
+      participantId: "host",
+      role: "host",
+      room: c.room,
+      expiresAt: c.expiresAt + 1,
+      revision: 0,
+      peers: [],
+    });
+    await tick(60_000);
+    expect(ws.readyState).toBe(3);
+    expect(Socket.instances).toHaveLength(1);
+    expect(status).toHaveBeenLastCalledWith(
+      expect.stringContaining("fresh game"),
+    );
+  });
   it("signaling expiry, auth errors and peer signaling loss preserve healthy gameplay", async () => {
     const { ws, pc, ready, status } = setup("host", true);
     ready(["guest"]);

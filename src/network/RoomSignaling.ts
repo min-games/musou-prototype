@@ -275,7 +275,8 @@ export class RoomSignaling {
   private nextSend = 0;
   private sent = 0;
   private volume = 0;
-  private attempts = 0;
+  private attempts = 0; // Lifetime socket/authentication attempts, including the first.
+  private outageAttempts = 0;
   private deadline = Infinity;
   constructor(
     private base: string,
@@ -329,6 +330,11 @@ export class RoomSignaling {
   }
   private connect() {
     if (this.stopped || !this.credentials) return;
+    if (this.attempts >= 12 || Date.now() >= this.deadline) {
+      this.fail("recovery");
+      return;
+    }
+    this.attempts++;
     const epoch = ++this.epoch;
     this.ready = this.peer = this.localReady = this.remoteReady = false;
     this.localIce = [];
@@ -397,7 +403,11 @@ export class RoomSignaling {
         return;
       }
       this.deadline = Math.min(this.deadline, Date.now() + 60_000);
-      if (++this.attempts >= 8 || Date.now() + 5500 >= this.deadline) {
+      if (
+        ++this.outageAttempts >= 8 ||
+        this.attempts >= 12 ||
+        Date.now() + 5500 >= this.deadline
+      ) {
         this.fail("recovery");
         return;
       }
@@ -408,7 +418,8 @@ export class RoomSignaling {
       );
       this.later(
         () => this.connect(),
-        Math.min(5000, 500 * 2 ** (this.attempts - 1)) + Math.random() * 250,
+        Math.min(5000, 500 * 2 ** (this.outageAttempts - 1)) +
+          Math.random() * 250,
       );
     };
   }
@@ -537,6 +548,8 @@ export class RoomSignaling {
         return; // Duplicate notifications must not produce duplicate offers.
       }
       this.ready = true;
+      this.deadline = c.expiresAt;
+      this.outageAttempts = 0;
       this.revision = m.revision;
       this.peer = m.peers.includes(other);
       if (this.peer) this.clearPeerTimer();

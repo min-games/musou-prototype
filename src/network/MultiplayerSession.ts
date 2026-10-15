@@ -37,7 +37,7 @@ export abstract class MultiplayerSession {
   constructor(
     readonly sim: Simulation,
     readonly role: "Host" | "Client",
-    automatic = false,
+    private automatic = false,
   ) {
     this.transport = new WebRTCTransport(role === "Host", automatic);
     if (automatic) this.status = "Waiting for room connection";
@@ -85,7 +85,9 @@ export abstract class MultiplayerSession {
     }
     if (this.connected && this.time - this.lastMessage > 12) {
       this.close();
-      this.status = "Peer stopped responding. Repeat manual signaling.";
+      this.status = this.automatic
+        ? "Peer stopped responding. Create or join a fresh room to reconnect."
+        : "Peer stopped responding. Repeat manual signaling.";
     }
   }
   ondispose = () => {};
@@ -93,7 +95,9 @@ export abstract class MultiplayerSession {
     this.ondispose();
     this.transport.close();
     this.connected = false;
-    this.status = "Disconnected. Repeat manual signaling to reconnect.";
+    this.status = this.automatic
+      ? "Disconnected. Create or join a fresh room to reconnect."
+      : "Disconnected. Repeat manual signaling to reconnect.";
     this.sim.remotePlayers.clear();
     this.sim.remoteInputs.clear();
   }

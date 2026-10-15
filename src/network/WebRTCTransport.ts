@@ -40,11 +40,16 @@ export class WebRTCTransport {
   private timer = setTimeout(
     () =>
       this.fail(
-        "Connection timed out. Check Wi-Fi isolation/firewall and repeat manual signaling.",
+        this.automatic
+          ? "Connection timed out. Create or join a fresh room. STUN without TURN cannot connect every network; check firewall restrictions or try another network."
+          : "Connection timed out. Check Wi-Fi isolation/firewall and repeat manual signaling.",
       ),
     120_000,
   );
-  constructor(host: boolean, automatic = false) {
+  constructor(
+    host: boolean,
+    private automatic = false,
+  ) {
     this.pc = new RTCPeerConnection({
       iceServers: automatic ? [{ urls: "stun:stun.cloudflare.com:3478" }] : [],
       iceTransportPolicy: "all",
@@ -53,7 +58,11 @@ export class WebRTCTransport {
       if (
         ["failed", "disconnected", "closed"].includes(this.pc.connectionState)
       )
-        this.fail("Peer disconnected. Repeat manual signaling to reconnect.");
+        this.fail(
+          this.automatic
+            ? "Peer disconnected. Create or join a fresh room to reconnect."
+            : "Peer disconnected. Repeat manual signaling to reconnect.",
+        );
     };
     this.pc.ondatachannel = (e) => this.attach(e.channel);
     if (host) {
@@ -94,9 +103,17 @@ export class WebRTCTransport {
       }
     };
     channel.onclose = () =>
-      this.fail("Data channel closed. Repeat manual signaling.");
+      this.fail(
+        this.automatic
+          ? "Data channel closed. Create or join a fresh room to reconnect."
+          : "Data channel closed. Repeat manual signaling.",
+      );
     channel.onerror = () =>
-      this.fail("Data channel error. Repeat manual signaling.");
+      this.fail(
+        this.automatic
+          ? "Data channel error. Create or join a fresh room; if it persists, try another network (STUN only, no TURN relay)."
+          : "Data channel error. Repeat manual signaling.",
+      );
     channel.onmessage = (e) => {
       if (typeof e.data !== "string" || e.data.length > MAX_MESSAGE) {
         this.dropped++;
