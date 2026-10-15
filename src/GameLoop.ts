@@ -10,6 +10,8 @@ export interface InputFrame {
   yaw: number;
   special?: boolean;
   dodge?: boolean;
+  bomb?: boolean;
+  attackHeld?: boolean;
 }
 export const idleInput: InputFrame = {
   x: 0,
@@ -25,6 +27,13 @@ export class Simulation {
   combat = new CombatSystem();
   crowd = new CrowdSystem();
   ticks = 0;
+  respawning = true;
+  pickups: {
+    id: number;
+    x: number;
+    z: number;
+    kind: "health" | "charge" | "power" | "bomb";
+  }[] = [];
   constructor(
     count = 20,
     readonly seed = 42,
@@ -35,6 +44,9 @@ export class Simulation {
     this.player = newPlayer();
     this.enemies.spawn(count, this.seed);
     this.combat.reset();
+    this.pickups = [];
+    this.respawning = true;
+    this.grid.rebuild(this.enemies.enemies);
     this.ticks = 0;
   }
   step(input: InputFrame, dt = 1 / 60) {
@@ -61,14 +73,30 @@ export class Simulation {
     } else if (p.hp > 0 && length > 0 && p.specialTimer <= 0) {
       const x = input.x / Math.max(1, length),
         z = input.z / Math.max(1, length);
-      const speed = p.recovery > 0 ? 2 : 5;
+      const speed = (p.recovery > 0 ? 2 : 5) * p.speedMult;
       p.x = Math.max(-23, Math.min(23, p.x + x * speed * dt));
       p.z = Math.max(-23, Math.min(23, p.z + z * speed * dt));
-      p.yaw = Math.atan2(x, z);
+      if (!(p.hero === "ranger" && (input.attack || input.attackHeld)))
+        p.yaw = Math.atan2(x, z);
     }
-    this.enemies.advanceRespawns(dt, p.x, p.z);
+    this.enemies.advanceRespawns(dt, p.x, p.z, this.respawning);
     this.grid.rebuild(this.enemies.enemies);
-    this.combat.step(p, this.grid, input.attack, dt, input.special);
+    if (input.bomb && p.bombs > 0 && p.hp > 0 && p.bombTimer <= 0) {
+      p.bombs--;
+      p.bombTimer = 0.6;
+      p.bombX = p.x;
+      p.bombZ = p.z;
+      for (const e of this.grid.query(p.x, p.z, 8))
+        this.combat.applyHit(p, e, 160, true);
+    }
+    this.combat.step(
+      p,
+      this.grid,
+      input.attack || (p.hero === "ranger" && !!input.attackHeld),
+      dt,
+      input.special,
+    );
+    this.combat.advanceArrows(p, this.grid, dt);
     this.crowd.step(this.enemies.enemies, p, this.combat, this.grid, dt);
     this.ticks++;
   }

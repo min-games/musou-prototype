@@ -37,7 +37,7 @@ test("gamepad movement, camera, attack edge and restart edge on a nonzero device
       value: () => [null, pad],
     });
   });
-  await page.goto("/?backend=webgl");
+  await page.goto("/?practice=1&backend=webgl");
   await expect(page.locator("#status")).toContainText("WebGL2");
   await page.evaluate(() => {
     const w = window as unknown as TestWindow;
@@ -92,7 +92,7 @@ test("gamepad movement, camera, attack edge and restart edge on a nonzero device
 test("focused HUD controls do not trigger player combat shortcuts", async ({
   page,
 }) => {
-  await page.goto("/?backend=webgl");
+  await page.goto("/?practice=1&backend=webgl");
   await expect(page.locator("#status")).toContainText("WebGL2");
   await page.evaluate(() =>
     (window as unknown as TestWindow).musou.sim.reset(0),

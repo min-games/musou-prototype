@@ -83,12 +83,17 @@ export class EnemyStore {
       };
     });
   }
-  advanceRespawns(dt: number, playerX: number, playerZ: number) {
+  advanceRespawns(
+    dt: number,
+    playerX: number,
+    playerZ: number,
+    respawn = true,
+  ) {
     for (const enemy of this.enemies) {
       enemy.flash = Math.max(0, enemy.flash - dt);
       if (enemy.state !== "dead") continue;
       enemy.timer = Math.max(0, enemy.timer - dt);
-      if (enemy.timer > 0) continue;
+      if (enemy.timer > 0 || !respawn) continue;
       const angle = this.random() * Math.PI * 2,
         distance = 10 + this.random() * 8;
       let x = Math.max(-23, Math.min(23, playerX + Math.sin(angle) * distance));

@@ -30,6 +30,12 @@ export class BabylonRenderer implements Renderer {
   private camera: FreeCamera;
   private player: TransformNode;
   private blade: Mesh;
+  private bow: Mesh;
+  private arrows: Mesh[] = [];
+  private loot: Mesh[] = [];
+  private lootMaterials: Record<string, StandardMaterial> = {};
+  private bombWave: Mesh;
+  private aimRing: Mesh;
   private cape: Mesh;
   private slash: Mesh;
   private sigil: Mesh;
@@ -318,6 +324,42 @@ export class BabylonRenderer implements Renderer {
     this.blade.parent = this.player;
     this.blade.position.set(0.65, 1, 0.9);
     this.blade.material = this.material("blade steel", "#c8fff8", true);
+    this.bow = MeshBuilder.CreateTube(
+      "ranger bow",
+      {
+        path: [
+          new Vector3(0, 0.75, -0.2),
+          new Vector3(0.25, 0.45, 0),
+          new Vector3(0.4, 0, 0.1),
+          new Vector3(0.25, -0.45, 0),
+          new Vector3(0, -0.75, -0.2),
+        ],
+        radius: 0.045,
+        tessellation: 4,
+      },
+      this.scene,
+    );
+    this.bow.parent = this.player;
+    this.bow.position.set(0.6, 1, 0.65);
+    this.bow.material = this.cyan;
+    this.bombWave = this.ring("bomb blast", 1, 0.09);
+    this.bombWave.material = this.material("bomb amber", "#ff8959", true, 0.8);
+    this.bombWave.setEnabled(false);
+    this.aimRing = this.ring("arrow storm target", 4.5, 0.025);
+    this.aimRing.material = this.material(
+      "storm target cyan",
+      "#74e4f3",
+      true,
+      0.4,
+    );
+    this.aimRing.setEnabled(false);
+    for (const [kind, color] of Object.entries({
+      health: "#7ef0a1",
+      charge: "#78c9ff",
+      power: "#ffdb80",
+      bomb: "#ff8959",
+    }))
+      this.lootMaterials[kind] = this.material("loot " + kind, color, true);
     this.cape = MeshBuilder.CreateBox(
       "hero cape",
       { width: 0.75, height: 1.05, depth: 0.08 },
@@ -433,7 +475,7 @@ export class BabylonRenderer implements Renderer {
     );
     this.player.rotation.y =
       p.yaw +
-      (p.specialTimer > 0 && !this.reducedMotion
+      (p.specialTimer > 0 && p.hero !== "ranger" && !this.reducedMotion
         ? (SPECIAL.duration - p.specialTimer) * 15
         : 0);
     this.player.rotation.z = p.hp <= 0 ? 1.2 : p.dashTimer > 0 ? -0.12 : 0;
@@ -446,7 +488,64 @@ export class BabylonRenderer implements Renderer {
           ? -1.2
           : 0;
     this.blade.scaling.z = p.swing > 0 ? 1.3 : 1;
-    this.slash.setEnabled(p.swing > 0.1 && p.swing < 0.29);
+    this.blade.setEnabled(p.hero !== "ranger");
+    this.bow.setEnabled(p.hero === "ranger");
+    this.slash.setEnabled(
+      p.hero !== "ranger" && p.swing > 0.1 && p.swing < 0.29,
+    );
+    this.bow.rotation.y = p.swing > 0 ? -0.25 : 0;
+    while (this.arrows.length < sim.combat.arrows.length) {
+      const arrow = MeshBuilder.CreateBox(
+        "arrow",
+        { width: 0.065, height: 0.065, depth: 0.95 },
+        this.scene,
+      );
+      arrow.material = this.cyan;
+      this.arrows.push(arrow);
+    }
+    this.arrows.forEach((mesh, i) => {
+      const a = sim.combat.arrows[i];
+      mesh.setEnabled(!!a);
+      if (a) {
+        mesh.position.set(a.x, 1.05, a.z);
+        mesh.rotation.y = Math.atan2(a.vx, a.vz);
+      }
+    });
+    while (this.loot.length < sim.pickups.length) {
+      const mesh = MeshBuilder.CreateCylinder(
+        "field drop",
+        { diameterTop: 0, diameterBottom: 0.55, height: 0.8, tessellation: 4 },
+        this.scene,
+      );
+      this.loot.push(mesh);
+    }
+    this.loot.forEach((mesh, i) => {
+      const item = sim.pickups[i];
+      mesh.setEnabled(!!item);
+      if (item) {
+        mesh.position.set(
+          item.x,
+          0.55 + (this.reducedMotion ? 0 : Math.sin(time * 3 + item.id) * 0.1),
+          item.z,
+        );
+        mesh.material = this.lootMaterials[item.kind]!;
+        mesh.rotation.z = item.kind === "health" ? Math.PI : 0;
+      }
+    });
+    this.bombWave.setEnabled(p.bombTimer > 0);
+    this.bombWave.position.set(p.bombX, 0.18, p.bombZ);
+    this.bombWave.scaling.setAll(Math.min(8, 0.5 + (0.6 - p.bombTimer) * 24));
+    this.aimRing.setEnabled(
+      p.hero === "ranger" && p.charge >= 100 && p.hp > 0 && p.specialTimer <= 0,
+    );
+    if (p.hero === "ranger") {
+      const target = sim.combat.aim(p, sim.grid);
+      this.aimRing.position.set(
+        Math.max(-23, Math.min(23, target?.x ?? p.x + Math.sin(p.yaw) * 8)),
+        0.06,
+        Math.max(-23, Math.min(23, target?.z ?? p.z + Math.cos(p.yaw) * 8)),
+      );
+    }
     this.slash.material = p.stage === 3 ? this.gold : this.cyan;
     this.sigil.scaling.setAll(p.charge >= 100 ? 1.08 : 1);
     for (let i = 0; i < this.enemies.length; i++) {
@@ -481,6 +580,12 @@ export class BabylonRenderer implements Renderer {
       active = p.specialTimer > 0;
     const burst = Math.max(0, elapsed - SPECIAL.impactAt),
       progress = Math.min(1, burst / 0.6);
+    this.waveMaterial.emissiveColor = Color3.FromHexString(
+      p.hero === "ranger" ? "#74e4f3" : "#ffe3a0",
+    );
+    this.sparkMaterial.emissiveColor = Color3.FromHexString(
+      p.hero === "ranger" ? "#a0f2ff" : "#fff3c0",
+    );
     this.waveMaterial.alpha = 0.85 * (1 - progress);
     this.sparkMaterial.alpha = 1 - progress;
     for (let i = 0; i < this.waves.length; i++) {
@@ -494,9 +599,10 @@ export class BabylonRenderer implements Renderer {
               Math.max(0.2, ((burst - i * 0.06) / 0.24) * SPECIAL.radius),
             );
       wave.position.set(p.specialX, 0.12 + i * 0.3, p.specialZ);
-      wave.scaling.set(radius, 1, radius);
+      const r = p.hero === "ranger" ? 4.5 : radius;
+      wave.scaling.set(r, 1, r);
     }
-    this.core.setEnabled(active && burst < 0.25);
+    this.core.setEnabled(active && p.hero !== "ranger" && burst < 0.25);
     this.core.position.set(p.specialX, 1, p.specialZ);
     this.core.scaling.setAll(
       elapsed < SPECIAL.impactAt ? 0.8 + elapsed * 4 : 2.4 * (1 - burst / 0.25),
@@ -507,13 +613,22 @@ export class BabylonRenderer implements Renderer {
         active && burst > 0 && progress < 1 && (!this.reducedMotion || i < 8),
       );
       const a = i * 2.39996,
-        radius = 0.6 + progress * (4 + (i % 5));
+        radius =
+          p.hero === "ranger"
+            ? 0.5 + (i % 6) * 0.65
+            : 0.6 + progress * (4 + (i % 5));
       spark.position.set(
         p.specialX + Math.sin(a) * radius,
-        0.5 + Math.sin(progress * Math.PI) * (1 + (i % 4) * 0.3),
+        p.hero === "ranger"
+          ? 0.2 + ((1 - progress + (i % 4) * 0.12) % 1) * 8
+          : 0.5 + Math.sin(progress * Math.PI) * (1 + (i % 4) * 0.3),
         p.specialZ + Math.cos(a) * radius,
       );
-      spark.scaling.set(1 - progress * 0.6, 1 + (i % 3), 1 - progress * 0.6);
+      spark.scaling.set(
+        1 - progress * 0.6,
+        p.hero === "ranger" ? 6 : 1 + (i % 3),
+        1 - progress * 0.6,
+      );
     }
     const target = new Vector3(fixed ? 0 : p.x, 0, fixed ? 0 : p.z);
     if (fixed || this.lastSim !== sim || sim.ticks < this.lastTick)

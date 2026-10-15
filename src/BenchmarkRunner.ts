@@ -1,3 +1,4 @@
+import type { Hero } from "./CombatSystem";
 import { Simulation } from "./GameLoop";
 import type { Renderer } from "./Renderer";
 export interface BenchmarkResult {
@@ -26,11 +27,13 @@ export class BenchmarkRunner {
     onProgress = (s: string) => {
       void s;
     },
+    hero: Hero = "vanguard",
   ) {
     this.results = [];
     for (const count of [0, 20, 100, 300]) {
       onProgress(`Benchmark: ${count} enemies`);
       const sim = new Simulation(count, 4242);
+      sim.player.hero = hero;
       // Keep all actors alive so every sample measures the requested crowd size.
       sim.player.hp = 1_000_000;
       for (const enemy of sim.enemies.enemies) enemy.hp = 1_000_000;
@@ -53,6 +56,7 @@ export class BenchmarkRunner {
           x: Math.sin(frame * 0.025),
           z: Math.cos(frame * 0.025),
           attack: frame % 24 === 0,
+          attackHeld: hero === "ranger",
           respawn: false,
           yaw: 0,
           special: frame === 90,
@@ -76,7 +80,9 @@ export class BenchmarkRunner {
           hardwareConcurrency: navigator.hardwareConcurrency,
           utc: new Date().toISOString(),
           warmupFrames: 60,
-          scenario: "mixed-crowd-solar-v2",
+          scenario:
+            hero === "ranger" ? "mixed-crowd-arrow-v1" : "mixed-crowd-solar-v2",
+          hero,
           enemyTypes: {
             grunt: sim.enemies.enemies.filter((e) => e.kind === "grunt").length,
             flanker: sim.enemies.enemies.filter((e) => e.kind === "flanker")

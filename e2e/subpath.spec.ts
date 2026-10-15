@@ -5,7 +5,7 @@ test("Pages repository prefix loads relative assets and remains playable offline
 }) => {
   const errors: string[] = [];
   page.on("pageerror", (e) => errors.push(e.message));
-  await page.goto("/musou/?backend=webgl");
+  await page.goto("/musou/?practice=1&backend=webgl");
   await expect(page.locator("#status")).toContainText("WebGL2");
   const scope = await page.evaluate(async () => {
     const registration = await navigator.serviceWorker.ready;
@@ -47,7 +47,7 @@ test("explicit WebGPU preference falls back when WebGPU is unavailable", async (
   await page.addInitScript(() =>
     Object.defineProperty(navigator, "gpu", { value: undefined }),
   );
-  await page.goto("/?backend=webgpu");
+  await page.goto("/?practice=1&backend=webgpu");
   await expect(page.locator("#status")).toContainText("WebGL2");
   await page.keyboard.press("KeyJ");
   await expect

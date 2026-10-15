@@ -1,0 +1,13 @@
+
+> musou-slice@1.0.0 test
+> vitest run
+
+
+ RUN  v5.0.4 /home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261014212323-c90953b6/musou-prototype
+
+
+ Test Files  3 passed (3)
+      Tests  24 passed (24)
+   Start at  08:27:41
+   Duration  308ms (transform 64%, tests 21%, import 12%, worker 3%)
+

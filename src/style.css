@@ -430,3 +430,174 @@ aside p {
     scroll-behavior: auto;
   }
 }
+
+/* Run decisions stay out of the combat view until the field is safe. */
+#run-status {
+  position: absolute;
+  top: 190px;
+  left: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  max-width: 440px;
+  pointer-events: none;
+  text-shadow: 0 2px 4px #101820;
+}
+#objective {
+  color: #ffe3a0;
+  font-size: 16px;
+  letter-spacing: 1px;
+}
+#build-summary {
+  font-size: 11px;
+  color: #d3dfdf;
+}
+#loot-message {
+  color: #a8fff1;
+  font-size: 12px;
+}
+.run-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 15;
+  display: grid;
+  place-items: center;
+  background: #07151ad9;
+  pointer-events: auto;
+  padding: 20px;
+  overflow: auto;
+}
+.run-overlay[hidden] {
+  display: none;
+}
+.run-card {
+  width: min(640px, 100%);
+  padding: 32px;
+  background: #152b34;
+  border: 1px solid #648082;
+  border-radius: 16px;
+  box-shadow: 0 24px 80px #0008;
+}
+.run-card h2 {
+  font-size: 30px;
+  margin: 12px 0;
+  color: #fff0c8;
+}
+.run-card p {
+  line-height: 1.6;
+  color: #c0d2d5;
+  font-size: 14px;
+}
+#run-choices {
+  display: grid;
+  gap: 12px;
+  margin: 20px 0;
+}
+#run-choices button {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  gap: 7px;
+  white-space: normal;
+  padding: 18px;
+  background: #203e48;
+  border: 1px solid #6f9394;
+  color: #f4e9cf;
+}
+#run-choices button:hover,
+#run-choices button:focus-visible {
+  border-color: #ffdb87;
+  background: #30515a;
+  outline: 2px solid #ffdb87;
+  outline-offset: 3px;
+}
+#run-choices strong {
+  font-size: 18px;
+}
+#run-choices span {
+  font-size: 13px;
+  line-height: 1.5;
+  color: #c0d2d5;
+}
+.run-card a {
+  color: #aad9d6;
+  font-size: 12px;
+}
+.menu-help {
+  font-size: 12px !important;
+}
+#bomb {
+  margin-bottom: 8px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+@media (max-width: 760px) {
+  #run-status {
+    top: 147px;
+    left: 16px;
+    max-width: 70%;
+  }
+  #build-summary {
+    max-width: 300px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  #loot-message {
+    display: none;
+  }
+  .run-card {
+    padding: 20px;
+  }
+  .run-card h2 {
+    font-size: 24px;
+  }
+  #run-choices button {
+    padding: 12px;
+  }
+  #run-choices strong {
+    font-size: 16px;
+  }
+}
+.practice .loot-legend {
+  display: none;
+}
+@media (max-width: 650px) {
+  .top-controls {
+    right: 16px;
+    gap: 4px;
+  }
+  .top-controls button {
+    white-space: nowrap;
+    font-size: 9px;
+    padding: 7px;
+  }
+  .motion-control {
+    font-size: 8px;
+    white-space: nowrap;
+  }
+  #run-status {
+    top: 215px;
+    max-width: calc(100% - 32px);
+    gap: 4px;
+  }
+  #objective {
+    font-size: 14px;
+    letter-spacing: 0.5px;
+  }
+  .loot-legend {
+    font-size: 10px;
+  }
+}
+#seed-tools {
+  color: #aac7c8;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+#seed-tools[hidden] {
+  display: none;
+}

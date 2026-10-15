@@ -15,9 +15,9 @@
     ></canvas>
     <main id="hud">
       <header>
-        <span class="eyebrow">FIELD NOTES / 02 · THE SOLAR GUARD</span>
+        <span class="eyebrow">FIELD NOTES / 03 · FIVE WAVES</span>
         <h1>IRON FIELD</h1>
-        <p>A blade. A crowd. One decisive moment.</p>
+        <p>Choose your fighter. Build your advantage. Clear the field.</p>
       </header>
       <section id="status" aria-label="Combat status">
         <div class="vitality">
@@ -38,7 +38,8 @@
         </div>
       </section>
       <div class="top-controls">
-        <button id="pause">Pause <kbd>Esc</kbd></button
+        <button id="change-hero">New run / hero</button
+        ><button id="pause">Pause <kbd>Esc</kbd></button
         ><button id="sound" aria-pressed="true">Sound on</button
         ><label class="motion-control"
           ><input id="reduced-motion" type="checkbox" /> Reduced motion</label
@@ -50,6 +51,38 @@
         ><span><i class="armored"></i>Armored <b id="armored-count">4</b></span
         ><small>Red cones telegraph attacks. Dodge to the side.</small>
       </section>
+      <section id="run-status" aria-label="Run progress">
+        <b id="objective">CHOOSE YOUR FIGHTER</b><span id="build-summary"></span
+        ><small id="loot-message"></small
+        ><small class="loot-legend"
+          ><span style="color: #7ef0a1">Health</span> ·
+          <span style="color: #78c9ff">Charge</span> ·
+          <span style="color: #ffdb80">Power +4%</span> ·
+          <span style="color: #ff8959">Bomb</span> · Walk near drops</small
+        >
+      </section>
+      <div id="run-overlay" class="run-overlay" hidden>
+        <section
+          class="run-card"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="run-title"
+        >
+          <span class="eyebrow">IRON FIELD / A FIVE-WAVE RUN</span>
+          <h2 id="run-title">Choose your fighter</h2>
+          <p id="run-description"></p>
+          <div id="seed-tools">
+            Run seed <b id="run-seed">4242</b>
+            <button id="shuffle-seed">New seed</button>
+          </div>
+          <div id="run-choices"></div>
+          <p class="menu-help">
+            1–3 select · Enter confirm · Gamepad: D-pad / left stick + A · Y:
+            new seed / retry
+          </p>
+          <a href="?practice=1">Endless practice &amp; benchmarks</a>
+        </section>
+      </div>
       <div id="callout" role="status" aria-live="polite"></div>
       <div id="pause-overlay" hidden>
         <span>TAKE A BREATH</span>
@@ -62,21 +95,25 @@
           <kbd>Shift</kbd> Dodge
         </div>
         <div>
-          <kbd>Q / K</kbd> Solar Break <kbd>R</kbd> Restart · Drag / arrows to
-          orbit
+          <kbd>Q / K</kbd> Special <kbd>F</kbd> Bomb <kbd>R</kbd> Restart · Drag
+          / arrows to orbit
         </div>
         <small
-          >Gamepad: sticks move / camera · A strike · B special · X dodge · Y
-          restart</small
+          >Gamepad: sticks move / camera · A strike · B special · X dodge · RB
+          bomb · Y restart</small
         >
       </footer>
       <div id="special-panel">
+        <button id="bomb">
+          <kbd>F / RB</kbd> BOMB <b id="bomb-count">1</b>
+        </button>
         <button
           id="special"
           disabled
           aria-label="Solar Break: charge by hitting enemies"
         >
-          <span><kbd>Q</kbd> SOLAR BREAK</span><b id="charge">0%</b>
+          <span id="special-name"><kbd>Q</kbd> SOLAR BREAK</span
+          ><b id="charge">0%</b>
           <div class="charge-track"><div id="charge-fill"></div></div></button
         ><small id="special-hint">Land hits to charge your radial strike.</small
         ><span id="dodge-hint">Shift / X · dodge ready</span>

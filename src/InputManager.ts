@@ -12,9 +12,15 @@ export class InputManager {
   private previousB = false;
   private previousX = false;
   private enabled = true;
+  private bomb = false;
+  private previousRB = false;
+  queueBomb() {
+    this.bomb = true;
+  }
   setEnabled(value: boolean) {
     this.enabled = value;
     if (!value) {
+      this.bomb = false;
       this.keys.clear();
       this.queued = false;
       this.reset = false;
@@ -42,6 +48,7 @@ export class InputManager {
       this.keys.add(e.code);
       if (!e.repeat && (e.code === "KeyJ" || e.code === "Space"))
         this.queued = true;
+      if (!e.repeat && e.code === "KeyF") this.bomb = true;
       if (!e.repeat && e.code === "KeyR") this.reset = true;
       if (!e.repeat && (e.code === "KeyQ" || e.code === "KeyK"))
         this.special = true;
@@ -50,6 +57,7 @@ export class InputManager {
     });
     window.addEventListener("keyup", (e) => this.keys.delete(e.code));
     window.addEventListener("blur", () => {
+      this.bomb = false;
       this.keys.clear();
       this.queued = false;
       this.reset = false;
@@ -115,7 +123,13 @@ export class InputManager {
     this.previousX = xButton;
     this.special = false;
     this.dodge = false;
+    const rb = pad?.buttons[5]?.pressed ?? false;
+    const bomb = this.bomb || (rb && !this.previousRB);
+    this.previousRB = rb;
+    this.bomb = false;
     return {
+      bomb,
+      attackHeld: this.keys.has("KeyJ") || this.keys.has("Space") || a,
       x: x * Math.cos(this.yaw) + z * Math.sin(this.yaw),
       z: z * Math.cos(this.yaw) - x * Math.sin(this.yaw),
       attack,

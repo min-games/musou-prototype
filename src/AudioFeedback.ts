@@ -49,7 +49,12 @@ export class AudioFeedback {
       this.hp = player.hp;
     }
     if (player.specials > this.specials) {
-      this.tone(220, 55, 0.45, 0.07);
+      this.tone(
+        player.hero === "ranger" ? 660 : 220,
+        player.hero === "ranger" ? 330 : 55,
+        0.45,
+        0.07,
+      );
       this.tone(440, 110, 0.3, 0.035);
     } else if (player.hits > this.hits) this.tone(180, 70, 0.07, 0.055);
     if (player.hp < this.hp) this.tone(100, 45, 0.12, 0.05);

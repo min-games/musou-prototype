@@ -12,7 +12,7 @@ test("earned Solar Break hits the mixed crowd and displays its shockwave", async
 }) => {
   const errors: string[] = [];
   page.on("pageerror", (error) => errors.push(error.message));
-  await page.goto("/?backend=webgl");
+  await page.goto("/?practice=1&backend=webgl");
   await expect(page.locator("#status")).toContainText("WebGL2");
   await expect(page.locator("#roster")).toContainText("Flanker");
   await expect(page.locator("#roster")).toContainText("Armored");
@@ -84,7 +84,7 @@ test("earned Solar Break hits the mixed crowd and displays its shockwave", async
 test("empty special, dodge, pause and reduced motion keep controls consistent", async ({
   page,
 }) => {
-  await page.goto("/?backend=webgl");
+  await page.goto("/?practice=1&backend=webgl");
   await expect(page.locator("#status")).toContainText("WebGL2");
   await page.evaluate(() =>
     (window as unknown as TestWindow).musou.sim.reset(0),
@@ -148,7 +148,7 @@ test("gamepad special and dodge are discrete edges", async ({ page }) => {
     Object.assign(window, { specialTestPad: pad });
     Object.defineProperty(navigator, "getGamepads", { value: () => [pad] });
   });
-  await page.goto("/?backend=webgl");
+  await page.goto("/?practice=1&backend=webgl");
   await expect(page.locator("#status")).toContainText("WebGL2");
   await page.evaluate(() => {
     const w = window as unknown as TestWindow;

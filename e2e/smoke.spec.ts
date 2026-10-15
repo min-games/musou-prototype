@@ -4,7 +4,7 @@ test("launch, movement, real keyboard combat, respawn and visual reference", asy
 }) => {
   const errors: string[] = [];
   page.on("pageerror", (e) => errors.push(e.message));
-  await page.goto("/?backend=webgl");
+  await page.goto("/?practice=1&backend=webgl");
   await expect(page.locator("#status")).toContainText("WebGL2");
   await page.evaluate(() => {
     const w = window as unknown as {
@@ -128,7 +128,7 @@ test("responsive HUD and installed offline reload", async ({
   page,
   context,
 }) => {
-  await page.goto("/?backend=webgl");
+  await page.goto("/?practice=1&backend=webgl");
   await expect(page.locator("#status")).toContainText("WebGL2");
   await page.evaluate(async () => {
     await navigator.serviceWorker.ready;

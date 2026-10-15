@@ -22,6 +22,7 @@ export default defineConfig({
   },
   reporter: [
     ["list"],
+    ["json", { outputFile: "evidence/browser-results.json" }],
     ["html", { open: "never", outputFolder: "evidence/playwright-report" }],
   ],
 });

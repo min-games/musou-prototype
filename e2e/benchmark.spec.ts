@@ -3,7 +3,7 @@ import { writeFileSync, readFileSync } from "node:fs";
 for (const backend of ["webgl", "auto"])
   test(`measured crowd benchmark ${backend}`, async ({ page }) => {
     test.setTimeout(300_000);
-    await page.goto(`/?backend=${backend}`);
+    await page.goto(`/?practice=1&backend=${backend}`);
     await expect(page.locator("#status")).toContainText("RENDERER");
     const results = await page.evaluate(async () => {
       return await (
@@ -42,3 +42,36 @@ for (const backend of ["webgl", "auto"])
       JSON.stringify(results, null, 2),
     );
   });
+
+test("measured ranger benchmark preserves full crowds and exports its own scenario", async ({
+  page,
+}) => {
+  test.setTimeout(300_000);
+  await page.goto("/?practice=1&backend=webgl");
+  await expect(page.locator("#status")).toContainText("WebGL2");
+  const results = await page.evaluate(async () => {
+    const m = (
+      window as unknown as {
+        musou: {
+          runBenchmark: (
+            frames: number,
+            hero: "ranger",
+          ) => Promise<import("../src/BenchmarkRunner").BenchmarkResult[]>;
+        };
+      }
+    ).musou;
+    return m.runBenchmark(180, "ranger");
+  });
+  expect(results.map((r) => r.count)).toEqual([0, 20, 100, 300]);
+  for (const r of results) {
+    expect(r.metadata.scenario).toBe("mixed-crowd-arrow-v1");
+    expect(r.metadata.hero).toBe("ranger");
+    expect(r.metadata.liveEnemies).toBe(r.count);
+    expect(r.metadata.specialActivations).toBe(1);
+    expect(r.drawCalls).toBeGreaterThan(0);
+  }
+  writeFileSync(
+    "evidence/benchmark-ranger-webgl.json",
+    JSON.stringify(results, null, 2),
+  );
+});
