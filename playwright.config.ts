@@ -1,6 +1,7 @@
 import { defineConfig } from "@playwright/test";
 export default defineConfig({
   testDir: "e2e",
+  snapshotPathTemplate: "evidence/art-v1/references/{testFilePath}/{arg}{ext}",
   timeout: 120000,
   expect: { timeout: 30000 },
   workers: 1,
@@ -27,7 +28,7 @@ export default defineConfig({
     [
       "json",
       {
-        outputFile: `evidence/browser-results${process.env.MUSOU_REPORT_SUFFIX ?? ""}.json`,
+        outputFile: `evidence/art-v1/browser-results${process.env.MUSOU_REPORT_SUFFIX ?? ""}.json`,
       },
     ],
     [

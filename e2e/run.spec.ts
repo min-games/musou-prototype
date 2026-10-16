@@ -1,4 +1,4 @@
-import { test, expect } from "./fixtures";
+import { test, expect, evidencePath } from "./fixtures";
 import type { Simulation } from "../src/GameLoop";
 import type { RunDirector } from "../src/RunDirector";
 interface RunWindow extends Window {
@@ -85,7 +85,7 @@ test("choose the ranger, fire assisted arrows, use its special and spend a bomb"
   await expect(page).toHaveScreenshot("ranger-storm.png", {
     maxDiffPixelRatio: 0.04,
   });
-  await page.screenshot({ path: "evidence/ranger-storm.png" });
+  await page.screenshot({ path: evidencePath("ranger-storm.png") });
   await page.evaluate(() => {
     const m = (window as unknown as RunWindow).musou;
     m.run.start("ranger");
@@ -112,6 +112,7 @@ test("clear finite waves, pick relics, win and retry with a fresh build", async 
 }) => {
   await page.goto("/?backend=webgl");
   await expect(page.locator("#run-title")).toHaveText("Choose your fighter");
+  await expect(page.locator("#run-choices button").first()).toBeFocused();
   await page.keyboard.press("Enter");
   await expect(page.locator("#run-title")).toContainText("Choose your weapon");
   await page.keyboard.press("Enter");
@@ -133,7 +134,7 @@ test("clear finite waves, pick relics, win and retry with a fresh build", async 
         await expect(page).toHaveScreenshot("relic-choice.png", {
           maxDiffPixelRatio: 0.04,
         });
-        await page.screenshot({ path: "evidence/relic-choice.png" });
+        await page.screenshot({ path: evidencePath("relic-choice.png") });
       }
       await page.keyboard.press("Digit1");
       await expect(page.locator("#run-overlay")).toBeHidden();
@@ -260,5 +261,5 @@ test("character choice fits a narrow viewport", async ({ page }) => {
   await expect(page).toHaveScreenshot("hero-choice-mobile.png", {
     maxDiffPixelRatio: 0.05,
   });
-  await page.screenshot({ path: "evidence/hero-choice-mobile.png" });
+  await page.screenshot({ path: evidencePath("hero-choice-mobile.png") });
 });

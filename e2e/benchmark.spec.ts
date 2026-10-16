@@ -1,4 +1,4 @@
-import { test, expect } from "./fixtures";
+import { test, expect, evidencePath } from "./fixtures";
 import { writeFileSync, readFileSync } from "node:fs";
 for (const backend of ["webgl", "auto"])
   test(`measured crowd benchmark ${backend}`, async ({ page }) => {
@@ -40,7 +40,9 @@ for (const backend of ["webgl", "auto"])
       results,
     );
     writeFileSync(
-      `evidence/benchmark-${process.env.MUSOU_WEBGPU === "1" ? "webgpu" : backend}.json`,
+      evidencePath(
+        `benchmark-${process.env.MUSOU_WEBGPU === "1" ? "webgpu" : backend}.json`,
+      ),
       JSON.stringify(results, null, 2),
     );
   });
@@ -73,7 +75,7 @@ test("measured ranger benchmark preserves full crowds and exports its own scenar
     expect(r.drawCalls).toBeGreaterThan(0);
   }
   writeFileSync(
-    "evidence/benchmark-ranger-webgl.json",
+    evidencePath("benchmark-ranger-webgl.json"),
     JSON.stringify(results, null, 2),
   );
 });
@@ -112,7 +114,7 @@ test("measured max multishot benchmark exports seven arrows and complete crowds"
     expect((r.metadata.weaponStats as { arrows: number }).arrows).toBe(7);
   }
   writeFileSync(
-    "evidence/benchmark-multishot-webgl.json",
+    evidencePath("benchmark-multishot-webgl.json"),
     JSON.stringify(results, null, 2),
   );
 });

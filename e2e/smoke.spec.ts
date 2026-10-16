@@ -1,4 +1,4 @@
-import { test, expect } from "./fixtures";
+import { test, expect, evidencePath } from "./fixtures";
 test("launch, movement, real keyboard combat, respawn and visual reference", async ({
   page,
 }) => {
@@ -125,7 +125,7 @@ test("launch, movement, real keyboard combat, respawn and visual reference", asy
     maxDiffPixelRatio: 0.05,
     animations: "disabled",
   });
-  await page.screenshot({ path: "evidence/arena.png" });
+  await page.screenshot({ path: evidencePath("arena.png") });
   expect(errors).toEqual([]);
 });
 test("responsive HUD and installed offline reload", async ({
@@ -157,6 +157,6 @@ test("responsive HUD and installed offline reload", async ({
   await expect(page).toHaveScreenshot("mobile.png", {
     maxDiffPixelRatio: 0.05,
   });
-  await page.screenshot({ path: "evidence/mobile.png" });
+  await page.screenshot({ path: evidencePath("mobile.png") });
   await context.setOffline(false);
 });

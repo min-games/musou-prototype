@@ -1,4 +1,4 @@
-import { test, expect } from "./fixtures";
+import { test, expect, evidencePath } from "./fixtures";
 import type { Page } from "@playwright/test";
 import { writeFileSync } from "node:fs";
 
@@ -84,7 +84,7 @@ test("native WebRTC manual UI exchange, independent movement, authoritative comb
       });
     });
     writeFileSync(
-      "evidence/multiplayer-overhead.json",
+      evidencePath("multiplayer-overhead.json"),
       JSON.stringify(
         {
           measuredAt: new Date().toISOString(),

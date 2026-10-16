@@ -1,0 +1,17 @@
+Tool: built-in image_gen
+Reference: vanguard-front-v1.png
+Purpose: simplified character design reference, not a generated 3D mesh.
+
+Edit the supplied Vanguard character reference into a MUCH SIMPLER, practical stylized 3D game character design. Preserve recognizable identity: mature male warrior, strong stocky heroic proportions, black topknot, short beard, red headband, charcoal armor and vermilion red cloth, restrained antique gold accents, Taiwanese Temple Fantasy identity. Keep ONE character, full-body strictly front-facing neutral A-pose, both hands and feet visible, generous margins, plain light gray background, even neutral lighting. No weapon, text, frames or props.
+
+This is a substantial construction simplification, not merely less detailed rendering. Aim for a clean low-poly action-game hero reference which a modeler or image-to-3D system can understand easily: broad solid closed armor volumes, clean contiguous surfaces, visible joint separation, clear silhouette, minimal overlapping layers. Reduce all ornamentation by about 85 percent.
+Specific final construction:
+- Simple compact topknot and red headband with TWO short tails; hair as a few large solid clumps.
+- One rounded oversized shoulder plate on viewer's LEFT bearing a single very simple shallow embossed guardian-lion face, sculpted as broad clean shapes with no open mouth, teeth, horns, spines or intricate curls. Other shoulder a small plain rounded plate.
+- One broad plain charcoal breastplate, thin gold outer edge, one SMALL FLAT painted ivory cloud emblem. No scales, hanging medallions, chest chains or etched filigree.
+- Simple short red sleeves, plain charcoal bracers with one gold band each, simple fingerless gloves.
+- Broad plain belt, simple square antique gold buckle, one short red sash end.
+- Exactly two short broad hip panels ending at upper thighs, with a single angular painted gold border. NO long skirt, cape, layered lamellar scales, tassels, dangling ropes, chains, beads, necklaces, extra trinkets, floating strips or mosaic tiles.
+- Charcoal trousers fully visible from upper thigh to boots, large simple fabric folds, no leg ornaments.
+- Plain sturdy charcoal boots with one broad shin guard each, thin restrained gold edge; simple functional soles, no knee lion faces or buckles.
+Cultural character comes from the original stylized temple guardian lion on ONE shoulder, the cloud chest motif, red festival sash, and antique bronze color, rather than ornate microdetails. Use large clear vermilion #B52B2B, charcoal #17191C, antique gold #D9A441, warm ivory #F4E3BF areas. Matte hand-painted game materials, restrained cel/painterly shading, low visual noise, deliberate simplified shapes. Render as a clean stylized 3D character design reference, not a densely illustrated premium trading card. Adult heroic anatomy, not chibi. Keep face recognizable.

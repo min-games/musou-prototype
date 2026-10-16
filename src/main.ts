@@ -22,6 +22,10 @@ const canvas = element<HTMLCanvasElement>("game"),
 const preference =
   new URLSearchParams(location.search).get("backend") ?? "auto";
 select.value = preference;
+// Keep controls from accepting clicks before asynchronous model loading installs handlers.
+document.body.inert = true;
+document.body.setAttribute("aria-busy", "true");
+notice.textContent = "Loading character art…";
 const renderer = await BabylonRenderer.create(canvas, preference),
   sim = new Simulation(),
   input = new InputManager(canvas);
@@ -147,7 +151,10 @@ function updateHud() {
   text("chain", p.swing > 0 ? "0" + p.stage : "—");
   text("kills", String(p.kills));
   text("alive", alive.length + " / " + sim.enemies.enemies.length);
-  text("renderer-label", renderer.backend);
+  text(
+    "renderer-label",
+    renderer.backend + (renderer.artFallback ? " · art fallback" : ""),
+  );
   for (const kind of ["grunt", "flanker", "armored"])
     text(
       kind + "-count",
@@ -580,6 +587,8 @@ element<HTMLButtonElement>("shuffle-seed").onclick = () => {
   history.replaceState(null, "", url);
   text("run-seed", String(run.seed));
 };
+document.body.inert = false;
+document.body.removeAttribute("aria-busy");
 updateRunMenu();
 requestAnimationFrame(frame);
 Object.assign(window, {

@@ -1,4 +1,4 @@
-import { test, expect } from "./fixtures";
+import { test, expect, evidencePath } from "./fixtures";
 import type { Page } from "@playwright/test";
 import { signalingFixture } from "./signaling-fixture";
 let fixture: Awaited<ReturnType<typeof signalingFixture>>;
@@ -177,9 +177,9 @@ test("room errors, invite prefill, cancellation, desktop and narrow room UI", as
   await page.goto("/?backend=webgl#room=ABCD2345&token=ignored");
   await expect(page.locator("#room-code")).toHaveValue("ABCD2345");
   await expect(page.locator("#room-status")).toContainText("Select Join Game");
-  await page.screenshot({ path: "evidence/room-ui-desktop.png" });
+  await page.screenshot({ path: evidencePath("room-ui-desktop.png") });
   await page.setViewportSize({ width: 390, height: 844 });
-  await page.screenshot({ path: "evidence/room-ui-narrow.png" });
+  await page.screenshot({ path: evidencePath("room-ui-narrow.png") });
   const bounds = await page.locator("#lan-menu").boundingBox();
   expect(bounds!.x).toBeGreaterThanOrEqual(0);
   expect(bounds!.x + bounds!.width).toBeLessThanOrEqual(390);

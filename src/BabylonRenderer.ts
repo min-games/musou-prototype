@@ -1,7 +1,7 @@
 import { Engine } from "@babylonjs/core/Engines/engine";
 import { WebGPUEngine } from "@babylonjs/core/Engines/webgpuEngine";
 import { Scene } from "@babylonjs/core/scene";
-import { Vector3 } from "@babylonjs/core/Maths/math.vector";
+import { Matrix, Vector3 } from "@babylonjs/core/Maths/math.vector";
 import { Color3, Color4 } from "@babylonjs/core/Maths/math.color";
 import { MeshBuilder } from "@babylonjs/core/Meshes/meshBuilder";
 import { StandardMaterial } from "@babylonjs/core/Materials/standardMaterial";
@@ -17,6 +17,7 @@ import { weaponStats } from "./Weapons";
 import { SPECIAL } from "./CombatSystem";
 import type { Renderer } from "./Renderer";
 import type { Simulation } from "./GameLoop";
+import { TempleCharacters } from "./TempleCharacters";
 interface EnemyVisual {
   body: Mesh;
   warning: Mesh;
@@ -26,6 +27,7 @@ interface EnemyVisual {
 }
 export class BabylonRenderer implements Renderer {
   backend: string;
+  private characters: TempleCharacters;
   private scene: Scene;
   private instrumentation: SceneInstrumentation;
   private camera: FreeCamera;
@@ -81,7 +83,9 @@ export class BabylonRenderer implements Renderer {
       console.warn("WebGPU initialization failed; selecting WebGL", error);
     }
     engine ??= new Engine(canvas, true);
-    return new BabylonRenderer(engine, backend);
+    const renderer = new BabylonRenderer(engine, backend);
+    await renderer.characters.load();
+    return renderer;
   }
   private material(name: string, color: string, emissive = false, alpha = 1) {
     const m = new StandardMaterial(name, this.scene);
@@ -222,6 +226,7 @@ export class BabylonRenderer implements Renderer {
         ? "WebGL1 (compatibility)"
         : backend;
     this.scene = new Scene(engine);
+    this.characters = new TempleCharacters(this.scene);
     this.instrumentation = new SceneInstrumentation(this.scene);
     this.scene.clearColor = new Color4(0.035, 0.065, 0.085, 1);
     this.scene.fogMode = Scene.FOGMODE_EXP2;
@@ -667,6 +672,29 @@ export class BabylonRenderer implements Renderer {
     rig.bow.rotation.y = p.swing > 0 ? -0.25 : 0;
     rig.slash.material = p.stage === 3 ? this.gold : this.cyan;
     rig.sigil.scaling.setAll(p.charge >= 100 ? 1.08 : 1);
+    const art = this.characters.animate(
+      rig.player,
+      p,
+      time,
+      this.reducedMotion,
+    );
+    for (const child of rig.player.getChildMeshes(true))
+      if (/hero (torso|head|shoulders|cape)$/.test(child.name))
+        child.setEnabled(!art);
+    if (art?.hand) {
+      rig.player.computeWorldMatrix(true);
+      const hand = Vector3.TransformCoordinates(
+        art.hand.getAbsolutePosition(),
+        Matrix.Invert(rig.player.getWorldMatrix()),
+      );
+      const offset = weapon.id === "spear" ? 0 : 0.75 * rig.blade.scaling.z;
+      rig.blade.position.set(
+        hand.x + Math.sin(rig.blade.rotation.y) * offset,
+        hand.y,
+        hand.z + Math.cos(rig.blade.rotation.y) * offset,
+      );
+      rig.bow.position.copyFrom(hand);
+    }
   }
   render(sim: Simulation, yaw: number, pitch: number, fixed = false) {
     const p = sim.player,
@@ -684,6 +712,7 @@ export class BabylonRenderer implements Renderer {
     this.slashArc = localRig.slashArc;
     for (const [id, rig] of this.remoteRigs)
       if (!sim.remotePlayers.has(id)) {
+        this.characters.release(rig.player);
         rig.player.dispose();
         this.remoteRigs.delete(id);
         const fx = this.remoteEffects.get(id);
@@ -708,7 +737,7 @@ export class BabylonRenderer implements Renderer {
           const clone = node.clone(id + ":" + node.name, parent, true)!;
           nodes.set(node, clone);
           for (const child of node.getChildTransformNodes(true))
-            copy(child, clone);
+            if (!child.metadata?.templeArt) copy(child, clone);
           return clone;
         };
         copy(this.player, null);
@@ -852,10 +881,12 @@ export class BabylonRenderer implements Renderer {
         : p.specialTimer > 0
           ? Math.sin((Math.min(1, burst / 0.12) * Math.PI) / 2) * (1 - progress)
           : p.impact * 0.35;
-    const distance = fixed ? 30 : 11.5 + pulse;
+    const closeup =
+      !fixed && new URLSearchParams(location.search).has("artCloseup");
+    const distance = fixed ? 30 : closeup ? 3.3 : 11.5 + pulse;
     this.camera.position.set(
       this.cameraTarget.x - Math.sin(yaw) * distance,
-      Math.sin(pitch) * distance + 2.8,
+      closeup ? 1.9 : Math.sin(pitch) * distance + 2.8,
       this.cameraTarget.z - Math.cos(yaw) * distance,
     );
     this.camera.fov = 0.82 + pulse * 0.025;
@@ -865,6 +896,9 @@ export class BabylonRenderer implements Renderer {
     this.engine.beginFrame();
     this.scene.render();
     this.engine.endFrame();
+  }
+  get artFallback() {
+    return this.characters.fallback;
   }
   drawCalls() {
     return this.instrumentation.drawCallsCounter.current;
@@ -879,9 +913,11 @@ export class BabylonRenderer implements Renderer {
       reducedMotion: this.reducedMotion,
       ringGeometry: "flat-strip-64-segments",
       specialSparkPool: 32,
+      characterArt: this.characters.metadata(),
     };
   }
   dispose() {
+    this.characters.dispose();
     this.instrumentation.dispose();
     this.scene.dispose();
     this.engine.dispose();

@@ -1,0 +1,12 @@
+import { test, expect } from './fixtures';
+import { mkdirSync, writeFileSync } from 'node:fs';
+test('art same-session baseline WebGL', async ({page}) => {
+ test.setTimeout(600000);
+ await page.goto('/?practice=1&backend=webgl');
+ await page.waitForFunction(() => !!(window as any).musou);
+ mkdirSync('evidence/art-v1', {recursive:true});
+ await page.screenshot({path:'evidence/art-v1/baseline-gameplay.png'});
+ const results = await page.evaluate(() => (window as any).musou.runBenchmark(180));
+ expect(results).toHaveLength(4);
+ writeFileSync('evidence/art-v1/baseline-webgl.json', JSON.stringify(results,null,2));
+});

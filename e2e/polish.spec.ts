@@ -1,4 +1,4 @@
-import { test, expect } from "./fixtures";
+import { test, expect, evidencePath } from "./fixtures";
 import type { Simulation } from "../src/GameLoop";
 interface TestWindow extends Window {
   musou: { sim: Simulation; pause: (value: boolean) => void };
@@ -77,7 +77,7 @@ test("earned Solar Break hits the mixed crowd and displays its shockwave", async
   await expect(page).toHaveScreenshot("solar-break.png", {
     maxDiffPixelRatio: 0.04,
   });
-  await page.screenshot({ path: "evidence/solar-break.png" });
+  await page.screenshot({ path: evidencePath("solar-break.png") });
   expect(errors).toEqual([]);
 });
 

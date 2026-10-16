@@ -1,0 +1,26 @@
+{
+  "vanguard": {
+    "hero": "vanguard",
+    "triangles": 1754,
+    "vertices": 4046,
+    "joints": 16,
+    "atlas": [
+      1024,
+      1024
+    ],
+    "uvInsetPixels": 8,
+    "bytes": 241064
+  },
+  "ranger": {
+    "hero": "ranger",
+    "triangles": 1680,
+    "vertices": 3850,
+    "joints": 16,
+    "atlas": [
+      1024,
+      1024
+    ],
+    "uvInsetPixels": 8,
+    "bytes": 229640
+  }
+}

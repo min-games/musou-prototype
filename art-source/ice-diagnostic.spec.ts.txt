@@ -1,0 +1,13 @@
+import {test} from './fixtures';
+import {writeFileSync} from 'node:fs';
+test('local ICE diagnostics legacy and art',async({page})=>{
+ const result=[];
+ for(const mode of ['legacy','current']) {
+ await page.goto('/?backend=webgl&art='+mode);await page.waitForFunction(()=>!!(window as any).musou);
+ const value=await page.evaluate(async()=>{
+ const pc=new RTCPeerConnection({iceServers:[]});const candidates:string[]=[];pc.onicecandidate=e=>{if(e.candidate)candidates.push(e.candidate.candidate);};pc.createDataChannel('test');await pc.setLocalDescription(await pc.createOffer());
+ await new Promise(resolve=>setTimeout(resolve,4000));const info={candidates,state:pc.iceGatheringState};pc.close();return info;
+ });result.push({mode,...value});
+ }
+ console.log(JSON.stringify(result));writeFileSync('evidence/art-v1/ice-diagnostic.json',JSON.stringify(result,null,2));
+});

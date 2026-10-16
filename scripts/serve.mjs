@@ -8,6 +8,8 @@ const types = {
   ".js": "text/javascript",
   ".css": "text/css",
   ".png": "image/png",
+  ".webp": "image/webp",
+  ".glb": "model/gltf-binary",
   ".svg": "image/svg+xml",
   ".webmanifest": "application/manifest+json",
 };

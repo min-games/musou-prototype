@@ -1,4 +1,4 @@
-import { test, expect } from "./fixtures";
+import { test, expect, evidencePath } from "./fixtures";
 import type { Simulation } from "../src/GameLoop";
 import type { RunDirector } from "../src/RunDirector";
 interface W extends Window {
@@ -20,7 +20,7 @@ test("Fan Bow fires at separate targets and seven-arrow upgrades have a readable
   await expect(page).toHaveScreenshot("bow-loadouts.png", {
     maxDiffPixelRatio: 0.04,
   });
-  await page.screenshot({ path: "evidence/bow-loadouts.png" });
+  await page.screenshot({ path: evidencePath("bow-loadouts.png") });
   await page.keyboard.press("Digit3");
   await expect(page.locator("#weapon-stats")).toContainText("Fan Bow");
   await expect(page.locator("#weapon-stats")).toContainText("3 arrows");
@@ -66,7 +66,7 @@ test("Fan Bow fires at separate targets and seven-arrow upgrades have a readable
   await expect(page).toHaveScreenshot("seven-arrow-fan.png", {
     maxDiffPixelRatio: 0.04,
   });
-  await page.screenshot({ path: "evidence/seven-arrow-fan.png" });
+  await page.screenshot({ path: evidencePath("seven-arrow-fan.png") });
   expect(errors).toEqual([]);
 });
 test("Spear reaches beyond the saber and its attack arc is shown at the actual reach", async ({
@@ -107,7 +107,7 @@ test("Spear reaches beyond the saber and its attack arc is shown at the actual r
   await expect(page).toHaveScreenshot("spear-reach.png", {
     maxDiffPixelRatio: 0.04,
   });
-  await page.screenshot({ path: "evidence/spear-reach.png" });
+  await page.screenshot({ path: evidencePath("spear-reach.png") });
 });
 test("weapon selection supports going back and choosing on a narrow viewport", async ({
   page,

@@ -1,3 +1,4 @@
+import { mkdirSync } from "node:fs";
 import { test as base, expect } from "@playwright/test";
 // Optional slow-renderer check: assertions follow state, and pad pulses span frames.
 export const test = base.extend({
@@ -11,3 +12,10 @@ export const test = base.extend({
   },
 });
 export { expect };
+
+// Isolate candidate evidence and references without rewriting historical captures.
+export function evidencePath(name: string) {
+  const root = "evidence/art-v1/validation";
+  mkdirSync(root, { recursive: true });
+  return `${root}/${name}`;
+}

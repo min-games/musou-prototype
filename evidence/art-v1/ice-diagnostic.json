@@ -1,0 +1,23 @@
+{
+  "sandbox": {
+    "legacy": {
+      "candidateCount": 0,
+      "state": "gathering"
+    },
+    "current": {
+      "candidateCount": 0,
+      "state": "gathering"
+    }
+  },
+  "outsideProcessSandbox": {
+    "legacy": {
+      "candidateCount": 2,
+      "state": "complete"
+    },
+    "current": {
+      "candidateCount": 2,
+      "state": "complete"
+    }
+  },
+  "configuration": "Chromium local RTCPeerConnection with no ICE servers; 4 second observation per art mode"
+}

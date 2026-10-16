@@ -1,6 +1,6 @@
 # Iron Field
 
-A browser Musou / roguelike vertical slice. Choose a melee Vanguard or bow-wielding Ranger and one of six weapons, collect field drops, build a set of relics and clear five finite enemy waves. Strict TypeScript, modular Babylon.js, Vite, a deterministic 60 Hz simulation and an offline static PWA. All geometry and sounds are procedural; no backend, physics engine, ECS, custom shaders or external art.
+A browser Musou / roguelike vertical slice. Choose a melee Vanguard or bow-wielding Ranger and one of six weapons, collect field drops, build a set of relics and clear five finite enemy waves. Strict TypeScript, modular Babylon.js, Vite, a deterministic 60 Hz simulation and an offline static PWA. The first Taiwanese Temple Fantasy art slice uses code-authored, low-poly glTF heroes and AI-generated material artwork based on an approved reference. The models are authored geometry, not automatic image-to-3D reconstruction. Enemies, weapons, effects and sounds remain procedural; no backend, physics engine, ECS or custom shaders. See the [art pipeline, limitations and same-session comparison](docs/ART-PIPELINE.md).
 
 ## Run and validate
 
@@ -52,7 +52,7 @@ Choose your fighter, then pick one of three compatible weapons. Weapon cards com
 | Longbow    | 65 / arrow   |             1.58 |                 28.8 | 1 arrow    |                    ~103 |
 | Fan Bow    | 23 / arrow   |             1.88 |                 14.4 | 3 arrows   |                     ~43 |
 
-The weapon model changes shape: narrow saber and guard, long wood-shafted spear with a point, broad greatblade, compact shortbow, tall longbow, and crossed limbs on the Fan Bow. Melee feedback uses the actual weapon arc and upgraded reach. These are simple procedural placeholders.
+The weapon model changes shape: narrow saber and guard, long wood-shafted spear with a point, broad greatblade, compact shortbow, tall longbow, and crossed limbs on the Fan Bow. Melee feedback uses the actual weapon arc and upgraded reach. These remain simple procedural weapon shapes, now attached at the loaded hero's hand.
 
 **Weapon upgrades:** Quick hands adds 15% attack-speed multiplier (cap ×2.5); Far reach adds 15% reach / arrow travel (cap ×1.75); Forked flight adds two arrows to Ranger volleys (cap seven). Split shaft adds one penetration per arrow and 10% damage. Weapon bonuses carry when rearming. Full-cap upgrades are omitted from offers; rearming recomputes eligible offers deterministically. Wave-two offers at default Ranger seed 4242 include Forked flight before caps apply.
 
@@ -71,6 +71,12 @@ Dodge moves 2.6 units over 0.2 seconds with protection and a 0.75-second cooldow
 ## Architecture
 
 See [architecture and run state](docs/ARCHITECTURE.md). `Weapons` provides the shared data and effective stat calculations used by combat, UI, renderer and benchmarks. `GameLoop`, `CombatSystem`, `CrowdSystem`, `SpatialGrid`, `EnemyStore` and `RunDirector` are pure gameplay modules. `Renderer` / `BabylonRenderer`, `InputManager`, `AudioFeedback` and `BenchmarkRunner` form the browser boundary. No rendering method changes gameplay state. `window.musou` exposes simulation, run, renderer, pause/reset and benchmark hooks for prototype testing.
+
+## Character art
+
+Vanguard has dark armor, an original lion shoulder medallion, cloud emblem, red sash and topknot. Ranger shares the compact rig and face with a slimmer torso, smaller shoulders and teal silk/bronze palette. Each reusable GLB has one mesh, one atlas material and 16 rigidly weighted joints. Locomotion, idle, attacks and dodge use procedural poses; all six weapon shapes, combat ranges and remote-player simulation are retained. Each remote actor has independent joints/skeletons and shares immutable geometry/materials with its matching hero.
+
+`npm run art:generate` deterministically regenerates both GLBs without Blender. Source reference, atlas PNGs, prompts and manifest live in `art-source/`, outside the runtime precache. Only two optimized GLBs and a 1024-square WebP atlas ship in `public/models/`. The Babylon glTF loader finishes both heroes before `window.musou` readiness and benchmarking. A failed/stalled load falls back to the original hero within 12 seconds, with an **art fallback** renderer label and detailed metadata. `?art=legacy` offers temporary A/B rendering; `?artCloseup=1` is a debug inspection camera. Neither changes simulation.
 
 ## Performance guide
 
@@ -92,7 +98,7 @@ WebGPU is preferred, with WebGL2 fallback. `?backend=auto|webgl|webgpu` or the s
 
 Unit/integration coverage includes all six weapons' observed sustained DPS, boosted DPS, cadence/reach, spread and per-volley deduplication, piercing, safe rearming, caps, and damage, armor, melee and projectile hit deduplication, swept arrow collisions, piercing order, spatial queries, AI states, seed/cadence repeatability, special targeting, finite waves, reward collection/caps, consumables, relic choices, defeat/victory and fresh retry. Playwright checks real keyboard and simulated gamepad controls, both hero/relic menus, ranged combat and strafe, specials/bombs, a controlled five-wave completion, death/retry, pause, responsive screenshots, offline root/subpath reloads, backend fallback and benchmark JSON/downloads. Full-wave browser completion accelerates enemy defeats through the debug API; combat correctness is tested separately. Deliberately refresh and inspect screenshots with `npm run test:e2e -- --update-snapshots` before accepting references.
 
-Balance is an initial pass: five waves in one arena, six fixed weapon definitions, no bosses, in-combat weapon swaps, randomized weapon rarity, durability, persistent unlocks, story, animation rigs, authored audio or collision solver. Aim assist is forward and nearest-target, with no manual lock-on or obstacles; pillars are decorative and arrows pass through them. Enemies can overlap. No touch controls or accessible nonvisual equivalent of the 3D combat. Menus have keyboard focus containment and gamepad navigation. Physical controllers, real hardware WebGPU and mobile GPUs still need device testing. Linux Chromium screenshots tolerate raster differences. Floating-point determinism is verified within one runtime, not cross-engine lockstep. The Babylon bundle exceeds Vite's 500 kB warning threshold; all chunks are local and precached.
+Balance is an initial pass: five waves in one arena, six fixed weapon definitions, no bosses, in-combat weapon swaps, randomized weapon rarity, durability, persistent unlocks, story, authored animation clips, authored audio or collision solver. Heroes use compact procedural joint animation; enemies retain their original unrigged geometry. Aim assist is forward and nearest-target, with no manual lock-on or obstacles; pillars are decorative and arrows pass through them. Enemies can overlap. No touch controls or accessible nonvisual equivalent of the 3D combat. Menus have keyboard focus containment and gamepad navigation. Physical controllers, real hardware WebGPU and mobile GPUs still need device testing. Linux Chromium screenshots tolerate raster differences. Current art references and generated browser evidence live under `evidence/art-v1/`; earlier reference images and benchmark files are preserved. Floating-point determinism is verified within one runtime, not cross-engine lockstep. The Babylon bundle exceeds Vite's 500 kB warning threshold; all chunks are local and precached.
 
 ## Co-op rooms and offline LAN
 
