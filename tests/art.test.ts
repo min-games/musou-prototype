@@ -82,6 +82,57 @@ describe("reusable temple art assets", () => {
       for (const id of json.skins[0].joints)
         expect(json.nodes[id].name).toBeTruthy();
     });
+  it("Ranger has a distinct narrower head and no dark lower-face hair", () => {
+    function headGeometry(hero: string) {
+      const { json, bin } = parse(character(hero).glb);
+      const attrs = json.meshes[0].primitives[0].attributes;
+      function values(id: number) {
+        const a = json.accessors[id],
+          v = json.bufferViews[a.bufferView];
+        const data = bin.subarray(v.byteOffset, v.byteOffset + v.byteLength);
+        const copy = data.buffer.slice(
+          data.byteOffset,
+          data.byteOffset + data.byteLength,
+        );
+        return a.componentType === 5126
+          ? new Float32Array(copy)
+          : new Uint16Array(copy);
+      }
+      const positions = values(attrs.POSITION),
+        uv = values(attrs.TEXCOORD_0),
+        joints = values(attrs.JOINTS_0);
+      const head = json.nodes.findIndex((n: any) => n.name === "head");
+      const points = [];
+      for (let i = 0; i < positions.length / 3; i++)
+        if (joints[i * 4] === head)
+          points.push({
+            x: positions[i * 3]!,
+            y: positions[i * 3 + 1]!,
+            z: positions[i * 3 + 2]!,
+            cell:
+              Math.floor(uv[i * 2]! * 4) + Math.floor(uv[i * 2 + 1]! * 4) * 4,
+          });
+      return points;
+    }
+    const ranger = headGeometry("ranger"),
+      vanguard = headGeometry("vanguard");
+    const lowerFace = (p: (typeof ranger)[number]) =>
+      p.y > 1.53 && p.y < 1.66 && Math.abs(p.x) < 0.12 && p.z > 0.12;
+    expect(
+      vanguard.filter((p) => lowerFace(p) && p.cell === 4).length,
+    ).toBeGreaterThan(0);
+    expect(ranger.filter((p) => lowerFace(p) && p.cell === 4)).toHaveLength(0);
+    const cheekWidth = (points: typeof ranger) =>
+      Math.max(
+        ...points
+          .filter((p) => p.cell === 3 && p.y > 1.65 && p.y < 1.8)
+          .map((p) => Math.abs(p.x)),
+      );
+    expect(cheekWidth(ranger)).toBeLessThan(cheekWidth(vanguard) * 0.9);
+    expect(ranger.some((p) => p.cell === 4 && p.z < -0.25 && p.y > 1.7)).toBe(
+      true,
+    );
+  });
   it("runtime WebP atlas is exactly 1024 square", () => {
     const webp = readFileSync("public/models/material-atlas-v1.webp");
     expect(webp.toString("ascii", 0, 4)).toBe("RIFF");

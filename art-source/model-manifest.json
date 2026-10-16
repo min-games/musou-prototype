@@ -13,14 +13,14 @@
   },
   "ranger": {
     "hero": "ranger",
-    "triangles": 1680,
-    "vertices": 3850,
+    "triangles": 1604,
+    "vertices": 3666,
     "joints": 16,
     "atlas": [
       1024,
       1024
     ],
     "uvInsetPixels": 8,
-    "bytes": 229640
+    "bytes": 218888
   }
 }

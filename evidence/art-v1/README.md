@@ -1,34 +1,49 @@
 # Art slice v1 validation
 
-The baseline was captured before renderer modifications in this isolated worktree, then the loaded candidate was measured in the same session. Raw results: [baseline](baseline-webgl.json), [candidate](candidate-webgl.json). Capture times and adapter details are in each JSON. The baseline capture source is archived in [art-source](../../art-source/baseline-capture.spec.ts.txt).
+The baseline was captured before renderer modifications in the original first-candidate worktree, then that loaded candidate was measured in the same session. This correction retains that evidence unchanged. Raw results: [baseline](baseline-webgl.json), [candidate](candidate-webgl.json). Capture times and adapter details are in each JSON. The baseline capture source is archived in [art-source](../../art-source/baseline-capture.spec.ts.txt).
 
-Both runs use Chromium 156, Babylon 8.56.2, 1280×720 viewport, DPR/scaling 1, WebGL2 through ANGLE SwiftShader, seed 4242, the existing weapon-crowd-v1-saber workload, 60 warmup + 180 measured frames per crowd, one simulation step per sample, and the same fixed camera orbit. Candidate metadata verifies both GLBs loaded, actual 1024-square texture, one mesh and 16 joints per hero; one new-art hero is active throughout. Hundreds of enemies retain their old geometry.
+Both runs use Chromium 156, Babylon 8.56.2, 1280×720 viewport, DPR/scaling 1, WebGL2 through ANGLE SwiftShader, seed 4242, the existing weapon-crowd-v1-saber workload, 60 warmup + 180 measured frames per crowd, one simulation step per sample, and the same fixed camera orbit. Candidate metadata verifies both GLBs loaded, actual 1024-square texture, one mesh and 16 joints per hero; the unchanged Vanguard is active throughout. Hundreds of enemies retain their old geometry.
 
 | Enemies | Baseline p50 / p95 ms | Candidate p50 / p95 ms | Baseline mean draws | Candidate mean draws |
-| ------: | --------------------: | ---------------------: | ------------------: | -------------------: |
-|       0 |         28.50 / 32.40 |          29.70 / 36.00 |               44.97 |                41.97 |
-|      20 |         30.80 / 37.40 |          29.80 / 34.40 |               65.60 |                62.60 |
-|     100 |         41.00 / 57.80 |          41.60 / 77.20 |              146.18 |               143.18 |
-|     300 |        64.90 / 106.00 |         66.40 / 127.40 |              346.52 |               343.52 |
+| ---: | ---: | ---: | ---: | ---: |
+| 0 | 28.50 / 32.40 | 29.70 / 36.00 | 44.97 | 41.97 |
+| 20 | 30.80 / 37.40 | 29.80 / 34.40 | 65.60 | 62.60 |
+| 100 | 41.00 / 57.80 | 41.60 / 77.20 | 146.18 | 143.18 |
+| 300 | 64.90 / 106.00 | 66.40 / 127.40 | 346.52 | 343.52 |
 
 The merged hero saves three mean draw calls in each workload. This is a single pair of runs; assess the measured medians and tails in the table without treating it as a repeated-trial result. Skinning/PBR/material complexity and software renderer/scheduling variability can contribute; there is no repeated-trial attribution or performance gain claim. RAF wall intervals include browser/scheduling work, not GPU timer queries. These results do not predict physical GPU FPS. The full suite also exports matching WebGL/auto and Ranger/stress scenarios into [validation](validation/). The baseline and final candidate form the matched sandbox pair; subsequent candidate repeats are saved separately. The earlier export iteration is retained as candidate-first-webgl.json. Native WebRTC required running the final browser suite outside the process network sandbox: [ICE diagnostic summary](ice-diagnostic.json) shows zero candidates inside versus two candidates per mode outside, for both legacy and new art. Do not mix the differently permissioned benchmark repeats into this pair.
 
 ## Runtime transfer sizes
 
-| Asset                  | Raw bytes | gzip bytes (local estimate) |
-| ---------------------- | --------: | --------------------------: |
-| vanguard-v1.glb        |   241,064 |                      25,372 |
-| ranger-v1.glb          |   229,640 |                      24,212 |
-| material-atlas-v1.webp |   130,192 |                     130,250 |
+| Asset | Raw bytes | gzip bytes (local estimate) |
+| --- | ---: | ---: |
+| vanguard-v1.glb | 241,064 | 25,372 |
+| ranger-v1.glb | 218,888 | 23,600 |
+| material-atlas-v1.webp | 130,192 | 130,250 |
 
-Both GLBs and one atlas total 600,896 raw bytes (about 587 KiB); gzip estimates assume server compression for GLB responses and are not a measured production transfer. WebP should be served directly. Each GLB references the same WebP URL, permitting ordinary HTTP caching; within each hero, local/remote actors share the actual geometry and material. Loader JavaScript is additional and the Babylon bundle still triggers Vite's size warning. Source/reference PNGs and prompts are excluded from precache/deployment.
+Both GLBs and one atlas total 590,144 raw bytes (about 576.31 KiB); gzip estimates assume server compression for GLB responses and are not a measured production transfer. WebP should be served directly. Each GLB references the same WebP URL, permitting ordinary HTTP caching; within each hero, local/remote actors share the actual geometry and material. Loader JavaScript is additional and the Babylon bundle still triggers Vite's size warning. Source/reference PNGs and prompts are excluded from precache/deployment.
 
-## Validation
+## Current geometry
+
+- vanguard: 1754 triangles, 4046 vertices, 16 joints; SHA-256 `5b68e1716a5f325af029f2f53d21a5cc88d9d512b80ba576d749bc9fb961eb8d`.
+- ranger: 1604 triangles, 3666 vertices, 16 joints; SHA-256 `05d267fde87634d0569dfcfb99fde62aba820a79b05490e5a8fe24cdacc4f0fa`.
+
+The performance table measures unchanged Vanguard with old-art enemies. The Ranger identity correction has not been rebenchmarked; earlier candidate metadata describes the earlier Ranger geometry, not the current manifest. All timing JSON, including candidate-first-webgl.json, is retained.
+
+## Ranger correction validation
+
+- 104 unit checks: [log](ranger-unit-test.log); production build: [log](ranger-build.log), with the existing bundle-size warning.
+- Zero-error/warning/hint glTF validation: [log](ranger-gltf-validation.log).
+- Six relevant art-v1 browser checks excluding benchmark: [log](ranger-browser-assets.log), [report](browser-results-ranger-assets.json). Both kits loaded; six attachments, independent/shared/disposed rigs, request failure, timeout fallback, offline subpath and reduced motion checked.
+- Only Ranger storm and Fan Bow scenarios refreshed their changed gameplay snapshots: [update log](ranger-browser-snapshots-update.log), [single assertion pass](ranger-browser-snapshots-check.log). No baseline, crowd benchmark or networking suites rerun.
+- Actual Ranger [standing front with relaxed arms](ranger-standing-front.png), [ranged closeup](ranger-closeup.png), and [default gameplay](ranger-gameplay.png). The neutral pose override is confined to the evidence test.
+
+## Original first candidate validation (historical)
 
 - 103 unit/integration checks: [log](unit-test.log).
 - Strict TypeScript and production PWA build: [log](build.log).
 - Both GLBs pass Khronos validation with zero errors/warnings/hints: [Vanguard](gltf-validation-vanguard.json), [Ranger](gltf-validation-ranger.json). Their one informational notice describes the intentionally shared external atlas.
-- All 31 Playwright checks pass across three disjoint runs: [26 gameplay/native WebRTC checks](browser-gameplay.log), [four benchmark suites](browser-benchmarks.log), [final candidate benchmark](browser-art-benchmark.log). [Combined report](browser-results.json) is generated by a script that rejects duplicate IDs, missing checks and failures. The long all-in-one external process was terminated; the split runs exercise the full suite on the final assets.
+- All 31 Playwright checks pass across three disjoint runs: [26 gameplay/native WebRTC checks](browser-gameplay.log), [four benchmark suites](browser-benchmarks.log), [final candidate benchmark](browser-art-benchmark.log). [Combined report](browser-results.json) is generated by a script that rejects duplicate IDs, missing checks and failures. The long all-in-one external process was terminated; the split runs exercise the full suite on the original first candidate assets.
 
 ## Browser evidence
 
@@ -37,6 +52,6 @@ Both GLBs and one atlas total 600,896 raw bytes (about 587 KiB); gzip estimates 
 - [Two-player independent poses](two-player-poses.png).
 - [Request-failure fallback](fallback-gameplay.png), [both assets loaded offline at /musou/](offline-subpath.png).
 - [Rig sharing/independence and six attachment checks](rig-sharing.json): one local + two remote actors across both kits, identical geometry/material objects for matching heroes, distinct skeleton/joint objects and poses, remote pose changes leave local joints unchanged. Ten add/remove cycles return mesh and skeleton counts to their prior values. This verifies remote resources and cleanup rather than claiming a measured two-player rendering-overhead number.
-- [Full browser report](browser-results.json) and current [visual references](references/). Existing keyboard, controller, menus, hero/weapon switching, native two-browser WebRTC, offline root/subpath and benchmark checks remain exercised. Historical screenshot/result files are retained at their old locations; current captures are isolated here.
+- [Original full browser report](browser-results.json) and current [visual references](references/). Keyboard, controller, menus, hero/weapon switching, native two-browser WebRTC, offline root/subpath and benchmark checks were exercised on the original first candidate; this correction reruns only the relevant checks listed above. Historical screenshot/result files are retained at their old locations; current captures are isolated here.
 
-The screenshots were inspected during implementation. Facing, faceted normals, UV mapping and the shape of the lion medallion were corrected before the final capture. Vanguard is visibly geometric and simplifies the approved illustration. Ranger shares its head/rig, with reduced shoulders/slimmer torso and teal materials. Weapons, arena, enemies and effects remain procedural prototype art. See [pipeline and exact limitations](../../docs/ART-PIPELINE.md).
+The actual Ranger standing-front, ranged closeup and default gameplay screenshots were visually reviewed for the corrected face, hair, costume and silhouette. The ponytail is compact and sits largely behind the head from the strict front view; facial and costume forms remain deliberately coarse. Original Vanguard screenshots were inspected during the first implementation. Facing, faceted normals, UV mapping and the shape of the lion medallion were corrected before the final capture. Vanguard is visibly geometric and simplifies the approved illustration. Ranger now follows its separate supplied female reference: slimmer angular face without beard, distinct eyes/brows, compact high ponytail, small plain dark shoulders, ivory sleeves, charcoal armor and teal scarf/sash with a jade buckle. It shares the 16-joint contract and atlas, with distinct head and costume geometry. These are deliberately simple code-authored low-poly forms, not a production sculpt or automatic reconstruction. Weapons, arena, enemies and effects remain procedural prototype art. See [pipeline and exact limitations](../../docs/ART-PIPELINE.md).

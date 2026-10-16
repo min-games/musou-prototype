@@ -172,6 +172,53 @@ test("temple models, all six hand attachments, independent remote rigs and clean
   expect(errors).toEqual([]);
 });
 
+test("female Ranger standing reference pose and default gameplay", async ({
+  page,
+}) => {
+  await ready(page, "/?practice=1&backend=webgl");
+  expect((await art(page)).states).toEqual({
+    vanguard: "loaded",
+    ranger: "loaded",
+  });
+  await page.evaluate(() => {
+    const m = (window as any).musou;
+    m.pause(true);
+    m.sim.reset(20);
+    m.sim.player.hero = "ranger";
+    m.sim.player.weapon = "longbow";
+    m.renderer.render(m.sim, 0, 0.8);
+    m.renderer.render(m.sim, 0, 0.8);
+  });
+  await page.screenshot({ path: "evidence/art-v1/ranger-gameplay.png" });
+  await ready(page, "/?practice=1&backend=webgl&artCloseup=1");
+  await page.evaluate(() => {
+    const m = (window as any).musou,
+      r = m.renderer;
+    m.pause(true);
+    m.sim.reset(0);
+    m.sim.player.hero = "ranger";
+    m.sim.player.weapon = "longbow";
+    m.sim.player.yaw = Math.PI;
+    // Evidence-only pose override: keep the shipped ranged combat pose untouched.
+    const update = r.characters.animate.bind(r.characters);
+    r.characters.animate = (...args: any[]) => {
+      const result = update(...args);
+      const inst = r.characters.instances.get(r.player);
+      if (inst?.hero === "ranger") {
+        for (const name of ["arm.L", "arm.R", "forearm.L", "forearm.R"]) {
+          const q = inst.nodes.get(name).rotationQuaternion;
+          q.set(0, 0, 0, 1);
+        }
+      }
+      return result;
+    };
+    r.render(m.sim, 0, 0.8);
+    r.render(m.sim, 0, 0.8);
+    r.bow.visibility = 0;
+  });
+  await page.screenshot({ path: "evidence/art-v1/ranger-standing-front.png" });
+});
+
 test("loaded gameplay and same-session candidate WebGL benchmark", async ({
   page,
 }) => {

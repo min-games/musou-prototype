@@ -1,0 +1,33 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> musou-slice@1.0.0 test:e2e
+> playwright test e2e/art-v1.spec.ts e2e/run.spec.ts e2e/weapons.spec.ts --grep female Ranger standing|choose the ranger, fire assisted|Fan Bow fires at separate --update-snapshots=all
+
+[WebServer] (node:27) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+[WebServer] (node:39) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] 
+[WebServer] (!) Some chunks are larger than 500 kB after minification. Consider:
+[WebServer] - Using dynamic import() to code-split the application
+[WebServer] - Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+[WebServer] - Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+[WebServer] (node:70) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:77) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 3 tests using 1 worker
+
+(node:84) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 e2e/art-v1.spec.ts:175:1 › female Ranger standing reference pose and default gameplay (3.4s)
+/home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261016132539-7a3c109e/musou-prototype/evidence/art-v1/references/run.spec.ts/ranger-storm.png is re-generated, writing actual.
+/home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261016132539-7a3c109e/musou-prototype/evidence/art-v1/references/run.spec.ts/ranger-storm.png is re-generated, writing actual.
+  ✓  2 e2e/run.spec.ts:8:1 › choose the ranger, fire assisted arrows, use its special and spend a bomb (6.5s)
+/home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261016132539-7a3c109e/musou-prototype/evidence/art-v1/references/weapons.spec.ts/seven-arrow-fan.png is re-generated, writing actual.
+/home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261016132539-7a3c109e/musou-prototype/evidence/art-v1/references/weapons.spec.ts/seven-arrow-fan.png is re-generated, writing actual.
+  ✓  3 e2e/weapons.spec.ts:7:1 › Fan Bow fires at separate targets and seven-arrow upgrades have a readable spread (8.5s)
+
+  3 passed (26.0s)

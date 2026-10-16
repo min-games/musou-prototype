@@ -77,7 +77,7 @@
       "models": {
         "ranger": {
           "file": "ranger-v1.glb",
-          "triangles": 1680,
+          "triangles": 1604,
           "meshes": 1,
           "joints": 16,
           "textureResolution": {
@@ -170,7 +170,7 @@
             {
               "geometry": 226,
               "material": 227,
-              "vertices": 3850
+              "vertices": 3666
             }
           ],
           "pose": [
@@ -211,7 +211,7 @@
       "models": {
         "ranger": {
           "file": "ranger-v1.glb",
-          "triangles": 1680,
+          "triangles": 1604,
           "meshes": 1,
           "joints": 16,
           "textureResolution": {

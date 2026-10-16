@@ -1,0 +1,269 @@
+{
+  "config": {
+    "argv": [
+      "/home/cmwen/.local/share/fnm/node-versions/v24.12.0/installation/bin/node",
+      "/home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261016132539-7a3c109e/musou-prototype/node_modules/.bin/playwright",
+      "test",
+      "e2e/art-v1.spec.ts",
+      "e2e/run.spec.ts",
+      "e2e/weapons.spec.ts",
+      "--grep",
+      "female Ranger standing|choose the ranger, fire assisted|Fan Bow fires at separate",
+      "--update-snapshots=all"
+    ],
+    "configFile": "/home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261016132539-7a3c109e/musou-prototype/playwright.config.ts",
+    "rootDir": "/home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261016132539-7a3c109e/musou-prototype/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261016132539-7a3c109e/musou-prototype/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "/home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261016132539-7a3c109e/musou-prototype/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 120000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261016132539-7a3c109e/musou-prototype/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "/home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261016132539-7a3c109e/musou-prototype/e2e",
+        "snapshotDir": "/home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261016132539-7a3c109e/musou-prototype/e2e",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 120000,
+        "use": {
+          "baseURL": "http://127.0.0.1:5187",
+          "viewport": {
+            "width": 1280,
+            "height": 720
+          },
+          "launchOptions": {
+            "args": [
+              "--use-angle=swiftshader",
+              "--enable-webgl",
+              "--ignore-gpu-blocklist"
+            ]
+          }
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "evidence/art-v1/browser-results-ranger-snapshots-update.json"
+        }
+      ],
+      [
+        "html",
+        {
+          "open": "never",
+          "outputFolder": "evidence/playwright-report-ranger-snapshots-update"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "all",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": {
+      "command": "npx vite build --mode test && MUSOU_DIST=test-dist node scripts/precache.mjs && MUSOU_DIST=test-dist node scripts/serve.mjs",
+      "port": 5187,
+      "reuseExistingServer": false
+    }
+  },
+  "suites": [
+    {
+      "title": "art-v1.spec.ts",
+      "file": "art-v1.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "female Ranger standing reference pose and default gameplay",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3376,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T13:29:24.159Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c2d0e169eef2ba6e84de-f9594732894d0c37911c",
+          "file": "art-v1.spec.ts",
+          "line": 175,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "run.spec.ts",
+      "file": "run.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "choose the ranger, fire assisted arrows, use its special and spend a bomb",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6508,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "/home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261016132539-7a3c109e/musou-prototype/evidence/art-v1/references/run.spec.ts/ranger-storm.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261016132539-7a3c109e/musou-prototype/evidence/art-v1/references/run.spec.ts/ranger-storm.png is re-generated, writing actual.\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T13:29:27.675Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "868afcc30dccb7beb079-9301c52dcd580b3a58e6",
+          "file": "run.spec.ts",
+          "line": 8,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "weapons.spec.ts",
+      "file": "weapons.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Fan Bow fires at separate targets and seven-arrow upgrades have a readable spread",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8498,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "/home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261016132539-7a3c109e/musou-prototype/evidence/art-v1/references/weapons.spec.ts/seven-arrow-fan.png is re-generated, writing actual.\n"
+                    },
+                    {
+                      "text": "/home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261016132539-7a3c109e/musou-prototype/evidence/art-v1/references/weapons.spec.ts/seven-arrow-fan.png is re-generated, writing actual.\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T13:29:34.205Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7f770c34ac232bd2291a-7f2535e0eebb995715a1",
+          "file": "weapons.spec.ts",
+          "line": 7,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-16T13:29:16.896Z",
+    "duration": 26021.094,
+    "expected": 3,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

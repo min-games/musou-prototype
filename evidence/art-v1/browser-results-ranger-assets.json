@@ -1,0 +1,338 @@
+{
+  "config": {
+    "argv": [
+      "/home/cmwen/.local/share/fnm/node-versions/v24.12.0/installation/bin/node",
+      "/home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261016132539-7a3c109e/musou-prototype/node_modules/.bin/playwright",
+      "test",
+      "e2e/art-v1.spec.ts",
+      "--grep-invert",
+      "benchmark"
+    ],
+    "configFile": "/home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261016132539-7a3c109e/musou-prototype/playwright.config.ts",
+    "rootDir": "/home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261016132539-7a3c109e/musou-prototype/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261016132539-7a3c109e/musou-prototype/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "/home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261016132539-7a3c109e/musou-prototype/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 120000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261016132539-7a3c109e/musou-prototype/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "/home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261016132539-7a3c109e/musou-prototype/e2e",
+        "snapshotDir": "/home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261016132539-7a3c109e/musou-prototype/e2e",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 120000,
+        "use": {
+          "baseURL": "http://127.0.0.1:5187",
+          "viewport": {
+            "width": 1280,
+            "height": 720
+          },
+          "launchOptions": {
+            "args": [
+              "--use-angle=swiftshader",
+              "--enable-webgl",
+              "--ignore-gpu-blocklist"
+            ]
+          }
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "evidence/art-v1/browser-results-ranger-assets.json"
+        }
+      ],
+      [
+        "html",
+        {
+          "open": "never",
+          "outputFolder": "evidence/playwright-report-ranger-assets"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": {
+      "command": "npx vite build --mode test && MUSOU_DIST=test-dist node scripts/precache.mjs && MUSOU_DIST=test-dist node scripts/serve.mjs",
+      "port": 5187,
+      "reuseExistingServer": false
+    }
+  },
+  "suites": [
+    {
+      "title": "art-v1.spec.ts",
+      "file": "art-v1.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "temple models, all six hand attachments, independent remote rigs and cleanup",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7125,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T13:28:08.215Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c2d0e169eef2ba6e84de-45356bbbab90fcd281d9",
+          "file": "art-v1.spec.ts",
+          "line": 10,
+          "column": 1
+        },
+        {
+          "title": "female Ranger standing reference pose and default gameplay",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4011,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T13:28:15.480Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c2d0e169eef2ba6e84de-f9594732894d0c37911c",
+          "file": "art-v1.spec.ts",
+          "line": 175,
+          "column": 1
+        },
+        {
+          "title": "model errors use bounded playable fallback and legacy A/B makes no model requests",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6785,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T13:23:50.556Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c2d0e169eef2ba6e84de-5a783411a27b6eadc9d7",
+          "file": "art-v1.spec.ts",
+          "line": 247,
+          "column": 1
+        },
+        {
+          "title": "subpath precaches actual GLB and atlas and loads both kits offline",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3502,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T13:28:27.358Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c2d0e169eef2ba6e84de-3727c036fb5ca171a91d",
+          "file": "art-v1.spec.ts",
+          "line": 270,
+          "column": 1
+        },
+        {
+          "title": "stalled asset requests release readiness after the bounded timeout",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 12685,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T13:28:30.881Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c2d0e169eef2ba6e84de-56dacdcc89d6fc59ff14",
+          "file": "art-v1.spec.ts",
+          "line": 296,
+          "column": 1
+        },
+        {
+          "title": "reduced motion keeps combat poses and suppresses gait and decorative sway",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 548,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-16T13:28:43.593Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c2d0e169eef2ba6e84de-abbae5e59cd298bb88b3",
+          "file": "art-v1.spec.ts",
+          "line": 310,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-16T13:28:00.704Z",
+    "duration": 42591.02,
+    "expected": 6,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}
