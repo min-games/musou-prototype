@@ -1,0 +1,74 @@
+{
+  "summary": {
+    "bytes": 986892,
+    "triangles": 23720,
+    "materials": 9,
+    "joints": 34,
+    "meshes": [
+      "Ranger fitted leather",
+      "shortbow curved limb",
+      "real bow string",
+      "longbow curved limb",
+      "real bow string.002",
+      "fanbow curved limb",
+      "real bow string.004"
+    ],
+    "animations": [
+      "Idle",
+      "Run",
+      "ShortbowShot",
+      "ShortbowReady",
+      "LongbowShot",
+      "LongbowReady",
+      "FanbowShot",
+      "FanbowReady"
+    ],
+    "external": [],
+    "issues": {
+      "numErrors": 0,
+      "numWarnings": 0,
+      "numInfos": 0,
+      "numHints": 0,
+      "messages": [],
+      "truncated": false
+    }
+  },
+  "report": {
+    "uri": "public/models/ranger-weapon-motion-v1.glb",
+    "mimeType": "model/gltf-binary",
+    "validatorVersion": "2.0.0-dev.3.10",
+    "validatedAt": "2026-10-17T12:14:28.706Z",
+    "issues": {
+      "numErrors": 0,
+      "numWarnings": 0,
+      "numInfos": 0,
+      "numHints": 0,
+      "messages": [],
+      "truncated": false
+    },
+    "info": {
+      "version": "2.0",
+      "generator": "Khronos glTF Blender I/O v4.5.48",
+      "resources": [
+        {
+          "pointer": "/buffers/0",
+          "mimeType": "application/gltf-buffer",
+          "storage": "glb",
+          "byteLength": 851096
+        }
+      ],
+      "animationCount": 8,
+      "materialCount": 9,
+      "hasMorphTargets": false,
+      "hasSkins": true,
+      "hasTextures": false,
+      "hasDefaultScene": true,
+      "drawCallCount": 18,
+      "totalVertexCount": 13714,
+      "totalTriangleCount": 23720,
+      "maxUVs": 0,
+      "maxInfluences": 4,
+      "maxAttributes": 4
+    }
+  }
+}

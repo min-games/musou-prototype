@@ -1,0 +1,1082 @@
+[
+  {
+    "count": 0,
+    "seed": 4242,
+    "frames": 180,
+    "frameMs": {
+      "p50": 30.100000143051147,
+      "p95": 41.39999985694885,
+      "p99": 76.29999995231628
+    },
+    "simulationMs": {
+      "p50": 0.09999990463256836,
+      "p95": 0.20000004768371582,
+      "p99": 0.20000004768371582
+    },
+    "drawCalls": 43.31111111111111,
+    "backend": "WebGL2",
+    "metadata": {
+      "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.8078.4 Safari/537.36",
+      "viewport": [
+        1280,
+        720
+      ],
+      "dpr": 1,
+      "hardwareConcurrency": 16,
+      "utc": "2026-10-17T12:16:52.223Z",
+      "warmupFrames": 60,
+      "scenario": "weapon-crowd-v1-shortbow",
+      "stressMultishot": false,
+      "peakArrows": 3,
+      "pierce": 0,
+      "hero": "ranger",
+      "weapon": "shortbow",
+      "weaponStats": {
+        "weapon": {
+          "id": "shortbow",
+          "hero": "ranger",
+          "name": "Shortbow",
+          "description": "Rapid arrows; quick charge generation",
+          "damage": 32,
+          "finisher": 32,
+          "period": 0.32,
+          "range": 19.2,
+          "halfArc": 0,
+          "arrowSpeed": 24,
+          "arrows": 1,
+          "spread": 0.14
+        },
+        "period": 0.3333333333333333,
+        "rate": 3,
+        "range": 19.2,
+        "arrows": 1,
+        "damage": 32,
+        "finisher": 32,
+        "dps": 96,
+        "targetsPerArrow": 1,
+        "crowdDps": 96
+      },
+      "enemyTypes": {
+        "grunt": 0,
+        "flanker": 0,
+        "armored": 0
+      },
+      "specialActivations": 1,
+      "liveEnemies": 0,
+      "timing": "RAF wall intervals; CPU simulation only; no GPU timer query",
+      "renderer": {
+        "width": 1280,
+        "height": 720,
+        "engineVersion": "8.56.2",
+        "renderer": {
+          "vendor": "Google Inc. (Google)",
+          "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+          "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)"
+        },
+        "hardwareScaling": 1,
+        "reducedMotion": false,
+        "ringGeometry": "flat-strip-64-segments",
+        "specialSparkPool": 32,
+        "characterArt": {
+          "version": "temple-fantasy-v1",
+          "states": {
+            "vanguard": "loaded",
+            "ranger": "loaded"
+          },
+          "errors": {},
+          "atlasResolution": [
+            1024,
+            1024
+          ],
+          "uvInsetPixels": 8,
+          "models": {
+            "ranger": {
+              "file": "ranger-v1.glb",
+              "animations": [],
+              "triangles": 1604,
+              "meshes": 1,
+              "joints": 16,
+              "textureResolution": {
+                "width": 1024,
+                "height": 1024
+              }
+            },
+            "vanguard": {
+              "file": "vanguard-v1.glb",
+              "animations": [],
+              "triangles": 1754,
+              "meshes": 1,
+              "joints": 16,
+              "textureResolution": {
+                "width": 1024,
+                "height": 1024
+              }
+            }
+          },
+          "activeActors": 1,
+          "actors": [
+            {
+              "hero": "ranger",
+              "sockets": [
+                {
+                  "name": "hand.L",
+                  "position": [
+                    -0.25005942583084106,
+                    1.3400166034698486,
+                    3.3201687335968018
+                  ],
+                  "matrix": [
+                    -0.9800665974617004,
+                    -0.07527533173561096,
+                    0.1838562786579132,
+                    0,
+                    -0.18662454187870026,
+                    0.03150035813450813,
+                    -0.9819262027740479,
+                    0,
+                    -0.06812327355146408,
+                    0.9966651797294617,
+                    0.04492069035768509,
+                    0,
+                    -0.25005942583084106,
+                    1.3400166034698486,
+                    3.3201687335968018,
+                    1
+                  ]
+                },
+                {
+                  "name": "hand.R",
+                  "position": [
+                    -1.3880455493927002,
+                    1.3983358144760132,
+                    3.2971627712249756
+                  ],
+                  "matrix": [
+                    -0.9887710809707642,
+                    0.07014542073011398,
+                    -0.1319521814584732,
+                    0,
+                    0.10411454737186432,
+                    -0.31005924940109253,
+                    -0.9449991583824158,
+                    0,
+                    0.10720034688711166,
+                    0.948125958442688,
+                    -0.2992744743824005,
+                    0,
+                    -1.3880455493927002,
+                    1.3983358144760132,
+                    3.2971627712249756,
+                    1
+                  ]
+                }
+              ],
+              "lowerBody": [
+                {
+                  "name": "pelvis",
+                  "position": [
+                    -0.8361198902130127,
+                    0.9100000262260437,
+                    2.8458268642425537
+                  ]
+                },
+                {
+                  "name": "thigh.L",
+                  "position": [
+                    -0.6561198830604553,
+                    0.8700000047683716,
+                    2.8458268642425537
+                  ]
+                },
+                {
+                  "name": "shin.L",
+                  "position": [
+                    -0.6561198830604553,
+                    0.5325679779052734,
+                    2.6940386295318604
+                  ]
+                },
+                {
+                  "name": "foot.L",
+                  "position": [
+                    -0.6561198830604553,
+                    0.20106840133666992,
+                    2.5778145790100098
+                  ]
+                },
+                {
+                  "name": "thigh.R",
+                  "position": [
+                    -1.0161199569702148,
+                    0.8700000047683716,
+                    2.8458268642425537
+                  ]
+                },
+                {
+                  "name": "shin.R",
+                  "position": [
+                    -1.0161199569702148,
+                    0.5325679779052734,
+                    2.997615098953247
+                  ]
+                },
+                {
+                  "name": "foot.R",
+                  "position": [
+                    -1.0161199569702148,
+                    0.1841484010219574,
+                    3.0423789024353027
+                  ]
+                }
+              ],
+              "root": 502,
+              "skeleton": 484,
+              "meshes": [
+                {
+                  "geometry": 226,
+                  "material": 227,
+                  "vertices": 3666
+                }
+              ],
+              "pose": [
+                {
+                  "name": "arm.R",
+                  "rotation": [
+                    -0.5212178600597089,
+                    0.03916480105897516,
+                    0.06387941288075333,
+                    0.8501279205641931
+                  ]
+                },
+                {
+                  "name": "thigh.L",
+                  "rotation": [
+                    0.20978756646650418,
+                    0,
+                    0,
+                    0.9777469902567136
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "fixedHz": 60,
+      "camera": "origin orbit / distance 30 / 0.15 radians per simulation second",
+      "simulationStepsPerSample": 1,
+      "playerHealth": "refilled per tick to maintain active crowd workload",
+      "input": "sin/cos movement; held bow fire; Arrow Storm on tick 90"
+    }
+  },
+  {
+    "count": 20,
+    "seed": 4242,
+    "frames": 180,
+    "frameMs": {
+      "p50": 31.5,
+      "p95": 54.200000047683716,
+      "p99": 60.89999985694885
+    },
+    "simulationMs": {
+      "p50": 0.10000014305114746,
+      "p95": 0.20000004768371582,
+      "p99": 0.3000001907348633
+    },
+    "drawCalls": 63.30555555555556,
+    "backend": "WebGL2",
+    "metadata": {
+      "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.8078.4 Safari/537.36",
+      "viewport": [
+        1280,
+        720
+      ],
+      "dpr": 1,
+      "hardwareConcurrency": 16,
+      "utc": "2026-10-17T12:17:00.336Z",
+      "warmupFrames": 60,
+      "scenario": "weapon-crowd-v1-shortbow",
+      "stressMultishot": false,
+      "peakArrows": 1,
+      "pierce": 0,
+      "hero": "ranger",
+      "weapon": "shortbow",
+      "weaponStats": {
+        "weapon": {
+          "id": "shortbow",
+          "hero": "ranger",
+          "name": "Shortbow",
+          "description": "Rapid arrows; quick charge generation",
+          "damage": 32,
+          "finisher": 32,
+          "period": 0.32,
+          "range": 19.2,
+          "halfArc": 0,
+          "arrowSpeed": 24,
+          "arrows": 1,
+          "spread": 0.14
+        },
+        "period": 0.3333333333333333,
+        "rate": 3,
+        "range": 19.2,
+        "arrows": 1,
+        "damage": 32,
+        "finisher": 32,
+        "dps": 96,
+        "targetsPerArrow": 1,
+        "crowdDps": 96
+      },
+      "enemyTypes": {
+        "grunt": 12,
+        "flanker": 4,
+        "armored": 4
+      },
+      "specialActivations": 1,
+      "liveEnemies": 20,
+      "timing": "RAF wall intervals; CPU simulation only; no GPU timer query",
+      "renderer": {
+        "width": 1280,
+        "height": 720,
+        "engineVersion": "8.56.2",
+        "renderer": {
+          "vendor": "Google Inc. (Google)",
+          "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+          "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)"
+        },
+        "hardwareScaling": 1,
+        "reducedMotion": false,
+        "ringGeometry": "flat-strip-64-segments",
+        "specialSparkPool": 32,
+        "characterArt": {
+          "version": "temple-fantasy-v1",
+          "states": {
+            "vanguard": "loaded",
+            "ranger": "loaded"
+          },
+          "errors": {},
+          "atlasResolution": [
+            1024,
+            1024
+          ],
+          "uvInsetPixels": 8,
+          "models": {
+            "ranger": {
+              "file": "ranger-v1.glb",
+              "animations": [],
+              "triangles": 1604,
+              "meshes": 1,
+              "joints": 16,
+              "textureResolution": {
+                "width": 1024,
+                "height": 1024
+              }
+            },
+            "vanguard": {
+              "file": "vanguard-v1.glb",
+              "animations": [],
+              "triangles": 1754,
+              "meshes": 1,
+              "joints": 16,
+              "textureResolution": {
+                "width": 1024,
+                "height": 1024
+              }
+            }
+          },
+          "activeActors": 1,
+          "actors": [
+            {
+              "hero": "ranger",
+              "sockets": [
+                {
+                  "name": "hand.L",
+                  "position": [
+                    -1.3120827674865723,
+                    1.3400166034698486,
+                    2.261082172393799
+                  ],
+                  "matrix": [
+                    0.9969274997711182,
+                    -0.07527533173561096,
+                    0.021662432700395584,
+                    0,
+                    -0.01933584176003933,
+                    0.03150035813450813,
+                    0.9993166923522949,
+                    0,
+                    0.07590626925230026,
+                    0.9966651797294617,
+                    -0.029948070645332336,
+                    0,
+                    -1.3120827674865723,
+                    1.3400166034698486,
+                    2.261082172393799,
+                    1
+                  ]
+                },
+                {
+                  "name": "hand.R",
+                  "position": [
+                    -0.20316143333911896,
+                    1.3983358144760132,
+                    2.5176656246185303
+                  ],
+                  "matrix": [
+                    0.9404879808425903,
+                    0.07014542073011398,
+                    0.3325085937976837,
+                    0,
+                    -0.29626286029815674,
+                    -0.31005924940109253,
+                    0.9033779501914978,
+                    0,
+                    -0.1664651781320572,
+                    0.948125958442688,
+                    0.2708255350589752,
+                    0,
+                    -0.20316143333911896,
+                    1.3983358144760132,
+                    2.5176656246185303,
+                    1
+                  ]
+                }
+              ],
+              "lowerBody": [
+                {
+                  "name": "pelvis",
+                  "position": [
+                    -0.8361198902130127,
+                    0.9100000262260437,
+                    2.8458268642425537
+                  ]
+                },
+                {
+                  "name": "thigh.L",
+                  "position": [
+                    -1.0122710466384888,
+                    0.8700000047683716,
+                    2.808803081512451
+                  ]
+                },
+                {
+                  "name": "shin.L",
+                  "position": [
+                    -0.9790633320808411,
+                    0.5370814800262451,
+                    2.6508078575134277
+                  ]
+                },
+                {
+                  "name": "foot.L",
+                  "position": [
+                    -0.9696494936943054,
+                    0.18879233300685883,
+                    2.6060187816619873
+                  ]
+                },
+                {
+                  "name": "thigh.R",
+                  "position": [
+                    -0.6599686741828918,
+                    0.8700000047683716,
+                    2.8828506469726562
+                  ]
+                },
+                {
+                  "name": "shin.R",
+                  "position": [
+                    -0.6931763887405396,
+                    0.5370814800262451,
+                    3.0408458709716797
+                  ]
+                },
+                {
+                  "name": "foot.R",
+                  "position": [
+                    -0.719036877155304,
+                    0.20906823873519897,
+                    3.1638846397399902
+                  ]
+                }
+              ],
+              "root": 502,
+              "skeleton": 484,
+              "meshes": [
+                {
+                  "geometry": 226,
+                  "material": 227,
+                  "vertices": 3666
+                }
+              ],
+              "pose": [
+                {
+                  "name": "arm.R",
+                  "rotation": [
+                    -0.5212178600597089,
+                    0.03916480105897516,
+                    0.06387941288075333,
+                    0.8501279205641931
+                  ]
+                },
+                {
+                  "name": "thigh.L",
+                  "rotation": [
+                    -0.2238529563890641,
+                    0,
+                    0,
+                    0.9746229290940552
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "fixedHz": 60,
+      "camera": "origin orbit / distance 30 / 0.15 radians per simulation second",
+      "simulationStepsPerSample": 1,
+      "playerHealth": "refilled per tick to maintain active crowd workload",
+      "input": "sin/cos movement; held bow fire; Arrow Storm on tick 90"
+    }
+  },
+  {
+    "count": 100,
+    "seed": 4242,
+    "frames": 180,
+    "frameMs": {
+      "p50": 43,
+      "p95": 81.79999995231628,
+      "p99": 85.29999995231628
+    },
+    "simulationMs": {
+      "p50": 0.20000004768371582,
+      "p95": 0.2999999523162842,
+      "p99": 0.40000009536743164
+    },
+    "drawCalls": 144.92777777777778,
+    "backend": "WebGL2",
+    "metadata": {
+      "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.8078.4 Safari/537.36",
+      "viewport": [
+        1280,
+        720
+      ],
+      "dpr": 1,
+      "hardwareConcurrency": 16,
+      "utc": "2026-10-17T12:17:10.593Z",
+      "warmupFrames": 60,
+      "scenario": "weapon-crowd-v1-shortbow",
+      "stressMultishot": false,
+      "peakArrows": 1,
+      "pierce": 0,
+      "hero": "ranger",
+      "weapon": "shortbow",
+      "weaponStats": {
+        "weapon": {
+          "id": "shortbow",
+          "hero": "ranger",
+          "name": "Shortbow",
+          "description": "Rapid arrows; quick charge generation",
+          "damage": 32,
+          "finisher": 32,
+          "period": 0.32,
+          "range": 19.2,
+          "halfArc": 0,
+          "arrowSpeed": 24,
+          "arrows": 1,
+          "spread": 0.14
+        },
+        "period": 0.3333333333333333,
+        "rate": 3,
+        "range": 19.2,
+        "arrows": 1,
+        "damage": 32,
+        "finisher": 32,
+        "dps": 96,
+        "targetsPerArrow": 1,
+        "crowdDps": 96
+      },
+      "enemyTypes": {
+        "grunt": 60,
+        "flanker": 20,
+        "armored": 20
+      },
+      "specialActivations": 1,
+      "liveEnemies": 100,
+      "timing": "RAF wall intervals; CPU simulation only; no GPU timer query",
+      "renderer": {
+        "width": 1280,
+        "height": 720,
+        "engineVersion": "8.56.2",
+        "renderer": {
+          "vendor": "Google Inc. (Google)",
+          "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+          "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)"
+        },
+        "hardwareScaling": 1,
+        "reducedMotion": false,
+        "ringGeometry": "flat-strip-64-segments",
+        "specialSparkPool": 32,
+        "characterArt": {
+          "version": "temple-fantasy-v1",
+          "states": {
+            "vanguard": "loaded",
+            "ranger": "loaded"
+          },
+          "errors": {},
+          "atlasResolution": [
+            1024,
+            1024
+          ],
+          "uvInsetPixels": 8,
+          "models": {
+            "ranger": {
+              "file": "ranger-v1.glb",
+              "animations": [],
+              "triangles": 1604,
+              "meshes": 1,
+              "joints": 16,
+              "textureResolution": {
+                "width": 1024,
+                "height": 1024
+              }
+            },
+            "vanguard": {
+              "file": "vanguard-v1.glb",
+              "animations": [],
+              "triangles": 1754,
+              "meshes": 1,
+              "joints": 16,
+              "textureResolution": {
+                "width": 1024,
+                "height": 1024
+              }
+            }
+          },
+          "activeActors": 1,
+          "actors": [
+            {
+              "hero": "ranger",
+              "sockets": [
+                {
+                  "name": "hand.L",
+                  "position": [
+                    -0.23560906946659088,
+                    1.3400166034698486,
+                    3.301736831665039
+                  ],
+                  "matrix": [
+                    -0.9738830924034119,
+                    -0.07527533173561096,
+                    0.21420858800411224,
+                    0,
+                    -0.2170332819223404,
+                    0.03150035813450813,
+                    -0.9756557941436768,
+                    0,
+                    -0.06669516116380692,
+                    0.9966651797294617,
+                    0.047014933079481125,
+                    0,
+                    -0.23560906946659088,
+                    1.3400166034698486,
+                    3.301736831665039,
+                    1
+                  ]
+                },
+                {
+                  "name": "hand.R",
+                  "position": [
+                    -1.3737608194351196,
+                    1.3983358144760132,
+                    3.3140878677368164
+                  ],
+                  "matrix": [
+                    -0.9923924803733826,
+                    0.07014542073011398,
+                    -0.10117711126804352,
+                    0,
+                    0.07471247762441635,
+                    -0.31005924940109253,
+                    -0.9477770328521729,
+                    0,
+                    0.09785310924053192,
+                    0.948125958442688,
+                    -0.3024597465991974,
+                    0,
+                    -1.3737608194351196,
+                    1.3983358144760132,
+                    3.3140878677368164,
+                    1
+                  ]
+                }
+              ],
+              "lowerBody": [
+                {
+                  "name": "pelvis",
+                  "position": [
+                    -0.8361198902130127,
+                    0.9100000262260437,
+                    2.8458268642425537
+                  ]
+                },
+                {
+                  "name": "thigh.L",
+                  "position": [
+                    -0.6562067270278931,
+                    0.8700000047683716,
+                    2.840235948562622
+                  ]
+                },
+                {
+                  "name": "shin.L",
+                  "position": [
+                    -0.6568912267684937,
+                    0.5006569027900696,
+                    2.8182084560394287
+                  ]
+                },
+                {
+                  "name": "foot.L",
+                  "position": [
+                    -0.6566085815429688,
+                    0.14949142932891846,
+                    2.8273041248321533
+                  ]
+                },
+                {
+                  "name": "thigh.R",
+                  "position": [
+                    -1.0160330533981323,
+                    0.8700000047683716,
+                    2.8514177799224854
+                  ]
+                },
+                {
+                  "name": "shin.R",
+                  "position": [
+                    -1.0153485536575317,
+                    0.5006569027900696,
+                    2.8734452724456787
+                  ]
+                },
+                {
+                  "name": "foot.R",
+                  "position": [
+                    -1.0143519639968872,
+                    0.15084189176559448,
+                    2.905515193939209
+                  ]
+                }
+              ],
+              "root": 502,
+              "skeleton": 484,
+              "meshes": [
+                {
+                  "geometry": 226,
+                  "material": 227,
+                  "vertices": 3666
+                }
+              ],
+              "pose": [
+                {
+                  "name": "arm.R",
+                  "rotation": [
+                    -0.5212178600597089,
+                    0.03916480105897516,
+                    0.06387941288075333,
+                    0.8501279205641931
+                  ]
+                },
+                {
+                  "name": "thigh.L",
+                  "rotation": [
+                    0.02979436518811642,
+                    0,
+                    0,
+                    0.9995560493554312
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "fixedHz": 60,
+      "camera": "origin orbit / distance 30 / 0.15 radians per simulation second",
+      "simulationStepsPerSample": 1,
+      "playerHealth": "refilled per tick to maintain active crowd workload",
+      "input": "sin/cos movement; held bow fire; Arrow Storm on tick 90"
+    }
+  },
+  {
+    "count": 300,
+    "seed": 4242,
+    "frames": 180,
+    "frameMs": {
+      "p50": 63.09999990463257,
+      "p95": 111.09999990463257,
+      "p99": 137.89999985694885
+    },
+    "simulationMs": {
+      "p50": 0.40000009536743164,
+      "p95": 0.6000001430511475,
+      "p99": 0.7000000476837158
+    },
+    "drawCalls": 352.8333333333333,
+    "backend": "WebGL2",
+    "metadata": {
+      "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.8078.4 Safari/537.36",
+      "viewport": [
+        1280,
+        720
+      ],
+      "dpr": 1,
+      "hardwareConcurrency": 16,
+      "utc": "2026-10-17T12:17:25.723Z",
+      "warmupFrames": 60,
+      "scenario": "weapon-crowd-v1-shortbow",
+      "stressMultishot": false,
+      "peakArrows": 1,
+      "pierce": 0,
+      "hero": "ranger",
+      "weapon": "shortbow",
+      "weaponStats": {
+        "weapon": {
+          "id": "shortbow",
+          "hero": "ranger",
+          "name": "Shortbow",
+          "description": "Rapid arrows; quick charge generation",
+          "damage": 32,
+          "finisher": 32,
+          "period": 0.32,
+          "range": 19.2,
+          "halfArc": 0,
+          "arrowSpeed": 24,
+          "arrows": 1,
+          "spread": 0.14
+        },
+        "period": 0.3333333333333333,
+        "rate": 3,
+        "range": 19.2,
+        "arrows": 1,
+        "damage": 32,
+        "finisher": 32,
+        "dps": 96,
+        "targetsPerArrow": 1,
+        "crowdDps": 96
+      },
+      "enemyTypes": {
+        "grunt": 180,
+        "flanker": 60,
+        "armored": 60
+      },
+      "specialActivations": 1,
+      "liveEnemies": 300,
+      "timing": "RAF wall intervals; CPU simulation only; no GPU timer query",
+      "renderer": {
+        "width": 1280,
+        "height": 720,
+        "engineVersion": "8.56.2",
+        "renderer": {
+          "vendor": "Google Inc. (Google)",
+          "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+          "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)"
+        },
+        "hardwareScaling": 1,
+        "reducedMotion": false,
+        "ringGeometry": "flat-strip-64-segments",
+        "specialSparkPool": 32,
+        "characterArt": {
+          "version": "temple-fantasy-v1",
+          "states": {
+            "vanguard": "loaded",
+            "ranger": "loaded"
+          },
+          "errors": {},
+          "atlasResolution": [
+            1024,
+            1024
+          ],
+          "uvInsetPixels": 8,
+          "models": {
+            "ranger": {
+              "file": "ranger-v1.glb",
+              "animations": [],
+              "triangles": 1604,
+              "meshes": 1,
+              "joints": 16,
+              "textureResolution": {
+                "width": 1024,
+                "height": 1024
+              }
+            },
+            "vanguard": {
+              "file": "vanguard-v1.glb",
+              "animations": [],
+              "triangles": 1754,
+              "meshes": 1,
+              "joints": 16,
+              "textureResolution": {
+                "width": 1024,
+                "height": 1024
+              }
+            }
+          },
+          "activeActors": 1,
+          "actors": [
+            {
+              "hero": "ranger",
+              "sockets": [
+                {
+                  "name": "hand.L",
+                  "position": [
+                    -0.15770211815834045,
+                    1.3400166034698486,
+                    2.51686429977417
+                  ],
+                  "matrix": [
+                    -0.25001761317253113,
+                    -0.07527533173561096,
+                    0.9653107523918152,
+                    0,
+                    -0.9681704640388489,
+                    0.03150035813450813,
+                    -0.24830184876918793,
+                    0,
+                    0.011716633103787899,
+                    0.9966651797294617,
+                    0.08075498789548874,
+                    0,
+                    -0.15770211815834045,
+                    1.3400166034698486,
+                    2.51686429977417,
+                    1
+                  ]
+                },
+                {
+                  "name": "hand.R",
+                  "position": [
+                    -0.6620810031890869,
+                    1.3983358144760132,
+                    3.53722882270813
+                  ],
+                  "matrix": [
+                    -0.5395958423614502,
+                    0.07014542073011398,
+                    0.8389970064163208,
+                    0,
+                    -0.8112020492553711,
+                    -0.31005924940109253,
+                    -0.4957968294620514,
+                    0,
+                    -0.2253609150648117,
+                    0.948125958442688,
+                    -0.22420881688594818,
+                    0,
+                    -0.6620810031890869,
+                    1.3983358144760132,
+                    3.53722882270813,
+                    1
+                  ]
+                }
+              ],
+              "lowerBody": [
+                {
+                  "name": "pelvis",
+                  "position": [
+                    -0.8361198902130127,
+                    0.9100000262260437,
+                    2.8458268642425537
+                  ]
+                },
+                {
+                  "name": "thigh.L",
+                  "position": [
+                    -0.759634256362915,
+                    0.8700000047683716,
+                    2.6828854084014893
+                  ]
+                },
+                {
+                  "name": "shin.L",
+                  "position": [
+                    -0.8863131999969482,
+                    0.5274850130081177,
+                    2.6234216690063477
+                  ]
+                },
+                {
+                  "name": "foot.L",
+                  "position": [
+                    -0.9810050129890442,
+                    0.19213779270648956,
+                    2.578972816467285
+                  ]
+                },
+                {
+                  "name": "thigh.R",
+                  "position": [
+                    -0.9126055240631104,
+                    0.8700000047683716,
+                    3.008768320083618
+                  ]
+                },
+                {
+                  "name": "shin.R",
+                  "position": [
+                    -0.7859265804290771,
+                    0.5274850130081177,
+                    3.0682320594787598
+                  ]
+                },
+                {
+                  "name": "foot.R",
+                  "position": [
+                    -0.7465041875839233,
+                    0.17891159653663635,
+                    3.0867371559143066
+                  ]
+                }
+              ],
+              "root": 502,
+              "skeleton": 484,
+              "meshes": [
+                {
+                  "geometry": 226,
+                  "material": 227,
+                  "vertices": 3666
+                }
+              ],
+              "pose": [
+                {
+                  "name": "arm.R",
+                  "rotation": [
+                    -0.5212178600597089,
+                    0.03916480105897516,
+                    0.06387941288075333,
+                    0.8501279205641931
+                  ]
+                },
+                {
+                  "name": "thigh.L",
+                  "rotation": [
+                    0.192722399726263,
+                    0,
+                    0,
+                    0.9812533193033033
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "fixedHz": 60,
+      "camera": "origin orbit / distance 30 / 0.15 radians per simulation second",
+      "simulationStepsPerSample": 1,
+      "playerHealth": "refilled per tick to maintain active crowd workload",
+      "input": "sin/cos movement; held bow fire; Arrow Storm on tick 90"
+    }
+  }
+]

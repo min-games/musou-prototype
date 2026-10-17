@@ -1,0 +1,46 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> musou-slice@1.0.0 test:e2e
+> playwright test --list
+
+Listing tests:
+  art-v1.spec.ts:10:1 › temple models, all six hand attachments, independent remote rigs and cleanup
+  art-v1.spec.ts:175:1 › female Ranger standing reference pose and default gameplay
+  art-v1.spec.ts:222:1 › loaded gameplay and same-session candidate WebGL benchmark
+  art-v1.spec.ts:247:1 › model errors use bounded playable fallback and legacy A/B makes no model requests
+  art-v1.spec.ts:270:1 › subpath precaches actual GLB and atlas and loads both kits offline
+  art-v1.spec.ts:296:1 › stalled asset requests release readiness after the bounded timeout
+  art-v1.spec.ts:310:1 › reduced motion keeps combat poses and suppresses gait and decorative sway
+  benchmark.spec.ts:4:3 › measured crowd benchmark webgl
+  benchmark.spec.ts:4:3 › measured crowd benchmark auto
+  benchmark.spec.ts:50:1 › measured ranger benchmark preserves full crowds and exports its own scenario
+  benchmark.spec.ts:83:1 › measured max multishot benchmark exports seven arrows and complete crowds
+  blender-run-v2.spec.ts:5:1 › exported Run lifts skinned thighs, folds knees backward and closes the stride
+  blender-run-v2.spec.ts:155:1 › lifted Run eases into and out of Idle without moving the simulation root
+  blender-v1.spec.ts:11:1 › Blender candidate samples authored clips, independent skins and hand sockets
+  blender-v1.spec.ts:164:1 › Blender is opt-in and failed candidate loads retain playable fallback
+  gamepad.spec.ts:16:1 › gamepad movement, camera, attack edge and restart edge on a nonzero device slot
+  gamepad.spec.ts:92:1 › focused HUD controls do not trigger player combat shortcuts
+  multiplayer.spec.ts:40:1 › native WebRTC manual UI exchange, independent movement, authoritative combat and cleanup
+  multiplayer.spec.ts:220:1 › host loss freezes client and a fresh manual exchange clears the old session
+  polish.spec.ts:10:1 › earned Solar Break hits the mixed crowd and displays its shockwave
+  polish.spec.ts:84:1 › empty special, dodge, pause and reduced motion keep controls consistent
+  polish.spec.ts:133:1 › gamepad special and dodge are discrete edges
+  rooms.spec.ts:29:1 › native automatic Create/Join, movement, authoritative combat, signaling expiry and cleanup
+  rooms.spec.ts:174:1 › room errors, invite prefill, cancellation, desktop and narrow room UI
+  rooms.spec.ts:199:1 › full room and canceled room request do not auto-retry or create a session
+  run.spec.ts:8:1 › choose the ranger, fire assisted arrows, use its special and spend a bomb
+  run.spec.ts:110:1 › clear finite waves, pick relics, win and retry with a fresh build
+  run.spec.ts:167:1 › gamepad navigates hero and relic menus without a keyboard
+  run.spec.ts:256:1 › character choice fits a narrow viewport
+  smoke.spec.ts:2:1 › launch, movement, real keyboard combat, respawn and visual reference
+  smoke.spec.ts:131:1 › responsive HUD and installed offline reload
+  subpath.spec.ts:2:1 › Pages repository prefix loads relative assets and remains playable offline
+  subpath.spec.ts:44:1 › explicit WebGPU preference falls back when WebGPU is unavailable
+  weapon-motion.spec.ts:7:1 › all exported weapons keep calibrated grips, real skinned props and distinct planted poses
+  weapon-motion.spec.ts:220:1 › real projectile events release immediately, moving fire keeps skinned legs, remote rigs clean up
+  weapon-motion.spec.ts:350:1 › Ranger candidate is opt-in and its failure retains playable fallback
+  weapons.spec.ts:7:1 › Fan Bow fires at separate targets and seven-arrow upgrades have a readable spread
+  weapons.spec.ts:72:1 › Spear reaches beyond the saber and its attack arc is shown at the actual reach
+  weapons.spec.ts:112:1 › weapon selection supports going back and choosing on a narrow viewport
+Total: 39 tests in 13 files

@@ -1,0 +1,21 @@
+Extensions: writing cache failed ([Errno 30] Read-only file system: '/home/cmwen/.config/blender').
+20:30:19 | INFO: Data are loaded, start creating Blender stuff
+20:30:19 | INFO: Blender create Mesh node Ranger fitted leather
+20:30:19 | INFO: Blender create Mesh node shortbow curved limb
+20:30:19 | INFO: Blender create Mesh node real bow string
+20:30:19 | INFO: Blender create Mesh node longbow curved limb
+20:30:19 | INFO: Blender create Mesh node real bow string.002
+20:30:19 | INFO: Blender create Mesh node fanbow curved limb
+20:30:19 | INFO: Blender create Mesh node real bow string.004
+20:30:20 | INFO: glTF import finished in 0.62s
+Extensions: writing cache failed ([Errno 30] Read-only file system: '/home/cmwen/.config/blender').
+20:30:20 | INFO: Data are loaded, start creating Blender stuff
+20:30:20 | INFO: Blender create Mesh node quilted undershirt
+20:30:20 | INFO: Blender create Mesh node saber leather grip
+20:30:20 | INFO: Blender create Mesh node spear leather grip
+20:30:20 | INFO: Blender create Mesh node greatblade leather grip
+20:30:21 | INFO: glTF import finished in 0.19s
+Exported world checks errors: []
+Blender 4.5.3 LTS (hash 67807e1800cc built 2025-09-09 01:38:15)
+
+Blender quit

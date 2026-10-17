@@ -12,7 +12,7 @@ const digest = createHash("sha256");
 for (const f of files) digest.update(readFileSync(f));
 // Keep the review candidate opt-in; include it in the digest so preview caches update.
 const assets = files
-  .filter((f) => !f.endsWith("/models/vanguard-blender-v1.glb"))
+  .filter((f) => !/\/models\/.*(?:blender|weapon-motion).*\.glb$/.test(f))
   .map((f) => "./" + f.slice(root.length + 1));
 const template = readFileSync("public/sw.js", "utf8");
 if (

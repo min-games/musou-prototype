@@ -1,0 +1,96 @@
+
+> musou-slice@1.0.0 test:e2e
+> playwright test e2e/weapon-motion.spec.ts e2e/blender-v1.spec.ts e2e/blender-run-v2.spec.ts
+
+[WebServer] (node:1325374) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:1325386) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] 
+[WebServer] (!) Some chunks are larger than 500 kB after minification. Consider:
+[WebServer] - Using dynamic import() to code-split the application
+[WebServer] - Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+[WebServer] - Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+[WebServer] (node:1325439) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 7 tests using 1 worker
+
+(node:1325447) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 e2e/blender-run-v2.spec.ts:5:1 › exported Run lifts skinned thighs, folds knees backward and closes the stride (44.5s)
+  ✓  2 e2e/blender-run-v2.spec.ts:155:1 › lifted Run eases into and out of Idle without moving the simulation root (1.9s)
+  ✘  3 e2e/blender-v1.spec.ts:11:1 › Blender candidate samples authored clips, independent skins and hand sockets (762ms)
+(node:1325808) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  4 e2e/blender-v1.spec.ts:160:1 › Blender is opt-in and failed candidate loads retain playable fallback (5.5s)
+  ✘  5 e2e/weapon-motion.spec.ts:7:1 › all exported weapons keep calibrated grips, real skinned props and distinct planted poses (3.1s)
+(node:1326025) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  6 e2e/weapon-motion.spec.ts:209:1 › real projectile events release immediately, moving fire keeps skinned legs, remote rigs clean up (1.6s)
+(node:1326186) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  7 e2e/weapon-motion.spec.ts:339:1 › Ranger candidate is opt-in and its failure retains playable fallback (4.7s)
+
+
+  1) e2e/blender-v1.spec.ts:11:1 › Blender candidate samples authored clips, independent skins and hand sockets 
+
+    Error: expect(received).not.toEqual(expected) // deep equality
+
+    Expected: not [0.9172479510307312, -0.3806193768978119, -0.11622373759746552, 0.016649136319756508]
+
+
+      87 |   expect(result.run.clip).toBe("Run");
+      88 |   expect(result.attack.clip).toBe("Saber1");
+    > 89 |   expect(result.run.pose).not.toEqual(result.runLater.pose);
+         |                               ^
+      90 |   expect(result.attack.pose).not.toEqual(result.recovery.pose);
+      91 |   expect(result.attack.hand).not.toEqual(result.recovery.hand);
+      92 |   expect(result.independent).toBe(true);
+        at /home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261017085951-9721299c/musou-prototype/e2e/blender-v1.spec.ts:89:31
+
+    Error Context: test-results/blender-v1-Blender-candida-f8443-dent-skins-and-hand-sockets/error-context.md
+
+  2) e2e/weapon-motion.spec.ts:7:1 › all exported weapons keep calibrated grips, real skinned props and distinct planted poses 
+
+    Error: saber rotation at 0
+
+    expect(received).toBeLessThan(expected)
+
+    Expected: < 0.012
+    Received:   0.24893405640025554
+
+      150 |         s.orientation,
+      151 |         `${row.weapon} rotation at ${s.phase}`,
+    > 152 |       ).toBeLessThan(0.012);
+          |         ^
+      153 |       if (s.support !== null) expect(s.support).toBeLessThan(0.003);
+      154 |       if (s.string !== null && (s.phase === 0 || s.phase >= 0.34))
+      155 |         expect(s.string).toBeLessThan(0.003);
+        at /home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261017085951-9721299c/musou-prototype/e2e/weapon-motion.spec.ts:152:9
+
+    Error Context: test-results/weapon-motion-all-exported-84298--and-distinct-planted-poses/error-context.md
+
+  3) e2e/weapon-motion.spec.ts:209:1 › real projectile events release immediately, moving fire keeps skinned legs, remote rigs clean up 
+
+    Error: expect(received).toBeGreaterThan(expected)
+
+    Expected: > 0.2
+    Received:   0.04953908920288086
+
+      323 |     expect(shot.first.grip[1]).toBeGreaterThan(1.7);
+      324 |     const ys = shot.knees.map((k: any) => k[1]);
+    > 325 |     expect(Math.max(...ys) - Math.min(...ys)).toBeGreaterThan(0.2);
+          |                                               ^
+      326 |   }
+      327 |   expect(result.independent).toBe(true);
+      328 |   expect(result.props.map((p: any) => p[0]).sort()).toEqual([
+        at /home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261017085951-9721299c/musou-prototype/e2e/weapon-motion.spec.ts:325:47
+
+    Error Context: test-results/weapon-motion-real-project-ff458-d-legs-remote-rigs-clean-up/error-context.md
+
+  3 failed
+    e2e/blender-v1.spec.ts:11:1 › Blender candidate samples authored clips, independent skins and hand sockets 
+    e2e/weapon-motion.spec.ts:7:1 › all exported weapons keep calibrated grips, real skinned props and distinct planted poses 
+    e2e/weapon-motion.spec.ts:209:1 › real projectile events release immediately, moving fire keeps skinned legs, remote rigs clean up 
+  4 passed (1.2m)

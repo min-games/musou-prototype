@@ -1,0 +1,15 @@
+{
+  "restored": [
+    "evidence/art-v1/candidate-gameplay.png",
+    "evidence/art-v1/fallback-gameplay.png",
+    "evidence/art-v1/offline-subpath.png",
+    "evidence/art-v1/rig-sharing.json",
+    "evidence/art-v1/validation/benchmark-auto.json",
+    "evidence/art-v1/validation/benchmark-multishot-webgl.json",
+    "evidence/art-v1/validation/benchmark-ranger-webgl.json",
+    "evidence/art-v1/validation/benchmark-webgl.json",
+    "evidence/art-v1/validation/candidate-repeat-webgl.json",
+    "evidence/art-v1/validation/multiplayer-overhead.json"
+  ],
+  "baselineFiles": 260
+}

@@ -1,0 +1,11 @@
+Tool: built-in image_gen
+Reference: repos/musou-prototype/art-source/vanguard/vanguard-front-v2-simple.png
+
+Use case: stylized-concept
+Asset type: animation key-pose guidance for Blender, NOT animation evidence.
+Input image role: existing Vanguard character identity/costume reference. Preserve mature bearded Taiwanese Temple Fantasy male warrior, black topknot, red/charcoal/gold armor, lion pauldron on anatomical RIGHT shoulder, broad heroic adult proportions.
+Create a landscape nine-panel pose sheet, three rows by three columns on plain light gray background. Each panel one same-scale full-body Vanguard, consistent three-quarter camera and ground line, separated figures with no overlap across panels. Each row is ONE weapon and three phases left to right ANTICIPATION, STRIKE, RECOVERY.
+Top row SABER: simple one-handed straight saber in anatomical RIGHT hand, clear coiled torso windup, decisive cross-body cut with weight on forward bent leg, balanced recovery; left arm counterbalances. One consistent sword length and right-hand grip across row.
+Middle row SPEAR: one long wooden spear with metal point, both hands firmly around same shaft, RIGHT hand rear grip at waist and LEFT hand forward grip. Prepare at rear hip, drive forward with torso/lunge, recover while keeping both palms on shaft. No floating support hand or swapped grips. Keep spear roughly level at chest height, visibly distinct from saber cut.
+Bottom row GREATBLADE: one broad heavy blade with long two-hand hilt. Both hands stacked on same hilt, right closest to guard, left below it. Wind up raised over right shoulder/head with elbows plausibly bent, powerful descending diagonal cut using hips and knees, weighted low recovery. Feet planted broad, no jumping or acrobatics.
+Include ONLY small clear row labels SABER, SPEAR, GREATBLADE and column labels ANTICIPATION, STRIKE, RECOVERY. Correct anatomy, wrists follow grip, no extra fingers or hands; clear readable motion poses with no speed lines, effects, enemies, environment or additional props. Costume stays consistent across all nine. Stylized painted 3D-game concept style matching source. Focus on mechanically plausible stance/hand/weapon relation, not costume microdetail.

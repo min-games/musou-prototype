@@ -1,0 +1,75 @@
+{
+  "summary": {
+    "bytes": 1201664,
+    "triangles": 28932,
+    "materials": 7,
+    "joints": 24,
+    "meshes": [
+      "quilted undershirt",
+      "saber leather grip",
+      "spear leather grip",
+      "greatblade leather grip"
+    ],
+    "animations": [
+      "Idle",
+      "Run",
+      "Saber1",
+      "Saber2",
+      "Saber3",
+      "SaberReady",
+      "SpearAttack",
+      "SpearReady",
+      "GreatbladeAttack",
+      "GreatbladeReady",
+      "SaberRecover1",
+      "SaberRecover2"
+    ],
+    "external": [],
+    "issues": {
+      "numErrors": 0,
+      "numWarnings": 0,
+      "numInfos": 0,
+      "numHints": 0,
+      "messages": [],
+      "truncated": false
+    }
+  },
+  "report": {
+    "uri": "public/models/vanguard-weapon-motion-v1.glb",
+    "mimeType": "model/gltf-binary",
+    "validatorVersion": "2.0.0-dev.3.10",
+    "validatedAt": "2026-10-17T12:14:28.606Z",
+    "issues": {
+      "numErrors": 0,
+      "numWarnings": 0,
+      "numInfos": 0,
+      "numHints": 0,
+      "messages": [],
+      "truncated": false
+    },
+    "info": {
+      "version": "2.0",
+      "generator": "Khronos glTF Blender I/O v4.5.48",
+      "resources": [
+        {
+          "pointer": "/buffers/0",
+          "mimeType": "application/gltf-buffer",
+          "storage": "glb",
+          "byteLength": 1055944
+        }
+      ],
+      "animationCount": 12,
+      "materialCount": 7,
+      "hasMorphTargets": false,
+      "hasSkins": true,
+      "hasTextures": false,
+      "hasDefaultScene": true,
+      "drawCallCount": 16,
+      "totalVertexCount": 16462,
+      "totalTriangleCount": 28932,
+      "maxUVs": 0,
+      "maxInfluences": 4,
+      "maxAttributes": 4
+    }
+  }
+}

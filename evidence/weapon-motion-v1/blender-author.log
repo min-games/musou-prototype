@@ -1,0 +1,50 @@
+Info: Saved as "weapon-motion-ranger-base.blend"
+INFO Draco mesh compression is available, use library at /tmp/blender-4.5.3-linux-x64/4.5/scripts/addons_core/io_scene_gltf2/libextern_draco.so
+20:22:20 | INFO: Starting glTF 2.0 export
+20:22:20 | WARNING: Armature must be the parent of skinned meshArmature is selected by its name, but may be false in case of instances
+20:22:20 | WARNING: Armature must be the parent of skinned meshArmature is selected by its name, but may be false in case of instances
+20:22:20 | WARNING: Armature must be the parent of skinned meshArmature is selected by its name, but may be false in case of instances
+20:22:20 | WARNING: Armature must be the parent of skinned meshArmature is selected by its name, but may be false in case of instances
+20:22:20 | WARNING: Armature must be the parent of skinned meshArmature is selected by its name, but may be false in case of instances
+20:22:20 | WARNING: Armature must be the parent of skinned meshArmature is selected by its name, but may be false in case of instances
+20:22:20 | WARNING: Armature must be the parent of skinned meshArmature is selected by its name, but may be false in case of instances
+20:22:20 | INFO: Extracting primitive: Ranger fitted leather
+20:22:20 | INFO: Primitives created: 9
+20:22:20 | INFO: Extracting primitive: shortbow curved limb
+20:22:20 | INFO: Primitives created: 2
+20:22:20 | INFO: Extracting primitive: real bow string
+20:22:20 | INFO: Primitives created: 1
+20:22:20 | INFO: Extracting primitive: longbow curved limb
+20:22:20 | INFO: Primitives created: 2
+20:22:20 | INFO: Extracting primitive: real bow string.002
+20:22:20 | INFO: Primitives created: 1
+20:22:20 | INFO: Extracting primitive: fanbow curved limb
+20:22:20 | INFO: Primitives created: 2
+20:22:20 | INFO: Extracting primitive: real bow string.004
+20:22:20 | INFO: Primitives created: 1
+20:22:21 | INFO: Finished glTF 2.0 export in 1.2998523712158203 s
+
+Info: Saved as "ranger.blend"
+MOTION CANDIDATE ranger ['ShortbowShot', 'ShortbowReady', 'LongbowShot', 'LongbowReady', 'FanbowShot', 'FanbowReady']
+20:22:26 | INFO: Starting glTF 2.0 export
+20:22:26 | WARNING: Armature must be the parent of skinned meshArmature is selected by its name, but may be false in case of instances
+20:22:26 | WARNING: Armature must be the parent of skinned meshArmature is selected by its name, but may be false in case of instances
+20:22:26 | WARNING: Armature must be the parent of skinned meshArmature is selected by its name, but may be false in case of instances
+20:22:26 | WARNING: Armature must be the parent of skinned meshArmature is selected by its name, but may be false in case of instances
+20:22:26 | INFO: Extracting primitive: quilted undershirt
+20:22:27 | INFO: Primitives created: 7
+20:22:27 | INFO: Extracting primitive: saber leather grip
+20:22:27 | INFO: Primitives created: 3
+20:22:27 | INFO: Extracting primitive: spear leather grip
+20:22:27 | INFO: Primitives created: 3
+20:22:27 | INFO: Extracting primitive: greatblade leather grip
+20:22:27 | INFO: Primitives created: 3
+20:22:28 | INFO: Finished glTF 2.0 export in 1.7869904041290283 s
+
+Info: Saved as "vanguard.blend"
+MOTION CANDIDATE vanguard ['Saber1', 'Saber2', 'Saber3', 'SaberReady', 'SpearAttack', 'SpearReady', 'GreatbladeAttack', 'GreatbladeReady', 'SaberRecover1', 'SaberRecover2']
+Blender 4.5.3 LTS (hash 67807e1800cc built 2025-09-09 01:38:15)
+Read blend: "/tmp/weapon-motion-ranger-base.blend"
+Read blend: "/home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261017085951-9721299c/musou-prototype/art-source/vanguard/blender-v1/vanguard.blend"
+
+Blender quit

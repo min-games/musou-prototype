@@ -1,0 +1,50 @@
+
+> musou-slice@1.0.0 test:e2e
+> playwright test e2e/weapon-motion.spec.ts e2e/blender-v1.spec.ts
+
+[WebServer] (node:1327347) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:1327359) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] 
+[WebServer] (!) Some chunks are larger than 500 kB after minification. Consider:
+[WebServer] - Using dynamic import() to code-split the application
+[WebServer] - Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+[WebServer] - Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+[WebServer] (node:1327410) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 5 tests using 1 worker
+
+(node:1327418) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 e2e/blender-v1.spec.ts:11:1 › Blender candidate samples authored clips, independent skins and hand sockets (6.1s)
+  ✓  2 e2e/blender-v1.spec.ts:164:1 › Blender is opt-in and failed candidate loads retain playable fallback (6.3s)
+  ✘  3 e2e/weapon-motion.spec.ts:7:1 › all exported weapons keep calibrated grips, real skinned props and distinct planted poses (3.7s)
+(node:1327693) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  4 e2e/weapon-motion.spec.ts:209:1 › real projectile events release immediately, moving fire keeps skinned legs, remote rigs clean up (1.4s)
+  ✓  5 e2e/weapon-motion.spec.ts:339:1 › Ranger candidate is opt-in and its failure retains playable fallback (4.4s)
+
+
+  1) e2e/weapon-motion.spec.ts:7:1 › all exported weapons keep calibrated grips, real skinned props and distinct planted poses 
+
+    Error: expect(received).toBeLessThan(expected)
+
+    Expected: < 0.04
+    Received:   0.12322336310872398
+
+      157 |       if (s.handSkin !== null) {
+      158 |         expect(s.handSkin).toBeLessThan(0.055);
+    > 159 |         expect(s.propSkin).toBeLessThan(0.04);
+          |                            ^
+      160 |         expect(s.sole).toBeGreaterThan(-0.006);
+      161 |       }
+      162 |     }
+        at /home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261017085951-9721299c/musou-prototype/e2e/weapon-motion.spec.ts:159:28
+
+    Error Context: test-results/weapon-motion-all-exported-84298--and-distinct-planted-poses/error-context.md
+
+  1 failed
+    e2e/weapon-motion.spec.ts:7:1 › all exported weapons keep calibrated grips, real skinned props and distinct planted poses 
+  4 passed (31.6s)

@@ -1,0 +1,67 @@
+{
+  "version": "weapon-motion-v1-candidate",
+  "states": {
+    "vanguard": "fallback",
+    "ranger": "loaded"
+  },
+  "errors": {
+    "vanguard": "RuntimeError: Unable to load from http://127.0.0.1:5187/models/vanguard-weapon-motion-v1.glb: LoadFileError: Error status: 0  - Unable to load http://127.0.0.1:5187/models/vanguard-weapon-motion-v1.glb"
+  },
+  "atlasResolution": [
+    1024,
+    1024
+  ],
+  "uvInsetPixels": 8,
+  "models": {
+    "ranger": {
+      "file": "ranger-weapon-motion-v1.glb",
+      "animations": [
+        {
+          "name": "Idle",
+          "from": 0,
+          "to": 120
+        },
+        {
+          "name": "Run",
+          "from": 0,
+          "to": 48.00000071525574
+        },
+        {
+          "name": "ShortbowShot",
+          "from": 0,
+          "to": 256.00001335144043
+        },
+        {
+          "name": "ShortbowReady",
+          "from": 0,
+          "to": 120
+        },
+        {
+          "name": "LongbowShot",
+          "from": 0,
+          "to": 256.00001335144043
+        },
+        {
+          "name": "LongbowReady",
+          "from": 0,
+          "to": 120
+        },
+        {
+          "name": "FanbowShot",
+          "from": 0,
+          "to": 256.00001335144043
+        },
+        {
+          "name": "FanbowReady",
+          "from": 0,
+          "to": 120
+        }
+      ],
+      "triangles": 23720,
+      "meshes": 18,
+      "joints": 34
+    }
+  },
+  "activeActors": 0,
+  "actors": []
+}

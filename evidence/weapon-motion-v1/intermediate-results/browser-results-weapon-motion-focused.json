@@ -1,0 +1,478 @@
+{
+  "config": {
+    "argv": [
+      "/home/cmwen/.local/share/fnm/node-versions/v24.12.0/installation/bin/node",
+      "/home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261017085951-9721299c/musou-prototype/node_modules/.bin/playwright",
+      "test",
+      "e2e/weapon-motion.spec.ts",
+      "e2e/blender-v1.spec.ts",
+      "e2e/blender-run-v2.spec.ts"
+    ],
+    "configFile": "/home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261017085951-9721299c/musou-prototype/playwright.config.ts",
+    "rootDir": "/home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261017085951-9721299c/musou-prototype/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261017085951-9721299c/musou-prototype/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "/home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261017085951-9721299c/musou-prototype/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 120000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261017085951-9721299c/musou-prototype/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "/home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261017085951-9721299c/musou-prototype/e2e",
+        "snapshotDir": "/home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261017085951-9721299c/musou-prototype/e2e",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 120000,
+        "use": {
+          "baseURL": "http://127.0.0.1:5187",
+          "viewport": {
+            "width": 1280,
+            "height": 720
+          },
+          "launchOptions": {
+            "args": [
+              "--use-angle=swiftshader",
+              "--enable-webgl",
+              "--ignore-gpu-blocklist"
+            ]
+          }
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "evidence/art-v1/browser-results-weapon-motion-focused.json"
+        }
+      ],
+      [
+        "html",
+        {
+          "open": "never",
+          "outputFolder": "evidence/playwright-report-weapon-motion-focused"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": {
+      "command": "npx vite build --mode test && MUSOU_DIST=test-dist node scripts/precache.mjs && MUSOU_DIST=test-dist node scripts/serve.mjs",
+      "port": 5187,
+      "reuseExistingServer": false
+    }
+  },
+  "suites": [
+    {
+      "title": "blender-run-v2.spec.ts",
+      "file": "blender-run-v2.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "exported Run lifts skinned thighs, folds knees backward and closes the stride",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 44495,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T09:09:59.002Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "06ee03ef318141f869cd-fcf3d66005eb07735f0c",
+          "file": "blender-run-v2.spec.ts",
+          "line": 5,
+          "column": 1
+        },
+        {
+          "title": "lifted Run eases into and out of Idle without moving the simulation root",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1933,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T09:10:44.367Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "06ee03ef318141f869cd-fa76b14ed017c5c57ad7",
+          "file": "blender-run-v2.spec.ts",
+          "line": 155,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "blender-v1.spec.ts",
+      "file": "blender-v1.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Blender candidate samples authored clips, independent skins and hand sockets",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 762,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mnot\u001b[2m.\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\nExpected: not \u001b[32m[0.9172479510307312, -0.3806193768978119, -0.11622373759746552, 0.016649136319756508]\u001b[39m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mnot\u001b[2m.\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\nExpected: not \u001b[32m[0.9172479510307312, -0.3806193768978119, -0.11622373759746552, 0.016649136319756508]\u001b[39m\n\n    at /home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261017085951-9721299c/musou-prototype/e2e/blender-v1.spec.ts:89:31",
+                    "location": {
+                      "file": "/home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261017085951-9721299c/musou-prototype/e2e/blender-v1.spec.ts",
+                      "column": 31,
+                      "line": 89
+                    },
+                    "snippet": "  87 |   expect(result.run.clip).toBe(\"Run\");\n  88 |   expect(result.attack.clip).toBe(\"Saber1\");\n> 89 |   expect(result.run.pose).not.toEqual(result.runLater.pose);\n     |                               ^\n  90 |   expect(result.attack.pose).not.toEqual(result.recovery.pose);\n  91 |   expect(result.attack.hand).not.toEqual(result.recovery.hand);\n  92 |   expect(result.independent).toBe(true);"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261017085951-9721299c/musou-prototype/e2e/blender-v1.spec.ts",
+                        "column": 31,
+                        "line": 89
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mnot\u001b[2m.\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\nExpected: not \u001b[32m[0.9172479510307312, -0.3806193768978119, -0.11622373759746552, 0.016649136319756508]\u001b[39m\n\n\n  87 |   expect(result.run.clip).toBe(\"Run\");\n  88 |   expect(result.attack.clip).toBe(\"Saber1\");\n> 89 |   expect(result.run.pose).not.toEqual(result.runLater.pose);\n     |                               ^\n  90 |   expect(result.attack.pose).not.toEqual(result.recovery.pose);\n  91 |   expect(result.attack.hand).not.toEqual(result.recovery.hand);\n  92 |   expect(result.independent).toBe(true);\n    at /home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261017085951-9721299c/musou-prototype/e2e/blender-v1.spec.ts:89:31"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T09:10:46.323Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261017085951-9721299c/musou-prototype/test-results/blender-v1-Blender-candida-f8443-dent-skins-and-hand-sockets/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261017085951-9721299c/musou-prototype/e2e/blender-v1.spec.ts",
+                    "column": 31,
+                    "line": 89
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "3c8e69d5f839cc76a0bb-093d8c08a67128ad12ff",
+          "file": "blender-v1.spec.ts",
+          "line": 11,
+          "column": 1
+        },
+        {
+          "title": "Blender is opt-in and failed candidate loads retain playable fallback",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5468,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T09:10:48.166Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3c8e69d5f839cc76a0bb-186ea17e6559429493ef",
+          "file": "blender-v1.spec.ts",
+          "line": 160,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "weapon-motion.spec.ts",
+      "file": "weapon-motion.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "all exported weapons keep calibrated grips, real skinned props and distinct planted poses",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 3081,
+                  "error": {
+                    "message": "Error: saber rotation at 0\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeLessThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: < \u001b[32m0.012\u001b[39m\nReceived:   \u001b[31m0.24893405640025554\u001b[39m",
+                    "stack": "Error: saber rotation at 0\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeLessThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: < \u001b[32m0.012\u001b[39m\nReceived:   \u001b[31m0.24893405640025554\u001b[39m\n    at /home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261017085951-9721299c/musou-prototype/e2e/weapon-motion.spec.ts:152:9",
+                    "location": {
+                      "file": "/home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261017085951-9721299c/musou-prototype/e2e/weapon-motion.spec.ts",
+                      "column": 9,
+                      "line": 152
+                    },
+                    "snippet": "  150 |         s.orientation,\n  151 |         `${row.weapon} rotation at ${s.phase}`,\n> 152 |       ).toBeLessThan(0.012);\n      |         ^\n  153 |       if (s.support !== null) expect(s.support).toBeLessThan(0.003);\n  154 |       if (s.string !== null && (s.phase === 0 || s.phase >= 0.34))\n  155 |         expect(s.string).toBeLessThan(0.003);"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261017085951-9721299c/musou-prototype/e2e/weapon-motion.spec.ts",
+                        "column": 9,
+                        "line": 152
+                      },
+                      "message": "Error: saber rotation at 0\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeLessThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: < \u001b[32m0.012\u001b[39m\nReceived:   \u001b[31m0.24893405640025554\u001b[39m\n\n  150 |         s.orientation,\n  151 |         `${row.weapon} rotation at ${s.phase}`,\n> 152 |       ).toBeLessThan(0.012);\n      |         ^\n  153 |       if (s.support !== null) expect(s.support).toBeLessThan(0.003);\n  154 |       if (s.string !== null && (s.phase === 0 || s.phase >= 0.34))\n  155 |         expect(s.string).toBeLessThan(0.003);\n    at /home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261017085951-9721299c/musou-prototype/e2e/weapon-motion.spec.ts:152:9"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T09:10:53.803Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261017085951-9721299c/musou-prototype/test-results/weapon-motion-all-exported-84298--and-distinct-planted-poses/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261017085951-9721299c/musou-prototype/e2e/weapon-motion.spec.ts",
+                    "column": 9,
+                    "line": 152
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "a4c14a7629c7489501cc-c585b369bc75b5c0fddd",
+          "file": "weapon-motion.spec.ts",
+          "line": 7,
+          "column": 1
+        },
+        {
+          "title": "real projectile events release immediately, moving fire keeps skinned legs, remote rigs clean up",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 1569,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: > \u001b[32m0.2\u001b[39m\nReceived:   \u001b[31m0.04953908920288086\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: > \u001b[32m0.2\u001b[39m\nReceived:   \u001b[31m0.04953908920288086\u001b[39m\n    at /home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261017085951-9721299c/musou-prototype/e2e/weapon-motion.spec.ts:325:47",
+                    "location": {
+                      "file": "/home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261017085951-9721299c/musou-prototype/e2e/weapon-motion.spec.ts",
+                      "column": 47,
+                      "line": 325
+                    },
+                    "snippet": "  323 |     expect(shot.first.grip[1]).toBeGreaterThan(1.7);\n  324 |     const ys = shot.knees.map((k: any) => k[1]);\n> 325 |     expect(Math.max(...ys) - Math.min(...ys)).toBeGreaterThan(0.2);\n      |                                               ^\n  326 |   }\n  327 |   expect(result.independent).toBe(true);\n  328 |   expect(result.props.map((p: any) => p[0]).sort()).toEqual(["
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261017085951-9721299c/musou-prototype/e2e/weapon-motion.spec.ts",
+                        "column": 47,
+                        "line": 325
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: > \u001b[32m0.2\u001b[39m\nReceived:   \u001b[31m0.04953908920288086\u001b[39m\n\n  323 |     expect(shot.first.grip[1]).toBeGreaterThan(1.7);\n  324 |     const ys = shot.knees.map((k: any) => k[1]);\n> 325 |     expect(Math.max(...ys) - Math.min(...ys)).toBeGreaterThan(0.2);\n      |                                               ^\n  326 |   }\n  327 |   expect(result.independent).toBe(true);\n  328 |   expect(result.props.map((p: any) => p[0]).sort()).toEqual([\n    at /home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261017085951-9721299c/musou-prototype/e2e/weapon-motion.spec.ts:325:47"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T09:10:57.935Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261017085951-9721299c/musou-prototype/test-results/weapon-motion-real-project-ff458-d-legs-remote-rigs-clean-up/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261017085951-9721299c/musou-prototype/e2e/weapon-motion.spec.ts",
+                    "column": 47,
+                    "line": 325
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "a4c14a7629c7489501cc-106573f3297c23959e53",
+          "file": "weapon-motion.spec.ts",
+          "line": 209,
+          "column": 1
+        },
+        {
+          "title": "Ranger candidate is opt-in and its failure retains playable fallback",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4744,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T09:11:00.899Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "a4c14a7629c7489501cc-381040b3d9f81e8266e6",
+          "file": "weapon-motion.spec.ts",
+          "line": 339,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-17T09:09:50.419Z",
+    "duration": 73397.027,
+    "expected": 4,
+    "skipped": 0,
+    "unexpected": 3,
+    "flaky": 0
+  }
+}

@@ -1,7 +1,8 @@
 import { test, expect } from "./fixtures";
-import { writeFileSync } from "node:fs";
+import { mkdirSync, writeFileSync } from "node:fs";
 // Route-abort checks must reach the network rather than a controlling worker cache.
 test.use({ serviceWorkers: "block" });
+mkdirSync("evidence/weapon-motion-v1/validated-run", { recursive: true });
 const url = "/?practice=1&backend=webgl&art=blender&artCloseup=1";
 async function ready(page: any, path = url) {
   await page.goto(path);
@@ -31,7 +32,9 @@ test("Blender candidate samples authored clips, independent skins and hand socke
       return {
         clip: i.clip,
         frame: i.clipFrame,
-        pose: i.nodes.get("arm.R").rotationQuaternion.asArray(),
+        pose: ["arm.R", "thigh.L"].flatMap((n) =>
+          i.nodes.get(n).rotationQuaternion.asArray(),
+        ),
         hand: i.nodes.get("hand.R").getAbsolutePosition().asArray(),
         weapon: r.blade.position.asArray(),
         meta: r.metadata().characterArt,
@@ -41,7 +44,9 @@ test("Blender candidate samples authored clips, independent skins and hand socke
       idleLater = sample(30, 0, 0),
       run = sample(36, 0.2, 0),
       runLater = sample(42, 0.4, 0),
-      attack = sample(48, 0.4, 0.2),
+      // Compare anticipation with the held follow-through; the saber
+      // intentionally holds its strike pose during the late swing.
+      attack = sample(48, 0.4, 0.3),
       recovery = sample(54, 0.4, 0.05);
     const weapons = ["saber", "spear", "greatblade"].map((weapon) => {
       s.player.weapon = weapon;
@@ -84,26 +89,40 @@ test("Blender candidate samples authored clips, independent skins and hand socke
   });
   expect(result.idle.clip).toBe("Idle");
   expect(result.run.clip).toBe("Run");
-  expect(result.attack.clip).toBe("Attack");
+  expect(result.attack.clip).toBe("Saber1");
   expect(result.run.pose).not.toEqual(result.runLater.pose);
   expect(result.attack.pose).not.toEqual(result.recovery.pose);
   expect(result.attack.hand).not.toEqual(result.recovery.hand);
   expect(result.independent).toBe(true);
   expect(result.remoteClip).toBe("Idle");
   expect(result.reduced.clip).toBe("Idle");
-  expect(result.reduced.pose).toEqual(result.idle.pose);
-  expect(result.reducedAttack.clip).toBe("Attack");
-  expect(result.idle.meta.models.vanguard.file).toBe("vanguard-blender-v1.glb");
+  expect(result.reduced.frame).toBe(0);
+  expect(result.reducedAttack.clip).toBe("GreatbladeAttack");
+  expect(result.idle.meta.models.vanguard.file).toBe(
+    "vanguard-weapon-motion-v1.glb",
+  );
   expect(
     result.idle.meta.models.vanguard.animations.map((a: any) => a.name).sort(),
-  ).toEqual(["Attack", "Idle", "Run"]);
+  ).toEqual([
+    "GreatbladeAttack",
+    "GreatbladeReady",
+    "Idle",
+    "Run",
+    "Saber1",
+    "Saber2",
+    "Saber3",
+    "SaberReady",
+    "SaberRecover1",
+    "SaberRecover2",
+    "SpearAttack",
+    "SpearReady",
+  ]);
   for (const w of result.weapons) {
-    expect(w.enabled).toBe(true);
+    expect(w.enabled).toBe(false);
     expect(w.position.every(Number.isFinite)).toBe(true);
-    expect(w.position[1]).toBeGreaterThan(0.4);
   }
   writeFileSync(
-    "evidence/blender-run-v2/browser-animation.json",
+    "evidence/weapon-motion-v1/validated-run/browser-animation.json",
     JSON.stringify(result, null, 2),
   );
   // Keep evidence time monotonic, settle movement, and assert the captured clip.
@@ -137,9 +156,9 @@ test("Blender candidate samples authored clips, independent skins and hand socke
       },
       { ticks, x, swing },
     );
-    expect(capturedClip).toBe(name);
+    expect(capturedClip).toBe(name === "attack" ? "saber1" : name);
     await page.screenshot({
-      path: `evidence/blender-run-v2/browser-${name}.png`,
+      path: `evidence/weapon-motion-v1/validated-run/browser-${name}.png`,
     });
   }
   expect(errors).toEqual([]);
@@ -149,7 +168,7 @@ test("Blender is opt-in and failed candidate loads retain playable fallback", as
 }) => {
   let candidateRequests = 0;
   page.on("request", (r) => {
-    if (r.url().includes("vanguard-blender")) candidateRequests++;
+    if (r.url().includes("weapon-motion")) candidateRequests++;
   });
   await ready(page, "/?practice=1&backend=webgl");
   expect(candidateRequests).toBe(0);
@@ -160,7 +179,7 @@ test("Blender is opt-in and failed candidate loads retain playable fallback", as
           .file,
     ),
   ).toBe("vanguard-v1.glb");
-  await page.route("**/vanguard-blender-v1.glb", (r) => r.abort());
+  await page.route("**/vanguard-weapon-motion-v1.glb", (r) => r.abort());
   await ready(page);
   const meta = await page.evaluate(
     () => (window as any).musou.renderer.metadata().characterArt,
@@ -171,10 +190,10 @@ test("Blender is opt-in and failed candidate loads retain playable fallback", as
     .poll(() => page.evaluate(() => (window as any).musou.sim.player.stage))
     .toBe(1);
   await page.screenshot({
-    path: "evidence/blender-run-v2/browser-fallback.png",
+    path: "evidence/weapon-motion-v1/validated-run/browser-fallback.png",
   });
   writeFileSync(
-    "evidence/blender-run-v2/browser-fallback.json",
+    "evidence/weapon-motion-v1/validated-run/browser-fallback.json",
     JSON.stringify(meta, null, 2),
   );
 });

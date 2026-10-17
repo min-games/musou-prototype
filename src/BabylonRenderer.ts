@@ -681,7 +681,10 @@ export class BabylonRenderer implements Renderer {
     for (const child of rig.player.getChildMeshes(true))
       if (/hero (torso|head|shoulders|cape)$/.test(child.name))
         child.setEnabled(!art);
-    if (art?.hand) {
+    if (art && "authoredProps" in art) {
+      rig.blade.setEnabled(false);
+      rig.bow.setEnabled(false);
+    } else if (art?.hand) {
       rig.player.computeWorldMatrix(true);
       const hand = Vector3.TransformCoordinates(
         art.hand.getAbsolutePosition(),
@@ -794,7 +797,13 @@ export class BabylonRenderer implements Renderer {
       const a = visibleArrows[i];
       mesh.setEnabled(!!a);
       if (a) {
-        mesh.position.set(a.x, 1.05, a.z);
+        // Candidate arrows leave at the authored cheek/arrow-line height.
+        // X/Z, spawn event and collision timing stay entirely authoritative.
+        mesh.position.set(
+          a.x,
+          this.characters.usesAuthoredProps("ranger") ? 1.86 : 1.05,
+          a.z,
+        );
         mesh.rotation.y = Math.atan2(a.vx, a.vz);
       }
     });

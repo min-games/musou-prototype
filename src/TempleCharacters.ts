@@ -11,6 +11,7 @@ import type { Mesh } from "@babylonjs/core/Meshes/mesh";
 import { TransformNode } from "@babylonjs/core/Meshes/transformNode";
 import { Quaternion, Vector3 } from "@babylonjs/core/Maths/math.vector";
 import type { Simulation } from "./GameLoop";
+import { weaponMotion } from "./WeaponMotion";
 type Hero = Simulation["player"]["hero"];
 type Instance = {
   hero: Hero;
@@ -24,6 +25,7 @@ type Instance = {
   moving: boolean;
   clip?: string;
   clipFrame?: number;
+  motion?: ReturnType<typeof weaponMotion>;
   locomotionBlend?: {
     start: number;
     pose: Map<TransformNode, { rotation: Quaternion; position: Vector3 }>;
@@ -44,11 +46,12 @@ export class TempleCharacters {
   readonly blender =
     new URLSearchParams(location.search).get("art") === "blender";
   private modelFile(hero: Hero) {
-    return this.blender && hero === "vanguard"
-      ? "vanguard-blender-v1.glb"
-      : `${hero}-v1.glb`;
+    return this.blender ? `${hero}-weapon-motion-v1.glb` : `${hero}-v1.glb`;
   }
   constructor(private scene: Scene) {}
+  usesAuthoredProps(hero: Hero) {
+    return this.blender && this.templates.has(hero);
+  }
   get fallback() {
     return Object.values(this.states).includes("fallback");
   }
@@ -149,61 +152,104 @@ export class TempleCharacters {
     inst.lastX = p.x;
     inst.lastZ = p.z;
     inst.lastTime = time;
-    if (this.blender && p.hero === "vanguard") {
+    if (this.blender) {
       // Sample the actual exported animation at simulation time. This stays deterministic
       // when paused, follows attack timing, and gives every remote actor its own pose.
-      const clip =
-        p.swing > 0
-          ? "Attack"
-          : (inst.moving || p.dashTimer > 0) && !reduced
-            ? "Run"
-            : "Idle";
+      const motion = weaponMotion(p, inst.moving, reduced, time);
+      inst.motion = motion;
+      const clip = motion.clip;
+      for (const [name, node] of inst.nodes)
+        if (name.startsWith("prop.") || name.startsWith("string."))
+          node.setEnabled(
+            name.startsWith(`prop.${motion.weapon}`) ||
+              name.startsWith(`string.${motion.weapon}`),
+          );
       const group = inst.entries.animationGroups.find((g) =>
         g.name.endsWith(`:${clip}`),
       );
       if (group) {
+        const lowerBone = (name: string) =>
+          /^(root|pelvis|thigh\.|shin\.|foot\.)/.test(name);
+        const capture = (lowerOnly = false) =>
+          new Map(
+            [...inst.nodes]
+              .filter(
+                ([name, node]) =>
+                  node.rotationQuaternion && (!lowerOnly || lowerBone(name)),
+              )
+              .map(([, node]) => [
+                node,
+                {
+                  rotation: node.rotationQuaternion!.clone(),
+                  position: node.position.clone(),
+                },
+              ]),
+          );
+        const restore = (pose: ReturnType<typeof capture>) => {
+          for (const [node, value] of pose) {
+            node.rotationQuaternion!.copyFrom(value.rotation);
+            node.position.copyFrom(value.position);
+          }
+        };
+        const shiftProps = (delta: Vector3) => {
+          for (const [name, node] of inst.nodes)
+            if (
+              name.startsWith("socket.") ||
+              /\.(nock|tip\.top|tip\.bottom)$/.test(name)
+            )
+              node.position.addInPlace(delta);
+        };
+        const sampleLayer = (name: string, phase: number) => {
+          const layer = inst.entries.animationGroups.find((g) =>
+            g.name.endsWith(`:${name}`),
+          )!;
+          layer.start(false);
+          layer.pause();
+          layer.goToFrame(layer.from + phase * (layer.to - layer.from));
+          layer.stop();
+        };
         if (inst.clip !== clip) {
-          // The lifted run has a distinct contact pose. Ease locomotion changes
-          // from the displayed pose without changing simulation movement or attacks.
           inst.locomotionBlend =
-            inst.clip && !reduced && inst.clip !== "Attack" && clip !== "Attack"
-              ? {
-                  start: time,
-                  pose: new Map(
-                    [...inst.nodes.values()]
-                      .filter((n) => n.rotationQuaternion)
-                      .map((n) => [
-                        n,
-                        {
-                          rotation: n.rotationQuaternion!.clone(),
-                          position: n.position.clone(),
-                        },
-                      ]),
-                  ),
-                }
+            inst.clip &&
+            !reduced &&
+            ["Idle", "Run"].includes(inst.clip) &&
+            ["Idle", "Run"].includes(clip)
+              ? { start: time, pose: capture(true) }
               : undefined;
           for (const g of inst.entries.animationGroups) g.stop();
           group.start(false);
           group.pause();
           inst.clip = clip;
         }
-        const span = group.to - group.from;
-        const duration =
-          span / (group.targetedAnimations[0]?.animation.framePerSecond || 30);
-        const phase =
-          clip === "Attack"
-            ? Math.min(1, Math.max(0, 1 - p.swing / p.swingDuration))
-            : reduced
-              ? 0
-              : (time % duration) / duration;
-        inst.clipFrame = group.from + phase * span;
+        inst.clipFrame = group.from + motion.phase * (group.to - group.from);
         group.goToFrame(inst.clipFrame);
+        const pelvis = inst.nodes.get("pelvis")!;
+        if (!motion.attacking) {
+          const lower = capture(true);
+          sampleLayer(motion.ready, motion.readyPhase);
+          // Stationary actors keep their actual braced/drawn stance, matching
+          // attack phase zero. Running actors retain the approved natural legs.
+          if (clip === "Run") {
+            const before = pelvis.position.clone();
+            restore(lower);
+            shiftProps(pelvis.position.subtract(before));
+          }
+        } else if (p.hero === "ranger" && inst.moving && !reduced) {
+          const shot = capture();
+          sampleLayer("Run", (time % 0.8) / 0.8);
+          const lower = capture(true);
+          restore(shot);
+          const before = pelvis.position.clone();
+          restore(lower);
+          shiftProps(pelvis.position.subtract(before));
+        }
         if (inst.locomotionBlend) {
           const progress = Math.min(
             1,
             Math.max(0, (time - inst.locomotionBlend.start) / 0.12),
           );
-          const weight = progress * progress * (3 - 2 * progress);
+          const weight = progress * progress * (3 - 2 * progress),
+            before = pelvis.position.clone();
           for (const [node, pose] of inst.locomotionBlend.pose) {
             Quaternion.SlerpToRef(
               pose.rotation,
@@ -218,13 +264,20 @@ export class TempleCharacters {
               node.position,
             );
           }
+          // Shift the full prop/string transforms with the blended hips; arms
+          // inherit that same translation, preserving both grip contacts.
+          shiftProps(pelvis.position.subtract(before));
           if (progress === 1) inst.locomotionBlend = undefined;
         }
       }
       // The loader links skin joints to these cloned nodes, including the hand socket.
       for (const node of inst.root.getChildTransformNodes(false))
         node.computeWorldMatrix(true);
-      return { root: inst.root, hand: inst.nodes.get("hand.R") };
+      return {
+        root: inst.root,
+        hand: inst.nodes.get(p.hero === "ranger" ? "hand.L" : "hand.R"),
+        authoredProps: true,
+      };
     }
     const gait = inst.moving && !reduced ? Math.sin(inst.phase) * 0.5 : 0;
     const swing =
@@ -274,7 +327,9 @@ export class TempleCharacters {
   metadata() {
     const actors = [...this.instances.values()];
     return {
-      version: this.blender ? "blender-v1-candidate" : "temple-fantasy-v1",
+      version: this.blender
+        ? "weapon-motion-v1-candidate"
+        : "temple-fantasy-v1",
       states: { ...this.states },
       errors: { ...this.errors },
       atlasResolution: [1024, 1024],
@@ -307,6 +362,24 @@ export class TempleCharacters {
         hero: i.hero,
         clip: i.clip,
         clipFrame: i.clipFrame,
+        motion: i.motion,
+        sockets: [...i.nodes]
+          .filter(([n]) =>
+            /^(hand\.|grip\.|socket\.|support\.|stringpoint\.|.*\.nock)/.test(
+              n,
+            ),
+          )
+          .map(([name, n]) => ({
+            name,
+            position: n.getAbsolutePosition().asArray(),
+            matrix: Array.from(n.getWorldMatrix().asArray()),
+          })),
+        lowerBody: [...i.nodes]
+          .filter(([n]) => /^(pelvis|thigh\.|shin\.|foot\.)/.test(n))
+          .map(([name, n]) => ({
+            name,
+            position: n.getAbsolutePosition().asArray(),
+          })),
         root: i.root.uniqueId,
         skeleton: i.entries.skeletons[0]?.uniqueId,
         meshes: i.entries.rootNodes

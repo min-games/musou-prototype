@@ -1,0 +1,14 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> musou-slice@1.0.0 test
+> vitest run
+
+
+ RUN  v5.0.4 /home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261017085951-9721299c/musou-prototype
+
+
+ Test Files  9 passed (9)
+      Tests  126 passed (126)
+   Start at  20:30:55
+   Duration  1.38s (tests 57%, transform 27%, import 13%, worker 4%)
+

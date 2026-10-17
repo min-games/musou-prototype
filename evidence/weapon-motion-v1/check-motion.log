@@ -1,0 +1,13 @@
+ranger ShortbowShot {'handGripError': 1.2546998940033151e-05, 'orientationRadians': 1.7484556025237907e-07, 'supportError': 0, 'stringError': 0.00047117723887706313, 'releaseHandStringSeparation': 0.3249925662988103}
+ranger LongbowShot {'handGripError': 1.5670868797761554e-05, 'orientationRadians': 1.7484556025237907e-07, 'supportError': 0, 'stringError': 7.578756887606111e-05, 'releaseHandStringSeparation': 0.32499260068686786}
+ranger FanbowShot {'handGripError': 2.115359443233941e-05, 'orientationRadians': 1.7484556025237907e-07, 'supportError': 0, 'stringError': 7.566844803419942e-05, 'releaseHandStringSeparation': 0.32499245167183083}
+vanguard Saber1 {'handGripError': 0.0002858117874403349, 'orientationRadians': 0.0006907621966760757, 'supportError': 0, 'stringError': 0, 'releaseHandStringSeparation': 0}
+vanguard Saber2 {'handGripError': 0.0002612680657563121, 'orientationRadians': 0.0006907621966760757, 'supportError': 0, 'stringError': 0, 'releaseHandStringSeparation': 0}
+vanguard Saber3 {'handGripError': 0.0004098561089745281, 'orientationRadians': 0.0011962095843713882, 'supportError': 0, 'stringError': 0, 'releaseHandStringSeparation': 0}
+vanguard SpearAttack {'handGripError': 1.3819248438343932e-05, 'orientationRadians': 1.7484556025237907e-07, 'supportError': 1.9039532317624833e-05, 'stringError': 0, 'releaseHandStringSeparation': 0}
+vanguard GreatbladeAttack {'handGripError': 8.045676349621565e-05, 'orientationRadians': 1.7484556025237907e-07, 'supportError': 0.0001532847708315019, 'stringError': 0, 'releaseHandStringSeparation': 0}
+Blender 4.5.3 LTS (hash 67807e1800cc built 2025-09-09 01:38:15)
+Read blend: "/home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261017085951-9721299c/musou-prototype/art-source/ranger/blender-weapon-motion-v1/ranger.blend"
+Read blend: "/home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261017085951-9721299c/musou-prototype/art-source/vanguard/blender-weapon-motion-v1/vanguard.blend"
+
+Blender quit

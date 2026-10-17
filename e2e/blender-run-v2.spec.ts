@@ -1,6 +1,7 @@
 import { test, expect } from "./fixtures";
-import { writeFileSync } from "node:fs";
+import { mkdirSync, writeFileSync } from "node:fs";
 test.use({ serviceWorkers: "block" });
+mkdirSync("evidence/weapon-motion-v1/validated-run", { recursive: true });
 test("exported Run lifts skinned thighs, folds knees backward and closes the stride", async ({
   page,
 }) => {
@@ -116,7 +117,7 @@ test("exported Run lifts skinned thighs, folds knees backward and closes the str
   expect(result.to - result.from).toBeCloseTo(48, 3); // .8 s at Babylon's imported 60 fps
   expect(result.skinMotion).toBeGreaterThan(0.2);
   writeFileSync(
-    "evidence/blender-run-v2/browser-leg-motion.json",
+    "evidence/weapon-motion-v1/validated-run/browser-leg-motion.json",
     JSON.stringify(result, null, 2),
   );
   // Warm locomotion so the evidence starts after the Idle/Run blend.
@@ -146,7 +147,7 @@ test("exported Run lifts skinned thighs, folds knees backward and closes the str
     }, f);
     expect(clip).toBe("Run");
     await page.screenshot({
-      path: `evidence/blender-run-v2/browser-stride-${String(f + 1).padStart(2, "0")}.png`,
+      path: `evidence/weapon-motion-v1/validated-run/browser-stride-${String(f + 1).padStart(2, "0")}.png`,
     });
   }
 });
@@ -202,7 +203,7 @@ test("lifted Run eases into and out of Idle without moving the simulation root",
   expect(poses.stop.x).toBe(0.4);
   expect(poses.settled.x).toBe(0.4);
   writeFileSync(
-    "evidence/blender-run-v2/browser-transitions.json",
+    "evidence/weapon-motion-v1/validated-run/browser-transitions.json",
     JSON.stringify(poses, null, 2),
   );
 });

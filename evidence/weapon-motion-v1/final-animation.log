@@ -1,0 +1,29 @@
+
+> musou-slice@1.0.0 test:e2e
+> playwright test e2e/blender-v1.spec.ts e2e/blender-run-v2.spec.ts e2e/weapon-motion.spec.ts
+
+[WebServer] (node:1357397) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:1357409) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] 
+[WebServer] (!) Some chunks are larger than 500 kB after minification. Consider:
+[WebServer] - Using dynamic import() to code-split the application
+[WebServer] - Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+[WebServer] - Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+[WebServer] (node:1357458) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 7 tests using 1 worker
+
+(node:1357465) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 e2e/blender-run-v2.spec.ts:5:1 › exported Run lifts skinned thighs, folds knees backward and closes the stride (34.9s)
+  ✓  2 e2e/blender-run-v2.spec.ts:155:1 › lifted Run eases into and out of Idle without moving the simulation root (1.4s)
+  ✓  3 e2e/blender-v1.spec.ts:11:1 › Blender candidate samples authored clips, independent skins and hand sockets (5.1s)
+  ✓  4 e2e/blender-v1.spec.ts:166:1 › Blender is opt-in and failed candidate loads retain playable fallback (5.9s)
+  ✓  5 e2e/weapon-motion.spec.ts:7:1 › all exported weapons keep calibrated grips, real skinned props and distinct planted poses (17.3s)
+  ✓  6 e2e/weapon-motion.spec.ts:220:1 › real projectile events release immediately, moving fire keeps skinned legs, remote rigs clean up (2.0s)
+  ✓  7 e2e/weapon-motion.spec.ts:375:1 › Ranger candidate is opt-in and its failure retains playable fallback (4.4s)
+
+  7 passed (1.3m)

@@ -1,0 +1,12 @@
+Tool: built-in image_gen
+Reference: art-output/ranger-blender-v1/ranger-turnaround-v1.png
+
+Use case: stylized-concept
+Asset type: nine-panel Ranger bow animation key-pose reference for Blender, NOT animation evidence.
+Input image role: female Ranger turnaround, preserve EXACT identity and costume: adult East Asian woman, black ponytail/teal tie, ivory sleeves, charcoal/gold armor, teal scarf/sash, jade buckle, athletic adult proportions.
+One landscape sheet, 3 rows by 3 columns. Every panel full-body same character scale, consistent three-quarter camera, plain light gray background, grounded athletic archer stance, no overlapping panels. Each row one bow style, columns LEFT READY AT FULL DRAW, MIDDLE RELEASE, RIGHT REDRAW. Small labels only: SHORTBOW, LONGBOW, FAN BOW; READY, RELEASE, REDRAW.
+Use anatomically correct RIGHT-HANDED archery throughout: LEFT hand grips bow center at arm's length toward target on viewer RIGHT, RIGHT hand draws string to cheek/jaw on near side of face, right elbow points backward roughly level with arrow. String contacts right drawing fingers, bow grip contacts left palm, visible bowstring runs through nocking point; left arm has slight elbow bend. Release right drawing hand moves briefly backward beside cheek as string snaps toward bow; no swapping hands. Redraw returns to anchored ready position. Arrow stays aligned toward target; no unattached floating weapon. Keep left bow arm extended through release.
+Top row SHORTBOW: small practical recurve, compact near-square feet, light quick release and recovery.
+Middle row LONGBOW: tall slender bow approaching character height, stronger full draw, wider staggered braced legs with bent knees, slightly stronger shoulder recoil; do not hyperextend arms.
+Bottom row FAN BOW: a compact fantasy bow with two broad crossed limbs and three arrows fanned slightly at nock, wide stable stance with open torso; same correct left grip/right draw. Keep the fan-bow silhouette consistently distinct but buildable.
+Preserve costume and relative accessory sides all nine panels. Clear hands, elbows and bowstring, realistic joint ranges. Clean stylized painted game reference matching source. No effects, speed lines, scenery, enemies, extra limbs, quiver, text descriptions or ornament changes. These poses guide motion; do not show the release as a forward pushing right arm.

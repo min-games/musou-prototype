@@ -1,0 +1,1591 @@
+{
+  "vanguard": [
+    {
+      "clip": "Saber1",
+      "phase": 0.0,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "Saber1",
+      "phase": 0.03125,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "Saber1",
+      "phase": 0.0625,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "Saber1",
+      "phase": 0.09375,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "Saber1",
+      "phase": 0.125,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "Saber1",
+      "phase": 0.15625,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "Saber1",
+      "phase": 0.1875,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "Saber1",
+      "phase": 0.21875,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "Saber1",
+      "phase": 0.25,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "Saber1",
+      "phase": 0.28125,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "Saber1",
+      "phase": 0.3125,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "Saber1",
+      "phase": 0.34375,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "Saber1",
+      "phase": 0.375,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "Saber1",
+      "phase": 0.40625,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "Saber1",
+      "phase": 0.4375,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "Saber1",
+      "phase": 0.46875,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "Saber1",
+      "phase": 0.5,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "Saber1",
+      "phase": 0.53125,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "Saber1",
+      "phase": 0.5625,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "Saber1",
+      "phase": 0.59375,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "Saber1",
+      "phase": 0.625,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "Saber1",
+      "phase": 0.65625,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "Saber1",
+      "phase": 0.6875,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "Saber1",
+      "phase": 0.71875,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "Saber1",
+      "phase": 0.75,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "Saber1",
+      "phase": 0.78125,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "Saber1",
+      "phase": 0.8125,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "Saber1",
+      "phase": 0.84375,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "Saber1",
+      "phase": 0.875,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "Saber1",
+      "phase": 0.90625,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "Saber1",
+      "phase": 0.9375,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "Saber1",
+      "phase": 0.96875,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "Saber1",
+      "phase": 1.0,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "Saber2",
+      "phase": 0.0,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "Saber2",
+      "phase": 0.03125,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "Saber2",
+      "phase": 0.0625,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "Saber2",
+      "phase": 0.09375,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "Saber2",
+      "phase": 0.125,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "Saber2",
+      "phase": 0.15625,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "Saber2",
+      "phase": 0.1875,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "Saber2",
+      "phase": 0.21875,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "Saber2",
+      "phase": 0.25,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "Saber2",
+      "phase": 0.28125,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "Saber2",
+      "phase": 0.3125,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "Saber2",
+      "phase": 0.34375,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "Saber2",
+      "phase": 0.375,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "Saber2",
+      "phase": 0.40625,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "Saber2",
+      "phase": 0.4375,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "Saber2",
+      "phase": 0.46875,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "Saber2",
+      "phase": 0.5,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "Saber2",
+      "phase": 0.53125,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "Saber2",
+      "phase": 0.5625,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "Saber2",
+      "phase": 0.59375,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "Saber2",
+      "phase": 0.625,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "Saber2",
+      "phase": 0.65625,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "Saber2",
+      "phase": 0.6875,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "Saber2",
+      "phase": 0.71875,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "Saber2",
+      "phase": 0.75,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "Saber2",
+      "phase": 0.78125,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "Saber2",
+      "phase": 0.8125,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "Saber2",
+      "phase": 0.84375,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "Saber2",
+      "phase": 0.875,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "Saber2",
+      "phase": 0.90625,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "Saber2",
+      "phase": 0.9375,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "Saber2",
+      "phase": 0.96875,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "Saber2",
+      "phase": 1.0,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "Saber3",
+      "phase": 0.0,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "Saber3",
+      "phase": 0.03125,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "Saber3",
+      "phase": 0.0625,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "Saber3",
+      "phase": 0.09375,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "Saber3",
+      "phase": 0.125,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "Saber3",
+      "phase": 0.15625,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "Saber3",
+      "phase": 0.1875,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "Saber3",
+      "phase": 0.21875,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "Saber3",
+      "phase": 0.25,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "Saber3",
+      "phase": 0.28125,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "Saber3",
+      "phase": 0.3125,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "Saber3",
+      "phase": 0.34375,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "Saber3",
+      "phase": 0.375,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "Saber3",
+      "phase": 0.40625,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "Saber3",
+      "phase": 0.4375,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "Saber3",
+      "phase": 0.46875,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "Saber3",
+      "phase": 0.5,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "Saber3",
+      "phase": 0.53125,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "Saber3",
+      "phase": 0.5625,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "Saber3",
+      "phase": 0.59375,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "Saber3",
+      "phase": 0.625,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "Saber3",
+      "phase": 0.65625,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "Saber3",
+      "phase": 0.6875,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "Saber3",
+      "phase": 0.71875,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "Saber3",
+      "phase": 0.75,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "Saber3",
+      "phase": 0.78125,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "Saber3",
+      "phase": 0.8125,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "Saber3",
+      "phase": 0.84375,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "Saber3",
+      "phase": 0.875,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "Saber3",
+      "phase": 0.90625,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "Saber3",
+      "phase": 0.9375,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "Saber3",
+      "phase": 0.96875,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "Saber3",
+      "phase": 1.0,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "SpearAttack",
+      "phase": 0.0,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "SpearAttack",
+      "phase": 0.03125,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "SpearAttack",
+      "phase": 0.0625,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "SpearAttack",
+      "phase": 0.09375,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "SpearAttack",
+      "phase": 0.125,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "SpearAttack",
+      "phase": 0.15625,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "SpearAttack",
+      "phase": 0.1875,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "SpearAttack",
+      "phase": 0.21875,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "SpearAttack",
+      "phase": 0.25,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "SpearAttack",
+      "phase": 0.28125,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "SpearAttack",
+      "phase": 0.3125,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "SpearAttack",
+      "phase": 0.34375,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "SpearAttack",
+      "phase": 0.375,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "SpearAttack",
+      "phase": 0.40625,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "SpearAttack",
+      "phase": 0.4375,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "SpearAttack",
+      "phase": 0.46875,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "SpearAttack",
+      "phase": 0.5,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "SpearAttack",
+      "phase": 0.53125,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "SpearAttack",
+      "phase": 0.5625,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "SpearAttack",
+      "phase": 0.59375,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "SpearAttack",
+      "phase": 0.625,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "SpearAttack",
+      "phase": 0.65625,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "SpearAttack",
+      "phase": 0.6875,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "SpearAttack",
+      "phase": 0.71875,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "SpearAttack",
+      "phase": 0.75,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "SpearAttack",
+      "phase": 0.78125,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "SpearAttack",
+      "phase": 0.8125,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "SpearAttack",
+      "phase": 0.84375,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "SpearAttack",
+      "phase": 0.875,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "SpearAttack",
+      "phase": 0.90625,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "SpearAttack",
+      "phase": 0.9375,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "SpearAttack",
+      "phase": 0.96875,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "SpearAttack",
+      "phase": 1.0,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "GreatbladeAttack",
+      "phase": 0.0,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "GreatbladeAttack",
+      "phase": 0.03125,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "GreatbladeAttack",
+      "phase": 0.0625,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "GreatbladeAttack",
+      "phase": 0.09375,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "GreatbladeAttack",
+      "phase": 0.125,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "GreatbladeAttack",
+      "phase": 0.15625,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "GreatbladeAttack",
+      "phase": 0.1875,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "GreatbladeAttack",
+      "phase": 0.21875,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "GreatbladeAttack",
+      "phase": 0.25,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "GreatbladeAttack",
+      "phase": 0.28125,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "GreatbladeAttack",
+      "phase": 0.3125,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "GreatbladeAttack",
+      "phase": 0.34375,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "GreatbladeAttack",
+      "phase": 0.375,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "GreatbladeAttack",
+      "phase": 0.40625,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "GreatbladeAttack",
+      "phase": 0.4375,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "GreatbladeAttack",
+      "phase": 0.46875,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "GreatbladeAttack",
+      "phase": 0.5,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "GreatbladeAttack",
+      "phase": 0.53125,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "GreatbladeAttack",
+      "phase": 0.5625,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "GreatbladeAttack",
+      "phase": 0.59375,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "GreatbladeAttack",
+      "phase": 0.625,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "GreatbladeAttack",
+      "phase": 0.65625,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "GreatbladeAttack",
+      "phase": 0.6875,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "GreatbladeAttack",
+      "phase": 0.71875,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "GreatbladeAttack",
+      "phase": 0.75,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "GreatbladeAttack",
+      "phase": 0.78125,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "GreatbladeAttack",
+      "phase": 0.8125,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "GreatbladeAttack",
+      "phase": 0.84375,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "GreatbladeAttack",
+      "phase": 0.875,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "GreatbladeAttack",
+      "phase": 0.90625,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "GreatbladeAttack",
+      "phase": 0.9375,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "GreatbladeAttack",
+      "phase": 0.96875,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "GreatbladeAttack",
+      "phase": 1.0,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    }
+  ],
+  "ranger": [
+    {
+      "clip": "ShortbowShot",
+      "phase": 0.0,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "ShortbowShot",
+      "phase": 0.03125,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "ShortbowShot",
+      "phase": 0.0625,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "ShortbowShot",
+      "phase": 0.09375,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "ShortbowShot",
+      "phase": 0.125,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "ShortbowShot",
+      "phase": 0.15625,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "ShortbowShot",
+      "phase": 0.1875,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "ShortbowShot",
+      "phase": 0.21875,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "ShortbowShot",
+      "phase": 0.25,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "ShortbowShot",
+      "phase": 0.28125,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "ShortbowShot",
+      "phase": 0.3125,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "ShortbowShot",
+      "phase": 0.34375,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "ShortbowShot",
+      "phase": 0.375,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "ShortbowShot",
+      "phase": 0.40625,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "ShortbowShot",
+      "phase": 0.4375,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "ShortbowShot",
+      "phase": 0.46875,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "ShortbowShot",
+      "phase": 0.5,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "ShortbowShot",
+      "phase": 0.53125,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "ShortbowShot",
+      "phase": 0.5625,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "ShortbowShot",
+      "phase": 0.59375,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "ShortbowShot",
+      "phase": 0.625,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "ShortbowShot",
+      "phase": 0.65625,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "ShortbowShot",
+      "phase": 0.6875,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "ShortbowShot",
+      "phase": 0.71875,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "ShortbowShot",
+      "phase": 0.75,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "ShortbowShot",
+      "phase": 0.78125,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "ShortbowShot",
+      "phase": 0.8125,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "ShortbowShot",
+      "phase": 0.84375,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "ShortbowShot",
+      "phase": 0.875,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "ShortbowShot",
+      "phase": 0.90625,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "ShortbowShot",
+      "phase": 0.9375,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "ShortbowShot",
+      "phase": 0.96875,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "ShortbowShot",
+      "phase": 1.0,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "LongbowShot",
+      "phase": 0.0,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "LongbowShot",
+      "phase": 0.03125,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "LongbowShot",
+      "phase": 0.0625,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "LongbowShot",
+      "phase": 0.09375,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "LongbowShot",
+      "phase": 0.125,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "LongbowShot",
+      "phase": 0.15625,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "LongbowShot",
+      "phase": 0.1875,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "LongbowShot",
+      "phase": 0.21875,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "LongbowShot",
+      "phase": 0.25,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "LongbowShot",
+      "phase": 0.28125,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "LongbowShot",
+      "phase": 0.3125,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "LongbowShot",
+      "phase": 0.34375,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "LongbowShot",
+      "phase": 0.375,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "LongbowShot",
+      "phase": 0.40625,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "LongbowShot",
+      "phase": 0.4375,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "LongbowShot",
+      "phase": 0.46875,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "LongbowShot",
+      "phase": 0.5,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "LongbowShot",
+      "phase": 0.53125,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "LongbowShot",
+      "phase": 0.5625,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "LongbowShot",
+      "phase": 0.59375,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "LongbowShot",
+      "phase": 0.625,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "LongbowShot",
+      "phase": 0.65625,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "LongbowShot",
+      "phase": 0.6875,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "LongbowShot",
+      "phase": 0.71875,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "LongbowShot",
+      "phase": 0.75,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "LongbowShot",
+      "phase": 0.78125,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "LongbowShot",
+      "phase": 0.8125,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "LongbowShot",
+      "phase": 0.84375,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "LongbowShot",
+      "phase": 0.875,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "LongbowShot",
+      "phase": 0.90625,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "LongbowShot",
+      "phase": 0.9375,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "LongbowShot",
+      "phase": 0.96875,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "LongbowShot",
+      "phase": 1.0,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "FanbowShot",
+      "phase": 0.0,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "FanbowShot",
+      "phase": 0.03125,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "FanbowShot",
+      "phase": 0.0625,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "FanbowShot",
+      "phase": 0.09375,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "FanbowShot",
+      "phase": 0.125,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "FanbowShot",
+      "phase": 0.15625,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "FanbowShot",
+      "phase": 0.1875,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "FanbowShot",
+      "phase": 0.21875,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "FanbowShot",
+      "phase": 0.25,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "FanbowShot",
+      "phase": 0.28125,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "FanbowShot",
+      "phase": 0.3125,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "FanbowShot",
+      "phase": 0.34375,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "FanbowShot",
+      "phase": 0.375,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "FanbowShot",
+      "phase": 0.40625,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "FanbowShot",
+      "phase": 0.4375,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "FanbowShot",
+      "phase": 0.46875,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "FanbowShot",
+      "phase": 0.5,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "FanbowShot",
+      "phase": 0.53125,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "FanbowShot",
+      "phase": 0.5625,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "FanbowShot",
+      "phase": 0.59375,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "FanbowShot",
+      "phase": 0.625,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "FanbowShot",
+      "phase": 0.65625,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "FanbowShot",
+      "phase": 0.6875,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "FanbowShot",
+      "phase": 0.71875,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "FanbowShot",
+      "phase": 0.75,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "FanbowShot",
+      "phase": 0.78125,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "FanbowShot",
+      "phase": 0.8125,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "FanbowShot",
+      "phase": 0.84375,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "FanbowShot",
+      "phase": 0.875,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "FanbowShot",
+      "phase": 0.90625,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "FanbowShot",
+      "phase": 0.9375,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "FanbowShot",
+      "phase": 0.96875,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    },
+    {
+      "clip": "FanbowShot",
+      "phase": 1.0,
+      "torsoWeaponTrianglePairs": 0,
+      "torsoForearmHandTrianglePairs": 0
+    }
+  ],
+  "errors": []
+}

@@ -1,0 +1,187 @@
+{
+  "provenance": "Real Blender renders and source/GLB hashes. AI concept sheets are guidance only.",
+  "clips": [
+    {
+      "clip": "Saber1",
+      "frames": 33,
+      "phaseRange": [
+        0,
+        1
+      ],
+      "reviewFps": 30,
+      "renderFrames": 33
+    },
+    {
+      "clip": "Saber2",
+      "frames": 33,
+      "phaseRange": [
+        0,
+        1
+      ],
+      "reviewFps": 30,
+      "renderFrames": 33
+    },
+    {
+      "clip": "Saber3",
+      "frames": 33,
+      "phaseRange": [
+        0,
+        1
+      ],
+      "reviewFps": 30,
+      "renderFrames": 33
+    },
+    {
+      "clip": "SpearAttack",
+      "frames": 33,
+      "phaseRange": [
+        0,
+        1
+      ],
+      "reviewFps": 30,
+      "renderFrames": 33
+    },
+    {
+      "clip": "GreatbladeAttack",
+      "frames": 33,
+      "phaseRange": [
+        0,
+        1
+      ],
+      "reviewFps": 30,
+      "renderFrames": 33
+    },
+    {
+      "clip": "ShortbowShot",
+      "frames": 33,
+      "phaseRange": [
+        0,
+        1
+      ],
+      "reviewFps": 30,
+      "renderFrames": 33
+    },
+    {
+      "clip": "LongbowShot",
+      "frames": 33,
+      "phaseRange": [
+        0,
+        1
+      ],
+      "reviewFps": 30,
+      "renderFrames": 33
+    },
+    {
+      "clip": "FanbowShot",
+      "frames": 33,
+      "phaseRange": [
+        0,
+        1
+      ],
+      "reviewFps": 30,
+      "renderFrames": 33
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "evidence/weapon-motion-v1/Saber1.mp4",
+      "bytes": 23425,
+      "sha256": "25ea89db522098c4d80dba43fd9c5268a09ed93b34e5a046bccf3b15a26993b4"
+    },
+    {
+      "path": "evidence/weapon-motion-v1/Saber1-phases.png",
+      "bytes": 245847,
+      "sha256": "959b9b42813abef37ba227b938f4eee32c9b8d45a3f24f3bd74f6d1cc0c6f0f2"
+    },
+    {
+      "path": "evidence/weapon-motion-v1/Saber2.mp4",
+      "bytes": 23738,
+      "sha256": "e0cd7f2be61d59190e42a0af231ab68392ac4e9f430d614d90ca83c9f5162691"
+    },
+    {
+      "path": "evidence/weapon-motion-v1/Saber2-phases.png",
+      "bytes": 243257,
+      "sha256": "7b52884387e954df88e54a9aef350012b41c4d64a806285afff84389a4d976c6"
+    },
+    {
+      "path": "evidence/weapon-motion-v1/Saber3.mp4",
+      "bytes": 40927,
+      "sha256": "23e1410a50d8cc950553493e5736bcb74f3dc234f9b5d06ecd049633818fd5e7"
+    },
+    {
+      "path": "evidence/weapon-motion-v1/Saber3-phases.png",
+      "bytes": 266564,
+      "sha256": "5fd4a22fb74c1ce68727604a6843046721ba9c04cf0d2188f607ac985c575887"
+    },
+    {
+      "path": "evidence/weapon-motion-v1/SpearAttack.mp4",
+      "bytes": 28492,
+      "sha256": "fa275035f41a7c0a60509b385eb38188650907b4e84b5bc09aac314e2941bdbb"
+    },
+    {
+      "path": "evidence/weapon-motion-v1/SpearAttack-phases.png",
+      "bytes": 262550,
+      "sha256": "3cb10221e35a730e14df0b9cd77a8c64214b7660a2199d8f92a65cd3970749fd"
+    },
+    {
+      "path": "evidence/weapon-motion-v1/GreatbladeAttack.mp4",
+      "bytes": 35583,
+      "sha256": "4c9d60886b75944a167b011396ca37df368f4af4a442cd8ddeb804d06b313eda"
+    },
+    {
+      "path": "evidence/weapon-motion-v1/GreatbladeAttack-phases.png",
+      "bytes": 286496,
+      "sha256": "5230390b058547e9b9e64af9cff158935866ba8df109293151f6441087777f68"
+    },
+    {
+      "path": "evidence/weapon-motion-v1/ShortbowShot.mp4",
+      "bytes": 23847,
+      "sha256": "5233425426227307d7aee6306ca76600a74a953fe30b7ed96fdcf3bc2aa26e82"
+    },
+    {
+      "path": "evidence/weapon-motion-v1/ShortbowShot-phases.png",
+      "bytes": 240118,
+      "sha256": "890d2047189098520f3910668ab110f2f8727b63acb23eebae4187bc68a65868"
+    },
+    {
+      "path": "evidence/weapon-motion-v1/LongbowShot.mp4",
+      "bytes": 27094,
+      "sha256": "7b3cfd4d6aad6dfea1bd08df42683d32fede24fde8c0a65e81421431de7dd980"
+    },
+    {
+      "path": "evidence/weapon-motion-v1/LongbowShot-phases.png",
+      "bytes": 247471,
+      "sha256": "ddca61f19db68660160cf71fc6da61ac1c4aef321656245ebb84e2f72ca259b8"
+    },
+    {
+      "path": "evidence/weapon-motion-v1/FanbowShot.mp4",
+      "bytes": 27252,
+      "sha256": "185a683d6a8a60c722ec93df56f79be151ff1b47abb780901ce30bc7a8ad9429"
+    },
+    {
+      "path": "evidence/weapon-motion-v1/FanbowShot-phases.png",
+      "bytes": 253664,
+      "sha256": "e706e591dfd3c60d09c4d013169232ff5eb32df287399dd5faf35356a474944f"
+    },
+    {
+      "path": "public/models/ranger-weapon-motion-v1.glb",
+      "bytes": 986892,
+      "sha256": "edb5c60eeef64d267383c82bd7a944c5cfaadc83fd1de3f2114aeed0805a8696"
+    },
+    {
+      "path": "art-source/ranger/blender-weapon-motion-v1/ranger.blend",
+      "bytes": 16967501,
+      "sha256": "ad51b435d47ad25f183c20bf00c9df7758c2e15db04cbe14740cdfb34d07985f"
+    },
+    {
+      "path": "public/models/vanguard-weapon-motion-v1.glb",
+      "bytes": 1201664,
+      "sha256": "320b7b02be3e72165721b8a84ab1841223b61fc49fc272629d1788e0cd2cd8f4"
+    },
+    {
+      "path": "art-source/vanguard/blender-weapon-motion-v1/vanguard.blend",
+      "bytes": 23363558,
+      "sha256": "022fc0ffcb351f4f7cf35e39581816c53ff64874344ed6e761a2b57dbfa12bd6"
+    }
+  ]
+}
