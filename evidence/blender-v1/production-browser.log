@@ -1,0 +1,14 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+[WebServer] (node:28) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 4 tests using 1 worker
+
+(node:35) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 e2e/blender-v1.spec.ts:10:1 › Blender candidate samples authored clips, independent skins and hand sockets (7.5s)
+  ✓  2 e2e/blender-v1.spec.ts:144:1 › Blender is opt-in and failed candidate loads retain playable fallback (6.1s)
+  ✓  3 e2e/subpath.spec.ts:2:1 › Pages repository prefix loads relative assets and remains playable offline (4.7s)
+  ✓  4 e2e/subpath.spec.ts:44:1 › explicit WebGPU preference falls back when WebGPU is unavailable (1.2s)
+
+  4 passed (21.2s)

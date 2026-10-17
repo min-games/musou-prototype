@@ -22,6 +22,8 @@ type Instance = {
   lastTime: number;
   phase: number;
   moving: boolean;
+  clip?: string;
+  clipFrame?: number;
 };
 /** Shared immutable geometry/materials; each actor owns its cloned joints and skeleton. */
 export class TempleCharacters {
@@ -35,6 +37,13 @@ export class TempleCharacters {
   private disposed = false;
   readonly legacy =
     new URLSearchParams(location.search).get("art") === "legacy";
+  readonly blender =
+    new URLSearchParams(location.search).get("art") === "blender";
+  private modelFile(hero: Hero) {
+    return this.blender && hero === "vanguard"
+      ? "vanguard-blender-v1.glb"
+      : `${hero}-v1.glb`;
+  }
   constructor(private scene: Scene) {}
   get fallback() {
     return Object.values(this.states).includes("fallback");
@@ -48,7 +57,7 @@ export class TempleCharacters {
       (["vanguard", "ranger"] as const).map(async (hero) => {
         // Babylon handles dependency requests (the shared atlas) relative to this URL.
         const url = new URL(
-          `${import.meta.env.BASE_URL}models/${hero}-v1.glb`,
+          `${import.meta.env.BASE_URL}models/${this.modelFile(hero)}`,
           document.baseURI,
         ).href;
         let timedOut = false;
@@ -136,6 +145,42 @@ export class TempleCharacters {
     inst.lastX = p.x;
     inst.lastZ = p.z;
     inst.lastTime = time;
+    if (this.blender && p.hero === "vanguard") {
+      // Sample the actual exported animation at simulation time. This stays deterministic
+      // when paused, follows attack timing, and gives every remote actor its own pose.
+      const clip =
+        p.swing > 0
+          ? "Attack"
+          : (inst.moving || p.dashTimer > 0) && !reduced
+            ? "Run"
+            : "Idle";
+      const group = inst.entries.animationGroups.find((g) =>
+        g.name.endsWith(`:${clip}`),
+      );
+      if (group) {
+        if (inst.clip !== clip) {
+          for (const g of inst.entries.animationGroups) g.stop();
+          group.start(false);
+          group.pause();
+          inst.clip = clip;
+        }
+        const span = group.to - group.from;
+        const duration =
+          span / (group.targetedAnimations[0]?.animation.framePerSecond || 30);
+        const phase =
+          clip === "Attack"
+            ? Math.min(1, Math.max(0, 1 - p.swing / p.swingDuration))
+            : reduced
+              ? 0
+              : (time % duration) / duration;
+        inst.clipFrame = group.from + phase * span;
+        group.goToFrame(inst.clipFrame);
+      }
+      // The loader links skin joints to these cloned nodes, including the hand socket.
+      for (const node of inst.root.getChildTransformNodes(false))
+        node.computeWorldMatrix(true);
+      return { root: inst.root, hand: inst.nodes.get("hand.R") };
+    }
     const gait = inst.moving && !reduced ? Math.sin(inst.phase) * 0.5 : 0;
     const swing =
       p.swing > 0 ? Math.sin((1 - p.swing / p.swingDuration) * Math.PI) : 0;
@@ -184,7 +229,7 @@ export class TempleCharacters {
   metadata() {
     const actors = [...this.instances.values()];
     return {
-      version: "temple-fantasy-v1",
+      version: this.blender ? "blender-v1-candidate" : "temple-fantasy-v1",
       states: { ...this.states },
       errors: { ...this.errors },
       atlasResolution: [1024, 1024],
@@ -195,7 +240,12 @@ export class TempleCharacters {
           return [
             hero,
             {
-              file: `${hero}-v1.glb`,
+              file: this.modelFile(hero),
+              animations: t.animationGroups.map((g) => ({
+                name: g.name,
+                from: g.from,
+                to: g.to,
+              })),
               triangles: meshes.reduce(
                 (n, m) => n + m.getTotalIndices() / 3,
                 0,
@@ -210,6 +260,8 @@ export class TempleCharacters {
       activeActors: actors.length,
       actors: actors.map((i) => ({
         hero: i.hero,
+        clip: i.clip,
+        clipFrame: i.clipFrame,
         root: i.root.uniqueId,
         skeleton: i.entries.skeletons[0]?.uniqueId,
         meshes: i.entries.rootNodes

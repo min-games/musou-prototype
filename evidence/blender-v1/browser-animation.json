@@ -1,0 +1,1121 @@
+{
+  "idle": {
+    "clip": "Idle",
+    "frame": 0,
+    "pose": [
+      -0.9472135901451111,
+      0.2236068695783615,
+      0.2236068695783615,
+      0.05278643220663071
+    ],
+    "hand": [
+      -0.550000011920929,
+      1.0600000619888306,
+      -1.2653336156631667e-8
+    ],
+    "weapon": [
+      0.550000011920929,
+      1.0600000619888306,
+      0.750000012653336
+    ],
+    "meta": {
+      "version": "blender-v1-candidate",
+      "states": {
+        "vanguard": "loaded",
+        "ranger": "loaded"
+      },
+      "errors": {},
+      "atlasResolution": [
+        1024,
+        1024
+      ],
+      "uvInsetPixels": 8,
+      "models": {
+        "ranger": {
+          "file": "ranger-v1.glb",
+          "animations": [],
+          "triangles": 1604,
+          "meshes": 1,
+          "joints": 16,
+          "textureResolution": {
+            "width": 1024,
+            "height": 1024
+          }
+        },
+        "vanguard": {
+          "file": "vanguard-blender-v1.glb",
+          "animations": [
+            {
+              "name": "Idle",
+              "from": 0,
+              "to": 121.99999809265137
+            },
+            {
+              "name": "Run",
+              "from": 0,
+              "to": 49.999998807907104
+            },
+            {
+              "name": "Attack",
+              "from": 0,
+              "to": 49.999998807907104
+            }
+          ],
+          "triangles": 22956,
+          "meshes": 7,
+          "joints": 15
+        }
+      },
+      "activeActors": 1,
+      "actors": [
+        {
+          "hero": "vanguard",
+          "clip": "Idle",
+          "clipFrame": 0,
+          "root": 763,
+          "skeleton": 608,
+          "meshes": [
+            {
+              "geometry": 250,
+              "material": 251,
+              "vertices": 1030
+            },
+            {
+              "geometry": 253,
+              "material": 254,
+              "vertices": 3086
+            },
+            {
+              "geometry": 256,
+              "material": 257,
+              "vertices": 4562
+            },
+            {
+              "geometry": 259,
+              "material": 260,
+              "vertices": 1064
+            },
+            {
+              "geometry": 262,
+              "material": 263,
+              "vertices": 1708
+            },
+            {
+              "geometry": 265,
+              "material": 266,
+              "vertices": 1798
+            },
+            {
+              "geometry": 268,
+              "material": 269,
+              "vertices": 104
+            }
+          ],
+          "pose": [
+            {
+              "name": "arm.R",
+              "rotation": [
+                -0.9472135901451111,
+                0.2236068695783615,
+                0.2236068695783615,
+                0.05278643220663071
+              ]
+            },
+            {
+              "name": "thigh.L",
+              "rotation": [
+                1,
+                0,
+                -4.371138828673793e-8,
+                0
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "idleLater": {
+    "clip": "Idle",
+    "frame": 30,
+    "pose": [
+      -0.9472135901451111,
+      0.2236068695783615,
+      0.2236068695783615,
+      0.05278643220663071
+    ],
+    "hand": [
+      -0.550000011920929,
+      1.060010313987732,
+      0.0012729197042062879
+    ],
+    "weapon": [
+      0.550000011920929,
+      1.060010313987732,
+      0.7487270802957936
+    ],
+    "meta": {
+      "version": "blender-v1-candidate",
+      "states": {
+        "vanguard": "loaded",
+        "ranger": "loaded"
+      },
+      "errors": {},
+      "atlasResolution": [
+        1024,
+        1024
+      ],
+      "uvInsetPixels": 8,
+      "models": {
+        "ranger": {
+          "file": "ranger-v1.glb",
+          "animations": [],
+          "triangles": 1604,
+          "meshes": 1,
+          "joints": 16,
+          "textureResolution": {
+            "width": 1024,
+            "height": 1024
+          }
+        },
+        "vanguard": {
+          "file": "vanguard-blender-v1.glb",
+          "animations": [
+            {
+              "name": "Idle",
+              "from": 0,
+              "to": 121.99999809265137
+            },
+            {
+              "name": "Run",
+              "from": 0,
+              "to": 49.999998807907104
+            },
+            {
+              "name": "Attack",
+              "from": 0,
+              "to": 49.999998807907104
+            }
+          ],
+          "triangles": 22956,
+          "meshes": 7,
+          "joints": 15
+        }
+      },
+      "activeActors": 1,
+      "actors": [
+        {
+          "hero": "vanguard",
+          "clip": "Idle",
+          "clipFrame": 30,
+          "root": 763,
+          "skeleton": 608,
+          "meshes": [
+            {
+              "geometry": 250,
+              "material": 251,
+              "vertices": 1030
+            },
+            {
+              "geometry": 253,
+              "material": 254,
+              "vertices": 3086
+            },
+            {
+              "geometry": 256,
+              "material": 257,
+              "vertices": 4562
+            },
+            {
+              "geometry": 259,
+              "material": 260,
+              "vertices": 1064
+            },
+            {
+              "geometry": 262,
+              "material": 263,
+              "vertices": 1708
+            },
+            {
+              "geometry": 265,
+              "material": 266,
+              "vertices": 1798
+            },
+            {
+              "geometry": 268,
+              "material": 269,
+              "vertices": 104
+            }
+          ],
+          "pose": [
+            {
+              "name": "arm.R",
+              "rotation": [
+                -0.9472135901451111,
+                0.2236068695783615,
+                0.2236068695783615,
+                0.05278643220663071
+              ]
+            },
+            {
+              "name": "thigh.L",
+              "rotation": [
+                1,
+                0,
+                -4.371138828673793e-8,
+                0
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "run": {
+    "clip": "Run",
+    "frame": 36,
+    "pose": [
+      0.9363133931867963,
+      -0.17013115119339656,
+      -0.26656228030384294,
+      0.15269963428062688
+    ],
+    "hand": [
+      -0.18445828557014465,
+      1.1167997121810913,
+      -0.2903286814689636
+    ],
+    "weapon": [
+      0.3844582885503769,
+      1.1167997121810913,
+      1.0403286814689636
+    ],
+    "meta": {
+      "version": "blender-v1-candidate",
+      "states": {
+        "vanguard": "loaded",
+        "ranger": "loaded"
+      },
+      "errors": {},
+      "atlasResolution": [
+        1024,
+        1024
+      ],
+      "uvInsetPixels": 8,
+      "models": {
+        "ranger": {
+          "file": "ranger-v1.glb",
+          "animations": [],
+          "triangles": 1604,
+          "meshes": 1,
+          "joints": 16,
+          "textureResolution": {
+            "width": 1024,
+            "height": 1024
+          }
+        },
+        "vanguard": {
+          "file": "vanguard-blender-v1.glb",
+          "animations": [
+            {
+              "name": "Idle",
+              "from": 0,
+              "to": 121.99999809265137
+            },
+            {
+              "name": "Run",
+              "from": 0,
+              "to": 49.999998807907104
+            },
+            {
+              "name": "Attack",
+              "from": 0,
+              "to": 49.999998807907104
+            }
+          ],
+          "triangles": 22956,
+          "meshes": 7,
+          "joints": 15
+        }
+      },
+      "activeActors": 1,
+      "actors": [
+        {
+          "hero": "vanguard",
+          "clip": "Run",
+          "clipFrame": 36,
+          "root": 763,
+          "skeleton": 608,
+          "meshes": [
+            {
+              "geometry": 250,
+              "material": 251,
+              "vertices": 1030
+            },
+            {
+              "geometry": 253,
+              "material": 254,
+              "vertices": 3086
+            },
+            {
+              "geometry": 256,
+              "material": 257,
+              "vertices": 4562
+            },
+            {
+              "geometry": 259,
+              "material": 260,
+              "vertices": 1064
+            },
+            {
+              "geometry": 262,
+              "material": 263,
+              "vertices": 1708
+            },
+            {
+              "geometry": 265,
+              "material": 266,
+              "vertices": 1798
+            },
+            {
+              "geometry": 268,
+              "material": 269,
+              "vertices": 104
+            }
+          ],
+          "pose": [
+            {
+              "name": "arm.R",
+              "rotation": [
+                0.9363133931867963,
+                -0.17013115119339656,
+                -0.26656228030384294,
+                0.15269963428062688
+              ]
+            },
+            {
+              "name": "thigh.L",
+              "rotation": [
+                0.9511286688034867,
+                1.3497857865164388e-8,
+                -4.1575148970558416e-8,
+                0.3087949829954318
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "runLater": {
+    "clip": "Run",
+    "frame": 42,
+    "pose": [
+      0.939508916630566,
+      -0.1760793659897645,
+      -0.26267111076257754,
+      0.13161674430594328
+    ],
+    "hand": [
+      -0.0004451266722753644,
+      1.1013497114181519,
+      -0.26872777938842773
+    ],
+    "weapon": [
+      0.4004451326327399,
+      1.1013497114181519,
+      1.0187277793884277
+    ],
+    "meta": {
+      "version": "blender-v1-candidate",
+      "states": {
+        "vanguard": "loaded",
+        "ranger": "loaded"
+      },
+      "errors": {},
+      "atlasResolution": [
+        1024,
+        1024
+      ],
+      "uvInsetPixels": 8,
+      "models": {
+        "ranger": {
+          "file": "ranger-v1.glb",
+          "animations": [],
+          "triangles": 1604,
+          "meshes": 1,
+          "joints": 16,
+          "textureResolution": {
+            "width": 1024,
+            "height": 1024
+          }
+        },
+        "vanguard": {
+          "file": "vanguard-blender-v1.glb",
+          "animations": [
+            {
+              "name": "Idle",
+              "from": 0,
+              "to": 121.99999809265137
+            },
+            {
+              "name": "Run",
+              "from": 0,
+              "to": 49.999998807907104
+            },
+            {
+              "name": "Attack",
+              "from": 0,
+              "to": 49.999998807907104
+            }
+          ],
+          "triangles": 22956,
+          "meshes": 7,
+          "joints": 15
+        }
+      },
+      "activeActors": 1,
+      "actors": [
+        {
+          "hero": "vanguard",
+          "clip": "Run",
+          "clipFrame": 42,
+          "root": 763,
+          "skeleton": 608,
+          "meshes": [
+            {
+              "geometry": 250,
+              "material": 251,
+              "vertices": 1030
+            },
+            {
+              "geometry": 253,
+              "material": 254,
+              "vertices": 3086
+            },
+            {
+              "geometry": 256,
+              "material": 257,
+              "vertices": 4562
+            },
+            {
+              "geometry": 259,
+              "material": 260,
+              "vertices": 1064
+            },
+            {
+              "geometry": 262,
+              "material": 263,
+              "vertices": 1708
+            },
+            {
+              "geometry": 265,
+              "material": 266,
+              "vertices": 1798
+            },
+            {
+              "geometry": 268,
+              "material": 269,
+              "vertices": 104
+            }
+          ],
+          "pose": [
+            {
+              "name": "arm.R",
+              "rotation": [
+                0.939508916630566,
+                -0.1760793659897645,
+                -0.26267111076257754,
+                0.13161674430594328
+              ]
+            },
+            {
+              "name": "thigh.L",
+              "rotation": [
+                0.960651402835518,
+                1.2141138873579695e-8,
+                -4.199140613225191e-8,
+                0.2777568818510908
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "attack": {
+    "clip": "Attack",
+    "frame": 24.999999403953552,
+    "pose": [
+      0.8186120817368795,
+      0.1720281543203764,
+      -0.1155383007345566,
+      0.535659828322596
+    ],
+    "hand": [
+      0.3266341984272003,
+      1.6097824573516846,
+      -0.5389508605003357
+    ],
+    "weapon": [
+      0.4868703345793893,
+      1.6097824573516846,
+      1.295865820130782
+    ],
+    "meta": {
+      "version": "blender-v1-candidate",
+      "states": {
+        "vanguard": "loaded",
+        "ranger": "loaded"
+      },
+      "errors": {},
+      "atlasResolution": [
+        1024,
+        1024
+      ],
+      "uvInsetPixels": 8,
+      "models": {
+        "ranger": {
+          "file": "ranger-v1.glb",
+          "animations": [],
+          "triangles": 1604,
+          "meshes": 1,
+          "joints": 16,
+          "textureResolution": {
+            "width": 1024,
+            "height": 1024
+          }
+        },
+        "vanguard": {
+          "file": "vanguard-blender-v1.glb",
+          "animations": [
+            {
+              "name": "Idle",
+              "from": 0,
+              "to": 121.99999809265137
+            },
+            {
+              "name": "Run",
+              "from": 0,
+              "to": 49.999998807907104
+            },
+            {
+              "name": "Attack",
+              "from": 0,
+              "to": 49.999998807907104
+            }
+          ],
+          "triangles": 22956,
+          "meshes": 7,
+          "joints": 15
+        }
+      },
+      "activeActors": 1,
+      "actors": [
+        {
+          "hero": "vanguard",
+          "clip": "Attack",
+          "clipFrame": 24.999999403953552,
+          "root": 763,
+          "skeleton": 608,
+          "meshes": [
+            {
+              "geometry": 250,
+              "material": 251,
+              "vertices": 1030
+            },
+            {
+              "geometry": 253,
+              "material": 254,
+              "vertices": 3086
+            },
+            {
+              "geometry": 256,
+              "material": 257,
+              "vertices": 4562
+            },
+            {
+              "geometry": 259,
+              "material": 260,
+              "vertices": 1064
+            },
+            {
+              "geometry": 262,
+              "material": 263,
+              "vertices": 1708
+            },
+            {
+              "geometry": 265,
+              "material": 266,
+              "vertices": 1798
+            },
+            {
+              "geometry": 268,
+              "material": 269,
+              "vertices": 104
+            }
+          ],
+          "pose": [
+            {
+              "name": "arm.R",
+              "rotation": [
+                0.8186120817368795,
+                0.1720281543203764,
+                -0.1155383007345566,
+                0.535659828322596
+              ]
+            },
+            {
+              "name": "thigh.L",
+              "rotation": [
+                1,
+                0,
+                -4.371138828673793e-8,
+                0
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "recovery": {
+    "clip": "Attack",
+    "frame": 43.749998956918716,
+    "pose": [
+      0.9261650820864032,
+      -0.15098350954585416,
+      -0.27527637922279846,
+      0.20891415170266037
+    ],
+    "hand": [
+      -0.006909286603331566,
+      1.1297996044158936,
+      -0.26253029704093933
+    ],
+    "weapon": [
+      1.1911783232009465,
+      1.1297996044158936,
+      -0.09639634948097103
+    ],
+    "meta": {
+      "version": "blender-v1-candidate",
+      "states": {
+        "vanguard": "loaded",
+        "ranger": "loaded"
+      },
+      "errors": {},
+      "atlasResolution": [
+        1024,
+        1024
+      ],
+      "uvInsetPixels": 8,
+      "models": {
+        "ranger": {
+          "file": "ranger-v1.glb",
+          "animations": [],
+          "triangles": 1604,
+          "meshes": 1,
+          "joints": 16,
+          "textureResolution": {
+            "width": 1024,
+            "height": 1024
+          }
+        },
+        "vanguard": {
+          "file": "vanguard-blender-v1.glb",
+          "animations": [
+            {
+              "name": "Idle",
+              "from": 0,
+              "to": 121.99999809265137
+            },
+            {
+              "name": "Run",
+              "from": 0,
+              "to": 49.999998807907104
+            },
+            {
+              "name": "Attack",
+              "from": 0,
+              "to": 49.999998807907104
+            }
+          ],
+          "triangles": 22956,
+          "meshes": 7,
+          "joints": 15
+        }
+      },
+      "activeActors": 1,
+      "actors": [
+        {
+          "hero": "vanguard",
+          "clip": "Attack",
+          "clipFrame": 43.749998956918716,
+          "root": 763,
+          "skeleton": 608,
+          "meshes": [
+            {
+              "geometry": 250,
+              "material": 251,
+              "vertices": 1030
+            },
+            {
+              "geometry": 253,
+              "material": 254,
+              "vertices": 3086
+            },
+            {
+              "geometry": 256,
+              "material": 257,
+              "vertices": 4562
+            },
+            {
+              "geometry": 259,
+              "material": 260,
+              "vertices": 1064
+            },
+            {
+              "geometry": 262,
+              "material": 263,
+              "vertices": 1708
+            },
+            {
+              "geometry": 265,
+              "material": 266,
+              "vertices": 1798
+            },
+            {
+              "geometry": 268,
+              "material": 269,
+              "vertices": 104
+            }
+          ],
+          "pose": [
+            {
+              "name": "arm.R",
+              "rotation": [
+                0.9261650820864032,
+                -0.15098350954585416,
+                -0.27527637922279846,
+                0.20891415170266037
+              ]
+            },
+            {
+              "name": "thigh.L",
+              "rotation": [
+                1,
+                0,
+                -4.371138828673793e-8,
+                0
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "weapons": [
+    {
+      "weapon": "saber",
+      "position": [
+        0.4868703345793893,
+        1.6097824573516846,
+        1.295865820130782
+      ],
+      "enabled": true
+    },
+    {
+      "weapon": "spear",
+      "position": [
+        0.07336580753326422,
+        1.6097824573516846,
+        0.5389508605003357
+      ],
+      "enabled": true
+    },
+    {
+      "weapon": "greatblade",
+      "position": [
+        0.6522721453978393,
+        1.6097824573516846,
+        1.5986318039829608
+      ],
+      "enabled": true
+    }
+  ],
+  "independent": true,
+  "remoteClip": "Idle",
+  "reduced": {
+    "clip": "Idle",
+    "frame": 0,
+    "pose": [
+      -0.9472135901451111,
+      0.2236068695783615,
+      0.2236068695783615,
+      0.05278643220663071
+    ],
+    "hand": [
+      0.2499999701976776,
+      1.0600000619888306,
+      -1.2653336156631667e-8
+    ],
+    "weapon": [
+      0.5500000417232513,
+      1.0600000619888306,
+      1.050000012653336
+    ],
+    "meta": {
+      "version": "blender-v1-candidate",
+      "states": {
+        "vanguard": "loaded",
+        "ranger": "loaded"
+      },
+      "errors": {},
+      "atlasResolution": [
+        1024,
+        1024
+      ],
+      "uvInsetPixels": 8,
+      "models": {
+        "ranger": {
+          "file": "ranger-v1.glb",
+          "animations": [],
+          "triangles": 1604,
+          "meshes": 1,
+          "joints": 16,
+          "textureResolution": {
+            "width": 1024,
+            "height": 1024
+          }
+        },
+        "vanguard": {
+          "file": "vanguard-blender-v1.glb",
+          "animations": [
+            {
+              "name": "Idle",
+              "from": 0,
+              "to": 121.99999809265137
+            },
+            {
+              "name": "Run",
+              "from": 0,
+              "to": 49.999998807907104
+            },
+            {
+              "name": "Attack",
+              "from": 0,
+              "to": 49.999998807907104
+            }
+          ],
+          "triangles": 22956,
+          "meshes": 7,
+          "joints": 15
+        }
+      },
+      "activeActors": 1,
+      "actors": [
+        {
+          "hero": "vanguard",
+          "clip": "Idle",
+          "clipFrame": 0,
+          "root": 763,
+          "skeleton": 608,
+          "meshes": [
+            {
+              "geometry": 250,
+              "material": 251,
+              "vertices": 1030
+            },
+            {
+              "geometry": 253,
+              "material": 254,
+              "vertices": 3086
+            },
+            {
+              "geometry": 256,
+              "material": 257,
+              "vertices": 4562
+            },
+            {
+              "geometry": 259,
+              "material": 260,
+              "vertices": 1064
+            },
+            {
+              "geometry": 262,
+              "material": 263,
+              "vertices": 1708
+            },
+            {
+              "geometry": 265,
+              "material": 266,
+              "vertices": 1798
+            },
+            {
+              "geometry": 268,
+              "material": 269,
+              "vertices": 104
+            }
+          ],
+          "pose": [
+            {
+              "name": "arm.R",
+              "rotation": [
+                -0.9472135901451111,
+                0.2236068695783615,
+                0.2236068695783615,
+                0.05278643220663071
+              ]
+            },
+            {
+              "name": "thigh.L",
+              "rotation": [
+                1,
+                0,
+                -4.371138828673793e-8,
+                0
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "reducedAttack": {
+    "clip": "Attack",
+    "frame": 24.999999403953552,
+    "pose": [
+      0.8186120817368795,
+      0.1720281543203764,
+      -0.1155383007345566,
+      0.535659828322596
+    ],
+    "hand": [
+      0.9266341924667358,
+      1.6097824573516846,
+      -0.5389508605003357
+    ],
+    "weapon": [
+      0.6522721453978394,
+      1.6097824573516846,
+      1.5986318039829608
+    ],
+    "meta": {
+      "version": "blender-v1-candidate",
+      "states": {
+        "vanguard": "loaded",
+        "ranger": "loaded"
+      },
+      "errors": {},
+      "atlasResolution": [
+        1024,
+        1024
+      ],
+      "uvInsetPixels": 8,
+      "models": {
+        "ranger": {
+          "file": "ranger-v1.glb",
+          "animations": [],
+          "triangles": 1604,
+          "meshes": 1,
+          "joints": 16,
+          "textureResolution": {
+            "width": 1024,
+            "height": 1024
+          }
+        },
+        "vanguard": {
+          "file": "vanguard-blender-v1.glb",
+          "animations": [
+            {
+              "name": "Idle",
+              "from": 0,
+              "to": 121.99999809265137
+            },
+            {
+              "name": "Run",
+              "from": 0,
+              "to": 49.999998807907104
+            },
+            {
+              "name": "Attack",
+              "from": 0,
+              "to": 49.999998807907104
+            }
+          ],
+          "triangles": 22956,
+          "meshes": 7,
+          "joints": 15
+        }
+      },
+      "activeActors": 1,
+      "actors": [
+        {
+          "hero": "vanguard",
+          "clip": "Attack",
+          "clipFrame": 24.999999403953552,
+          "root": 763,
+          "skeleton": 608,
+          "meshes": [
+            {
+              "geometry": 250,
+              "material": 251,
+              "vertices": 1030
+            },
+            {
+              "geometry": 253,
+              "material": 254,
+              "vertices": 3086
+            },
+            {
+              "geometry": 256,
+              "material": 257,
+              "vertices": 4562
+            },
+            {
+              "geometry": 259,
+              "material": 260,
+              "vertices": 1064
+            },
+            {
+              "geometry": 262,
+              "material": 263,
+              "vertices": 1708
+            },
+            {
+              "geometry": 265,
+              "material": 266,
+              "vertices": 1798
+            },
+            {
+              "geometry": 268,
+              "material": 269,
+              "vertices": 104
+            }
+          ],
+          "pose": [
+            {
+              "name": "arm.R",
+              "rotation": [
+                0.8186120817368795,
+                0.1720281543203764,
+                -0.1155383007345566,
+                0.535659828322596
+              ]
+            },
+            {
+              "name": "thigh.L",
+              "rotation": [
+                1,
+                0,
+                -4.371138828673793e-8,
+                0
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

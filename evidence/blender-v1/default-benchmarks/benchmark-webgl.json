@@ -1,0 +1,634 @@
+[
+  {
+    "count": 0,
+    "seed": 4242,
+    "frames": 180,
+    "frameMs": {
+      "p50": 31.600000143051147,
+      "p95": 57.59999990463257,
+      "p99": 110.69999980926514
+    },
+    "simulationMs": {
+      "p50": 0.09999990463256836,
+      "p95": 0.20000004768371582,
+      "p99": 0.2999999523162842
+    },
+    "drawCalls": 41.96666666666667,
+    "backend": "WebGL2",
+    "metadata": {
+      "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.8078.4 Safari/537.36",
+      "viewport": [
+        1280,
+        720
+      ],
+      "dpr": 1,
+      "hardwareConcurrency": 16,
+      "utc": "2026-10-17T00:17:00.352Z",
+      "warmupFrames": 60,
+      "scenario": "weapon-crowd-v1-saber",
+      "stressMultishot": false,
+      "peakArrows": 0,
+      "pierce": 0,
+      "hero": "vanguard",
+      "weapon": "saber",
+      "weaponStats": {
+        "weapon": {
+          "id": "saber",
+          "hero": "vanguard",
+          "name": "Saber",
+          "description": "Quick, balanced three-hit sweeps",
+          "damage": 25,
+          "finisher": 40,
+          "period": 0.38,
+          "range": 2.8,
+          "halfArc": 1.319468914507713,
+          "arrowSpeed": 0,
+          "arrows": 1,
+          "spread": 0
+        },
+        "period": 0.38333333333333336,
+        "rate": 2.608695652173913,
+        "range": 2.8,
+        "arrows": 1,
+        "damage": 25,
+        "finisher": 40,
+        "dps": 78.26086956521738,
+        "targetsPerArrow": 1,
+        "crowdDps": 78.26086956521738
+      },
+      "enemyTypes": {
+        "grunt": 0,
+        "flanker": 0,
+        "armored": 0
+      },
+      "specialActivations": 1,
+      "liveEnemies": 0,
+      "timing": "RAF wall intervals; CPU simulation only; no GPU timer query",
+      "renderer": {
+        "width": 1280,
+        "height": 720,
+        "engineVersion": "8.56.2",
+        "renderer": {
+          "vendor": "Google Inc. (Google)",
+          "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+          "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)"
+        },
+        "hardwareScaling": 1,
+        "reducedMotion": false,
+        "ringGeometry": "flat-strip-64-segments",
+        "specialSparkPool": 32,
+        "characterArt": {
+          "version": "temple-fantasy-v1",
+          "states": {
+            "vanguard": "loaded",
+            "ranger": "loaded"
+          },
+          "errors": {},
+          "atlasResolution": [
+            1024,
+            1024
+          ],
+          "uvInsetPixels": 8,
+          "models": {
+            "ranger": {
+              "file": "ranger-v1.glb",
+              "animations": [],
+              "triangles": 1604,
+              "meshes": 1,
+              "joints": 16,
+              "textureResolution": {
+                "width": 1024,
+                "height": 1024
+              }
+            },
+            "vanguard": {
+              "file": "vanguard-v1.glb",
+              "animations": [],
+              "triangles": 1754,
+              "meshes": 1,
+              "joints": 16,
+              "textureResolution": {
+                "width": 1024,
+                "height": 1024
+              }
+            }
+          },
+          "activeActors": 1,
+          "actors": [
+            {
+              "hero": "vanguard",
+              "root": 464,
+              "skeleton": 446,
+              "meshes": [
+                {
+                  "geometry": 265,
+                  "material": 266,
+                  "vertices": 4046
+                }
+              ],
+              "pose": [
+                {
+                  "name": "arm.R",
+                  "rotation": [
+                    0.031056852648084787,
+                    -0.0010874339144651725,
+                    0.034975954037622534,
+                    0.9989048863781951
+                  ]
+                },
+                {
+                  "name": "thigh.L",
+                  "rotation": [
+                    0.18520286059684107,
+                    0,
+                    0,
+                    0.9827003105864712
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "fixedHz": 60,
+      "camera": "origin orbit / distance 30 / 0.15 radians per simulation second",
+      "simulationStepsPerSample": 1,
+      "playerHealth": "refilled per tick to maintain active crowd workload",
+      "input": "sin/cos movement; strike every 24 ticks; Solar Break on tick 90"
+    }
+  },
+  {
+    "count": 20,
+    "seed": 4242,
+    "frames": 180,
+    "frameMs": {
+      "p50": 31.100000143051147,
+      "p95": 38.69999980926514,
+      "p99": 62.60000014305115
+    },
+    "simulationMs": {
+      "p50": 0.09999990463256836,
+      "p95": 0.20000004768371582,
+      "p99": 0.2999999523162842
+    },
+    "drawCalls": 62.6,
+    "backend": "WebGL2",
+    "metadata": {
+      "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.8078.4 Safari/537.36",
+      "viewport": [
+        1280,
+        720
+      ],
+      "dpr": 1,
+      "hardwareConcurrency": 16,
+      "utc": "2026-10-17T00:17:07.985Z",
+      "warmupFrames": 60,
+      "scenario": "weapon-crowd-v1-saber",
+      "stressMultishot": false,
+      "peakArrows": 0,
+      "pierce": 0,
+      "hero": "vanguard",
+      "weapon": "saber",
+      "weaponStats": {
+        "weapon": {
+          "id": "saber",
+          "hero": "vanguard",
+          "name": "Saber",
+          "description": "Quick, balanced three-hit sweeps",
+          "damage": 25,
+          "finisher": 40,
+          "period": 0.38,
+          "range": 2.8,
+          "halfArc": 1.319468914507713,
+          "arrowSpeed": 0,
+          "arrows": 1,
+          "spread": 0
+        },
+        "period": 0.38333333333333336,
+        "rate": 2.608695652173913,
+        "range": 2.8,
+        "arrows": 1,
+        "damage": 25,
+        "finisher": 40,
+        "dps": 78.26086956521738,
+        "targetsPerArrow": 1,
+        "crowdDps": 78.26086956521738
+      },
+      "enemyTypes": {
+        "grunt": 12,
+        "flanker": 4,
+        "armored": 4
+      },
+      "specialActivations": 1,
+      "liveEnemies": 20,
+      "timing": "RAF wall intervals; CPU simulation only; no GPU timer query",
+      "renderer": {
+        "width": 1280,
+        "height": 720,
+        "engineVersion": "8.56.2",
+        "renderer": {
+          "vendor": "Google Inc. (Google)",
+          "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+          "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)"
+        },
+        "hardwareScaling": 1,
+        "reducedMotion": false,
+        "ringGeometry": "flat-strip-64-segments",
+        "specialSparkPool": 32,
+        "characterArt": {
+          "version": "temple-fantasy-v1",
+          "states": {
+            "vanguard": "loaded",
+            "ranger": "loaded"
+          },
+          "errors": {},
+          "atlasResolution": [
+            1024,
+            1024
+          ],
+          "uvInsetPixels": 8,
+          "models": {
+            "ranger": {
+              "file": "ranger-v1.glb",
+              "animations": [],
+              "triangles": 1604,
+              "meshes": 1,
+              "joints": 16,
+              "textureResolution": {
+                "width": 1024,
+                "height": 1024
+              }
+            },
+            "vanguard": {
+              "file": "vanguard-v1.glb",
+              "animations": [],
+              "triangles": 1754,
+              "meshes": 1,
+              "joints": 16,
+              "textureResolution": {
+                "width": 1024,
+                "height": 1024
+              }
+            }
+          },
+          "activeActors": 1,
+          "actors": [
+            {
+              "hero": "vanguard",
+              "root": 464,
+              "skeleton": 446,
+              "meshes": [
+                {
+                  "geometry": 265,
+                  "material": 266,
+                  "vertices": 4046
+                }
+              ],
+              "pose": [
+                {
+                  "name": "arm.R",
+                  "rotation": [
+                    -0.2436612968952659,
+                    0.008531629424555338,
+                    0.03393687040259126,
+                    0.9692289061526987
+                  ]
+                },
+                {
+                  "name": "thigh.L",
+                  "rotation": [
+                    -0.2381406154826805,
+                    0,
+                    0,
+                    0.971230686941846
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "fixedHz": 60,
+      "camera": "origin orbit / distance 30 / 0.15 radians per simulation second",
+      "simulationStepsPerSample": 1,
+      "playerHealth": "refilled per tick to maintain active crowd workload",
+      "input": "sin/cos movement; strike every 24 ticks; Solar Break on tick 90"
+    }
+  },
+  {
+    "count": 100,
+    "seed": 4242,
+    "frames": 180,
+    "frameMs": {
+      "p50": 43.5,
+      "p95": 56.799999952316284,
+      "p99": 86.10000014305115
+    },
+    "simulationMs": {
+      "p50": 0.20000004768371582,
+      "p95": 0.40000009536743164,
+      "p99": 0.5
+    },
+    "drawCalls": 143.18333333333334,
+    "backend": "WebGL2",
+    "metadata": {
+      "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.8078.4 Safari/537.36",
+      "viewport": [
+        1280,
+        720
+      ],
+      "dpr": 1,
+      "hardwareConcurrency": 16,
+      "utc": "2026-10-17T00:17:18.809Z",
+      "warmupFrames": 60,
+      "scenario": "weapon-crowd-v1-saber",
+      "stressMultishot": false,
+      "peakArrows": 0,
+      "pierce": 0,
+      "hero": "vanguard",
+      "weapon": "saber",
+      "weaponStats": {
+        "weapon": {
+          "id": "saber",
+          "hero": "vanguard",
+          "name": "Saber",
+          "description": "Quick, balanced three-hit sweeps",
+          "damage": 25,
+          "finisher": 40,
+          "period": 0.38,
+          "range": 2.8,
+          "halfArc": 1.319468914507713,
+          "arrowSpeed": 0,
+          "arrows": 1,
+          "spread": 0
+        },
+        "period": 0.38333333333333336,
+        "rate": 2.608695652173913,
+        "range": 2.8,
+        "arrows": 1,
+        "damage": 25,
+        "finisher": 40,
+        "dps": 78.26086956521738,
+        "targetsPerArrow": 1,
+        "crowdDps": 78.26086956521738
+      },
+      "enemyTypes": {
+        "grunt": 60,
+        "flanker": 20,
+        "armored": 20
+      },
+      "specialActivations": 1,
+      "liveEnemies": 100,
+      "timing": "RAF wall intervals; CPU simulation only; no GPU timer query",
+      "renderer": {
+        "width": 1280,
+        "height": 720,
+        "engineVersion": "8.56.2",
+        "renderer": {
+          "vendor": "Google Inc. (Google)",
+          "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+          "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)"
+        },
+        "hardwareScaling": 1,
+        "reducedMotion": false,
+        "ringGeometry": "flat-strip-64-segments",
+        "specialSparkPool": 32,
+        "characterArt": {
+          "version": "temple-fantasy-v1",
+          "states": {
+            "vanguard": "loaded",
+            "ranger": "loaded"
+          },
+          "errors": {},
+          "atlasResolution": [
+            1024,
+            1024
+          ],
+          "uvInsetPixels": 8,
+          "models": {
+            "ranger": {
+              "file": "ranger-v1.glb",
+              "animations": [],
+              "triangles": 1604,
+              "meshes": 1,
+              "joints": 16,
+              "textureResolution": {
+                "width": 1024,
+                "height": 1024
+              }
+            },
+            "vanguard": {
+              "file": "vanguard-v1.glb",
+              "animations": [],
+              "triangles": 1754,
+              "meshes": 1,
+              "joints": 16,
+              "textureResolution": {
+                "width": 1024,
+                "height": 1024
+              }
+            }
+          },
+          "activeActors": 1,
+          "actors": [
+            {
+              "hero": "vanguard",
+              "root": 464,
+              "skeleton": 446,
+              "meshes": [
+                {
+                  "geometry": 265,
+                  "material": 266,
+                  "vertices": 4046
+                }
+              ],
+              "pose": [
+                {
+                  "name": "arm.R",
+                  "rotation": [
+                    -0.04409191226543537,
+                    0.0015438473851281944,
+                    0.03495878156646261,
+                    0.9984144447069148
+                  ]
+                },
+                {
+                  "name": "thigh.L",
+                  "rotation": [
+                    0.07050567336315823,
+                    0,
+                    0,
+                    0.9975113783930525
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "fixedHz": 60,
+      "camera": "origin orbit / distance 30 / 0.15 radians per simulation second",
+      "simulationStepsPerSample": 1,
+      "playerHealth": "refilled per tick to maintain active crowd workload",
+      "input": "sin/cos movement; strike every 24 ticks; Solar Break on tick 90"
+    }
+  },
+  {
+    "count": 300,
+    "seed": 4242,
+    "frames": 180,
+    "frameMs": {
+      "p50": 62.700000047683716,
+      "p95": 97.39999985694885,
+      "p99": 139.59999990463257
+    },
+    "simulationMs": {
+      "p50": 0.39999985694885254,
+      "p95": 0.6000001430511475,
+      "p99": 2.0999999046325684
+    },
+    "drawCalls": 343.51666666666665,
+    "backend": "WebGL2",
+    "metadata": {
+      "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.8078.4 Safari/537.36",
+      "viewport": [
+        1280,
+        720
+      ],
+      "dpr": 1,
+      "hardwareConcurrency": 16,
+      "utc": "2026-10-17T00:17:34.072Z",
+      "warmupFrames": 60,
+      "scenario": "weapon-crowd-v1-saber",
+      "stressMultishot": false,
+      "peakArrows": 0,
+      "pierce": 0,
+      "hero": "vanguard",
+      "weapon": "saber",
+      "weaponStats": {
+        "weapon": {
+          "id": "saber",
+          "hero": "vanguard",
+          "name": "Saber",
+          "description": "Quick, balanced three-hit sweeps",
+          "damage": 25,
+          "finisher": 40,
+          "period": 0.38,
+          "range": 2.8,
+          "halfArc": 1.319468914507713,
+          "arrowSpeed": 0,
+          "arrows": 1,
+          "spread": 0
+        },
+        "period": 0.38333333333333336,
+        "rate": 2.608695652173913,
+        "range": 2.8,
+        "arrows": 1,
+        "damage": 25,
+        "finisher": 40,
+        "dps": 78.26086956521738,
+        "targetsPerArrow": 1,
+        "crowdDps": 78.26086956521738
+      },
+      "enemyTypes": {
+        "grunt": 180,
+        "flanker": 60,
+        "armored": 60
+      },
+      "specialActivations": 1,
+      "liveEnemies": 300,
+      "timing": "RAF wall intervals; CPU simulation only; no GPU timer query",
+      "renderer": {
+        "width": 1280,
+        "height": 720,
+        "engineVersion": "8.56.2",
+        "renderer": {
+          "vendor": "Google Inc. (Google)",
+          "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+          "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)"
+        },
+        "hardwareScaling": 1,
+        "reducedMotion": false,
+        "ringGeometry": "flat-strip-64-segments",
+        "specialSparkPool": 32,
+        "characterArt": {
+          "version": "temple-fantasy-v1",
+          "states": {
+            "vanguard": "loaded",
+            "ranger": "loaded"
+          },
+          "errors": {},
+          "atlasResolution": [
+            1024,
+            1024
+          ],
+          "uvInsetPixels": 8,
+          "models": {
+            "ranger": {
+              "file": "ranger-v1.glb",
+              "animations": [],
+              "triangles": 1604,
+              "meshes": 1,
+              "joints": 16,
+              "textureResolution": {
+                "width": 1024,
+                "height": 1024
+              }
+            },
+            "vanguard": {
+              "file": "vanguard-v1.glb",
+              "animations": [],
+              "triangles": 1754,
+              "meshes": 1,
+              "joints": 16,
+              "textureResolution": {
+                "width": 1024,
+                "height": 1024
+              }
+            }
+          },
+          "activeActors": 1,
+          "actors": [
+            {
+              "hero": "vanguard",
+              "root": 464,
+              "skeleton": 446,
+              "meshes": [
+                {
+                  "geometry": 265,
+                  "material": 266,
+                  "vertices": 4046
+                }
+              ],
+              "pose": [
+                {
+                  "name": "arm.R",
+                  "rotation": [
+                    0.01728816844340901,
+                    -0.0006053330933876479,
+                    0.03498761845576607,
+                    0.9992380193720173
+                  ]
+                },
+                {
+                  "name": "thigh.L",
+                  "rotation": [
+                    0.16432764087917104,
+                    0,
+                    0,
+                    0.9864058122512692
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "fixedHz": 60,
+      "camera": "origin orbit / distance 30 / 0.15 radians per simulation second",
+      "simulationStepsPerSample": 1,
+      "playerHealth": "refilled per tick to maintain active crowd workload",
+      "input": "sin/cos movement; strike every 24 ticks; Solar Break on tick 90"
+    }
+  }
+]

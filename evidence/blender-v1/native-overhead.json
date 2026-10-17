@@ -1,0 +1,20 @@
+{
+  "measuredAt": "2026-10-17T00:24:30.532Z",
+  "environment": "Same-machine native Chromium, idle enemies, two players; excludes rendering and transport framing",
+  "results": [
+    {
+      "enemies": 20,
+      "iterations": 1000,
+      "captureEncodeDecodeApplyInterpolateMs": 0.08529999995231628,
+      "snapshotBytes": 4614.783,
+      "payloadBytesPerSecondAt15Hz": 69221.74500000001
+    },
+    {
+      "enemies": 40,
+      "iterations": 1000,
+      "captureEncodeDecodeApplyInterpolateMs": 0.10729999995231629,
+      "snapshotBytes": 8068.783,
+      "payloadBytesPerSecondAt15Hz": 121031.74500000001
+    }
+  ]
+}

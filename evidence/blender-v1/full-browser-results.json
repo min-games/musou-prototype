@@ -1,0 +1,1497 @@
+{
+  "config": {
+    "argv": [
+      "/home/cmwen/.local/share/fnm/node-versions/v24.12.0/installation/bin/node",
+      "/home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261017001038-d6ebcaee/musou-prototype/node_modules/.bin/playwright",
+      "test"
+    ],
+    "configFile": "/home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261017001038-d6ebcaee/musou-prototype/playwright.config.ts",
+    "rootDir": "/home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261017001038-d6ebcaee/musou-prototype/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261017001038-d6ebcaee/musou-prototype/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "/home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261017001038-d6ebcaee/musou-prototype/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 120000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261017001038-d6ebcaee/musou-prototype/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "/home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261017001038-d6ebcaee/musou-prototype/e2e",
+        "snapshotDir": "/home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261017001038-d6ebcaee/musou-prototype/e2e",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 120000,
+        "use": {
+          "baseURL": "http://127.0.0.1:5187",
+          "viewport": {
+            "width": 1280,
+            "height": 720
+          },
+          "launchOptions": {
+            "args": [
+              "--use-angle=swiftshader",
+              "--enable-webgl",
+              "--ignore-gpu-blocklist"
+            ]
+          }
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "evidence/art-v1/browser-results.json"
+        }
+      ],
+      [
+        "html",
+        {
+          "open": "never",
+          "outputFolder": "evidence/playwright-report"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": {
+      "command": "npx vite build --mode test && MUSOU_DIST=test-dist node scripts/precache.mjs && MUSOU_DIST=test-dist node scripts/serve.mjs",
+      "port": 5187,
+      "reuseExistingServer": false
+    }
+  },
+  "suites": [
+    {
+      "title": "art-v1.spec.ts",
+      "file": "art-v1.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "temple models, all six hand attachments, independent remote rigs and cleanup",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 17404,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T00:15:01.418Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c2d0e169eef2ba6e84de-45356bbbab90fcd281d9",
+          "file": "art-v1.spec.ts",
+          "line": 10,
+          "column": 1
+        },
+        {
+          "title": "female Ranger standing reference pose and default gameplay",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 11652,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T00:15:19.970Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c2d0e169eef2ba6e84de-f9594732894d0c37911c",
+          "file": "art-v1.spec.ts",
+          "line": 175,
+          "column": 1
+        },
+        {
+          "title": "loaded gameplay and same-session candidate WebGL benchmark",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 600000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 51260,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T00:15:31.683Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c2d0e169eef2ba6e84de-334ba7b70a6694117efb",
+          "file": "art-v1.spec.ts",
+          "line": 222,
+          "column": 1
+        },
+        {
+          "title": "model errors use bounded playable fallback and legacy A/B makes no model requests",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 9394,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T00:16:25.129Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c2d0e169eef2ba6e84de-5a783411a27b6eadc9d7",
+          "file": "art-v1.spec.ts",
+          "line": 247,
+          "column": 1
+        },
+        {
+          "title": "subpath precaches actual GLB and atlas and loads both kits offline",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3395,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T00:16:34.556Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c2d0e169eef2ba6e84de-3727c036fb5ca171a91d",
+          "file": "art-v1.spec.ts",
+          "line": 270,
+          "column": 1
+        },
+        {
+          "title": "stalled asset requests release readiness after the bounded timeout",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 12771,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T00:16:38.001Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c2d0e169eef2ba6e84de-56dacdcc89d6fc59ff14",
+          "file": "art-v1.spec.ts",
+          "line": 296,
+          "column": 1
+        },
+        {
+          "title": "reduced motion keeps combat poses and suppresses gait and decorative sway",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 717,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T00:16:51.577Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c2d0e169eef2ba6e84de-abbae5e59cd298bb88b3",
+          "file": "art-v1.spec.ts",
+          "line": 310,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "benchmark.spec.ts",
+      "file": "benchmark.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "measured crowd benchmark webgl",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 600000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 41368,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T00:16:52.327Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fd0f79bca92272c89f59-447b277ab27ea948d331",
+          "file": "benchmark.spec.ts",
+          "line": 4,
+          "column": 3
+        },
+        {
+          "title": "measured crowd benchmark auto",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 600000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 42194,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T00:17:34.319Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fd0f79bca92272c89f59-c6a6e396726e9317443c",
+          "file": "benchmark.spec.ts",
+          "line": 4,
+          "column": 3
+        },
+        {
+          "title": "measured ranger benchmark preserves full crowds and exports its own scenario",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 600000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 42832,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T00:18:18.624Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fd0f79bca92272c89f59-9ecde2ff01b5303f0441",
+          "file": "benchmark.spec.ts",
+          "line": 50,
+          "column": 1
+        },
+        {
+          "title": "measured max multishot benchmark exports seven arrows and complete crowds",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 600000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 34396,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T00:19:02.256Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fd0f79bca92272c89f59-bd0a1c837fdbfa620eed",
+          "file": "benchmark.spec.ts",
+          "line": 83,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "blender-v1.spec.ts",
+      "file": "blender-v1.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Blender candidate samples authored clips, independent skins and hand sockets",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6512,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T00:19:37.268Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3c8e69d5f839cc76a0bb-093d8c08a67128ad12ff",
+          "file": "blender-v1.spec.ts",
+          "line": 8,
+          "column": 1
+        },
+        {
+          "title": "Blender is opt-in and failed candidate loads retain playable fallback",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6253,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T00:19:44.914Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "3c8e69d5f839cc76a0bb-186ea17e6559429493ef",
+          "file": "blender-v1.spec.ts",
+          "line": 128,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "gamepad.spec.ts",
+      "file": "gamepad.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "gamepad movement, camera, attack edge and restart edge on a nonzero device slot",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3383,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T00:19:51.212Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "86227546562fe77a41f1-eeeb418bbc50791e6914",
+          "file": "gamepad.spec.ts",
+          "line": 16,
+          "column": 1
+        },
+        {
+          "title": "focused HUD controls do not trigger player combat shortcuts",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1634,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T00:19:54.612Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "86227546562fe77a41f1-fe772dfcbc346e9f7766",
+          "file": "gamepad.spec.ts",
+          "line": 92,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "multiplayer.spec.ts",
+      "file": "multiplayer.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "native WebRTC manual UI exchange, independent movement, authoritative combat and cleanup",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 34401,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveValue\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#lan-output')\nExpected pattern: \u001b[32m/\"type\":\"offer\"/\u001b[39m\nReceived string:  \u001b[31m\"\"\u001b[39m\nTimeout: 30000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveValue\" locator('#lan-output') with timeout 30000ms\u001b[22m\n\u001b[2m  - waiting for locator('#lan-output')\u001b[22m\n\u001b[2m    63 × locator resolved to <textarea readonly id=\"lan-output\" aria-label=\"Your complete code\"></textarea>\u001b[22m\n\u001b[2m       - unexpected value \"\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveValue\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#lan-output')\nExpected pattern: \u001b[32m/\"type\":\"offer\"/\u001b[39m\nReceived string:  \u001b[31m\"\"\u001b[39m\nTimeout: 30000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveValue\" locator('#lan-output') with timeout 30000ms\u001b[22m\n\u001b[2m  - waiting for locator('#lan-output')\u001b[22m\n\u001b[2m    63 × locator resolved to <textarea readonly id=\"lan-output\" aria-label=\"Your complete code\"></textarea>\u001b[22m\n\u001b[2m       - unexpected value \"\"\u001b[22m\n\n    at connect (/home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261017001038-d6ebcaee/musou-prototype/e2e/multiplayer.spec.ts:16:45)\n    at /home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261017001038-d6ebcaee/musou-prototype/e2e/multiplayer.spec.ts:55:5",
+                    "location": {
+                      "file": "/home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261017001038-d6ebcaee/musou-prototype/e2e/multiplayer.spec.ts",
+                      "column": 45,
+                      "line": 16
+                    },
+                    "snippet": "  14 |     .getByRole(\"button\", { name: \"Host LAN Game\", exact: true })\n  15 |     .click();\n> 16 |   await expect(host.locator(\"#lan-output\")).toHaveValue(/\"type\":\"offer\"/);\n     |                                             ^\n  17 |   const offer = await host.locator(\"#lan-output\").inputValue();\n  18 |   expect(JSON.parse(offer).sdp).toContain(\"a=candidate:\");\n  19 |   await guest"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261017001038-d6ebcaee/musou-prototype/e2e/multiplayer.spec.ts",
+                        "column": 45,
+                        "line": 16
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveValue\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#lan-output')\nExpected pattern: \u001b[32m/\"type\":\"offer\"/\u001b[39m\nReceived string:  \u001b[31m\"\"\u001b[39m\nTimeout: 30000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveValue\" locator('#lan-output') with timeout 30000ms\u001b[22m\n\u001b[2m  - waiting for locator('#lan-output')\u001b[22m\n\u001b[2m    63 × locator resolved to <textarea readonly id=\"lan-output\" aria-label=\"Your complete code\"></textarea>\u001b[22m\n\u001b[2m       - unexpected value \"\"\u001b[22m\n\n\n  14 |     .getByRole(\"button\", { name: \"Host LAN Game\", exact: true })\n  15 |     .click();\n> 16 |   await expect(host.locator(\"#lan-output\")).toHaveValue(/\"type\":\"offer\"/);\n     |                                             ^\n  17 |   const offer = await host.locator(\"#lan-output\").inputValue();\n  18 |   expect(JSON.parse(offer).sdp).toContain(\"a=candidate:\");\n  19 |   await guest\n    at connect (/home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261017001038-d6ebcaee/musou-prototype/e2e/multiplayer.spec.ts:16:45)\n    at /home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261017001038-d6ebcaee/musou-prototype/e2e/multiplayer.spec.ts:55:5"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T00:19:56.271Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261017001038-d6ebcaee/musou-prototype/test-results/multiplayer-native-WebRTC--f5eeb-ritative-combat-and-cleanup/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261017001038-d6ebcaee/musou-prototype/e2e/multiplayer.spec.ts",
+                    "column": 45,
+                    "line": 16
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "141e0e3d3b30ec82e56e-84a4737e7f8b146c03b0",
+          "file": "multiplayer.spec.ts",
+          "line": 40,
+          "column": 1
+        },
+        {
+          "title": "host loss freezes client and a fresh manual exchange clears the old session",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 35424,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveValue\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#lan-output')\nExpected pattern: \u001b[32m/\"type\":\"offer\"/\u001b[39m\nReceived string:  \u001b[31m\"\"\u001b[39m\nTimeout: 30000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveValue\" locator('#lan-output') with timeout 30000ms\u001b[22m\n\u001b[2m  - waiting for locator('#lan-output')\u001b[22m\n\u001b[2m    63 × locator resolved to <textarea readonly id=\"lan-output\" aria-label=\"Your complete code\"></textarea>\u001b[22m\n\u001b[2m       - unexpected value \"\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveValue\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#lan-output')\nExpected pattern: \u001b[32m/\"type\":\"offer\"/\u001b[39m\nReceived string:  \u001b[31m\"\"\u001b[39m\nTimeout: 30000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveValue\" locator('#lan-output') with timeout 30000ms\u001b[22m\n\u001b[2m  - waiting for locator('#lan-output')\u001b[22m\n\u001b[2m    63 × locator resolved to <textarea readonly id=\"lan-output\" aria-label=\"Your complete code\"></textarea>\u001b[22m\n\u001b[2m       - unexpected value \"\"\u001b[22m\n\n    at connect (/home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261017001038-d6ebcaee/musou-prototype/e2e/multiplayer.spec.ts:16:45)\n    at /home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261017001038-d6ebcaee/musou-prototype/e2e/multiplayer.spec.ts:232:5",
+                    "location": {
+                      "file": "/home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261017001038-d6ebcaee/musou-prototype/e2e/multiplayer.spec.ts",
+                      "column": 45,
+                      "line": 16
+                    },
+                    "snippet": "  14 |     .getByRole(\"button\", { name: \"Host LAN Game\", exact: true })\n  15 |     .click();\n> 16 |   await expect(host.locator(\"#lan-output\")).toHaveValue(/\"type\":\"offer\"/);\n     |                                             ^\n  17 |   const offer = await host.locator(\"#lan-output\").inputValue();\n  18 |   expect(JSON.parse(offer).sdp).toContain(\"a=candidate:\");\n  19 |   await guest"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261017001038-d6ebcaee/musou-prototype/e2e/multiplayer.spec.ts",
+                        "column": 45,
+                        "line": 16
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveValue\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#lan-output')\nExpected pattern: \u001b[32m/\"type\":\"offer\"/\u001b[39m\nReceived string:  \u001b[31m\"\"\u001b[39m\nTimeout: 30000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveValue\" locator('#lan-output') with timeout 30000ms\u001b[22m\n\u001b[2m  - waiting for locator('#lan-output')\u001b[22m\n\u001b[2m    63 × locator resolved to <textarea readonly id=\"lan-output\" aria-label=\"Your complete code\"></textarea>\u001b[22m\n\u001b[2m       - unexpected value \"\"\u001b[22m\n\n\n  14 |     .getByRole(\"button\", { name: \"Host LAN Game\", exact: true })\n  15 |     .click();\n> 16 |   await expect(host.locator(\"#lan-output\")).toHaveValue(/\"type\":\"offer\"/);\n     |                                             ^\n  17 |   const offer = await host.locator(\"#lan-output\").inputValue();\n  18 |   expect(JSON.parse(offer).sdp).toContain(\"a=candidate:\");\n  19 |   await guest\n    at connect (/home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261017001038-d6ebcaee/musou-prototype/e2e/multiplayer.spec.ts:16:45)\n    at /home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261017001038-d6ebcaee/musou-prototype/e2e/multiplayer.spec.ts:232:5"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T00:20:32.338Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261017001038-d6ebcaee/musou-prototype/test-results/multiplayer-host-loss-free-24fbe-ange-clears-the-old-session/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261017001038-d6ebcaee/musou-prototype/e2e/multiplayer.spec.ts",
+                    "column": 45,
+                    "line": 16
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "141e0e3d3b30ec82e56e-6ca55ba9b9328ff42559",
+          "file": "multiplayer.spec.ts",
+          "line": 220,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "polish.spec.ts",
+      "file": "polish.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "earned Solar Break hits the mixed crowd and displays its shockwave",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3961,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T00:21:09.777Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "12948a1c8bc2a97af126-e20a1ba8433349d229ad",
+          "file": "polish.spec.ts",
+          "line": 10,
+          "column": 1
+        },
+        {
+          "title": "empty special, dodge, pause and reduced motion keep controls consistent",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2910,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T00:21:13.944Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "12948a1c8bc2a97af126-6d5841a91357e6efbc37",
+          "file": "polish.spec.ts",
+          "line": 84,
+          "column": 1
+        },
+        {
+          "title": "gamepad special and dodge are discrete edges",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3645,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T00:21:17.435Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "12948a1c8bc2a97af126-db0113599066fc7a801c",
+          "file": "polish.spec.ts",
+          "line": 133,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "rooms.spec.ts",
+      "file": "rooms.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "native automatic Create/Join, movement, authoritative combat, signaling expiry and cleanup",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 34741,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#lan-status')\nExpected substring: \u001b[32m\"Connected\"\u001b[39m\nReceived string:    \u001b[31m\"Host · Waiting for room connection · 1 players · RTT 0 ms\"\u001b[39m\nTimeout: 30000ms\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" locator('#lan-status') with timeout 30000ms\u001b[22m\n\u001b[2m  - waiting for locator('#lan-status')\u001b[22m\n\u001b[2m    63 × locator resolved to <p role=\"status\" id=\"lan-status\">Host · Waiting for room connection · 1 players · …</p>\u001b[22m\n\u001b[2m       - unexpected value \"Host · Waiting for room connection · 1 players · RTT 0 ms\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#lan-status')\nExpected substring: \u001b[32m\"Connected\"\u001b[39m\nReceived string:    \u001b[31m\"Host · Waiting for room connection · 1 players · RTT 0 ms\"\u001b[39m\nTimeout: 30000ms\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" locator('#lan-status') with timeout 30000ms\u001b[22m\n\u001b[2m  - waiting for locator('#lan-status')\u001b[22m\n\u001b[2m    63 × locator resolved to <p role=\"status\" id=\"lan-status\">Host · Waiting for room connection · 1 players · …</p>\u001b[22m\n\u001b[2m       - unexpected value \"Host · Waiting for room connection · 1 players · RTT 0 ms\"\u001b[22m\n\n    at connect (/home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261017001038-d6ebcaee/musou-prototype/e2e/rooms.spec.ts:26:47)\n    at /home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261017001038-d6ebcaee/musou-prototype/e2e/rooms.spec.ts:44:5",
+                    "location": {
+                      "file": "/home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261017001038-d6ebcaee/musou-prototype/e2e/rooms.spec.ts",
+                      "column": 47,
+                      "line": 26
+                    },
+                    "snippet": "  24 |   await guest.locator(\"#room-join\").click();\n  25 |   for (const page of [host, guest])\n> 26 |     await expect(page.locator(\"#lan-status\")).toContainText(\"Connected\");\n     |                                               ^\n  27 |   expect(fixture.errors).toEqual([]);\n  28 | }\n  29 | test(\"native automatic Create/Join, movement, authoritative combat, signaling expiry and cleanup\", async ({"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261017001038-d6ebcaee/musou-prototype/e2e/rooms.spec.ts",
+                        "column": 47,
+                        "line": 26
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#lan-status')\nExpected substring: \u001b[32m\"Connected\"\u001b[39m\nReceived string:    \u001b[31m\"Host · Waiting for room connection · 1 players · RTT 0 ms\"\u001b[39m\nTimeout: 30000ms\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" locator('#lan-status') with timeout 30000ms\u001b[22m\n\u001b[2m  - waiting for locator('#lan-status')\u001b[22m\n\u001b[2m    63 × locator resolved to <p role=\"status\" id=\"lan-status\">Host · Waiting for room connection · 1 players · …</p>\u001b[22m\n\u001b[2m       - unexpected value \"Host · Waiting for room connection · 1 players · RTT 0 ms\"\u001b[22m\n\n\n  24 |   await guest.locator(\"#room-join\").click();\n  25 |   for (const page of [host, guest])\n> 26 |     await expect(page.locator(\"#lan-status\")).toContainText(\"Connected\");\n     |                                               ^\n  27 |   expect(fixture.errors).toEqual([]);\n  28 | }\n  29 | test(\"native automatic Create/Join, movement, authoritative combat, signaling expiry and cleanup\", async ({\n    at connect (/home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261017001038-d6ebcaee/musou-prototype/e2e/rooms.spec.ts:26:47)\n    at /home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261017001038-d6ebcaee/musou-prototype/e2e/rooms.spec.ts:44:5"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T00:21:21.147Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261017001038-d6ebcaee/musou-prototype/test-results/rooms-native-automatic-Cre-aff40-ignaling-expiry-and-cleanup/error-context.md"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261017001038-d6ebcaee/musou-prototype/test-results/rooms-native-automatic-Cre-aff40-ignaling-expiry-and-cleanup/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261017001038-d6ebcaee/musou-prototype/e2e/rooms.spec.ts",
+                    "column": 47,
+                    "line": 26
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "c60be36dadaf24e75fb7-8bc254d6574950905238",
+          "file": "rooms.spec.ts",
+          "line": 29,
+          "column": 1
+        },
+        {
+          "title": "room errors, invite prefill, cancellation, desktop and narrow room UI",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5218,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T00:21:57.806Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c60be36dadaf24e75fb7-da1f5279768e95176021",
+          "file": "rooms.spec.ts",
+          "line": 174,
+          "column": 1
+        },
+        {
+          "title": "full room and canceled room request do not auto-retry or create a session",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 34389,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#lan-status')\nExpected substring: \u001b[32m\"Connected\"\u001b[39m\nReceived string:    \u001b[31m\"Host · Waiting for room connection · 1 players · RTT 0 ms\"\u001b[39m\nTimeout: 30000ms\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" locator('#lan-status') with timeout 30000ms\u001b[22m\n\u001b[2m  - waiting for locator('#lan-status')\u001b[22m\n\u001b[2m    63 × locator resolved to <p role=\"status\" id=\"lan-status\">Host · Waiting for room connection · 1 players · …</p>\u001b[22m\n\u001b[2m       - unexpected value \"Host · Waiting for room connection · 1 players · RTT 0 ms\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#lan-status')\nExpected substring: \u001b[32m\"Connected\"\u001b[39m\nReceived string:    \u001b[31m\"Host · Waiting for room connection · 1 players · RTT 0 ms\"\u001b[39m\nTimeout: 30000ms\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" locator('#lan-status') with timeout 30000ms\u001b[22m\n\u001b[2m  - waiting for locator('#lan-status')\u001b[22m\n\u001b[2m    63 × locator resolved to <p role=\"status\" id=\"lan-status\">Host · Waiting for room connection · 1 players · …</p>\u001b[22m\n\u001b[2m       - unexpected value \"Host · Waiting for room connection · 1 players · RTT 0 ms\"\u001b[22m\n\n    at connect (/home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261017001038-d6ebcaee/musou-prototype/e2e/rooms.spec.ts:26:47)\n    at /home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261017001038-d6ebcaee/musou-prototype/e2e/rooms.spec.ts:213:5",
+                    "location": {
+                      "file": "/home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261017001038-d6ebcaee/musou-prototype/e2e/rooms.spec.ts",
+                      "column": 47,
+                      "line": 26
+                    },
+                    "snippet": "  24 |   await guest.locator(\"#room-join\").click();\n  25 |   for (const page of [host, guest])\n> 26 |     await expect(page.locator(\"#lan-status\")).toContainText(\"Connected\");\n     |                                               ^\n  27 |   expect(fixture.errors).toEqual([]);\n  28 | }\n  29 | test(\"native automatic Create/Join, movement, authoritative combat, signaling expiry and cleanup\", async ({"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261017001038-d6ebcaee/musou-prototype/e2e/rooms.spec.ts",
+                        "column": 47,
+                        "line": 26
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#lan-status')\nExpected substring: \u001b[32m\"Connected\"\u001b[39m\nReceived string:    \u001b[31m\"Host · Waiting for room connection · 1 players · RTT 0 ms\"\u001b[39m\nTimeout: 30000ms\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" locator('#lan-status') with timeout 30000ms\u001b[22m\n\u001b[2m  - waiting for locator('#lan-status')\u001b[22m\n\u001b[2m    63 × locator resolved to <p role=\"status\" id=\"lan-status\">Host · Waiting for room connection · 1 players · …</p>\u001b[22m\n\u001b[2m       - unexpected value \"Host · Waiting for room connection · 1 players · RTT 0 ms\"\u001b[22m\n\n\n  24 |   await guest.locator(\"#room-join\").click();\n  25 |   for (const page of [host, guest])\n> 26 |     await expect(page.locator(\"#lan-status\")).toContainText(\"Connected\");\n     |                                               ^\n  27 |   expect(fixture.errors).toEqual([]);\n  28 | }\n  29 | test(\"native automatic Create/Join, movement, authoritative combat, signaling expiry and cleanup\", async ({\n    at connect (/home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261017001038-d6ebcaee/musou-prototype/e2e/rooms.spec.ts:26:47)\n    at /home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261017001038-d6ebcaee/musou-prototype/e2e/rooms.spec.ts:213:5"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T00:22:03.182Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261017001038-d6ebcaee/musou-prototype/test-results/rooms-full-room-and-cancel-836b1-o-retry-or-create-a-session/error-context.md"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261017001038-d6ebcaee/musou-prototype/test-results/rooms-full-room-and-cancel-836b1-o-retry-or-create-a-session/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261017001038-d6ebcaee/musou-prototype/e2e/rooms.spec.ts",
+                    "column": 47,
+                    "line": 26
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "c60be36dadaf24e75fb7-43d8cae592ed3c906718",
+          "file": "rooms.spec.ts",
+          "line": 199,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "run.spec.ts",
+      "file": "run.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "choose the ranger, fire assisted arrows, use its special and spend a bomb",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4522,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T00:22:39.122Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "868afcc30dccb7beb079-9301c52dcd580b3a58e6",
+          "file": "run.spec.ts",
+          "line": 8,
+          "column": 1
+        },
+        {
+          "title": "clear finite waves, pick relics, win and retry with a fresh build",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3920,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T00:22:43.767Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "868afcc30dccb7beb079-729a2b2b623d69b238ac",
+          "file": "run.spec.ts",
+          "line": 110,
+          "column": 1
+        },
+        {
+          "title": "gamepad navigates hero and relic menus without a keyboard",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3911,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T00:22:47.701Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "868afcc30dccb7beb079-a55381b0135a1d8bba14",
+          "file": "run.spec.ts",
+          "line": 167,
+          "column": 1
+        },
+        {
+          "title": "character choice fits a narrow viewport",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2614,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T00:22:52.358Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "868afcc30dccb7beb079-3bda32bd8dc3587f0c91",
+          "file": "run.spec.ts",
+          "line": 256,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "smoke.spec.ts",
+      "file": "smoke.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "launch, movement, real keyboard combat, respawn and visual reference",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4472,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T00:22:55.012Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4219922fea2e2bd3c691-e6a999b2d05ca4d5fcd7",
+          "file": "smoke.spec.ts",
+          "line": 2,
+          "column": 1
+        },
+        {
+          "title": "responsive HUD and installed offline reload",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3499,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T00:22:59.501Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4219922fea2e2bd3c691-650cc94168915d229d43",
+          "file": "smoke.spec.ts",
+          "line": 131,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "subpath.spec.ts",
+      "file": "subpath.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Pages repository prefix loads relative assets and remains playable offline",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2273,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T00:23:03.020Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b22f6d743da4204e903c-189c54ffc7d23874e40d",
+          "file": "subpath.spec.ts",
+          "line": 2,
+          "column": 1
+        },
+        {
+          "title": "explicit WebGPU preference falls back when WebGPU is unavailable",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 965,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T00:23:05.304Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "b22f6d743da4204e903c-4df3765a47e8509cca6c",
+          "file": "subpath.spec.ts",
+          "line": 44,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "weapons.spec.ts",
+      "file": "weapons.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Fan Bow fires at separate targets and seven-arrow upgrades have a readable spread",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6140,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T00:23:06.289Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7f770c34ac232bd2291a-7f2535e0eebb995715a1",
+          "file": "weapons.spec.ts",
+          "line": 7,
+          "column": 1
+        },
+        {
+          "title": "Spear reaches beyond the saber and its attack arc is shown at the actual reach",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3635,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T00:23:12.439Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7f770c34ac232bd2291a-a3a06f2f7bfacfc92b34",
+          "file": "weapons.spec.ts",
+          "line": 72,
+          "column": 1
+        },
+        {
+          "title": "weapon selection supports going back and choosing on a narrow viewport",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1616,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T00:23:16.091Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7f770c34ac232bd2291a-68baf4d1f34f1c700449",
+          "file": "weapons.spec.ts",
+          "line": 112,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-17T00:14:45.437Z",
+    "duration": 499056.67199999996,
+    "expected": 30,
+    "skipped": 0,
+    "unexpected": 4,
+    "flaky": 0
+  }
+}

@@ -1,0 +1,132 @@
+
+Running 5 tests using 1 worker
+
+(node:1265328) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+Browser replication overhead [
+  {
+    enemies: 20,
+    iterations: 1000,
+    captureEncodeDecodeApplyInterpolateMs: 0.06379999995231628,
+    snapshotBytes: 4614.783,
+    payloadBytesPerSecondAt15Hz: 69221.74500000001
+  },
+  {
+    enemies: 40,
+    iterations: 1000,
+    captureEncodeDecodeApplyInterpolateMs: 0.10129999995231628,
+    snapshotBytes: 8068.783,
+    payloadBytesPerSecondAt15Hz: 121031.74500000001
+  }
+]
+Native WebRTC evidence {
+  connection: 'connected',
+  sentBytes: 159363,
+  receivedBytes: 11447,
+  channels: [ 'input', 'state', 'events' ]
+}
+  ✓  1 e2e/multiplayer.spec.ts:40:1 › native WebRTC manual UI exchange, independent movement, authoritative combat and cleanup (8.9s)
+  ✓  2 e2e/multiplayer.spec.ts:220:1 › host loss freezes client and a fresh manual exchange clears the old session (6.9s)
+  ✘  3 e2e/rooms.spec.ts:29:1 › native automatic Create/Join, movement, authoritative combat, signaling expiry and cleanup (7.0s)
+(node:1265699) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  4 e2e/rooms.spec.ts:174:1 › room errors, invite prefill, cancellation, desktop and narrow room UI (7.9s)
+(node:1265847) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  5 e2e/rooms.spec.ts:199:1 › full room and canceled room request do not auto-retry or create a session (7.5s)
+
+
+  1) e2e/rooms.spec.ts:29:1 › native automatic Create/Join, movement, authoritative combat, signaling expiry and cleanup 
+
+    Error: expect(locator).toHaveValue(expected) failed
+
+    Locator: locator('#room-code')
+    Expected pattern: /^[A-Z2-9]{8}$/
+    Received string:  ""
+    Timeout: 5000ms
+
+    Call log:
+      - Expect "toHaveValue" locator('#room-code') with timeout 5000ms
+      - waiting for locator('#room-code')
+        12 × locator resolved to <input maxlength="8" id="room-code" autocomplete="off" spellcheck="false" aria-label="Room code" placeholder="ABCD2345"/>
+           - unexpected value ""
+
+
+      12 |   await host.locator("#lan-menu > summary").click();
+      13 |   await host.locator("#room-create").click();
+    > 14 |   await expect(host.locator("#room-code")).toHaveValue(/^[A-Z2-9]{8}$/);
+         |                                            ^
+      15 |   const code = await host.locator("#room-code").inputValue();
+      16 |   const link = await host.locator("#room-invite").inputValue();
+      17 |   expect(link).toBe(`http://127.0.0.1:5187/#room=${code}`);
+        at connect (/home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261017001038-d6ebcaee/musou-prototype/e2e/rooms.spec.ts:14:44)
+        at /home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261017001038-d6ebcaee/musou-prototype/e2e/rooms.spec.ts:44:5
+
+    Error Context: ../../../../../../../../../tmp/vanguard-native-test-results/rooms-native-automatic-Cre-aff40-ignaling-expiry-and-cleanup/error-context.md
+
+    Error Context: ../../../../../../../../../tmp/vanguard-native-test-results/rooms-native-automatic-Cre-aff40-ignaling-expiry-and-cleanup/error-context.md
+
+  2) e2e/rooms.spec.ts:174:1 › room errors, invite prefill, cancellation, desktop and narrow room UI 
+
+    Error: expect(locator).toContainText(expected) failed
+
+    Locator: locator('#room-status')
+    Expected substring: "Room not found"
+    Received string:    "Signaling could not be reached. Check your connection and allowed website origin. A lost room request cannot be retried safely; create a fresh game."
+    Timeout: 5000ms
+
+    Call log:
+      - Expect "toContainText" locator('#room-status') with timeout 5000ms
+      - waiting for locator('#room-status')
+        14 × locator resolved to <p role="status" id="room-status">Signaling could not be reached. Check your connec…</p>
+           - unexpected value "Signaling could not be reached. Check your connection and allowed website origin. A lost room request cannot be retried safely; create a fresh game."
+
+
+      185 |   expect(bounds!.x + bounds!.width).toBeLessThanOrEqual(390);
+      186 |   await page.locator("#room-join").click();
+    > 187 |   await expect(page.locator("#room-status")).toContainText("Room not found");
+          |                                              ^
+      188 |   // Failed HTTP mutations are never retried automatically.
+      189 |   const count = fixture.requests.length;
+      190 |   await page.waitForTimeout(1500);
+        at /home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261017001038-d6ebcaee/musou-prototype/e2e/rooms.spec.ts:187:46
+
+    Error Context: ../../../../../../../../../tmp/vanguard-native-test-results/rooms-room-errors-invite-p-6ac89--desktop-and-narrow-room-UI/error-context.md
+
+    Error Context: ../../../../../../../../../tmp/vanguard-native-test-results/rooms-room-errors-invite-p-6ac89--desktop-and-narrow-room-UI/error-context.md
+
+  3) e2e/rooms.spec.ts:199:1 › full room and canceled room request do not auto-retry or create a session 
+
+    Error: expect(locator).toHaveValue(expected) failed
+
+    Locator: locator('#room-code')
+    Expected pattern: /^[A-Z2-9]{8}$/
+    Received string:  ""
+    Timeout: 5000ms
+
+    Call log:
+      - Expect "toHaveValue" locator('#room-code') with timeout 5000ms
+      - waiting for locator('#room-code')
+        11 × locator resolved to <input maxlength="8" id="room-code" autocomplete="off" spellcheck="false" aria-label="Room code" placeholder="ABCD2345"/>
+           - unexpected value ""
+
+
+      12 |   await host.locator("#lan-menu > summary").click();
+      13 |   await host.locator("#room-create").click();
+    > 14 |   await expect(host.locator("#room-code")).toHaveValue(/^[A-Z2-9]{8}$/);
+         |                                            ^
+      15 |   const code = await host.locator("#room-code").inputValue();
+      16 |   const link = await host.locator("#room-invite").inputValue();
+      17 |   expect(link).toBe(`http://127.0.0.1:5187/#room=${code}`);
+        at connect (/home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261017001038-d6ebcaee/musou-prototype/e2e/rooms.spec.ts:14:44)
+        at /home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261017001038-d6ebcaee/musou-prototype/e2e/rooms.spec.ts:213:5
+
+    Error Context: ../../../../../../../../../tmp/vanguard-native-test-results/rooms-full-room-and-cancel-836b1-o-retry-or-create-a-session/error-context.md
+
+    Error Context: ../../../../../../../../../tmp/vanguard-native-test-results/rooms-full-room-and-cancel-836b1-o-retry-or-create-a-session/error-context.md
+
+  3 failed
+    e2e/rooms.spec.ts:29:1 › native automatic Create/Join, movement, authoritative combat, signaling expiry and cleanup 
+    e2e/rooms.spec.ts:174:1 › room errors, invite prefill, cancellation, desktop and narrow room UI 
+    e2e/rooms.spec.ts:199:1 › full room and canceled room request do not auto-retry or create a session 
+  2 passed (41.2s)

@@ -1,0 +1,263 @@
+{
+  "note": "Coverage across separate environments; the initial full sandbox run still failed four ICE-dependent tests.",
+  "unitTestsPassed": 104,
+  "productionBuild": "passed",
+  "fullSandbox": {
+    "startTime": "2026-10-17T00:14:45.437Z",
+    "duration": 499056.67199999996,
+    "expected": 30,
+    "skipped": 0,
+    "unexpected": 4,
+    "flaky": 0
+  },
+  "nativeUdpRerun": {
+    "startTime": "2026-10-17T00:24:25.619Z",
+    "duration": 44744.406,
+    "expected": 5,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "uniqueBrowserChecks": 34,
+  "allCovered": true,
+  "checks": [
+    {
+      "file": "art-v1.spec.ts",
+      "title": "temple models, all six hand attachments, independent remote rigs and cleanup",
+      "sandboxPassed": true,
+      "nativeRerunPassed": null,
+      "covered": true
+    },
+    {
+      "file": "art-v1.spec.ts",
+      "title": "female Ranger standing reference pose and default gameplay",
+      "sandboxPassed": true,
+      "nativeRerunPassed": null,
+      "covered": true
+    },
+    {
+      "file": "art-v1.spec.ts",
+      "title": "loaded gameplay and same-session candidate WebGL benchmark",
+      "sandboxPassed": true,
+      "nativeRerunPassed": null,
+      "covered": true
+    },
+    {
+      "file": "art-v1.spec.ts",
+      "title": "model errors use bounded playable fallback and legacy A/B makes no model requests",
+      "sandboxPassed": true,
+      "nativeRerunPassed": null,
+      "covered": true
+    },
+    {
+      "file": "art-v1.spec.ts",
+      "title": "subpath precaches actual GLB and atlas and loads both kits offline",
+      "sandboxPassed": true,
+      "nativeRerunPassed": null,
+      "covered": true
+    },
+    {
+      "file": "art-v1.spec.ts",
+      "title": "stalled asset requests release readiness after the bounded timeout",
+      "sandboxPassed": true,
+      "nativeRerunPassed": null,
+      "covered": true
+    },
+    {
+      "file": "art-v1.spec.ts",
+      "title": "reduced motion keeps combat poses and suppresses gait and decorative sway",
+      "sandboxPassed": true,
+      "nativeRerunPassed": null,
+      "covered": true
+    },
+    {
+      "file": "benchmark.spec.ts",
+      "title": "measured crowd benchmark webgl",
+      "sandboxPassed": true,
+      "nativeRerunPassed": null,
+      "covered": true
+    },
+    {
+      "file": "benchmark.spec.ts",
+      "title": "measured crowd benchmark auto",
+      "sandboxPassed": true,
+      "nativeRerunPassed": null,
+      "covered": true
+    },
+    {
+      "file": "benchmark.spec.ts",
+      "title": "measured ranger benchmark preserves full crowds and exports its own scenario",
+      "sandboxPassed": true,
+      "nativeRerunPassed": null,
+      "covered": true
+    },
+    {
+      "file": "benchmark.spec.ts",
+      "title": "measured max multishot benchmark exports seven arrows and complete crowds",
+      "sandboxPassed": true,
+      "nativeRerunPassed": null,
+      "covered": true
+    },
+    {
+      "file": "blender-v1.spec.ts",
+      "title": "Blender candidate samples authored clips, independent skins and hand sockets",
+      "sandboxPassed": true,
+      "nativeRerunPassed": null,
+      "covered": true
+    },
+    {
+      "file": "blender-v1.spec.ts",
+      "title": "Blender is opt-in and failed candidate loads retain playable fallback",
+      "sandboxPassed": true,
+      "nativeRerunPassed": null,
+      "covered": true
+    },
+    {
+      "file": "gamepad.spec.ts",
+      "title": "gamepad movement, camera, attack edge and restart edge on a nonzero device slot",
+      "sandboxPassed": true,
+      "nativeRerunPassed": null,
+      "covered": true
+    },
+    {
+      "file": "gamepad.spec.ts",
+      "title": "focused HUD controls do not trigger player combat shortcuts",
+      "sandboxPassed": true,
+      "nativeRerunPassed": null,
+      "covered": true
+    },
+    {
+      "file": "multiplayer.spec.ts",
+      "title": "native WebRTC manual UI exchange, independent movement, authoritative combat and cleanup",
+      "sandboxPassed": false,
+      "nativeRerunPassed": true,
+      "covered": true
+    },
+    {
+      "file": "multiplayer.spec.ts",
+      "title": "host loss freezes client and a fresh manual exchange clears the old session",
+      "sandboxPassed": false,
+      "nativeRerunPassed": true,
+      "covered": true
+    },
+    {
+      "file": "polish.spec.ts",
+      "title": "earned Solar Break hits the mixed crowd and displays its shockwave",
+      "sandboxPassed": true,
+      "nativeRerunPassed": null,
+      "covered": true
+    },
+    {
+      "file": "polish.spec.ts",
+      "title": "empty special, dodge, pause and reduced motion keep controls consistent",
+      "sandboxPassed": true,
+      "nativeRerunPassed": null,
+      "covered": true
+    },
+    {
+      "file": "polish.spec.ts",
+      "title": "gamepad special and dodge are discrete edges",
+      "sandboxPassed": true,
+      "nativeRerunPassed": null,
+      "covered": true
+    },
+    {
+      "file": "rooms.spec.ts",
+      "title": "native automatic Create/Join, movement, authoritative combat, signaling expiry and cleanup",
+      "sandboxPassed": false,
+      "nativeRerunPassed": true,
+      "covered": true
+    },
+    {
+      "file": "rooms.spec.ts",
+      "title": "room errors, invite prefill, cancellation, desktop and narrow room UI",
+      "sandboxPassed": true,
+      "nativeRerunPassed": true,
+      "covered": true
+    },
+    {
+      "file": "rooms.spec.ts",
+      "title": "full room and canceled room request do not auto-retry or create a session",
+      "sandboxPassed": false,
+      "nativeRerunPassed": true,
+      "covered": true
+    },
+    {
+      "file": "run.spec.ts",
+      "title": "choose the ranger, fire assisted arrows, use its special and spend a bomb",
+      "sandboxPassed": true,
+      "nativeRerunPassed": null,
+      "covered": true
+    },
+    {
+      "file": "run.spec.ts",
+      "title": "clear finite waves, pick relics, win and retry with a fresh build",
+      "sandboxPassed": true,
+      "nativeRerunPassed": null,
+      "covered": true
+    },
+    {
+      "file": "run.spec.ts",
+      "title": "gamepad navigates hero and relic menus without a keyboard",
+      "sandboxPassed": true,
+      "nativeRerunPassed": null,
+      "covered": true
+    },
+    {
+      "file": "run.spec.ts",
+      "title": "character choice fits a narrow viewport",
+      "sandboxPassed": true,
+      "nativeRerunPassed": null,
+      "covered": true
+    },
+    {
+      "file": "smoke.spec.ts",
+      "title": "launch, movement, real keyboard combat, respawn and visual reference",
+      "sandboxPassed": true,
+      "nativeRerunPassed": null,
+      "covered": true
+    },
+    {
+      "file": "smoke.spec.ts",
+      "title": "responsive HUD and installed offline reload",
+      "sandboxPassed": true,
+      "nativeRerunPassed": null,
+      "covered": true
+    },
+    {
+      "file": "subpath.spec.ts",
+      "title": "Pages repository prefix loads relative assets and remains playable offline",
+      "sandboxPassed": true,
+      "nativeRerunPassed": null,
+      "covered": true
+    },
+    {
+      "file": "subpath.spec.ts",
+      "title": "explicit WebGPU preference falls back when WebGPU is unavailable",
+      "sandboxPassed": true,
+      "nativeRerunPassed": null,
+      "covered": true
+    },
+    {
+      "file": "weapons.spec.ts",
+      "title": "Fan Bow fires at separate targets and seven-arrow upgrades have a readable spread",
+      "sandboxPassed": true,
+      "nativeRerunPassed": null,
+      "covered": true
+    },
+    {
+      "file": "weapons.spec.ts",
+      "title": "Spear reaches beyond the saber and its attack arc is shown at the actual reach",
+      "sandboxPassed": true,
+      "nativeRerunPassed": null,
+      "covered": true
+    },
+    {
+      "file": "weapons.spec.ts",
+      "title": "weapon selection supports going back and choosing on a narrow viewport",
+      "sandboxPassed": true,
+      "nativeRerunPassed": null,
+      "covered": true
+    }
+  ]
+}

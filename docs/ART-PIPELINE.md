@@ -65,3 +65,7 @@ Native WebRTC validation requires local UDP/ICE access: in this managed process 
 Physical GPUs, mobile performance and hardware WebGPU require separate testing. The Babylon bundle still emits Vite's size warning.
 
 The Ranger identity correction reruns only unit tests, production build, glTF validation, art-v1 browser checks excluding benchmark, and the Ranger storm/Fan Bow screenshot scenarios. See the updated evidence report for current hashes/counts and logs. Original 31-check results and every timing JSON remain historical evidence. Performance tables measure unchanged Vanguard and old-art enemies; exact current Ranger performance was not rebenchmarked.
+
+## Optional Blender Vanguard candidate
+
+The first Blender milestone is isolated behind `?art=blender`; the default assets and procedural poses above remain the shipped selection. The candidate includes editable Blender source with packed references, a reproducible Python authoring/export script, a self-contained skinned GLB and authored Idle/Run/Attack actions. See [source, regeneration and known limits](../art-source/vanguard/blender-v1/README.md) and [actual Blender/browser evidence](../evidence/blender-v1/README.md). This candidate requires visual review before integration.

@@ -1,0 +1,40 @@
+
+Running 5 tests using 1 worker
+
+(node:1266124) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+Browser replication overhead [
+  {
+    enemies: 20,
+    iterations: 1000,
+    captureEncodeDecodeApplyInterpolateMs: 0.08529999995231628,
+    snapshotBytes: 4614.783,
+    payloadBytesPerSecondAt15Hz: 69221.74500000001
+  },
+  {
+    enemies: 40,
+    iterations: 1000,
+    captureEncodeDecodeApplyInterpolateMs: 0.10729999995231629,
+    snapshotBytes: 8068.783,
+    payloadBytesPerSecondAt15Hz: 121031.74500000001
+  }
+]
+Native WebRTC evidence {
+  connection: 'connected',
+  sentBytes: 206895,
+  receivedBytes: 13759,
+  channels: [ 'input', 'state', 'events' ]
+}
+  ✓  1 e2e/multiplayer.spec.ts:40:1 › native WebRTC manual UI exchange, independent movement, authoritative combat and cleanup (9.0s)
+  ✓  2 e2e/multiplayer.spec.ts:220:1 › host loss freezes client and a fresh manual exchange clears the old session (7.0s)
+Native WebRTC evidence {
+  connection: 'connected',
+  sentBytes: 226733,
+  receivedBytes: 15297,
+  channels: [ 'input', 'state', 'events' ]
+}
+  ✓  3 e2e/rooms.spec.ts:29:1 › native automatic Create/Join, movement, authoritative combat, signaling expiry and cleanup (8.6s)
+  ✓  4 e2e/rooms.spec.ts:174:1 › room errors, invite prefill, cancellation, desktop and narrow room UI (4.3s)
+  ✓  5 e2e/rooms.spec.ts:199:1 › full room and canceled room request do not auto-retry or create a session (14.9s)
+
+  5 passed (44.7s)

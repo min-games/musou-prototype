@@ -1,0 +1,3 @@
+import config from '/home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261017001038-d6ebcaee/musou-prototype/playwright.config.ts';
+const root='/home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261017001038-d6ebcaee/musou-prototype';
+export default {...config,testDir:root+'/e2e',testMatch:/(blender-v1|subpath)\.spec\.ts$/,use:{...config.use,baseURL:'http://127.0.0.1:5196'},webServer:{command:'node /tmp/vanguard-production-serve.mjs',cwd:root,port:5196,reuseExistingServer:false},reporter:[['list'],['json',{outputFile:root+'/evidence/blender-v1/production-browser-results.json'}]]};

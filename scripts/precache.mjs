@@ -10,7 +10,10 @@ const files = walk(root)
   .sort();
 const digest = createHash("sha256");
 for (const f of files) digest.update(readFileSync(f));
-const assets = files.map((f) => "./" + f.slice(root.length + 1));
+// Keep the review candidate opt-in; include it in the digest so preview caches update.
+const assets = files
+  .filter((f) => !f.endsWith("/models/vanguard-blender-v1.glb"))
+  .map((f) => "./" + f.slice(root.length + 1));
 const template = readFileSync("public/sw.js", "utf8");
 if (
   !template.includes('"__BUILD_VERSION__"') ||

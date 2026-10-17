@@ -1,0 +1,52 @@
+[
+  {
+    "path": "art-source/vanguard/vanguard-front-v2-simple.png",
+    "bytes": 1887519,
+    "sha256": "67cdd7e77fe31ebd23d6b2ac50a92eda3564fef280fa8094d4831b685fcb876d"
+  },
+  {
+    "path": "art-source/vanguard/blender-v1/vanguard-turnaround-v1.png",
+    "bytes": 1903665,
+    "sha256": "20a7bb38b09b4f9b037945020e7fc76a3777c00ccd60b8fae5535c748d429687"
+  },
+  {
+    "path": "art-source/vanguard/blender-v1/vanguard-turnaround-v1.prompt.txt",
+    "bytes": 1972,
+    "sha256": "3ea32a78c21882a6bbc57f0a3e8fe600a9fe0782f0f662496d85e22b7292b91f"
+  },
+  {
+    "path": "art-source/vanguard/blender-v1/vanguard-animation-poses-v1.png",
+    "bytes": 1993983,
+    "sha256": "1deafd6413df268762645ed37aac539632d81118a93835ad17de9a658e8281f4"
+  },
+  {
+    "path": "art-source/vanguard/blender-v1/vanguard-animation-poses-v1.prompt.txt",
+    "bytes": 1697,
+    "sha256": "a69b8ce48c961c3dc9a06919fabcd11c8690865cb88d849d9f564eacc987f55a"
+  },
+  {
+    "path": "art-source/vanguard/blender-v1/vanguard.blend",
+    "bytes": 9056728,
+    "sha256": "1d908b1ad294cfd589a3201a766e2d64db5a390b15bc46c29813e9177ec19685"
+  },
+  {
+    "path": "scripts/blender/vanguard.py",
+    "bytes": 17049,
+    "sha256": "067683f2d545aa9c1395e6c59dedca7e04e27b03a65fcfaecc7f15d6a1893f08"
+  },
+  {
+    "path": "public/models/vanguard-blender-v1.glb",
+    "bytes": 766988,
+    "sha256": "2237d76aae7776cbc15ffefb197d83c298df20737325a5aa2f1f9004a5e1c791"
+  },
+  {
+    "path": "public/models/vanguard-v1.glb",
+    "bytes": 241064,
+    "sha256": "5b68e1716a5f325af029f2f53d21a5cc88d9d512b80ba576d749bc9fb961eb8d"
+  },
+  {
+    "path": "public/models/ranger-v1.glb",
+    "bytes": 218888,
+    "sha256": "05d267fde87634d0569dfcfb99fde62aba820a79b05490e5a8fe24cdacc4f0fa"
+  }
+]

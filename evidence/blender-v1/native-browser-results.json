@@ -1,0 +1,311 @@
+{
+  "config": {
+    "argv": [
+      "/home/cmwen/.local/share/fnm/node-versions/v24.12.0/installation/bin/node",
+      "/home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261017001038-d6ebcaee/musou-prototype/node_modules/@playwright/test/cli.js",
+      "test",
+      "--config",
+      "/tmp/vanguard-native.config.mjs"
+    ],
+    "configFile": "/tmp/vanguard-native.config.mjs",
+    "rootDir": "/home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261017001038-d6ebcaee/musou-prototype/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/tmp/vanguard-native-test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "/home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261017001038-d6ebcaee/musou-prototype/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "/(multiplayer|rooms)\\.spec\\.ts$/"
+        ],
+        "timeout": 120000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/tmp/vanguard-native-test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "/home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261017001038-d6ebcaee/musou-prototype/e2e",
+        "snapshotDir": "/home/cmwen/dev/min-games-workspace/.workspace/runtime/worktrees/R-20261017001038-d6ebcaee/musou-prototype/e2e",
+        "testIgnore": [],
+        "testMatch": {},
+        "timeout": 120000,
+        "use": {
+          "baseURL": "http://127.0.0.1:5187",
+          "viewport": {
+            "width": 1280,
+            "height": 720
+          },
+          "launchOptions": {
+            "args": [
+              "--use-angle=swiftshader",
+              "--enable-webgl",
+              "--ignore-gpu-blocklist"
+            ]
+          }
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "evidence/blender-v1/native-browser-results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "multiplayer.spec.ts",
+      "file": "multiplayer.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "native WebRTC manual UI exchange, independent movement, authoritative combat and cleanup",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 9014,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "Browser replication overhead [\n  {\n    enemies: \u001b[33m20\u001b[39m,\n    iterations: \u001b[33m1000\u001b[39m,\n    captureEncodeDecodeApplyInterpolateMs: \u001b[33m0.08529999995231628\u001b[39m,\n    snapshotBytes: \u001b[33m4614.783\u001b[39m,\n    payloadBytesPerSecondAt15Hz: \u001b[33m69221.74500000001\u001b[39m\n  },\n  {\n    enemies: \u001b[33m40\u001b[39m,\n    iterations: \u001b[33m1000\u001b[39m,\n    captureEncodeDecodeApplyInterpolateMs: \u001b[33m0.10729999995231629\u001b[39m,\n    snapshotBytes: \u001b[33m8068.783\u001b[39m,\n    payloadBytesPerSecondAt15Hz: \u001b[33m121031.74500000001\u001b[39m\n  }\n]\n"
+                    },
+                    {
+                      "text": "Native WebRTC evidence {\n  connection: \u001b[32m'connected'\u001b[39m,\n  sentBytes: \u001b[33m206895\u001b[39m,\n  receivedBytes: \u001b[33m13759\u001b[39m,\n  channels: [ \u001b[32m'input'\u001b[39m, \u001b[32m'state'\u001b[39m, \u001b[32m'events'\u001b[39m ]\n}\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T00:24:26.138Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "141e0e3d3b30ec82e56e-84a4737e7f8b146c03b0",
+          "file": "multiplayer.spec.ts",
+          "line": 40,
+          "column": 1
+        },
+        {
+          "title": "host loss freezes client and a fresh manual exchange clears the old session",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7001,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T00:24:35.263Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "141e0e3d3b30ec82e56e-6ca55ba9b9328ff42559",
+          "file": "multiplayer.spec.ts",
+          "line": 220,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "rooms.spec.ts",
+      "file": "rooms.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "native automatic Create/Join, movement, authoritative combat, signaling expiry and cleanup",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8605,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "Native WebRTC evidence {\n  connection: \u001b[32m'connected'\u001b[39m,\n  sentBytes: \u001b[33m226733\u001b[39m,\n  receivedBytes: \u001b[33m15297\u001b[39m,\n  channels: [ \u001b[32m'input'\u001b[39m, \u001b[32m'state'\u001b[39m, \u001b[32m'events'\u001b[39m ]\n}\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T00:24:42.320Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c60be36dadaf24e75fb7-8bc254d6574950905238",
+          "file": "rooms.spec.ts",
+          "line": 29,
+          "column": 1
+        },
+        {
+          "title": "room errors, invite prefill, cancellation, desktop and narrow room UI",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4297,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T00:24:50.982Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c60be36dadaf24e75fb7-da1f5279768e95176021",
+          "file": "rooms.spec.ts",
+          "line": 174,
+          "column": 1
+        },
+        {
+          "title": "full room and canceled room request do not auto-retry or create a session",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 14906,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-17T00:24:56.000Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c60be36dadaf24e75fb7-43d8cae592ed3c906718",
+          "file": "rooms.spec.ts",
+          "line": 199,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-17T00:24:25.619Z",
+    "duration": 44744.406,
+    "expected": 5,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}
