@@ -1,0 +1,30 @@
+{
+  "version": "blender-v1-candidate",
+  "states": {
+    "vanguard": "fallback",
+    "ranger": "loaded"
+  },
+  "errors": {
+    "vanguard": "RuntimeError: Unable to load from http://127.0.0.1:5187/models/vanguard-blender-v1.glb: LoadFileError: Error status: 0  - Unable to load http://127.0.0.1:5187/models/vanguard-blender-v1.glb"
+  },
+  "atlasResolution": [
+    1024,
+    1024
+  ],
+  "uvInsetPixels": 8,
+  "models": {
+    "ranger": {
+      "file": "ranger-v1.glb",
+      "animations": [],
+      "triangles": 1604,
+      "meshes": 1,
+      "joints": 16,
+      "textureResolution": {
+        "width": 1024,
+        "height": 1024
+      }
+    }
+  },
+  "activeActors": 0,
+  "actors": []
+}

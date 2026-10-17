@@ -1,0 +1,8 @@
+Extensions: writing cache failed ([Errno 30] Read-only file system: '/home/cmwen/.config/blender').
+18:31:43 | INFO: Data are loaded, start creating Blender stuff
+18:31:43 | INFO: Blender create Mesh node quilted undershirt
+18:31:43 | INFO: glTF import finished in 0.17s
+Maximum world joint round-trip error: 3.625608998714816e-07
+Blender 4.5.3 LTS (hash 67807e1800cc built 2025-09-09 01:38:15)
+
+Blender quit

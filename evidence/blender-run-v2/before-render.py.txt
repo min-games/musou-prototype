@@ -1,0 +1,13 @@
+import bpy,os,json
+from mathutils import Vector
+bpy.ops.wm.open_mainfile(filepath='/tmp/vanguard-before.blend')
+s=bpy.context.scene;s.render.resolution_x=480;s.render.resolution_y=600;s.cycles.samples=12;s.cycles.use_denoising=True
+for n in ['VanguardRig','Vanguard armor cloth face']:bpy.data.objects.remove(bpy.data.objects[n],do_unlink=True)
+actions=set(bpy.data.actions)
+bpy.ops.import_scene.gltf(filepath='/tmp/vanguard-before.glb')
+r=next(o for o in bpy.data.objects if o.type=='ARMATURE');r.animation_data.action=next(a for a in bpy.data.actions if a not in actions and 'Run' in a.name)
+s.frame_set(7)
+report={p.name:{'restLocalX':list(p.bone.matrix_local.to_3x3().col[0]),'worldHead':list(r.matrix_world@p.head),'rotationMode':p.rotation_mode,'rotationQuaternion':list(p.rotation_quaternion)} for p in r.pose.bones if p.name.startswith(('thigh','shin'))}
+open('evidence/blender-run-v2/before-glb-axes.json','w').write(json.dumps(report,indent=2))
+for view,pos in [('right',(-5,0,1.1)),('front',(0,-5,1.1))]:
+ s.camera.location=pos;s.camera.rotation_euler=(Vector((0,0,1.08))-s.camera.location).to_track_quat('-Z','Y').to_euler();s.render.filepath=f'evidence/blender-run-v2/before-glb-{view}-07.png';bpy.ops.render.render(write_still=True)

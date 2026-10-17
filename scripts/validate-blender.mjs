@@ -27,7 +27,7 @@ const summary = {
   issues: report.issues,
 };
 writeFileSync(
-  "evidence/blender-v1/gltf-validation.json",
+  "evidence/blender-run-v2/gltf-validation.json",
   JSON.stringify({ summary, report }, null, 2) + "\n",
 );
 console.log(JSON.stringify(summary, null, 2));

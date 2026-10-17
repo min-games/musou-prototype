@@ -9,7 +9,7 @@ import type {
 import type { Scene } from "@babylonjs/core/scene";
 import type { Mesh } from "@babylonjs/core/Meshes/mesh";
 import { TransformNode } from "@babylonjs/core/Meshes/transformNode";
-import { Quaternion } from "@babylonjs/core/Maths/math.vector";
+import { Quaternion, Vector3 } from "@babylonjs/core/Maths/math.vector";
 import type { Simulation } from "./GameLoop";
 type Hero = Simulation["player"]["hero"];
 type Instance = {
@@ -24,6 +24,10 @@ type Instance = {
   moving: boolean;
   clip?: string;
   clipFrame?: number;
+  locomotionBlend?: {
+    start: number;
+    pose: Map<TransformNode, { rotation: Quaternion; position: Vector3 }>;
+  };
 };
 /** Shared immutable geometry/materials; each actor owns its cloned joints and skeleton. */
 export class TempleCharacters {
@@ -159,6 +163,25 @@ export class TempleCharacters {
       );
       if (group) {
         if (inst.clip !== clip) {
+          // The lifted run has a distinct contact pose. Ease locomotion changes
+          // from the displayed pose without changing simulation movement or attacks.
+          inst.locomotionBlend =
+            inst.clip && !reduced && inst.clip !== "Attack" && clip !== "Attack"
+              ? {
+                  start: time,
+                  pose: new Map(
+                    [...inst.nodes.values()]
+                      .filter((n) => n.rotationQuaternion)
+                      .map((n) => [
+                        n,
+                        {
+                          rotation: n.rotationQuaternion!.clone(),
+                          position: n.position.clone(),
+                        },
+                      ]),
+                  ),
+                }
+              : undefined;
           for (const g of inst.entries.animationGroups) g.stop();
           group.start(false);
           group.pause();
@@ -175,6 +198,28 @@ export class TempleCharacters {
               : (time % duration) / duration;
         inst.clipFrame = group.from + phase * span;
         group.goToFrame(inst.clipFrame);
+        if (inst.locomotionBlend) {
+          const progress = Math.min(
+            1,
+            Math.max(0, (time - inst.locomotionBlend.start) / 0.12),
+          );
+          const weight = progress * progress * (3 - 2 * progress);
+          for (const [node, pose] of inst.locomotionBlend.pose) {
+            Quaternion.SlerpToRef(
+              pose.rotation,
+              node.rotationQuaternion!,
+              weight,
+              node.rotationQuaternion!,
+            );
+            Vector3.LerpToRef(
+              pose.position,
+              node.position,
+              weight,
+              node.position,
+            );
+          }
+          if (progress === 1) inst.locomotionBlend = undefined;
+        }
       }
       // The loader links skin joints to these cloned nodes, including the hand socket.
       for (const node of inst.root.getChildTransformNodes(false))

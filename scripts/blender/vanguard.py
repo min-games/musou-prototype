@@ -1,11 +1,11 @@
 """Blender 4.5: deterministic first-pass Vanguard. Run from repository root.
-blender -b --python scripts/blender/vanguard.py
+blender -b --python-exit-code 1 --python scripts/blender/vanguard.py
 Only character geometry/armature are exported; packed image empties stay in .blend.
 """
 import bpy, math, os, json
 from mathutils import Vector
 from math import sin, cos, pi
-ROOT=os.getcwd(); OUT=os.path.join(ROOT,'art-source/vanguard/blender-v1'); EVID=os.path.join(ROOT,'evidence/blender-v1')
+ROOT=os.getcwd(); OUT=os.path.join(ROOT,'art-source/vanguard/blender-v1'); EVID=os.path.join(ROOT,'evidence/blender-run-v2')
 os.makedirs(OUT,exist_ok=True); os.makedirs(EVID,exist_ok=True)
 bpy.ops.object.select_all(action='SELECT'); bpy.ops.object.delete(use_global=False)
 M={}
@@ -62,22 +62,21 @@ rings('leather belt',[(1.035,.264,.18,0,0),(1.09,.26,.18,0,0)],'Iron','pelvis')
 panel('square buckle',0,-.195,1.098,.105,.095,'Gold','pelvis',0)
 panel('buckle inset',0,-.219,1.078,.059,.054,'Iron','pelvis',0)
 for x in [-.215,0,.215]:
- panel('front hip lamella',x,-.165,.99,.17,.31 if x else .33,'Iron','pelvis')
- panel('back hip lamella',x,.175,.99,.17,.30,'Iron','pelvis')
- if x:
-  tube('stepped temple border',[(x-.055,-.21,.735),(x+.025,-.21,.735),(x+.025,-.20,.79),(x+.06,-.20,.79)],.009,'Gold','pelvis')
+ panel('front hip lamella',x,-.185,.99,.145,.20 if x else .23,'Iron',('thigh.R' if x<0 else 'thigh.L') if x else 'pelvis')
+ panel('back hip lamella',x,.175,.99,.145,.22,'Iron',('thigh.R' if x<0 else 'thigh.L') if x else 'pelvis')
 ell('sash knot',(.24,-.19,1.01),(.055,.04,.06),'Red','sash')
 panel('sash tail',.26,-.215,.99,.09,.39,'Red','sash',.015)
 panel('second sash tail',.32,-.16,.96,.06,.28,'Red','sash',0)
 for sign,side in [(-1,'R'),(1,'L')]:
  x=sign*.155
- rings('trouser '+side,[(.35,.09,.09,x,0),(.48,.13,.12,x,0),(.68,.14,.135,x,0),(.91,.125,.12,x,0)],'Iron','thigh.'+side)
+ rings('trouser '+side,[(.44,.085,.09,x,0),(.53,.105,.105,x,0),(.72,.125,.12,x,0),(.91,.12,.115,x,0)],'Iron','thigh.'+side)
  # deliberate fabric folds, no texture requirement
- for j in range(3):tube('trouser fold',[(x-.08,-.10,.48+j*.11),(x+.015,-.13,.45+j*.11),(x+.09,-.08,.47+j*.11)],.011,'Iron','thigh.'+side)
+ for j in range(3):tube('trouser fold',[(x-.07,-.09,.53+j*.11),(x+.015,-.115,.50+j*.11),(x+.08,-.08,.52+j*.11)],.011,'Iron','thigh.'+side)
  rings('boot greave',[(.095,.085,.09,x,0),(.18,.07,.08,x,0),(.44,.09,.09,x,0)],'Iron','shin.'+side)
  panel('greave face',x,-.091,.43,.14,.30,'Iron','shin.'+side,-.025)
- ell('boot toe', (x,-.06,.075),(.10,.175,.075),'Iron','shin.'+side)
- tube('boot welt',[(x+.1*cos(a),-.045+.165*sin(a),.033) for a in [i*pi/12 for i in range(25)]],.011,'Gold','shin.'+side)
+ ell('knee articulation',(x,0,.44),(.087,.09,.075),'Iron','shin.'+side)
+ ell('boot toe', (x,-.06,.075),(.10,.175,.075),'Iron','foot.'+side)
+ tube('boot welt',[(x+.1*cos(a),-.045+.165*sin(a),.033) for a in [i*pi/12 for i in range(25)]],.011,'Gold','foot.'+side)
  # arms lowered A-pose, upper sleeves with deliberate cuffs
  sx=sign*.39
  ell('red sleeve '+side,(sign*.415,0,1.48),(.13,.13,.20),'Red','arm.'+side)
@@ -157,12 +156,27 @@ def bone(n,h,t,parent=None):
 bone('root',(0,0,0),(0,0,.15));bone('pelvis',(0,0,.93),(0,0,1.14),'root');bone('chest',(0,0,1.14),(0,0,1.66),'pelvis');bone('head',(0,0,1.66),(0,0,2.04),'chest');bone('sash',(.24,0,1.02),(.24,0,.73),'pelvis')
 for s,side in [(-1,'R'),(1,'L')]:
  bone('thigh.'+side,(s*.155,0,.93),(s*.155,0,.44),'pelvis');bone('shin.'+side,(s*.155,0,.44),(s*.155,-.01,.09),'thigh.'+side)
+ bone('foot.'+side,(s*.155,-.01,.09),(s*.155,-.17,.09),'shin.'+side)
  bone('arm.'+side,(s*.32,0,1.64),(s*.48,0,1.32),'chest');bone('forearm.'+side,(s*.48,0,1.32),(s*.55,0,1.06),'arm.'+side);bone('hand.'+side,(s*.55,0,1.06),(s*.57,0,.95),'forearm.'+side)
 bpy.ops.object.mode_set(mode='OBJECT')
 bpy.ops.object.select_all(action='DESELECT')
 for o in parts:o.select_set(True)
 bpy.context.view_layer.objects.active=parts[0];bpy.ops.object.join();body=bpy.context.object;body.name='Vanguard armor cloth face';mod=body.modifiers.new('Vanguard skin','ARMATURE');mod.object=rig;body.parent=None
 rig.animation_data_create();scene=bpy.context.scene;scene.render.fps=30
+# Periodic cubic Hermite ankle trajectory. The first 40% is stance (nearly uniform
+# backward travel in the actor frame); recovery folds the heel, then lifts knee.
+# z is ankle height; independent foot pitch preserves sole clearance.
+PATH=[(0,.26,.105,0),(.12,.095,.095,0),(.28,-.125,.105,0),
+      (.40,-.29,.185,.48),(.54,-.25,.48,.85),(.68,.00,.53,.35),
+      (.80,.27,.35,-.12),(.92,.34,.17,-.10),(1,.26,.105,0)]
+def foot_path(t):
+ for i in range(len(PATH)-1):
+  a,b=PATH[i:i+2]
+  if a[0]<=t<=b[0]:
+   prev=PATH[i-1] if i else (PATH[-2][0]-1,*PATH[-2][1:])
+   nxt=PATH[i+2] if i+2<len(PATH) else (PATH[1][0]+1,*PATH[1][1:])
+   h=b[0]-a[0];v=(t-a[0])/h
+   return tuple((2*v**3-3*v*v+1)*a[j]+(v**3-2*v*v+v)*h*(b[j]-prev[j])/(b[0]-prev[0])+(-2*v**3+3*v*v)*b[j]+(v**3-v*v)*h*(nxt[j]-a[j])/(nxt[0]-a[0]) for j in (1,2,3))
 # Authored 30 fps cyclic idle, run with opposing limbs, and windup / strike / recovery.
 for name,end in [('Idle',60),('Run',24),('Attack',24)]:
  act=bpy.data.actions.new(name);rig.animation_data.action=act
@@ -172,11 +186,28 @@ for name,end in [('Idle',60),('Run',24),('Attack',24)]:
   if name=='Idle':
    rig.pose.bones['chest'].rotation_euler.x=.016*w;rig.pose.bones['sash'].rotation_euler.x=.025*w
   elif name=='Run':
-   rig.pose.bones['pelvis'].location.y=.025*(1-cos(t*4*pi));rig.pose.bones['chest'].rotation_euler.x=.12
-   for s,side in [(-1,'R'),(1,'L')]:
-    rig.pose.bones['thigh.'+side].rotation_euler.x=s*w*.65;rig.pose.bones['shin.'+side].rotation_euler.x=-max(0,-s*w)*.9
-    rig.pose.bones['arm.'+side].rotation_euler.x=-s*w*.45;rig.pose.bones['forearm.'+side].rotation_euler.x=-.3
-   rig.pose.bones['sash'].rotation_euler.x=.25+.1*w
+   # Blender front = -Y. Bones point down: local +X turns thigh BACK,
+   # while positive relative shin X flexes the knee BACK. Solve in forward/up space.
+   hip_z=.885-.025*sin(4*pi*t)
+   rig.pose.bones['pelvis'].location.y=hip_z-.93
+   rig.pose.bones['chest'].rotation_euler.x=.10
+   for offset,side in [(0,'R'),(.5,'L')]:
+    phase=(t+offset)%1
+    u,z,pitch=foot_path(phase)
+    dz=z-hip_z; d=math.hypot(u,dz); l1=.49;l2=math.hypot(.35,.01)
+    assert d<l1+l2, ('unreachable ankle',phase,d)
+    along=(l1*l1-l2*l2+d*d)/(2*d); height=math.sqrt(max(0,l1*l1-along*along))
+    ku=u*along/d-dz*height/d; kz=hip_z+dz*along/d+u*height/d
+    thigh=math.atan2(-ku,hip_z-kz)
+    shin=math.atan2(-(u-ku),kz-z)
+    rest=-math.atan2(.01,.35)
+    rig.pose.bones['thigh.'+side].rotation_euler.x=thigh
+    rig.pose.bones['shin.'+side].rotation_euler.x=shin-thigh-rest
+    # Horizontal -Y foot has local X = world -X (opposite thigh/shin).
+    rig.pose.bones['foot.'+side].rotation_euler.x=shin-rest-pitch
+    rig.pose.bones['arm.'+side].rotation_euler.x=.48*cos(2*pi*phase)-.10
+    rig.pose.bones['forearm.'+side].rotation_euler.x=-.65-.12*sin(2*pi*phase)
+   rig.pose.bones['sash'].rotation_euler.x=.18+.07*w
   else:
    # continuous finite attack: anticipation, strong cross body cut, recover to rest
    a=sin(pi*t);cut=sin(pi*min(1,max(0,(t-.2)/.65)))
@@ -198,7 +229,7 @@ for i,path in enumerate(['art-source/vanguard/vanguard-front-v2-simple.png','art
 # Only selected skin and rig in standalone GLB; NLA strips export named animations.
 bpy.ops.object.select_all(action='DESELECT');body.select_set(True);rig.select_set(True);bpy.context.view_layer.objects.active=rig
 for tr in rig.animation_data.nla_tracks:tr.mute=False
-bpy.ops.export_scene.gltf(filepath=os.path.join(ROOT,'public/models/vanguard-blender-v1.glb'),use_selection=True,export_format='GLB',export_animations=True,export_animation_mode='NLA_TRACKS',export_force_sampling=True,export_def_bones=False,export_texcoords=False)
+bpy.ops.export_scene.gltf(filepath=os.path.join(ROOT,'public/models/vanguard-blender-v1.glb'),use_selection=True,export_format='GLB',export_animations=True,export_animation_mode='NLA_TRACKS',export_force_sampling=True,export_anim_slide_to_zero=True,export_def_bones=False,export_texcoords=False)
 for tr in rig.animation_data.nla_tracks:tr.mute=True
 # Neutral studio render stage, never exported.
 scene.render.engine='CYCLES';scene.cycles.samples=24;scene.render.resolution_x=800;scene.render.resolution_y=960;scene.render.resolution_percentage=100
@@ -209,11 +240,5 @@ for p,power,size in [((2,-4,5),650,4),((-3,-1,3),450,3),((1,3,4),800,3)]:
  bpy.ops.object.light_add(type='AREA',location=p);o=bpy.context.object;o.data.energy=power;o.data.shape='DISK';o.data.size=size;aim(o,(0,0,1))
 bpy.ops.object.camera_add(location=(0,-5,1.15));cam=bpy.context.object;cam.data.type='ORTHO';cam.data.ortho_scale=2.55;scene.camera=cam;aim(cam,(0,0,1.1))
 rig.animation_data.action=bpy.data.actions['Idle'];scene.frame_set(1);bpy.ops.wm.save_as_mainfile(filepath=os.path.join(OUT,'vanguard.blend'))
-for view,pos in [('front',(0,-5,1.15)),('right',(-5,0,1.15)),('back',(0,5,1.15))]:
- cam.location=pos;aim(cam,(0,0,1.1));scene.render.filepath=os.path.join(EVID,view+'.png');bpy.ops.render.render(write_still=True)
-cam.location=(3,-5,2.35);aim(cam,(0,0,1.1))
-for name,frame in [('Idle',16),('Run',7),('Attack',13),('Run',1),('Run',13),('Run',19),('Attack',6),('Attack',20)]:
- rig.animation_data.action=bpy.data.actions[name];scene.frame_set(frame);scene.render.filepath=os.path.join(EVID,name.lower()+'-'+str(frame)+'.png');bpy.ops.render.render(write_still=True)
-rig.animation_data.action=None
-for p in rig.pose.bones:p.rotation_euler=(0,0,0);p.location=(0,0,0)
+
 print('VANGUARD COMPLETE',len(body.data.vertices),'vertices',len(body.data.polygons),'faces')

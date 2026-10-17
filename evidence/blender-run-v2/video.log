@@ -1,0 +1,49 @@
+ffmpeg version 9.0.2 Copyright (c) 2000-2026 the FFmpeg developers
+  built with gcc 13 (Ubuntu 13.3.0-6ubuntu2~24.04.1)
+  configuration: --prefix=/home/linuxbrew/.linuxbrew/Cellar/ffmpeg/9.0.2 --enable-shared --enable-pthreads --enable-version3 --cc=gcc --host-cflags= --host-ldflags= --enable-ffplay --enable-gpl --enable-libsvtav1 --enable-libopus --enable-libx264 --enable-libmp3lame --enable-libdav1d --enable-libvmaf --enable-libvpx --enable-libx265 --enable-openssl
+  libavutil      61.  1.102 / 61.  1.102
+  libavcodec     63.  1.102 / 63.  1.102
+  libavformat    63.  1.102 / 63.  1.102
+  libavdevice    63.  1.102 / 63.  1.102
+  libavfilter    12.  1.102 / 12.  1.102
+  libswscale     10.  1.102 / 10.  1.102
+  libswresample   7.  1.102 /  7.  1.102
+Input #0, image2, from 'evidence/blender-run-v2/right-%02d.png':
+  Duration: 00:00:00.80, start: 0.000000, bitrate: N/A
+  Stream #0:0: Video: png, rgba(pc, gbr/unknown/unknown), 480x600 [SAR 2834:2834 DAR 4:5], 30 fps, 30 tbr, 30 tbn
+Stream mapping:
+  Stream #0:0 -> #0:0 (png (native) -> h264 (libx264))
+Press [q] to stop, [?] for help
+[libx264 @ 0x5607324af000] using SAR=1/1
+[libx264 @ 0x5607324af000] using cpu capabilities: MMX2 SSE2Fast SSSE3 SSE4.2 AVX FMA3 BMI2 AVX2 AVX512
+[libx264 @ 0x5607324af000] profile High, level 3.0, 4:2:0, 8-bit
+[libx264 @ 0x5607324af000] 264 - core 165 r3222 b35605a - H.264/MPEG-4 AVC codec - Copyleft 2003-2025 - http://www.videolan.org/x264.html - options: cabac=1 ref=3 deblock=1:0:0 analyse=0x3:0x113 me=hex subme=7 psy=1 psy_rd=1.00:0.00 mixed_ref=1 me_range=16 chroma_me=1 trellis=1 8x8dct=1 cqm=0 deadzone=21,11 fast_pskip=1 chroma_qp_offset=-2 threads=19 lookahead_threads=3 sliced_threads=0 nr=0 decimate=1 interlaced=0 bluray_compat=0 constrained_intra=0 bframes=3 b_pyramid=2 b_adapt=1 b_bias=0 direct=1 weightb=1 open_gop=0 weightp=2 keyint=250 keyint_min=25 scenecut=40 intra_refresh=0 rc_lookahead=40 rc=crf mbtree=1 crf=23.0 qcomp=0.60 qpmin=0 qpmax=69 qpstep=4 ip_ratio=1.40 aq=1:1.00
+Output #0, mp4, to 'evidence/blender-run-v2/right-loop.mp4':
+  Metadata:
+    encoder         : Lavf63.1.102
+  Stream #0:0: Video: h264 (avc1 / 0x31637661), yuv420p(tv, progressive), 480x600 [SAR 1:1 DAR 4:5], q=2-31, 30 fps, 15360 tbn
+    Metadata:
+      encoder         : Lavc63.1.102 libx264
+    Side data:
+      EXIF metadata: (54 bytes)
+      CPB properties: bitrate max/min/avg: 0/0/0 buffer size: 0 vbv_delay: N/A
+[out#0/mp4 @ 0x5607324a2ec0] video:59KiB audio:0KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: 1.927984%
+frame=   24 fps=0.0 q=-1.0 Lsize=      60KiB time=00:00:00.73 bitrate= 666.7kbits/s speed=3.56x elapsed=0:00:00.20    
+[libx264 @ 0x5607324af000] frame I:1     Avg QP:18.57  size:  7851
+[libx264 @ 0x5607324af000] frame P:7     Avg QP:23.04  size:  3406
+[libx264 @ 0x5607324af000] frame B:16    Avg QP:28.42  size:  1724
+[libx264 @ 0x5607324af000] consecutive B-frames:  8.3%  8.3%  0.0% 83.3%
+[libx264 @ 0x5607324af000] mb I  I16..4: 34.1% 25.2% 40.7%
+[libx264 @ 0x5607324af000] mb P  I16..4:  0.7%  4.5%  5.2%  P16..4: 10.6%  3.9%  3.0%  0.0%  0.0%    skip:72.1%
+[libx264 @ 0x5607324af000] mb B  I16..4:  0.1%  1.0%  1.0%  B16..8: 12.5%  5.7%  1.5%  direct: 0.8%  skip:77.5%  L0:41.5% L1:42.7% BI:15.8%
+[libx264 @ 0x5607324af000] 8x8 transform intra:35.3% inter:64.5%
+[libx264 @ 0x5607324af000] coded y,uvDC,uvAC intra: 57.2% 37.5% 27.3% inter: 6.3% 2.2% 0.5%
+[libx264 @ 0x5607324af000] i16 v,h,dc,p: 62% 26%  9%  3%
+[libx264 @ 0x5607324af000] i8 v,h,dc,ddl,ddr,vr,hd,vl,hu: 23% 21% 14%  4%  8% 10%  8%  7%  5%
+[libx264 @ 0x5607324af000] i4 v,h,dc,ddl,ddr,vr,hd,vl,hu: 33% 15% 19%  4%  8%  7%  7%  4%  3%
+[libx264 @ 0x5607324af000] i8c dc,h,v,p: 68% 15% 14%  2%
+[libx264 @ 0x5607324af000] Weighted P-Frames: Y:0.0% UV:0.0%
+[libx264 @ 0x5607324af000] ref P L0: 68.3%  7.4% 12.8% 11.5%
+[libx264 @ 0x5607324af000] ref B L0: 86.9%  9.3%  3.8%
+[libx264 @ 0x5607324af000] ref B L1: 97.7%  2.3%
+[libx264 @ 0x5607324af000] kb/s:592.69

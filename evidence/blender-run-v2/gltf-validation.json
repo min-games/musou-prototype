@@ -1,0 +1,74 @@
+{
+  "summary": {
+    "bytes": 783984,
+    "meshes": 1,
+    "primitives": 7,
+    "triangles": 23388,
+    "materials": 7,
+    "joints": 17,
+    "animations": [
+      {
+        "name": "Idle",
+        "channels": 51,
+        "seconds": 2
+      },
+      {
+        "name": "Run",
+        "channels": 51,
+        "seconds": 0.8
+      },
+      {
+        "name": "Attack",
+        "channels": 51,
+        "seconds": 0.8
+      }
+    ],
+    "externalResources": [],
+    "issues": {
+      "numErrors": 0,
+      "numWarnings": 0,
+      "numInfos": 0,
+      "numHints": 0,
+      "messages": [],
+      "truncated": false
+    }
+  },
+  "report": {
+    "uri": "public/models/vanguard-blender-v1.glb",
+    "mimeType": "model/gltf-binary",
+    "validatorVersion": "2.0.0-dev.3.10",
+    "validatedAt": "2026-10-17T07:31:44.321Z",
+    "issues": {
+      "numErrors": 0,
+      "numWarnings": 0,
+      "numInfos": 0,
+      "numHints": 0,
+      "messages": [],
+      "truncated": false
+    },
+    "info": {
+      "version": "2.0",
+      "generator": "Khronos glTF Blender I/O v4.5.48",
+      "resources": [
+        {
+          "pointer": "/buffers/0",
+          "mimeType": "application/gltf-buffer",
+          "storage": "glb",
+          "byteLength": 748444
+        }
+      ],
+      "animationCount": 3,
+      "materialCount": 7,
+      "hasMorphTargets": false,
+      "hasSkins": true,
+      "hasTextures": false,
+      "hasDefaultScene": true,
+      "drawCallCount": 7,
+      "totalVertexCount": 13560,
+      "totalTriangleCount": 23388,
+      "maxUVs": 0,
+      "maxInfluences": 4,
+      "maxAttributes": 4
+    }
+  }
+}

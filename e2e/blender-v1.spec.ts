@@ -91,6 +91,7 @@ test("Blender candidate samples authored clips, independent skins and hand socke
   expect(result.independent).toBe(true);
   expect(result.remoteClip).toBe("Idle");
   expect(result.reduced.clip).toBe("Idle");
+  expect(result.reduced.pose).toEqual(result.idle.pose);
   expect(result.reducedAttack.clip).toBe("Attack");
   expect(result.idle.meta.models.vanguard.file).toBe("vanguard-blender-v1.glb");
   expect(
@@ -102,7 +103,7 @@ test("Blender candidate samples authored clips, independent skins and hand socke
     expect(w.position[1]).toBeGreaterThan(0.4);
   }
   writeFileSync(
-    "evidence/blender-v1/browser-animation.json",
+    "evidence/blender-run-v2/browser-animation.json",
     JSON.stringify(result, null, 2),
   );
   // Keep evidence time monotonic, settle movement, and assert the captured clip.
@@ -137,7 +138,9 @@ test("Blender candidate samples authored clips, independent skins and hand socke
       { ticks, x, swing },
     );
     expect(capturedClip).toBe(name);
-    await page.screenshot({ path: `evidence/blender-v1/browser-${name}.png` });
+    await page.screenshot({
+      path: `evidence/blender-run-v2/browser-${name}.png`,
+    });
   }
   expect(errors).toEqual([]);
 });
@@ -167,9 +170,11 @@ test("Blender is opt-in and failed candidate loads retain playable fallback", as
   await expect
     .poll(() => page.evaluate(() => (window as any).musou.sim.player.stage))
     .toBe(1);
-  await page.screenshot({ path: "evidence/blender-v1/browser-fallback.png" });
+  await page.screenshot({
+    path: "evidence/blender-run-v2/browser-fallback.png",
+  });
   writeFileSync(
-    "evidence/blender-v1/browser-fallback.json",
+    "evidence/blender-run-v2/browser-fallback.json",
     JSON.stringify(meta, null, 2),
   );
 });

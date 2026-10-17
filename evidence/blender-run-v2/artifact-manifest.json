@@ -1,0 +1,68 @@
+{
+  "scaffoldCommit": "71ccc6dabfa70bb0220cc40f17a98c56fa5b818a",
+  "isolatedCherryPick": "b84f52e",
+  "artifacts": [
+    {
+      "path": "art-source/vanguard/blender-v1/vanguard.blend",
+      "bytes": 9199472,
+      "sha256": "b2292bc74717642e9357da688f14af1ab777116cab1d242808064ac01a7a862c"
+    },
+    {
+      "path": "public/models/vanguard-blender-v1.glb",
+      "bytes": 783984,
+      "sha256": "21359d9b950b7acb49c7f2ae7da90f96fcffbb453ac3c2aa2d9f6b812afa0c77"
+    },
+    {
+      "path": "public/models/vanguard-v1.glb",
+      "bytes": 241064,
+      "sha256": "5b68e1716a5f325af029f2f53d21a5cc88d9d512b80ba576d749bc9fb961eb8d",
+      "identicalToScaffold": true
+    },
+    {
+      "path": "public/models/ranger-v1.glb",
+      "bytes": 218888,
+      "sha256": "05d267fde87634d0569dfcfb99fde62aba820a79b05490e5a8fe24cdacc4f0fa",
+      "identicalToScaffold": true
+    },
+    {
+      "path": "scripts/blender/vanguard.py",
+      "bytes": 18137,
+      "sha256": "71c7d14e65fbee2ae9ddd78ed0ffd6b451c853665705e4b7cabb6b39ef38fa9e"
+    },
+    {
+      "path": "scripts/blender/check-run.py",
+      "bytes": 4741,
+      "sha256": "b86a0a9cad12f127eb5975b7724b7881c704d2b06d3b461c2313bf9222ed0630"
+    },
+    {
+      "path": "scripts/blender/check-export.py",
+      "bytes": 1451,
+      "sha256": "7dce426549c4c9ac7deee797fe3fb1acc96cff87263491ae25d29a252750dd79"
+    },
+    {
+      "path": "src/TempleCharacters.ts",
+      "bytes": 11689,
+      "sha256": "5ae83f387f95828785cb3db21752d93e9081c20a8d6faf5bee40cd54a8672396"
+    },
+    {
+      "path": "e2e/blender-run-v2.spec.ts",
+      "bytes": 7587,
+      "sha256": "ae4df08e4fb73da4d5e95b8afa3f6bdf8bffa9533859801a007acc0085a26bf7"
+    },
+    {
+      "path": "e2e/blender-v1.spec.ts",
+      "bytes": 6064,
+      "sha256": "439e95e9c968486bcf6e4228645cfc607770b0a009438d361c5d90bc017316a0"
+    },
+    {
+      "path": "art-source/vanguard/blender-v1/README.md",
+      "bytes": 5426,
+      "sha256": "0b91190c95229a4a725c3a4e0fc98abe5f94c38df3cb5b2a9e705200dd2dade9"
+    },
+    {
+      "path": "scripts/validate-blender.mjs",
+      "bytes": 1313,
+      "sha256": "cc8cc40715a5cb9fa55e5932ee276dcb802ef167703639a76946828c5d91ba9d"
+    }
+  ]
+}

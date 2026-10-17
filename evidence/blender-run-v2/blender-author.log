@@ -1,0 +1,12 @@
+INFO Draco mesh compression is available, use library at /tmp/blender-4.5.3-linux-x64/4.5/scripts/addons_core/io_scene_gltf2/libextern_draco.so
+18:23:14 | INFO: Starting glTF 2.0 export
+18:23:14 | WARNING: Armature must be the parent of skinned meshArmature is selected by its name, but may be false in case of instances
+18:23:14 | INFO: Extracting primitive: quilted undershirt
+18:23:14 | INFO: Primitives created: 7
+18:23:15 | INFO: Finished glTF 2.0 export in 0.2924692630767822 s
+
+Info: Saved as "vanguard.blend"
+VANGUARD COMPLETE 12309 vertices 12378 faces
+Blender 4.5.3 LTS (hash 67807e1800cc built 2025-09-09 01:38:15)
+
+Blender quit

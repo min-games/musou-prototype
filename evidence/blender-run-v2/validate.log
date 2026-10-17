@@ -1,0 +1,34 @@
+{
+  "bytes": 783984,
+  "meshes": 1,
+  "primitives": 7,
+  "triangles": 23388,
+  "materials": 7,
+  "joints": 17,
+  "animations": [
+    {
+      "name": "Idle",
+      "channels": 51,
+      "seconds": 2
+    },
+    {
+      "name": "Run",
+      "channels": 51,
+      "seconds": 0.8
+    },
+    {
+      "name": "Attack",
+      "channels": 51,
+      "seconds": 0.8
+    }
+  ],
+  "externalResources": [],
+  "issues": {
+    "numErrors": 0,
+    "numWarnings": 0,
+    "numInfos": 0,
+    "numHints": 0,
+    "messages": [],
+    "truncated": false
+  }
+}

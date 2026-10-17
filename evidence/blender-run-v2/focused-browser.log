@@ -1,0 +1,15 @@
+
+> musou-slice@1.0.0 test:e2e
+> playwright test --config /tmp/vanguard-run-v2-focused.config.mjs e2e/blender-run-v2.spec.ts e2e/blender-v1.spec.ts
+
+
+Running 4 tests using 1 worker
+
+(node:1313268) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 e2e/blender-run-v2.spec.ts:4:1 › exported Run lifts skinned thighs, folds knees backward and closes the stride (34.3s)
+  ✓  2 e2e/blender-run-v2.spec.ts:154:1 › lifted Run eases into and out of Idle without moving the simulation root (1.4s)
+  ✓  3 e2e/blender-v1.spec.ts:10:1 › Blender candidate samples authored clips, independent skins and hand sockets (5.1s)
+  ✓  4 e2e/blender-v1.spec.ts:147:1 › Blender is opt-in and failed candidate loads retain playable fallback (5.6s)
+
+  4 passed (48.0s)

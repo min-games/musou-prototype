@@ -1,0 +1,83 @@
+{
+  "npmTest": {
+    "passed": 104,
+    "failed": 0
+  },
+  "npmBuild": "passed; existing Vite bundle-size warning",
+  "fullE2E": {
+    "startTime": "2026-10-17T07:23:49.355Z",
+    "duration": 383679.195,
+    "expected": 35,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "finalFocusedE2E": {
+    "startTime": "2026-10-17T07:31:02.078Z",
+    "duration": 47957.648,
+    "expected": 4,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "glTF": {
+    "bytes": 783984,
+    "meshes": 1,
+    "primitives": 7,
+    "triangles": 23388,
+    "materials": 7,
+    "joints": 17,
+    "animations": [
+      {
+        "name": "Idle",
+        "channels": 51,
+        "seconds": 2
+      },
+      {
+        "name": "Run",
+        "channels": 51,
+        "seconds": 0.8
+      },
+      {
+        "name": "Attack",
+        "channels": 51,
+        "seconds": 0.8
+      }
+    ],
+    "externalResources": [],
+    "issues": {
+      "numErrors": 0,
+      "numWarnings": 0,
+      "numInfos": 0,
+      "numHints": 0,
+      "messages": [],
+      "truncated": false
+    }
+  },
+  "sourceWorldChecks": {
+    "R": {
+      "hipForwardExcursion": 0.0,
+      "kneeForwardExcursion": 0.479899350553751,
+      "ankleForwardExcursion": 0.6405068933963776,
+      "kneeLift": 0.27878278493881226,
+      "meshLift": 0.16295570135116577,
+      "hipVerticalExcursion": 0.050000011920928955,
+      "minimumSole": 0.0035611651837825775,
+      "loopJointError": 0.0
+    },
+    "L": {
+      "hipForwardExcursion": 0.0,
+      "kneeForwardExcursion": 0.479899350553751,
+      "ankleForwardExcursion": 0.6398741602897644,
+      "kneeLift": 0.27911147475242615,
+      "meshLift": 0.16331803798675537,
+      "hipVerticalExcursion": 0.050000011920928955,
+      "minimumSole": 0.003756845137104392,
+      "loopJointError": 0.0
+    }
+  },
+  "exportedWorldJointError": 3.625608998714816e-07,
+  "historicalEvidenceIdenticalToScaffold": true,
+  "defaultAssetsUnchanged": true,
+  "integrated": false
+}

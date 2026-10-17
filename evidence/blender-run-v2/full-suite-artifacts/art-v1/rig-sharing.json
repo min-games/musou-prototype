@@ -1,0 +1,282 @@
+{
+  "weapons": [
+    {
+      "weapon": "saber",
+      "enabled": true,
+      "position": [
+        -0.5250381827354431,
+        0.938412606716156,
+        0.9282259345054626
+      ],
+      "actors": 1
+    },
+    {
+      "weapon": "spear",
+      "enabled": true,
+      "position": [
+        -0.5250381827354431,
+        0.938412606716156,
+        0.1782259345054627
+      ],
+      "actors": 1
+    },
+    {
+      "weapon": "greatblade",
+      "enabled": true,
+      "position": [
+        -0.5250381827354431,
+        0.938412606716156,
+        1.2282259345054625
+      ],
+      "actors": 1
+    },
+    {
+      "weapon": "shortbow",
+      "enabled": true,
+      "position": [
+        0.5860604643821717,
+        1.3484492301940918,
+        0.47266370058059687
+      ],
+      "actors": 1
+    },
+    {
+      "weapon": "longbow",
+      "enabled": true,
+      "position": [
+        0.5860604643821717,
+        1.3484492301940918,
+        0.47266370058059687
+      ],
+      "actors": 1
+    },
+    {
+      "weapon": "fanbow",
+      "enabled": true,
+      "position": [
+        0.5860604643821717,
+        1.3484492301940918,
+        0.47266370058059687
+      ],
+      "actors": 1
+    }
+  ],
+  "sharing": {
+    "active": {
+      "version": "temple-fantasy-v1",
+      "states": {
+        "vanguard": "loaded",
+        "ranger": "loaded"
+      },
+      "errors": {},
+      "atlasResolution": [
+        1024,
+        1024
+      ],
+      "uvInsetPixels": 8,
+      "models": {
+        "vanguard": {
+          "file": "vanguard-v1.glb",
+          "animations": [],
+          "triangles": 1754,
+          "meshes": 1,
+          "joints": 16,
+          "textureResolution": {
+            "width": 1024,
+            "height": 1024
+          }
+        },
+        "ranger": {
+          "file": "ranger-v1.glb",
+          "animations": [],
+          "triangles": 1604,
+          "meshes": 1,
+          "joints": 16,
+          "textureResolution": {
+            "width": 1024,
+            "height": 1024
+          }
+        }
+      },
+      "activeActors": 3,
+      "actors": [
+        {
+          "hero": "vanguard",
+          "root": 546,
+          "skeleton": 528,
+          "meshes": [
+            {
+              "geometry": 226,
+              "material": 227,
+              "vertices": 4046
+            }
+          ],
+          "pose": [
+            {
+              "name": "arm.R",
+              "rotation": [
+                -0.08982350420614771,
+                0.003145107004134678,
+                0.034851229179079984,
+                0.9953427742334637
+              ]
+            },
+            {
+              "name": "thigh.L",
+              "rotation": [
+                0,
+                0,
+                0,
+                1
+              ]
+            }
+          ]
+        },
+        {
+          "hero": "vanguard",
+          "root": 638,
+          "skeleton": 620,
+          "meshes": [
+            {
+              "geometry": 226,
+              "material": 227,
+              "vertices": 4046
+            }
+          ],
+          "pose": [
+            {
+              "name": "arm.R",
+              "rotation": [
+                -0.6361407571933764,
+                0.24064013915259952,
+                0.22383063284089771,
+                0.69808101841269
+              ]
+            },
+            {
+              "name": "thigh.L",
+              "rotation": [
+                0,
+                0,
+                0,
+                1
+              ]
+            }
+          ]
+        },
+        {
+          "hero": "ranger",
+          "root": 728,
+          "skeleton": 710,
+          "meshes": [
+            {
+              "geometry": 265,
+              "material": 266,
+              "vertices": 3666
+            }
+          ],
+          "pose": [
+            {
+              "name": "arm.R",
+              "rotation": [
+                -0.5058191251663459,
+                0.16576655137301083,
+                0.14105193955123266,
+                0.8347291856708299
+              ]
+            },
+            {
+              "name": "thigh.L",
+              "rotation": [
+                0,
+                0,
+                0,
+                1
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "after": {
+      "version": "temple-fantasy-v1",
+      "states": {
+        "vanguard": "loaded",
+        "ranger": "loaded"
+      },
+      "errors": {},
+      "atlasResolution": [
+        1024,
+        1024
+      ],
+      "uvInsetPixels": 8,
+      "models": {
+        "vanguard": {
+          "file": "vanguard-v1.glb",
+          "animations": [],
+          "triangles": 1754,
+          "meshes": 1,
+          "joints": 16,
+          "textureResolution": {
+            "width": 1024,
+            "height": 1024
+          }
+        },
+        "ranger": {
+          "file": "ranger-v1.glb",
+          "animations": [],
+          "triangles": 1604,
+          "meshes": 1,
+          "joints": 16,
+          "textureResolution": {
+            "width": 1024,
+            "height": 1024
+          }
+        }
+      },
+      "activeActors": 1,
+      "actors": [
+        {
+          "hero": "vanguard",
+          "root": 546,
+          "skeleton": 528,
+          "meshes": [
+            {
+              "geometry": 226,
+              "material": 227,
+              "vertices": 4046
+            }
+          ],
+          "pose": [
+            {
+              "name": "arm.R",
+              "rotation": [
+                -0.08982350420614771,
+                0.003145107004134678,
+                0.034851229179079984,
+                0.9953427742334637
+              ]
+            },
+            {
+              "name": "thigh.L",
+              "rotation": [
+                0,
+                0,
+                0,
+                1
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "sameGeometry": true,
+    "sameMaterial": true,
+    "independent": true,
+    "unaffected": true,
+    "remainingMeshes": 171,
+    "finalMeshes": 171,
+    "remainingSkeletons": 1,
+    "finalSkeletons": 1
+  }
+}
